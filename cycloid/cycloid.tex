@@ -9,7 +9,7 @@
 \author{Gajavada Sanjeevkumar}
 \date{}
 
-% Custom persistent footer showing name, topic, and simple frame number
+% Custom persistent footer showing name, topic, and simple frame number (no "Slide")
 \setbeamertemplate{footline}{%
   \begin{beamercolorbox}[wd=\textwidth, ht=2.5ex, dp=1.1ex, leftskip=1cm, rightskip=1cm]{structure}
     \tiny \insertauthor \quad|\quad \inserttitle \hfill \insertframenumber
@@ -457,9 +457,10 @@
 
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
   
-  \coordinate (P) at (4.25, 5.92); \fill[black] (P) circle (3.5pt) node[above=3pt] {\small $P$}; \pause
-  \coordinate (Cp) at (5.426, 3.0);
-  \draw[arc line] (P) ++(-35:3.0) arc (-35:-10:3.0); \pause
+  % P exactly on the curve at theta = 1.8 rad -> P = (2.478, 3.682), Cp = (5.4, 3.0) safely between C3 and C4
+  \coordinate (P) at (2.478, 3.682); \fill[black] (P) circle (3.5pt) node[above=3pt] {\small $P$}; \pause
+  \coordinate (Cp) at (5.4, 3.0);
+  \draw[arc line] (P) ++(-20:3.0) arc (-20:5:3.0); \pause
   \fill[red!80!black] (Cp) circle (3.5pt) node[above right] {\small $C_p$}; \pause
   \draw[construction line] (P) -- (Cp) node[midway, above=-1pt, font=\tiny] {$R=25\text{mm}$};
 \end{tikzpicture}
@@ -519,14 +520,14 @@
 
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
   
-  \coordinate (P) at (4.25, 5.92); \fill[black] (P) circle (3.5pt) node[above=3pt] {\small $P$};
-  \coordinate (Cp) at (5.426, 3.0); \fill[red!80!black] (Cp) circle (3.5pt) node[above right] {\small $C_p$};
-  \draw[arc line] (P) ++(-35:3.0) arc (-35:-10:3.0);
+  \coordinate (P) at (2.478, 3.682); \fill[black] (P) circle (3.5pt) node[above=3pt] {\small $P$};
+  \coordinate (Cp) at (5.4, 3.0); \fill[red!80!black] (Cp) circle (3.5pt) node[above right] {\small $C_p$};
+  \draw[arc line] (P) ++(-20:3.0) arc (-20:5:3.0);
   \draw[construction line] (P) -- (Cp);
   
-  \coordinate (M) at (5.426, 0.0);
+  \coordinate (M) at (5.4, 0.0);
   \draw[construction line, dashed] (Cp) -- (M); \fill[black] (M) circle (3.5pt) node[below] {\small $M$}; \pause
-  \draw[normal line] (6.2, -1.24) node[below] {\small $N$} -- (2.0, 8.28) node[above] {\small $N'$};
+  \draw[normal line] (6.2, -1.24) node[below] {\small $N$} -- (1.2, 5.3) node[above] {\small $N'$};
 \end{tikzpicture}
 \end{frame}
 
@@ -584,15 +585,15 @@
 
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
   
-  \coordinate (P) at (4.25, 5.92); \fill[black] (P) circle (3.5pt) node[above left] {\small $P$};
-  \coordinate (Cp) at (5.426, 3.0); \fill[red!80!black] (Cp) circle (3.5pt);
-  \coordinate (M) at (5.426, 0.0); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
+  \coordinate (P) at (2.478, 3.682); \fill[black] (P) circle (3.5pt) node[above left] {\small $P$};
+  \coordinate (Cp) at (5.4, 3.0); \fill[red!80!black] (Cp) circle (3.5pt);
+  \coordinate (M) at (5.4, 0.0); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
   \draw[construction line, dashed] (Cp) -- (M);
-  \draw[normal line] (6.2, -1.24) node[below] {\small $N$} -- (2.0, 8.28) node[above] {\small $N'$};
-  \draw[tangent line] (0.0, 3.75) node[left] {\small $T$} -- (8.0, 7.50) node[right] {\small $T'$}; \pause
+  \draw[normal line] (6.2, -1.24) node[below] {\small $N$} -- (1.2, 5.3) node[above] {\small $N'$};
+  \draw[tangent line] (-0.5, 1.31) node[left] {\small $T$} -- (7.5, 7.67) node[right] {\small $T'$}; \pause
   
-  % Precisely positioned perpendicular symbol at P aligned with normal vector angle
-  \begin{scope}[shift={(4.25, 5.92)}, rotate=25]
+  % Precisely positioned perpendicular symbol at P aligned with normal vector angle (~-51.7 deg)
+  \begin{scope}[shift={(2.478, 3.682)}, rotate=-51.7]
     \draw[thin, black] (0,0) -- (0.35,0) -- (0.35,0.35) -- (0,0.35);
   \end{scope}
 \end{tikzpicture}
