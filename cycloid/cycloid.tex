@@ -1,7 +1,6 @@
 \documentclass[aspectratio=169, 10pt]{beamer}
 \usetheme{metropolis}
 \usepackage{tikz}
-\usepackage{eso-pic}
 \usetikzlibrary{calc, arrows.meta, shapes.geometric}
 
 % ============================================================
@@ -13,36 +12,43 @@
 \date{}
 
 % ============================================================
-% FOOLPROOF BACKGROUND FOOTER (Guaranteed on every subslide/pause)
+% METROPOLIS NUMBERING
 % ============================================================
 \metroset{numbering=none}
 
-\AddToShipoutPictureBG{%
-  \AtPageLowerLeft{%
-    \parbox[b]{\paperwidth}{%
-      \begin{beamercolorbox}[
-        wd=\paperwidth,
-        ht=3.0ex,
-        dp=1.2ex,
-        leftskip=1cm,
-        rightskip=1cm
-      ]{structure}%
-        \tiny
-        \insertauthor
-        \quad|\quad
-        \inserttitle
-        \hfill
-        \ifnum\value{framenumber}=1
-          \textit{Introduction}%
+% ============================================================
+% CUSTOM FOOTER — PERSISTENT ON EVERY OVERLAY
+% ============================================================
+\setbeamercolor{custom footer}{
+  fg=white,
+  bg=black!80
+}
+
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[
+      wd=\paperwidth,
+      ht=3.2ex,
+      dp=1.4ex,
+      leftskip=1cm,
+      rightskip=1cm
+    ]{custom footer}%
+      \tiny
+      \insertauthor
+      \quad|\quad
+      \inserttitle
+      \hfill
+      \ifnum\value{framenumber}=1
+        \textit{Introduction}%
+      \else
+        \ifnum\value{framenumber}=2
+          \textit{Problem Statement}%
         \else
-          \ifnum\value{framenumber}=2
-            \textit{Problem Statement}%
-          \else
-            Slide \number\numexpr\value{framenumber}-2\relax
-          \fi
+          Slide \number\numexpr\value{framenumber}-2\relax
         \fi
-      \end{beamercolorbox}%
-    }%
+      \fi
+    \end{beamercolorbox}%
   }%
 }
 
@@ -631,4 +637,4 @@
 \end{tikzpicture}
 \end{frame}
 
-end{document}
+\end{document}
