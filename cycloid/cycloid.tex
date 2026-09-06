@@ -1,6 +1,7 @@
 \documentclass[aspectratio=169, 10pt]{beamer}
 \usetheme{metropolis}
 \usepackage{tikz}
+\usepackage{eso-pic}
 \usetikzlibrary{calc, arrows.meta, shapes.geometric}
 
 % Presentation Meta Information
@@ -9,16 +10,17 @@
 \author{Gajavada Sanjeevkumar}
 \date{}
 
-% Persistent footer visible on all slides and pause steps (hidden only on title slide)
-\setbeamertemplate{footline}{%
-  \ifnum\insertframenumber=1\relax%
-  \else%
-    \begin{beamercolorbox}[wd=\paperwidth, ht=2.5ex, dp=1.1ex, leftskip=1cm, rightskip=1cm]{structure}%
-      \tiny \insertauthor \quad|\quad \inserttitle 
-      \hfill 
-      \insertslidenavigationsymbol\insertframenavigationsymbol\quad 
-      \insertframenumber
-    \end{beamercolorbox}%
+% Foolproof background footer: stamps the footer onto EVERY physical page/pause > 1 (103 footers total)
+\AddToShipoutPictureBG{%
+  \ifnum\thepage>1\relax%
+    \AtPageLowerLeft{%
+      \raisebox{2ex}{%
+        \makebox[\paperwidth][l]{%
+          \hspace*{1cm}%
+          \tiny\color{black!70}Gajavada Sanjeevkumar \quad|\quad Engineering Curves: Construction of Cycloid \hfill Page \thepage\hspace*{1cm}%
+        }%
+      }%
+    }%
   \fi%
 }
 \setbeamertemplate{navigation symbols}{}
