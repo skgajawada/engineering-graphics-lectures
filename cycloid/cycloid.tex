@@ -9,20 +9,21 @@
 \author{Gajavada Sanjeevkumar}
 \date{}
 
-% Metropolis settings and persistent footer with navigation indicators before the slide number
-\metroset{progressbar=none, numbering=fraction}
-\setbeamertemplate{navigation symbols}{}
-
+% Force persistent footer with navigation symbols before the frame number on all slides and pauses (hidden on title frame)
 \AtBeginDocument{
   \setbeamertemplate{footline}{%
     \ifnum\insertframenumber=1\relax%
     \else%
-      \begin{beamercolorbox}[wd=\paperwidth, ht=2.5ex, dp=1.1ex, leftskip=1cm, rightskip=1cm]{progress bar}%
-        \tiny \insertauthor \quad|\quad \inserttitle \hfill Nav: $[\triangleleft \quad \triangleright]$ \quad Frame \insertframenumber
+      \begin{beamercolorbox}[wd=\paperwidth, ht=2.5ex, dp=1.1ex, leftskip=1cm, rightskip=1cm]{structure}%
+        \tiny \insertauthor \quad|\quad \inserttitle 
+        \hfill 
+        \insertslidenavigationsymbol\insertframenavigationsymbol\quad 
+        \insertframenumber
       \end{beamercolorbox}%
     \fi%
   }
 }
+\setbeamertemplate{navigation symbols}{}
 
 % Custom TikZ styles adhering strictly to BIS/ISO Drawing Standards
 \tikzset{
@@ -39,7 +40,7 @@
 }
 
 \newcommand{\drawLegendCard}[1]{
-  \node[draw=gray!50, fill=white, rounded corners=4pt, inner sep=4pt, anchor=north east] at (21.85, 8.0) {
+  \node[draw=gray!50, fill=white, rounded corners=4pt, inner sep=4pt, anchor=north east] at (21.85, 8.5) {
     \scriptsize
     \begin{tabular}{l@{\,$\rightarrow$\,}l}
       #1
@@ -183,7 +184,7 @@
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
-  \drawLegendCard{ \textbf{$AA'$} & Directing Line \\ \textbf{Axis Line} & Center Line \\ \textbf{$C_1\dots C_{12}$} & Center Points }
+  \drawLegendCard{ \textbf{$AA'$} & Directing Line \\ \textbf{Axis Line} & Center Line \\ \textbf{$1'\dots12'$} & Divisions }
   
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0);
