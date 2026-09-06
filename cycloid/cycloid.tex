@@ -9,15 +9,18 @@
 \author{Gajavada Sanjeevkumar}
 \date{}
 
-% Force footline to display on all frames and pauses
+% Persistent footer on all frames and pauses EXCEPT the title slide (Frame 1)
 \setbeamertemplate{footline}{%
-  \leavevmode%
-  \hbox{%
-    \begin{beamercolorbox}[wd=\paperwidth, ht=2.5ex, dp=1.1ex, leftskip=1cm, rightskip=1cm]{structure}%
-      \tiny \insertauthor \quad|\quad \inserttitle \hfill \insertframenumber
-    \end{beamercolorbox}%
-  }%
-  \vskip0pt%
+  \ifnum\insertframenumber=1\relax%
+  \else%
+    \leavevmode%
+    \hbox{%
+      \begin{beamercolorbox}[wd=\paperwidth, ht=2.5ex, dp=1.1ex, leftskip=1cm, rightskip=1cm]{structure}%
+        \tiny \insertauthor \quad|\quad \inserttitle \hfill \insertframenumber
+      \end{beamercolorbox}%
+    }%
+    \vskip0pt%
+  \fi%
 }
 \setbeamertemplate{navigation symbols}{}
 
