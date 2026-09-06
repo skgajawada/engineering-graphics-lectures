@@ -9,11 +9,15 @@
 \author{Gajavada Sanjeevkumar}
 \date{}
 
-% Custom persistent footer showing name, topic, and simple frame number (no "Slide")
+% Force footline to display on all frames and pauses
 \setbeamertemplate{footline}{%
-  \begin{beamercolorbox}[wd=\textwidth, ht=2.5ex, dp=1.1ex, leftskip=1cm, rightskip=1cm]{structure}
-    \tiny \insertauthor \quad|\quad \inserttitle \hfill \insertframenumber
-  \end{beamercolorbox}%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=\paperwidth, ht=2.5ex, dp=1.1ex, leftskip=1cm, rightskip=1cm]{structure}%
+      \tiny \insertauthor \quad|\quad \inserttitle \hfill \insertframenumber
+    \end{beamercolorbox}%
+  }%
+  \vskip0pt%
 }
 \setbeamertemplate{navigation symbols}{}
 
