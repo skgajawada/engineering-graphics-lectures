@@ -9,8 +9,9 @@
 \author{Gajavada Sanjeevkumar}
 \date{}
 
-% Correct syntax for forcing persistent footer across ALL sub-slides and pauses (hidden on title frame)
-\setbeamertemplate{footline}<all>{%
+% Clean, persistent footer visible on all frames and pause steps (hidden only on title frame)
+\makeatletter
+\setbeamertemplate{footline}{%
   \ifnum\insertframenumber=1\relax%
   \else%
     \begin{beamercolorbox}[wd=\paperwidth, ht=2.5ex, dp=1.1ex, leftskip=1cm, rightskip=1cm]{structure}%
@@ -21,6 +22,7 @@
     \end{beamercolorbox}%
   \fi%
 }
+\makeatother
 \setbeamertemplate{navigation symbols}{}
 
 % Custom TikZ styles adhering strictly to BIS/ISO Drawing Standards
