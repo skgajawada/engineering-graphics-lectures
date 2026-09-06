@@ -9,19 +9,17 @@
 \author{Gajavada Sanjeevkumar}
 \date{}
 
-% Force persistent footer with navigation symbols before the frame number on all slides and pauses (hidden on title frame)
-\AtBeginDocument{
-  \setbeamertemplate{footline}{%
-    \ifnum\insertframenumber=1\relax%
-    \else%
-      \begin{beamercolorbox}[wd=\paperwidth, ht=2.5ex, dp=1.1ex, leftskip=1cm, rightskip=1cm]{structure}%
-        \tiny \insertauthor \quad|\quad \inserttitle 
-        \hfill 
-        \insertslidenavigationsymbol\insertframenavigationsymbol\quad 
-        \insertframenumber
-      \end{beamercolorbox}%
-    \fi%
-  }
+% Force persistent footer across ALL sub-slides and pauses using <all> (hidden only on title frame)
+\setbeamertemplate{footline}<all>{%
+  \ifnum\insertframenumber=1\relax%
+  \else%
+    \begin{beamercolorbox}[wd=\paperwidth, ht=2.5ex, dp=1.1ex, leftskip=1cm, rightskip=1cm]{structure}%
+      \tiny \insertauthor \quad|\quad \inserttitle 
+      \hfill 
+      \insertslidenavigationsymbol\insertframenavigationsymbol\quad 
+      \insertframenumber
+    \end{beamercolorbox}%
+  \fi%
 }
 \setbeamertemplate{navigation symbols}{}
 
@@ -184,7 +182,7 @@
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
-  \drawLegendCard{ \textbf{$AA'$} & Directing Line \\ \textbf{Axis Line} & Center Line \\ \textbf{$1'\dots12'$} & Divisions }
+  \drawLegendCard{ \textbf{$AA'$} & Directing Line \\ \textbf{Axis Line} & Center Line \\ \textbf{$C_1\dots C_{12}$} & Center Points }
   
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0);
