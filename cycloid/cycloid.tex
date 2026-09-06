@@ -56,10 +56,15 @@
 \begin{tikzpicture}[scale=0.45, >=stealth]
   \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
   \drawLegendCard{ \textbf{$C_0$} & Initial Center Point \\ \textbf{Circle} & Generating Circle }
+  
   \coordinate (C0) at (0,3.0);
+  \pause
   \fill[red!80!black] (C0) circle (3.5pt) node[above right, font=\tiny] {$C_0$};
+  \pause
   \draw[thick, blue!80!black] (C0) circle (3.0);
+  \pause
   \draw[label line] (1.8, 5.2) -- (4.5, 7.2) node[right, font=\tiny\bfseries, color=blue!80!black] {Generating Circle ($D=50\text{ mm}$)};
+  \pause
   \draw[<->, thin, cyan!80!black] (0,3.0) -- (0,0) node[midway, right] {\tiny $R=25\text{ mm}$};
 \end{tikzpicture}
 \end{frame}
@@ -69,15 +74,23 @@
 \begin{tikzpicture}[scale=0.45, >=stealth]
   \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
   \drawLegendCard{ \textbf{$AA'$} & Directing Line (Base Line) \\ \textbf{Axis Line} & Center Line }
+  
   \coordinate (C0) at (0,3.0);
   \fill[red!80!black] (C0) circle (3.5pt) node[above right, font=\tiny] {$C_0$};
   \draw[thick, blue!80!black] (C0) circle (3.0);
+  \pause
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
+  \pause
   \draw[label line] (14.0, 0) -- (16.0, -2.0) node[right, font=\tiny\bfseries, color=magenta!90!black] {Directing Line ($AA' = \pi D$)};
+  \pause
   \draw[axis line] (0,3.0) -- (18.85,3.0) node[right] {\small $C_{12}$};
+  \pause
   \draw[label line] (14.0, 3.0) -- (16.0, 4.8) node[right, font=\tiny\bfseries, color=black!75] {Axis Line (Center Line)};
+  \pause
   \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
+  \pause
   \draw[thin, red!80!black, dashed] (0,0) -- (0,-2.2);
+  \pause
   \draw[thin, red!80!black, dashed] (18.85,0) -- (18.85,-2.2);
 \end{tikzpicture}
 \end{frame}
@@ -87,15 +100,29 @@
 \begin{tikzpicture}[scale=0.45, >=stealth]
   \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
   \drawLegendCard{ \textbf{$AA'$} & Directing Line \\ \textbf{Axis Line} & Center Line \\ \textbf{$1\dots12$} & Circle Divisions }
+  
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0) node[right] {\small $C_{12}$};
   \coordinate (C0) at (0,3.0);
   \fill[red!80!black] (C0) circle (3.5pt) node[above right, font=\tiny] {$C_0$};
   \draw[thick, blue!80!black] (C0) circle (3.0);
+  \pause
   \foreach \a in {0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330} {
     \draw[thin, cyan!60!black, dashed] (C0) -- ++(\a:3.0);
+    \pause
   }
-  \node[below, font=\tiny] at (0,0) {$12(P_0)$}; \node[below right, font=\tiny] at (1.5,0.40) {1}; \node[right, font=\tiny] at (2.598,1.5) {2}; \node[right, font=\tiny] at (3.0,3.0) {3}; \node[right, font=\tiny] at (2.598,4.5) {4}; \node[above right, font=\tiny] at (1.5,5.598) {5}; \node[above, font=\tiny] at (0,6.0) {6}; \node[above left, font=\tiny] at (-1.5,5.598) {7}; \node[left, font=\tiny] at (-2.598,4.5) {8}; \node[left, font=\tiny] at (-3.0,3.0) {9}; \node[left, font=\tiny] at (-2.598,1.5) {10}; \node[below left, font=\tiny] at (-1.5,0.40) {11};
+  \node[below, font=\tiny] at (0,0) {$12(P_0)$}; 
+  \node[below right, font=\tiny] at (1.5,0.40) {1}; 
+  \node[right, font=\tiny] at (2.598,1.5) {2}; 
+  \node[right, font=\tiny] at (3.0,3.0) {3}; 
+  \node[right, font=\tiny] at (2.598,4.5) {4}; 
+  \node[above right, font=\tiny] at (1.5,5.598) {5}; 
+  \node[above, font=\tiny] at (0,6.0) {6}; 
+  \node[above left, font=\tiny] at (-1.5,5.598) {7}; 
+  \node[left, font=\tiny] at (-2.598,4.5) {8}; 
+  \node[left, font=\tiny] at (-3.0,3.0) {9}; 
+  \node[left, font=\tiny] at (-2.598,1.5) {10}; 
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
 \end{tikzpicture}
 \end{frame}
 
@@ -104,6 +131,7 @@
 \begin{tikzpicture}[scale=0.45, >=stealth]
   \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
   \drawLegendCard{ \textbf{$AA'$} & Directing Line \\ \textbf{$A X$} & Inclined Line \\ \textbf{$1'\dots12'$} & Parallel Divisions }
+  
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0) node[right] {\small $C_{12}$};
   \coordinate (C0) at (0,3.0);
@@ -112,13 +140,16 @@
   \foreach \a in {0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330} {
     \draw[thin, cyan!60!black, dashed] (C0) -- ++(\a:3.0);
   }
+  \pause
   \draw[thick, orange!80!black] (0,0) -- (17.38,-3.11) node[right, font=\tiny] {$X$};
+  \pause
   \foreach \i in {1,2,...,12} {
     \coordinate (a\i) at ({\i*1.448}, {-\i*0.259});
     \fill[orange!90!black] (a\i) circle (2.0pt);
     \draw[thin, orange!70!black, dashed] (a\i) -- ({\i*1.5708}, 0);
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
+    \pause
   }
   \node[below left, font=\tiny, orange!90!black] at (a12) {$12$};
 \end{tikzpicture}
@@ -129,16 +160,19 @@
 \begin{tikzpicture}[scale=0.45, >=stealth]
   \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
   \drawLegendCard{ \textbf{$AA'$} & Directing Line \\ \textbf{Axis Line} & Center Line \\ \textbf{$C_1\dots C_{12}$} & Center Points }
+  
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0);
   \fill[red!80!black] (C0) circle (3.5pt);
   \draw[thick, blue!80!black] (C0) circle (3.0);
+  \pause
   \foreach \i in {1,2,...,12} {
     \coordinate (C\i) at ({\i*1.5708}, 3.0);
     \fill[red!80!black] (C\i) circle (2.5pt);
     \draw[thin, black!40, dashed] ({\i*1.5708}, 0) -- (C\i);
     \node[above=1pt, font=\tiny, red!80!black] at (C\i) {$C_{\i}$};
+    \pause
   }
 \end{tikzpicture}
 \end{frame}
@@ -148,16 +182,23 @@
 \begin{tikzpicture}[scale=0.45, >=stealth]
   \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
   \drawLegendCard{ \textbf{Blue Lines} & Horizontal Reference Lines \\ \textbf{$C_1\dots C_{12}$} & Retained Centers }
+  
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \foreach \i in {1,2,...,12} { \fill[red!80!black] ({\i*1.5708}, 3.0) circle (2.5pt); }
+  \pause
   
   \draw[construction line] (-1.500, 0.402) -- (18.85, 0.402) node[right, font=\tiny] {1, 11};
+  \pause
   \draw[construction line] (-2.598, 1.500) -- (18.85, 1.500) node[right, font=\tiny] {2, 10};
+  \pause
   \draw[construction line] (-3.000, 3.000) -- (18.85, 3.000) node[right, font=\tiny] {3, 9};
+  \pause
   \draw[construction line] (-2.598, 4.500) -- (18.85, 4.500) node[right, font=\tiny] {4, 8};
+  \pause
   \draw[construction line] (-1.500, 5.598) -- (18.85, 5.598) node[right, font=\tiny] {5, 7};
+  \pause
   \draw[construction line] (0.000, 6.000) -- (18.85, 6.000) node[right, font=\tiny] {6};
 \end{tikzpicture}
 \end{frame}
@@ -167,6 +208,7 @@
 \begin{tikzpicture}[scale=0.45, >=stealth]
   \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
   \drawLegendCard{ \textbf{$C_1\dots C_{12}$} & Retained Centers \\ \textbf{$P_1\dots P_{12}$} & Cycloid Locus Points }
+  
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
@@ -180,25 +222,37 @@
   \draw[construction line] (0.000, 6.000) -- (18.85, 6.000);
 
   \fill[blue!80!black] (0,0) circle (3.5pt) node[below left, font=\tiny] {$P_0$};
+  \pause
 
   \draw[arc line] (1.5708,3.0) ++(230:3.0) arc (230:250:3.0);
   \fill[blue!80!black] (0.07, 0.402) circle (3.5pt) node[above right, font=\tiny] {$P_1$};
+  \pause
   \draw[arc line] (3.1416,3.0) ++(200:3.0) arc (200:220:3.0);
   \fill[blue!80!black] (0.54, 1.500) circle (3.5pt) node[above right, font=\tiny] {$P_2$};
+  \pause
   \draw[arc line] (4.7124,3.0) ++(170:3.0) arc (170:190:3.0);
   \fill[blue!80!black] (1.71, 3.000) circle (3.5pt) node[above right, font=\tiny] {$P_3$};
+  \pause
   \draw[arc line] (6.2832,3.0) ++(140:3.0) arc (140:160:3.0);
   \fill[blue!80!black] (3.68, 4.500) circle (3.5pt) node[above right, font=\tiny] {$P_4$};
+  \pause
   \draw[arc line] (7.8540,3.0) ++(110:3.0) arc (110:130:3.0);
   \fill[blue!80!black] (6.42, 5.598) circle (3.5pt) node[above right, font=\tiny] {$P_5$};
+  \pause
   \draw[arc line] (9.4248,3.0) ++(80:3.0) arc (80:100:3.0);
   \fill[blue!80!black] (9.42, 6.000) circle (3.5pt) node[above, font=\tiny] {$P_6$};
+  \pause
   
   \fill[blue!80!black] (12.42, 5.598) circle (3.5pt) node[above left, font=\tiny] {$P_7$};
+  \pause
   \fill[blue!80!black] (15.17, 4.500) circle (3.5pt) node[above left, font=\tiny] {$P_8$};
+  \pause
   \fill[blue!80!black] (17.14, 3.000) circle (3.5pt) node[above left, font=\tiny] {$P_9$};
+  \pause
   \fill[blue!80!black] (18.31, 1.500) circle (3.5pt) node[above left, font=\tiny] {$P_{10}$};
+  \pause
   \fill[blue!80!black] (18.78, 0.402) circle (3.5pt) node[above left, font=\tiny] {$P_{11}$};
+  \pause
   \fill[blue!80!black] (18.85, 0.000) circle (3.5pt) node[below right, font=\tiny] {$P_{12}$};
 \end{tikzpicture}
 \end{frame}
@@ -210,6 +264,7 @@
   \draw[directrix line] (0,0) -- (18.85,0); \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \foreach \i in {1,2,...,12} { \fill[red!80!black] ({\i*1.5708}, 3.0) circle (2.5pt); }
+  \pause
   
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
 \end{tikzpicture}
@@ -221,11 +276,15 @@
   \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
   \draw[directrix line] (0,0) -- (18.85,0); \draw[axis line] (0,3.0) -- (18.85,3.0);
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
+  \pause
   
   \coordinate (P) at (3.68, 4.50); \fill[black] (P) circle (3.5pt) node[above=3pt] {\small $P$};
+  \pause
   \coordinate (Cp) at (6.2832, 3.0);
   \draw[arc line] (P) ++(-40:3.0) arc (-40:-15:3.0);
+  \pause
   \fill[red!80!black] (Cp) circle (3.5pt) node[above right] {\small $C_p$};
+  \pause
   \draw[construction line] (P) -- (Cp) node[midway, above=-1pt, font=\tiny] {$R=25\text{mm}$};
 \end{tikzpicture}
 \end{frame}
@@ -238,8 +297,11 @@
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
   \coordinate (P) at (3.68, 4.50); \fill[black] (P) circle (3.5pt);
   \coordinate (Cp) at (6.2832, 3.0); \fill[red!80!black] (Cp) circle (3.5pt);
+  \pause
+  
   \coordinate (M) at (6.2832, 0.0);
   \draw[construction line, dashed] (Cp) -- (M); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
+  \pause
   \draw[normal line] (7.0, -1.24) node[below] {\small $N$} -- (1.5, 8.28) node[above] {\small $N'$};
 \end{tikzpicture}
 \end{frame}
@@ -252,7 +314,10 @@
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
   \coordinate (P) at (3.68, 4.50); \coordinate (Cp) at (6.2832, 3.0); \coordinate (M) at (6.2832, 0.0);
   \draw[normal line] (7.0, -1.24) node[below] {\small $N$} -- (1.5, 8.28) node[above] {\small $N'$};
+  \pause
+  
   \draw[tangent line] (-1.0, 1.80) node[left] {\small $T$} -- (8.5, 7.28) node[right] {\small $T'$};
+  \pause
   \draw[thin, black] (P) ++(-0.43,0.25) -- ++(0.25,0.43) -- ++(0.43,-0.25);
 \end{tikzpicture}
 \end{frame}
@@ -262,6 +327,7 @@
 \begin{tikzpicture}[scale=0.45, >=stealth]
   \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
   \drawLegendCard{ \textbf{Curve} & Completed Profile \\ \textbf{$N\text{-}N'$} & Normal Line \\ \textbf{$T\text{-}T'$} & Tangent Line }
+  
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
@@ -272,8 +338,12 @@
   \draw[normal line] (7.0, -1.24) node[below] {\small $N$} -- (1.5, 8.28) node[above] {\small $N'$};
   \draw[tangent line] (-1.0, 1.80) node[left] {\small $T$} -- (8.5, 7.28) node[right] {\small $T'$};
   \draw[thin, black] (P) ++(-0.43,0.25) -- ++(0.25,0.43) -- ++(0.43,-0.25);
+  \pause
   \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
-  \draw[thin, red!80!black, dashed] (0,0) -- (0,-2.2); \draw[thin, red!80!black, dashed] (18.85,0) -- (18.85,-2.2);
+  \pause
+  \draw[thin, red!80!black, dashed] (0,0) -- (0,-2.2); 
+  \pause
+  \draw[thin, red!80!black, dashed] (18.85,0) -- (18.85,-2.2);
 \end{tikzpicture}
 \end{frame}
 
