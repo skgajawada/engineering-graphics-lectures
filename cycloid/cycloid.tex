@@ -9,16 +9,14 @@
 \author{Gajavada Sanjeevkumar}
 \date{}
 
-% Force the footer to appear on every single sub-slide/pause, skipping only the title frame
-\AtBeginDocument{
-  \setbeamertemplate{footline}{%
-    \ifnum\insertframenumber=1\relax%
-    \else%
-      \begin{beamercolorbox}[wd=\paperwidth, ht=2.5ex, dp=1.1ex, leftskip=1cm, rightskip=1cm]{structure}%
-        \tiny \insertauthor \quad|\quad \inserttitle \hfill \insertframenumber
-      \end{beamercolorbox}%
-    \fi%
-  }
+% Robust footer template visible on all pauses/sub-slides, hidden on title slide
+\setbeamertemplate{footline}{%
+  \ifnum\insertframenumber=1\relax%
+  \else%
+    \begin{beamercolorbox}[wd=\paperwidth, ht=2.25ex, dp=1ex, leftskip=1cm, rightskip=1cm]{structure}%
+      \tiny \insertauthor \quad|\quad \inserttitle \hfill \insertframenumber
+    \end{beamercolorbox}%
+  \fi%
 }
 \setbeamertemplate{navigation symbols}{}
 
@@ -37,7 +35,7 @@
 }
 
 \newcommand{\drawLegendCard}[1]{
-  \node[draw=gray!50, fill=white, rounded corners=4pt, inner sep=4pt, anchor=north east] at (21.85, 9.2) {
+  \node[draw=gray!50, fill=white, rounded corners=4pt, inner sep=4pt, anchor=north east] at (21.85, 8.5) {
     \scriptsize
     \begin{tabular}{l@{\,$\rightarrow$\,}l}
       #1
@@ -66,7 +64,7 @@
 \begin{frame}{Step 1: Draw Generating Circle \& Directing Line}
 \centering
 \begin{tikzpicture}[scale=0.45]
-  \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
   \drawLegendCard{ \textbf{$C_0$} & Initial Center Point \\ \textbf{$AA'$} & Directing Line \\ \textbf{Axis} & Center Line }
   
   \coordinate (C0) at (0,3.0);
@@ -85,7 +83,7 @@
 \begin{frame}{Step 2: Divide Generating Circle into 12 Equal Parts}
 \centering
 \begin{tikzpicture}[scale=0.45]
-  \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
   \drawLegendCard{ \textbf{$AA'$} & Directing Line \\ \textbf{Axis Line} & Center Line \\ \textbf{$0\dots12$} & Circle Divisions }
   
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
@@ -116,7 +114,7 @@
 \begin{frame}{Step 3: Divide Directing Line using Line Division Method}
 \centering
 \begin{tikzpicture}[scale=0.45]
-  \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
   \drawLegendCard{ \textbf{$AA'$} & Directing Line \\ \textbf{$A X$} & Inclined Line \\ \textbf{$1'\dots12'$} & Parallel Divisions }
   
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
@@ -180,7 +178,7 @@
 \begin{frame}{Step 4: Project Divisions to Locate Centers $C_1\dots C_{12}$}
 \centering
 \begin{tikzpicture}[scale=0.45]
-  \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
   \drawLegendCard{ \textbf{$AA'$} & Directing Line \\ \textbf{Axis Line} & Center Line \\ \textbf{$C_1\dots C_{12}$} & Center Points }
   
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
@@ -234,7 +232,7 @@
 \begin{frame}{Step 5: Draw Horizontal Reference Lines}
 \centering
 \begin{tikzpicture}[scale=0.45]
-  \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
   \drawLegendCard{ \textbf{Blue Lines} & Horizontal Reference Lines \\ \textbf{$C_1\dots C_{12}$} & Retained Centers }
   
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
@@ -287,7 +285,7 @@
 \begin{frame}{Step 6: Strike Cutting Arcs to Locate Points $P_1\dots P_{12}$}
 \centering
 \begin{tikzpicture}[scale=0.45]
-  \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
   \drawLegendCard{ \textbf{$C_1\dots C_{12}$} & Retained Centers \\ \textbf{$P_1\dots P_{12}$} & Cutting Arcs/Points }
   
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
@@ -354,7 +352,7 @@
 \begin{frame}{Step 7: Smoothly Join Points to Form Cycloid Curve}
 \centering
 \begin{tikzpicture}[scale=0.45]
-  \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
   \drawLegendCard{ \textbf{Curve} & Completed Profile \\ \textbf{$P_0\dots P_{12}$} & Retained Points }
   
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
@@ -411,7 +409,7 @@
 \begin{frame}{Step 8: Mark Point $P$ \& Locate Center $C_p$}
 \centering
 \begin{tikzpicture}[scale=0.45]
-  \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
   \drawLegendCard{ \textbf{$P$} & Target Point \\ \textbf{$C_p$} & Corresponding Center }
   
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
@@ -473,7 +471,7 @@
 \begin{frame}{Step 9: Construct Normal Line $N$-$N'$}
 \centering
 \begin{tikzpicture}[scale=0.45]
-  \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
   \drawLegendCard{ \textbf{$N\text{-}N'$} & Normal Line \\ \textbf{$M$} & Base Projection }
   
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
@@ -538,7 +536,7 @@
 \begin{frame}{Step 10: Construct Tangent Line $T$-$T'$ \& Final Result}
 \centering
 \begin{tikzpicture}[scale=0.45]
-  \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
   \drawLegendCard{ \textbf{Curve} & Completed Profile \\ \textbf{$N\text{-}N'$} & Normal Line \\ \textbf{$T\text{-}T'$} & Tangent Line }
   
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
@@ -576,7 +574,7 @@
   }
   \draw[dimension extension] (0,0) -- (0,-2.2);
   \draw[dimension extension] (18.85,0) -- (18.85,-2.2);
-  \draw<1->[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
+  \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
   
   \draw[construction line] (-1.500, 0.402) -- (18.85, 0.402);
   \draw[construction line] (-2.598, 1.500) -- (18.85, 1.500);
