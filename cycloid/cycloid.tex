@@ -9,7 +9,7 @@
 \author{Gajavada Sanjeevkumar}
 \date{}
 
-% Persistent footer visible on ALL slides and ALL pause/subslides
+% Persistent footer visible on ALL slides and ALL pause/subslides with custom slide numbering offset
 \setbeamertemplate{footline}{%
   \begin{beamercolorbox}[
     wd=\paperwidth,
@@ -23,7 +23,13 @@
     \quad|\quad
     \inserttitle
     \hfill
-    Slide \insertframenumber
+    \ifnum\insertframenumber=1
+      \textit{Introduction}
+    \else\ifnum\insertframenumber=2
+      \textit{Problem Statement}
+    \else
+      Slide \number\numexpr\insertframenumber-2\relax
+    \fi\fi
   \end{beamercolorbox}%
 }
 \setbeamertemplate{navigation symbols}{}
