@@ -17,8 +17,13 @@ jobs:
       - name: Compile Cycloid presentation
         uses: xu-cheng/latex-action@v4
         with:
-          root_file: cycloid/cycloid.tex
-          latexmk_use_xelatex: false
+          working_directory: cycloid
+          root_file: cycloid.tex
+
+      - name: Check generated files
+        run: |
+          echo "Files generated:"
+          find cycloid -maxdepth 2 -type f -print
 
       - name: Upload PDF
         uses: actions/upload-artifact@v4
