@@ -3,44 +3,62 @@
 \usepackage{tikz}
 \usetikzlibrary{calc, arrows.meta, shapes.geometric}
 
-% Presentation Meta Information
+% ============================================================
+% PRESENTATION META INFORMATION
+% ============================================================
 \title{Engineering Curves: Construction of Cycloid}
 \subtitle{Rolling Circle Method with Tangent \& Normal}
 \author{Gajavada Sanjeevkumar}
 \date{}
 
-% Foreground-overlay footer: always visible above all slide content and all TikZ overlays
-\addtobeamertemplate{foreground}{%
-  \begin{tikzpicture}[remember picture,overlay]
-    \node[
-      anchor=south,
-      minimum width=\paperwidth,
-      minimum height=2.5ex,
-      inner xsep=1cm,
-      font=\tiny,
-      fill=structure.fg,
-      text=structure.bg
-    ] at (current page.south) {%
-      \makebox[\paperwidth][l]{%
-        \insertauthor
-        \quad|\quad
-        \inserttitle
-        \hfill
-        \ifnum\insertframenumber=1
-          \textit{Introduction}%
-        \else\ifnum\insertframenumber=2
+% ============================================================
+% METROPOLIS NUMBERING
+% Disable Metropolis' own frame number.
+% We will use our custom footer below.
+% ============================================================
+\metroset{numbering=none}
+
+% ============================================================
+% CUSTOM FOOTER — PERSISTENT ON EVERY OVERLAY
+% ============================================================
+\setbeamercolor{custom footer}{
+  fg=white,
+  bg=black!80
+}
+
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[
+      wd=\paperwidth,
+      ht=3.2ex,
+      dp=1.4ex,
+      leftskip=1cm,
+      rightskip=1cm
+    ]{custom footer}%
+      \tiny
+      \insertauthor
+      \quad|\quad
+      \inserttitle
+      \hfill
+      \ifnum\value{framenumber}=1
+        \textit{Introduction}%
+      \else
+        \ifnum\value{framenumber}=2
           \textit{Problem Statement}%
         \else
-          Slide \number\numexpr\insertframenumber-2\relax
-        \fi\fi
-        \hspace*{2cm}%
-      }%
-    };
-  \end{tikzpicture}%
-}{}
+          Slide \number\numexpr\value{framenumber}-2\relax
+        \fi
+      \fi
+    \end{beamercolorbox}%
+  }%
+}
+
 \setbeamertemplate{navigation symbols}{}
 
-% Custom TikZ styles adhering strictly to BIS/ISO Drawing Standards
+% ============================================================
+% CUSTOM TIKZ STYLES & DEFINITIONS
+% ============================================================
 \tikzset{
   axis line/.style={thin, dash pattern=on 6pt off 2pt on 1.5pt off 2pt, black!75}, 
   directrix line/.style={ultra thick, magenta!90!black},
