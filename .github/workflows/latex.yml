@@ -17,11 +17,11 @@ jobs:
       - name: Compile Cycloid presentation
         uses: xu-cheng/latex-action@v4
         with:
-          root_file: engineering-curves/cycloid/cycloid.tex
+          root_file: cycloid/cycloid.tex
           latexmk_use_xelatex: false
 
       - name: Upload PDF
         uses: actions/upload-artifact@v4
         with:
           name: cycloid-presentation
-          path: engineering-curves/cycloid/cycloid.pdf
+          path: cycloid/cycloid.pdf
