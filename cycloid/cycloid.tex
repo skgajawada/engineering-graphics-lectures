@@ -1,6 +1,7 @@
 \documentclass[aspectratio=169, 10pt]{beamer}
 \usetheme{metropolis}
 \usepackage{tikz}
+\usepackage{eso-pic}
 \usetikzlibrary{calc, arrows.meta, shapes.geometric}
 
 % Presentation Meta Information
@@ -9,20 +10,20 @@
 \author{Gajavada Sanjeevkumar}
 \date{}
 
-% Clean, persistent footer visible on all frames and pause steps (hidden only on title frame)
-\makeatletter
-\setbeamertemplate{footline}{%
-  \ifnum\insertframenumber=1\relax%
-  \else%
-    \begin{beamercolorbox}[wd=\paperwidth, ht=2.5ex, dp=1.1ex, leftskip=1cm, rightskip=1cm]{structure}%
-      \tiny \insertauthor \quad|\quad \inserttitle 
-      \hfill 
-      \insertslidenavigationsymbol\insertframenavigationsymbol\quad 
-      \insertframenumber
-    \end{beamercolorbox}%
-  \fi%
+% Foolproof background footer stamped on EVERY physical page/pause > 1 (103 footers total)
+\AtBeginDocument{
+  \AddToShipoutPictureBG{%
+    \ifnum\thepage>1\relax%
+      \AtPageLowerLeft{%
+        \parbox[b]{\paperwidth}{%
+          \begin{beamercolorbox}[wd=\paperwidth, ht=2.5ex, dp=1.1ex, leftskip=1cm, rightskip=1cm]{structure}%
+            \tiny Gajavada Sanjeevkumar \quad|\quad Engineering Curves: Construction of Cycloid \hfill \thepage
+          \end{beamercolorbox}%
+        }%
+      }%
+    \fi%
+  }
 }
-\makeatother
 \setbeamertemplate{navigation symbols}{}
 
 % Custom TikZ styles adhering strictly to BIS/ISO Drawing Standards
