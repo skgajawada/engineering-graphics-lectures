@@ -1,6 +1,5 @@
 \documentclass[aspectratio=169, 10pt]{beamer}
-\usetheme{Madrid}
-\usecolortheme{default}
+\usetheme{metropolis}
 \usepackage{tikz}
 \usetikzlibrary{calc, arrows.meta, shapes.geometric}
 
@@ -10,17 +9,19 @@
 \author{Gajavada Sanjeevkumar}
 \date{}
 
-% Persistent footer visible on all slides and pause steps (hidden only on title slide)
+% Metropolis settings and persistent footer with navigation indicators before the slide number
+\metroset{progressbar=none, numbering=fraction}
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{footline}{%
-  \nointerlineskip%
-  \leavevmode%
-  \hbox{%
-    \begin{beamercolorbox}[wd=\paperwidth, ht=2.25ex, dp=1ex, leftskip=1cm, rightskip=1cm]{author in head/foot}%
-      \tiny \insertauthor \quad|\quad \inserttitle \hfill \insertframenumber
-    \end{beamercolorbox}%
-  }%
-  \vskip0pt%
+
+\AtBeginDocument{
+  \setbeamertemplate{footline}{%
+    \ifnum\insertframenumber=1\relax%
+    \else%
+      \begin{beamercolorbox}[wd=\paperwidth, ht=2.5ex, dp=1.1ex, leftskip=1cm, rightskip=1cm]{progress bar}%
+        \tiny \insertauthor \quad|\quad \inserttitle \hfill Nav: $[\triangleleft \quad \triangleright]$ \quad Frame \insertframenumber
+      \end{beamercolorbox}%
+    \fi%
+  }
 }
 
 % Custom TikZ styles adhering strictly to BIS/ISO Drawing Standards
@@ -38,7 +39,7 @@
 }
 
 \newcommand{\drawLegendCard}[1]{
-  \node[draw=gray!50, fill=white, rounded corners=4pt, inner sep=4pt, anchor=north east] at (21.85, 8.5) {
+  \node[draw=gray!50, fill=white, rounded corners=4pt, inner sep=4pt, anchor=north east] at (21.85, 8.0) {
     \scriptsize
     \begin{tabular}{l@{\,$\rightarrow$\,}l}
       #1
