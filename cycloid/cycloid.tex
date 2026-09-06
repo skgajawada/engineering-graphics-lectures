@@ -12,13 +12,19 @@
 
 \begin{document}
 
+%------------------------------------------------
 % Title Slide
+%------------------------------------------------
+
 \begin{frame}
     \titlepage
 \end{frame}
 
-% Drawing Slide
-\begin{frame}{Generating Circle}
+%------------------------------------------------
+% Step 1
+%------------------------------------------------
+
+\begin{frame}{Step 1: Draw the Generating Circle}
 
 \centering
 
@@ -31,14 +37,50 @@
     \fill (0,0) circle (2pt);
 
     % Radius
-    \draw[<->] (0,0) -- (0,2)
+    \draw[<->]
+        (0,0) -- (0,2)
         node[midway,right] {$R$};
 
     % Label
-    \node[above] at (0,2) {Generating Circle};
+    \node[above] at (0,2)
+        {Generating Circle};
 
 \end{tikzpicture}
 
 \end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Step 2: Draw the Base Line}
+
+\centering
+
+\begin{tikzpicture}[scale=1]
+
+    % Base line
+    \draw[thick]
+        (-3,0) -- (7,0);
+
+    % Circle
+    \draw[thick]
+        (0,2) circle (2);
+
+    % Centre
+    \fill (0,2) circle (2pt);
+
+    % Radius
+    \draw[<->]
+        (0,0) -- (0,2)
+        node[midway,right] {$R$};
+
+    % Labels
+    \node[below] at (-3,0) {$A$};
+    \node[below] at (7,0) {$A'$};
+
+\end{tikzpicture}
+
+\end{frame}
+
+%------------------------------------------------
 
 \end{document}
