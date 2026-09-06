@@ -9,12 +9,13 @@
 \author{Gajavada Sanjeevkumar}
 \date{}
 
-% Custom persistent footer showing name, topic, and just the number
+% Custom persistent footer showing name, topic, and simple frame number
 \setbeamertemplate{footline}{%
   \begin{beamercolorbox}[wd=\textwidth, ht=2.5ex, dp=1.1ex, leftskip=1cm, rightskip=1cm]{structure}
     \tiny \insertauthor \quad|\quad \inserttitle \hfill \insertframenumber
   \end{beamercolorbox}%
 }
+\setbeamertemplate{navigation symbols}{}
 
 % Custom TikZ styles adhering strictly to BIS/ISO Drawing Standards
 \tikzset{
@@ -27,6 +28,7 @@
   normal line/.style={thick, orange!80!black},
   label line/.style={stealth-, thin, black!70},
   dimension extension/.style={thin, solid, black!60},
+  >=Stealth[length=3mm, width=1mm], % 1:3 ratio arrow heads (1mm height, 3mm width)
 }
 
 \newcommand{\drawLegendCard}[1]{
@@ -58,7 +60,7 @@
 
 \begin{frame}{Step 1: Draw Generating Circle \& Directing Line}
 \centering
-\begin{tikzpicture}[scale=0.45, >=stealth]
+\begin{tikzpicture}[scale=0.45, >=Stealth]
   \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
   \drawLegendCard{ \textbf{$C_0$} & Initial Center Point \\ \textbf{$AA'$} & Directing Line \\ \textbf{Axis} & Center Line }
   
@@ -77,7 +79,7 @@
 
 \begin{frame}{Step 2: Divide Generating Circle into 12 Equal Parts}
 \centering
-\begin{tikzpicture}[scale=0.45, >=stealth]
+\begin{tikzpicture}[scale=0.45, >=Stealth]
   \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
   \drawLegendCard{ \textbf{$AA'$} & Directing Line \\ \textbf{Axis Line} & Center Line \\ \textbf{$0\dots12$} & Circle Divisions }
   
@@ -91,7 +93,6 @@
   \draw[dimension extension] (18.85,0) -- (18.85,-2.2);
   \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
 
-  % Circle division lines in specified angle order: 270, 300, 330, 0, 30, 60, 90, 120, 150, 180, 210, 240
   \draw[thin, cyan!60!black, dashed] (C0) -- (0,0); \node[below, font=\tiny] at (0,0) {$0, 12$}; \pause
   \draw[thin, cyan!60!black, dashed] (C0) -- ++(300:3.0); \node[below right, font=\tiny] at (1.5,0.40) {1}; \pause
   \draw[thin, cyan!60!black, dashed] (C0) -- ++(330:3.0); \node[right, font=\tiny] at (2.598,1.5) {2}; \pause
@@ -107,9 +108,9 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Step 3: Divide Directing Line $AA'$ using Line Division Method}
+\begin{frame}{Step 3: Divide Directing Line using Line Division Method}
 \centering
-\begin{tikzpicture}[scale=0.45, >=stealth]
+\begin{tikzpicture}[scale=0.45, >=Stealth]
   \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
   \drawLegendCard{ \textbf{$AA'$} & Directing Line \\ \textbf{$A X$} & Inclined Line \\ \textbf{$1'\dots12'$} & Parallel Divisions }
   
@@ -148,19 +149,25 @@
   \draw[dimension extension] (18.85,0) -- (18.85,-2.2);
   \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$}; \pause
   
-  % Inclined line AX and parallel divisions from 12 down to 1
+  % Draw inclined line AX first
   \draw[thick, orange!80!black] (0,0) -- (17.38,-3.11) node[right, font=\tiny] {$X$}; \pause
   
+  % Explicitly mark 12 equal division points on the extra inclined line AX first
+  \foreach \i in {1,2,...,12} {
+    \coordinate (a\i) at ({\i*1.448}, {-\i*0.259});
+    \fill[orange!90!black] (a\i) circle (2.0pt);
+    \node[below left, font=\tiny, orange!90!black] at (a\i) {\i};
+    \pause
+  }
+  
+  % Draw parallel lines from division points to directing line AA'
   \coordinate (a12) at ({12*1.448}, {-12*0.259});
   \draw[thin, orange!70!black, dashed] (a12) -- (18.85, 0);
-  \fill[orange!90!black] (a12) circle (2.0pt);
   \fill[black] (18.85, 0) circle (1.8pt);
-  \node[below, font=\tiny] at (18.85, 0) {$12'$};
-  \node[below left, font=\tiny, orange!90!black] at (a12) {$12$}; \pause
+  \node[below, font=\tiny] at (18.85, 0) {$12'$}; \pause
 
   \foreach \i in {11,10,9,8,7,6,5,4,3,2,1} {
     \coordinate (a\i) at ({\i*1.448}, {-\i*0.259});
-    \fill[orange!90!black] (a\i) circle (2.0pt);
     \draw[thin, orange!70!black, dashed] (a\i) -- ({\i*1.5708}, 0);
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'}; \pause
@@ -170,7 +177,7 @@
 
 \begin{frame}{Step 4: Project Divisions to Locate Centers $C_1\dots C_{12}$}
 \centering
-\begin{tikzpicture}[scale=0.45, >=stealth]
+\begin{tikzpicture}[scale=0.45, >=Stealth]
   \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
   \drawLegendCard{ \textbf{$AA'$} & Directing Line \\ \textbf{Axis Line} & Center Line \\ \textbf{$C_1\dots C_{12}$} & Center Points }
   
@@ -205,7 +212,6 @@
   \node[left, font=\tiny] at (-2.598,1.5) {10};
   \node[below left, font=\tiny] at (-1.5,0.40) {11};
 
-  % Note: Line division lines AX removed here as requested
   \foreach \i in {1,2,...,12} {
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -216,8 +222,8 @@
 
   \foreach \i in {1,2,...,12} {
     \coordinate (C\i) at ({\i*1.5708}, 3.0);
-    \fill[red!80!black] (C\i) circle (2.5pt); \pause
-    \draw[thin, black!40, dashed] ({\i*1.5708}, 0) -- (C\i);
+    \draw[thin, black!40, dashed] ({\i*1.5708}, 0) -- (C\i); \pause
+    \fill[red!80!black] (C\i) circle (2.5pt);
     \node[above=1pt, font=\tiny, red!80!black] at (C\i) {$C_{\i}$}; \pause
   }
 \end{tikzpicture}
@@ -225,7 +231,7 @@
 
 \begin{frame}{Step 5: Draw Horizontal Reference Lines}
 \centering
-\begin{tikzpicture}[scale=0.45, >=stealth]
+\begin{tikzpicture}[scale=0.45, >=Stealth]
   \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
   \drawLegendCard{ \textbf{Blue Lines} & Horizontal Reference Lines \\ \textbf{$C_1\dots C_{12}$} & Retained Centers }
   
@@ -276,11 +282,11 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Step 6: Strike Arcs to Locate Points $P_1\dots P_{12}$}
+\begin{frame}{Step 6: Strike Cutting Arcs to Locate Points $P_1\dots P_{12}$}
 \centering
-\begin{tikzpicture}[scale=0.45, >=stealth]
+\begin{tikzpicture}[scale=0.45, >=Stealth]
   \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
-  \drawLegendCard{ \textbf{$C_1\dots C_{12}$} & Retained Centers \\ \textbf{$P_1\dots P_{12}$} & Cycloid Locus Points }
+  \drawLegendCard{ \textbf{$C_1\dots C_{12}$} & Retained Centers \\ \textbf{$P_1\dots P_{12}$} & Cutting Arcs/Points }
   
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0);
@@ -328,24 +334,24 @@
   \draw[construction line] (0.000, 6.000) -- (18.85, 6.000);
 
   \fill[blue!80!black] (0,0) circle (3.5pt) node[below left, font=\tiny] {$P_0$}; \pause
-  \fill[blue!80!black] (0.07, 0.402) circle (3.5pt) node[above right, font=\tiny] {$P_1$}; \pause
-  \fill[blue!80!black] (0.54, 1.500) circle (3.5pt) node[above right, font=\tiny] {$P_2$}; \pause
-  \fill[blue!80!black] (1.71, 3.000) circle (3.5pt) node[above right, font=\tiny] {$P_3$}; \pause
-  \fill[blue!80!black] (3.68, 4.500) circle (3.5pt) node[above right, font=\tiny] {$P_4$}; \pause
-  \fill[blue!80!black] (6.42, 5.598) circle (3.5pt) node[above right, font=\tiny] {$P_5$}; \pause
-  \fill[blue!80!black] (9.42, 6.000) circle (3.5pt) node[above, font=\tiny] {$P_6$}; \pause
-  \fill[blue!80!black] (12.42, 5.598) circle (3.5pt) node[above left, font=\tiny] {$P_7$}; \pause
-  \fill[blue!80!black] (15.17, 4.500) circle (3.5pt) node[above left, font=\tiny] {$P_8$}; \pause
-  \fill[blue!80!black] (17.14, 3.000) circle (3.5pt) node[above left, font=\tiny] {$P_9$}; \pause
-  \fill[blue!80!black] (18.31, 1.500) circle (3.5pt) node[above left, font=\tiny] {$P_{10}$}; \pause
-  \fill[blue!80!black] (18.78, 0.402) circle (3.5pt) node[above left, font=\tiny] {$P_{11}$}; \pause
-  \fill[blue!80!black] (18.85, 0.000) circle (3.5pt) node[below right, font=\tiny] {$P_{12}$};
+  \draw[arc line] (1.5708,3.0) ++(230:3.0) arc (230:250:3.0); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt) node[above right, font=\tiny] {$P_1$}; \pause
+  \draw[arc line] (3.1416,3.0) ++(200:3.0) arc (200:220:3.0); \fill[blue!80!black] (0.54, 1.500) circle (3.5pt) node[above right, font=\tiny] {$P_2$}; \pause
+  \draw[arc line] (4.7124,3.0) ++(170:3.0) arc (170:190:3.0); \fill[blue!80!black] (1.71, 3.000) circle (3.5pt) node[above right, font=\tiny] {$P_3$}; \pause
+  \draw[arc line] (6.2832,3.0) ++(140:3.0) arc (140:160:3.0); \fill[blue!80!black] (3.68, 4.500) circle (3.5pt) node[above right, font=\tiny] {$P_4$}; \pause
+  \draw[arc line] (7.8540,3.0) ++(110:3.0) arc (110:130:3.0); \fill[blue!80!black] (6.42, 5.598) circle (3.5pt) node[above right, font=\tiny] {$P_5$}; \pause
+  \draw[arc line] (9.4248,3.0) ++(80:3.0) arc (80:100:3.0); \fill[blue!80!black] (9.42, 6.000) circle (3.5pt) node[above, font=\tiny] {$P_6$}; \pause
+  \draw[arc line] (10.9956,3.0) ++(50:3.0) arc (50:70:3.0); \fill[blue!80!black] (12.42, 5.598) circle (3.5pt) node[above left, font=\tiny] {$P_7$}; \pause
+  \draw[arc line] (12.5664,3.0) ++(20:3.0) arc (20:40:3.0); \fill[blue!80!black] (15.17, 4.500) circle (3.5pt) node[above left, font=\tiny] {$P_8$}; \pause
+  \draw[arc line] (14.1372,3.0) ++(350:3.0) arc (350:10:3.0); \fill[blue!80!black] (17.14, 3.000) circle (3.5pt) node[above left, font=\tiny] {$P_9$}; \pause
+  \draw[arc line] (15.7080,3.0) ++(320:3.0) arc (320:340:3.0); \fill[blue!80!black] (18.31, 1.500) circle (3.5pt) node[above left, font=\tiny] {$P_{10}$}; \pause
+  \draw[arc line] (17.2788,3.0) ++(290:3.0) arc (290:310:3.0); \fill[blue!80!black] (18.78, 0.402) circle (3.5pt) node[above left, font=\tiny] {$P_{11}$}; \pause
+  \draw[arc line] (18.8496,3.0) ++(260:3.0) arc (260:280:3.0); \fill[blue!80!black] (18.85, 0.000) circle (3.5pt) node[below right, font=\tiny] {$P_{12}$};
 \end{tikzpicture}
 \end{frame}
 
 \begin{frame}{Step 7: Smoothly Join Points to Form Cycloid Curve}
 \centering
-\begin{tikzpicture}[scale=0.45, >=stealth]
+\begin{tikzpicture}[scale=0.45, >=Stealth]
   \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
   \drawLegendCard{ \textbf{Curve} & Completed Profile \\ \textbf{$P_0\dots P_{12}$} & Retained Points }
   
@@ -402,7 +408,7 @@
 
 \begin{frame}{Step 8: Mark Point $P$ \& Locate Center $C_p$}
 \centering
-\begin{tikzpicture}[scale=0.45, >=stealth]
+\begin{tikzpicture}[scale=0.45, >=Stealth]
   \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
   \drawLegendCard{ \textbf{$P$} & Target Point \\ \textbf{$C_p$} & Corresponding Center }
   
@@ -454,9 +460,10 @@
 
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
   
-  \coordinate (P) at (3.68, 4.50); \fill[black] (P) circle (3.5pt) node[above=3pt] {\small $P$}; \pause
-  \coordinate (Cp) at (6.2832, 3.0);
-  \draw[arc line] (P) ++(-40:3.0) arc (-40:-15:3.0); \pause
+  % Selected P at angle ~1.8 rad so Cp (around x = 5.42) falls safely between C3 and C4 without coinciding with any division center
+  \coordinate (P) at (4.25, 5.92); \fill[black] (P) circle (3.5pt) node[above=3pt] {\small $P$}; \pause
+  \coordinate (Cp) at (5.426, 3.0);
+  \draw[arc line] (P) ++(-35:3.0) arc (-35:-10:3.0); \pause
   \fill[red!80!black] (Cp) circle (3.5pt) node[above right] {\small $C_p$}; \pause
   \draw[construction line] (P) -- (Cp) node[midway, above=-1pt, font=\tiny] {$R=25\text{mm}$};
 \end{tikzpicture}
@@ -464,7 +471,7 @@
 
 \begin{frame}{Step 9: Construct Normal Line $N$-$N'$}
 \centering
-\begin{tikzpicture}[scale=0.45, >=stealth]
+\begin{tikzpicture}[scale=0.45, >=Stealth]
   \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
   \drawLegendCard{ \textbf{$N\text{-}N'$} & Normal Line \\ \textbf{$M$} & Base Projection }
   
@@ -503,7 +510,7 @@
   }
   \draw[dimension extension] (0,0) -- (0,-2.2);
   \draw[dimension extension] (18.85,0) -- (18.85,-2.2);
-  \draw<1->[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
+  \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
   
   \draw[construction line] (-1.500, 0.402) -- (18.85, 0.402);
   \draw[construction line] (-2.598, 1.500) -- (18.85, 1.500);
@@ -516,20 +523,20 @@
 
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
   
-  \coordinate (P) at (3.68, 4.50); \fill[black] (P) circle (3.5pt) node[above=3pt] {\small $P$};
-  \coordinate (Cp) at (6.2832, 3.0); \fill[red!80!black] (Cp) circle (3.5pt) node[above right] {\small $C_p$};
-  \draw[arc line] (P) ++(-40:3.0) arc (-40:-15:3.0);
+  \coordinate (P) at (4.25, 5.92); \fill[black] (P) circle (3.5pt) node[above=3pt] {\small $P$};
+  \coordinate (Cp) at (5.426, 3.0); \fill[red!80!black] (Cp) circle (3.5pt) node[above right] {\small $C_p$};
+  \draw[arc line] (P) ++(-35:3.0) arc (-35:-10:3.0);
   \draw[construction line] (P) -- (Cp);
   
-  \coordinate (M) at (6.2832, 0.0);
+  \coordinate (M) at (5.426, 0.0);
   \draw[construction line, dashed] (Cp) -- (M); \fill[black] (M) circle (3.5pt) node[below] {\small $M$}; \pause
-  \draw[normal line] (7.0, -1.24) node[below] {\small $N$} -- (1.5, 8.28) node[above] {\small $N'$};
+  \draw[normal line] (6.2, -1.24) node[below] {\small $N$} -- (2.0, 8.28) node[above] {\small $N'$};
 \end{tikzpicture}
 \end{frame}
 
 \begin{frame}{Step 10: Construct Tangent Line $T$-$T'$ \& Final Result}
 \centering
-\begin{tikzpicture}[scale=0.45, >=stealth]
+\begin{tikzpicture}[scale=0.45, >=Stealth]
   \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
   \drawLegendCard{ \textbf{Curve} & Completed Profile \\ \textbf{$N\text{-}N'$} & Normal Line \\ \textbf{$T\text{-}T'$} & Tangent Line }
   
@@ -581,15 +588,15 @@
 
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
   
-  \coordinate (P) at (3.68, 4.50); \fill[black] (P) circle (3.5pt) node[above left] {\small $P$};
-  \coordinate (Cp) at (6.2832, 3.0); \fill[red!80!black] (Cp) circle (3.5pt);
-  \coordinate (M) at (6.2832, 0.0); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
+  \coordinate (P) at (4.25, 5.92); \fill[black] (P) circle (3.5pt) node[above left] {\small $P$};
+  \coordinate (Cp) at (5.426, 3.0); \fill[red!80!black] (Cp) circle (3.5pt);
+  \coordinate (M) at (5.426, 0.0); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
   \draw[construction line, dashed] (Cp) -- (M);
-  \draw[normal line] (7.0, -1.24) node[below] {\small $N$} -- (1.5, 8.28) node[above] {\small $N'$}; \pause
-  \draw[tangent line] (-1.0, 1.80) node[left] {\small $T$} -- (8.5, 7.28) node[right] {\small $T'$}; \pause
+  \draw[normal line] (6.2, -1.24) node[below] {\small $N$} -- (2.0, 8.28) node[above] {\small $N'$};
+  \draw[tangent line] (0.0, 3.75) node[left] {\small $T$} -- (8.0, 7.50) node[right] {\small $T'$}; \pause
   
-  % Perfectly aligned perpendicular symbol at P using local rotation matched to normal vector angle (150 deg)
-  \begin{scope}[shift={(3.68, 4.50)}, rotate=150]
+  % Precisely positioned perpendicular symbol at P aligned with normal vector angle
+  \begin{scope}[shift={(4.25, 5.92)}, rotate=70]
     \draw[thin, black] (0,0) -- (0.35,0) -- (0.35,0.35) -- (0,0.35);
   \end{scope}
 \end{tikzpicture}
