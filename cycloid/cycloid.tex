@@ -1,5 +1,6 @@
 \documentclass[aspectratio=169, 10pt]{beamer}
-\usetheme{metropolis}
+\usetheme{Madrid}
+\usecolortheme{default}
 \usepackage{tikz}
 \usetikzlibrary{calc, arrows.meta, shapes.geometric}
 
@@ -9,16 +10,17 @@
 \author{Gajavada Sanjeevkumar}
 \date{}
 
-% Robust footer template visible on all pauses/sub-slides, hidden on title slide
+% Remove navigation symbols and set a clean persistent footer on all slides and pauses
+\setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{footline}{%
-  \ifnum\insertframenumber=1\relax%
-  \else%
-    \begin{beamercolorbox}[wd=\paperwidth, ht=2.25ex, dp=1ex, leftskip=1cm, rightskip=1cm]{structure}%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=\paperwidth, ht=2.25ex, dp=1ex, leftskip=1cm, rightskip=1cm]{author in head/foot}%
       \tiny \insertauthor \quad|\quad \inserttitle \hfill \insertframenumber
     \end{beamercolorbox}%
-  \fi%
+  }%
+  \vskip0pt%
 }
-\setbeamertemplate{navigation symbols}{}
 
 % Custom TikZ styles adhering strictly to BIS/ISO Drawing Standards
 \tikzset{
