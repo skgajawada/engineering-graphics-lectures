@@ -9,8 +9,12 @@
 \author{Gajavada Sanjeevkumar}
 \date{}
 
-\setbeamertemplate{frame footer}{\scriptsize Gajavada Sanjeevkumar \quad|\quad Engineering Curves: Cycloid}
-\setbeamertemplate{page number in head/foot}[totalframenumber]
+% Custom persistent footer for every step, slide, and pause
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=\textwidth, ht=2.5ex, dp=1.1ex, leftskip=1cm, rightskip=1cm]{structure}
+    \tiny \insertauthor \quad|\quad \inserttitle \hfill Slide \insertframenumber{} of \inserttotalframenumber
+  \end{beamercolorbox}%
+}
 
 % Custom TikZ styles adhering strictly to BIS/ISO Drawing Standards
 \tikzset{
@@ -22,6 +26,7 @@
   tangent line/.style={thick, green!50!black},
   normal line/.style={thick, orange!80!black},
   label line/.style={stealth-, thin, black!70},
+  dimension extension/.style={thin, solid, black!60},
 }
 
 \newcommand{\drawLegendCard}[1]{
@@ -58,14 +63,10 @@
   \drawLegendCard{ \textbf{$C_0$} & Initial Center Point \\ \textbf{Circle} & Generating Circle }
   
   \coordinate (C0) at (0,3.0);
-  \pause
-  \fill[red!80!black] (C0) circle (3.5pt) node[above right, font=\tiny] {$C_0$};
-  \pause
-  \draw[thick, blue!80!black] (C0) circle (3.0);
-  \pause
-  \draw[label line] (1.8, 5.2) -- (4.5, 7.2) node[right, font=\tiny\bfseries, color=blue!80!black] {Generating Circle ($D=50\text{ mm}$)};
-  \pause
-  \draw[<->, thin, cyan!80!black] (0,3.0) -- (0,0) node[midway, right] {\tiny $R=25\text{ mm}$};
+  \fill<1->[red!80!black] (C0) circle (3.5pt) node[above right, font=\tiny] {$C_0$};
+  \draw<2->[thick, blue!80!black] (C0) circle (3.0);
+  \draw<3->[label line] (1.8, 5.2) -- (4.5, 7.2) node[right, font=\tiny\bfseries, color=blue!80!black] {Generating Circle ($D=50\text{ mm}$)};
+  \draw<4->[<->, thin, cyan!80!black] (0,3.0) -- (0,0) node[midway, right] {\tiny $R=25\text{ mm}$};
 \end{tikzpicture}
 \end{frame}
 
@@ -78,20 +79,14 @@
   \coordinate (C0) at (0,3.0);
   \fill[red!80!black] (C0) circle (3.5pt) node[above right, font=\tiny] {$C_0$};
   \draw[thick, blue!80!black] (C0) circle (3.0);
-  \pause
-  \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
-  \pause
-  \draw[label line] (14.0, 0) -- (16.0, -2.0) node[right, font=\tiny\bfseries, color=magenta!90!black] {Directing Line ($AA' = \pi D$)};
-  \pause
-  \draw[axis line] (0,3.0) -- (18.85,3.0) node[right] {\small $C_{12}$};
-  \pause
-  \draw[label line] (14.0, 3.0) -- (16.0, 4.8) node[right, font=\tiny\bfseries, color=black!75] {Axis Line (Center Line)};
-  \pause
-  \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
-  \pause
-  \draw[thin, red!80!black, dashed] (0,0) -- (0,-2.2);
-  \pause
-  \draw[thin, red!80!black, dashed] (18.85,0) -- (18.85,-2.2);
+  \draw<1->[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
+  \draw<2->[label line] (14.0, 0) -- (16.0, -2.0) node[right, font=\tiny\bfseries, color=magenta!90!black] {Directing Line ($AA' = \pi D$)};
+  \draw<3->[axis line] (0,3.0) -- (18.85,3.0) node[right] {\small $C_{12}$};
+  \draw<4->[label line] (14.0, 3.0) -- (16.0, 4.8) node[right, font=\tiny\bfseries, color=black!75] {Axis Line (Center Line)};
+  \draw<5->[dimension extension] (0,0) -- (0,-2.2);
+  \draw<5->[dimension extension] (18.85,0) -- (18.85,-2.2);
+  \draw<5->[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
+  \draw<6->[thin, construction line] (0,0) -- (C0) node[midway, left, font=\tiny] {$R$};
 \end{tikzpicture}
 \end{frame}
 
@@ -106,23 +101,32 @@
   \coordinate (C0) at (0,3.0);
   \fill[red!80!black] (C0) circle (3.5pt) node[above right, font=\tiny] {$C_0$};
   \draw[thick, blue!80!black] (C0) circle (3.0);
-  \pause
-  \foreach \a in {0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330} {
-    \draw[thin, cyan!60!black, dashed] (C0) -- ++(\a:3.0);
-    \pause
-  }
-  \node[below, font=\tiny] at (0,0) {$12(P_0)$}; 
-  \node[below right, font=\tiny] at (1.5,0.40) {1}; 
-  \node[right, font=\tiny] at (2.598,1.5) {2}; 
-  \node[right, font=\tiny] at (3.0,3.0) {3}; 
-  \node[right, font=\tiny] at (2.598,4.5) {4}; 
-  \node[above right, font=\tiny] at (1.5,5.598) {5}; 
-  \node[above, font=\tiny] at (0,6.0) {6}; 
-  \node[above left, font=\tiny] at (-1.5,5.598) {7}; 
-  \node[left, font=\tiny] at (-2.598,4.5) {8}; 
-  \node[left, font=\tiny] at (-3.0,3.0) {9}; 
-  \node[left, font=\tiny] at (-2.598,1.5) {10}; 
-  \node[below left, font=\tiny] at (-1.5,0.40) {11};
+  
+  \draw<1->[thin, cyan!60!black, dashed] (C0) -- (0,6.0);
+  \draw<2->[thin, cyan!60!black, dashed] (C0) -- ++(30:3.0);
+  \draw<3->[thin, cyan!60!black, dashed] (C0) -- ++(60:3.0);
+  \draw<4->[thin, cyan!60!black, dashed] (C0) -- ++(90:3.0);
+  \draw<5->[thin, cyan!60!black, dashed] (C0) -- ++(120:3.0);
+  \draw<6->[thin, cyan!60!black, dashed] (C0) -- ++(150:3.0);
+  \draw<7->[thin, cyan!60!black, dashed] (C0) -- ++(180:3.0);
+  \draw<8->[thin, cyan!60!black, dashed] (C0) -- ++(210:3.0);
+  \draw<9->[thin, cyan!60!black, dashed] (C0) -- ++(240:3.0);
+  \draw<10->[thin, cyan!60!black, dashed] (C0) -- ++(270:3.0);
+  \draw<11->[thin, cyan!60!black, dashed] (C0) -- ++(300:3.0);
+  \draw<12->[thin, cyan!60!black, dashed] (C0) -- ++(330:3.0);
+
+  \node<1->[below, font=\tiny] at (0,0) {$12(P_0)$}; 
+  \node<12->[below right, font=\tiny] at (1.5,0.40) {1}; 
+  \node<11->[right, font=\tiny] at (2.598,1.5) {2}; 
+  \node<10->[right, font=\tiny] at (3.0,3.0) {3}; 
+  \node<9->[right, font=\tiny] at (2.598,4.5) {4}; 
+  \node<8->[above right, font=\tiny] at (1.5,5.598) {5}; 
+  \node<7->[above, font=\tiny] at (0,6.0) {6}; 
+  \node<6->[above left, font=\tiny] at (-1.5,5.598) {7}; 
+  \node<5->[left, font=\tiny] at (-2.598,4.5) {8}; 
+  \node<4->[left, font=\tiny] at (-3.0,3.0) {9}; 
+  \node<3->[left, font=\tiny] at (-2.598,1.5) {10}; 
+  \node<2->[below left, font=\tiny] at (-1.5,0.40) {11};
 \end{tikzpicture}
 \end{frame}
 
@@ -140,18 +144,24 @@
   \foreach \a in {0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330} {
     \draw[thin, cyan!60!black, dashed] (C0) -- ++(\a:3.0);
   }
-  \pause
-  \draw[thick, orange!80!black] (0,0) -- (17.38,-3.11) node[right, font=\tiny] {$X$};
-  \pause
-  \foreach \i in {1,2,...,12} {
+  
+  \draw<1->[thick, orange!80!black] (0,0) -- (17.38,-3.11) node[right, font=\tiny] {$X$};
+  
+  % Draw point 12 connection first, then 11 down to 1
+  \coordinate (a12) at ({12*1.448}, {-12*0.259});
+  \draw<2->[thin, orange!70!black, dashed] (a12) -- (18.85, 0);
+  \fill<2->[orange!90!black] (a12) circle (2.0pt);
+  \fill<2->[black] (18.85, 0) circle (1.8pt);
+  \node<2->[below, font=\tiny] at (18.85, 0) {$12'$};
+  \node<2->[below left, font=\tiny, orange!90!black] at (a12) {$12$};
+
+  \foreach \i in {11,10,...,1} {
     \coordinate (a\i) at ({\i*1.448}, {-\i*0.259});
-    \fill[orange!90!black] (a\i) circle (2.0pt);
-    \draw[thin, orange!70!black, dashed] (a\i) -- ({\i*1.5708}, 0);
-    \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
-    \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
-    \pause
+    \fill<.(1)->[orange!90!black] (a\i) circle (2.0pt);
+    \draw<.(1)->[thin, orange!70!black, dashed] (a\i) -- ({\i*1.5708}, 0);
+    \fill<.(1)->[black] ({\i*1.5708}, 0) circle (1.8pt);
+    \node<.(1)->[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
   }
-  \node[below left, font=\tiny, orange!90!black] at (a12) {$12$};
 \end{tikzpicture}
 \end{frame}
 
@@ -166,13 +176,12 @@
   \coordinate (C0) at (0,3.0);
   \fill[red!80!black] (C0) circle (3.5pt);
   \draw[thick, blue!80!black] (C0) circle (3.0);
-  \pause
+  
   \foreach \i in {1,2,...,12} {
     \coordinate (C\i) at ({\i*1.5708}, 3.0);
-    \fill[red!80!black] (C\i) circle (2.5pt);
-    \draw[thin, black!40, dashed] ({\i*1.5708}, 0) -- (C\i);
-    \node[above=1pt, font=\tiny, red!80!black] at (C\i) {$C_{\i}$};
-    \pause
+    \fill<\i->[red!80!black] (C\i) circle (2.5pt);
+    \draw<\i->[thin, black!40, dashed] ({\i*1.5708}, 0) -- (C\i);
+    \node<\i->[above=1pt, font=\tiny, red!80!black] at (C\i) {$C_{\i}$};
   }
 \end{tikzpicture}
 \end{frame}
@@ -187,19 +196,13 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \foreach \i in {1,2,...,12} { \fill[red!80!black] ({\i*1.5708}, 3.0) circle (2.5pt); }
-  \pause
   
-  \draw[construction line] (-1.500, 0.402) -- (18.85, 0.402) node[right, font=\tiny] {1, 11};
-  \pause
-  \draw[construction line] (-2.598, 1.500) -- (18.85, 1.500) node[right, font=\tiny] {2, 10};
-  \pause
-  \draw[construction line] (-3.000, 3.000) -- (18.85, 3.000) node[right, font=\tiny] {3, 9};
-  \pause
-  \draw[construction line] (-2.598, 4.500) -- (18.85, 4.500) node[right, font=\tiny] {4, 8};
-  \pause
-  \draw[construction line] (-1.500, 5.598) -- (18.85, 5.598) node[right, font=\tiny] {5, 7};
-  \pause
-  \draw[construction line] (0.000, 6.000) -- (18.85, 6.000) node[right, font=\tiny] {6};
+  \draw<1->[construction line] (-1.500, 0.402) -- (18.85, 0.402) node[right, font=\tiny] {1, 11};
+  \draw<2->[construction line] (-2.598, 1.500) -- (18.85, 1.500) node[right, font=\tiny] {2, 10};
+  \draw<3->[construction line] (-3.000, 3.000) -- (18.85, 3.000) node[right, font=\tiny] {3, 9};
+  \draw<4->[construction line] (-2.598, 4.500) -- (18.85, 4.500) node[right, font=\tiny] {4, 8};
+  \draw<5->[construction line] (-1.500, 5.598) -- (18.85, 5.598) node[right, font=\tiny] {5, 7};
+  \draw<6->[construction line] (0.000, 6.000) -- (18.85, 6.000) node[right, font=\tiny] {6};
 \end{tikzpicture}
 \end{frame}
 
@@ -221,39 +224,32 @@
   \draw[construction line] (-1.500, 5.598) -- (18.85, 5.598);
   \draw[construction line] (0.000, 6.000) -- (18.85, 6.000);
 
-  \fill[blue!80!black] (0,0) circle (3.5pt) node[below left, font=\tiny] {$P_0$};
-  \pause
+  \fill<1->[blue!80!black] (0,0) circle (3.5pt) node[below left, font=\tiny] {$P_0$};
 
-  \draw[arc line] (1.5708,3.0) ++(230:3.0) arc (230:250:3.0);
-  \fill[blue!80!black] (0.07, 0.402) circle (3.5pt) node[above right, font=\tiny] {$P_1$};
-  \pause
-  \draw[arc line] (3.1416,3.0) ++(200:3.0) arc (200:220:3.0);
-  \fill[blue!80!black] (0.54, 1.500) circle (3.5pt) node[above right, font=\tiny] {$P_2$};
-  \pause
-  \draw[arc line] (4.7124,3.0) ++(170:3.0) arc (170:190:3.0);
-  \fill[blue!80!black] (1.71, 3.000) circle (3.5pt) node[above right, font=\tiny] {$P_3$};
-  \pause
-  \draw[arc line] (6.2832,3.0) ++(140:3.0) arc (140:160:3.0);
-  \fill[blue!80!black] (3.68, 4.500) circle (3.5pt) node[above right, font=\tiny] {$P_4$};
-  \pause
-  \draw[arc line] (7.8540,3.0) ++(110:3.0) arc (110:130:3.0);
-  \fill[blue!80!black] (6.42, 5.598) circle (3.5pt) node[above right, font=\tiny] {$P_5$};
-  \pause
-  \draw[arc line] (9.4248,3.0) ++(80:3.0) arc (80:100:3.0);
-  \fill[blue!80!black] (9.42, 6.000) circle (3.5pt) node[above, font=\tiny] {$P_6$};
-  \pause
+  \draw<2->[arc line] (1.5708,3.0) ++(230:3.0) arc (230:250:3.0);
+  \fill<2->[blue!80!black] (0.07, 0.402) circle (3.5pt) node[above right, font=\tiny] {$P_1$};
   
-  \fill[blue!80!black] (12.42, 5.598) circle (3.5pt) node[above left, font=\tiny] {$P_7$};
-  \pause
-  \fill[blue!80!black] (15.17, 4.500) circle (3.5pt) node[above left, font=\tiny] {$P_8$};
-  \pause
-  \fill[blue!80!black] (17.14, 3.000) circle (3.5pt) node[above left, font=\tiny] {$P_9$};
-  \pause
-  \fill[blue!80!black] (18.31, 1.500) circle (3.5pt) node[above left, font=\tiny] {$P_{10}$};
-  \pause
-  \fill[blue!80!black] (18.78, 0.402) circle (3.5pt) node[above left, font=\tiny] {$P_{11}$};
-  \pause
-  \fill[blue!80!black] (18.85, 0.000) circle (3.5pt) node[below right, font=\tiny] {$P_{12}$};
+  \draw<3->[arc line] (3.1416,3.0) ++(200:3.0) arc (200:220:3.0);
+  \fill<3->[blue!80!black] (0.54, 1.500) circle (3.5pt) node[above right, font=\tiny] {$P_2$};
+  
+  \draw<4->[arc line] (4.7124,3.0) ++(170:3.0) arc (170:190:3.0);
+  \fill<4->[blue!80!black] (1.71, 3.000) circle (3.5pt) node[above right, font=\tiny] {$P_3$};
+  
+  \draw<5->[arc line] (6.2832,3.0) ++(140:3.0) arc (140:160:3.0);
+  \fill<5->[blue!80!black] (3.68, 4.500) circle (3.5pt) node[above right, font=\tiny] {$P_4$};
+  
+  \draw<6->[arc line] (7.8540,3.0) ++(110:3.0) arc (110:130:3.0);
+  \fill<6->[blue!80!black] (6.42, 5.598) circle (3.5pt) node[above right, font=\tiny] {$P_5$};
+  
+  \draw<7->[arc line] (9.4248,3.0) ++(80:3.0) arc (80:100:3.0);
+  \fill<7->[blue!80!black] (9.42, 6.000) circle (3.5pt) node[above, font=\tiny] {$P_6$};
+  
+  \fill<8->[blue!80!black] (12.42, 5.598) circle (3.5pt) node[above left, font=\tiny] {$P_7$};
+  \fill<9->[blue!80!black] (15.17, 4.500) circle (3.5pt) node[above left, font=\tiny] {$P_8$};
+  \fill<10->[blue!80!black] (17.14, 3.000) circle (3.5pt) node[above left, font=\tiny] {$P_9$};
+  \fill<11->[blue!80!black] (18.31, 1.500) circle (3.5pt) node[above left, font=\tiny] {$P_{10}$};
+  \fill<12->[blue!80!black] (18.78, 0.402) circle (3.5pt) node[above left, font=\tiny] {$P_{11}$};
+  \fill<13->[blue!80!black] (18.85, 0.000) circle (3.5pt) node[below right, font=\tiny] {$P_{12}$};
 \end{tikzpicture}
 \end{frame}
 
@@ -264,9 +260,8 @@
   \draw[directrix line] (0,0) -- (18.85,0); \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \foreach \i in {1,2,...,12} { \fill[red!80!black] ({\i*1.5708}, 3.0) circle (2.5pt); }
-  \pause
   
-  \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
+  \draw<1->[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
 \end{tikzpicture}
 \end{frame}
 
@@ -276,16 +271,12 @@
   \useasboundingbox (-4.5,-4.0) rectangle (22.5,9.5);
   \draw[directrix line] (0,0) -- (18.85,0); \draw[axis line] (0,3.0) -- (18.85,3.0);
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
-  \pause
   
-  \coordinate (P) at (3.68, 4.50); \fill[black] (P) circle (3.5pt) node[above=3pt] {\small $P$};
-  \pause
+  \coordinate (P) at (3.68, 4.50); \fill<1->[black] (P) circle (3.5pt) node[above=3pt] {\small $P$};
   \coordinate (Cp) at (6.2832, 3.0);
-  \draw[arc line] (P) ++(-40:3.0) arc (-40:-15:3.0);
-  \pause
-  \fill[red!80!black] (Cp) circle (3.5pt) node[above right] {\small $C_p$};
-  \pause
-  \draw[construction line] (P) -- (Cp) node[midway, above=-1pt, font=\tiny] {$R=25\text{mm}$};
+  \draw<2->[arc line] (P) ++(-40:3.0) arc (-40:-15:3.0);
+  \fill<3->[red!80!black] (Cp) circle (3.5pt) node[above right] {\small $C_p$};
+  \draw<4->[construction line] (P) -- (Cp) node[midway, above=-1pt, font=\tiny] {$R=25\text{mm}$};
 \end{tikzpicture}
 \end{frame}
 
@@ -297,12 +288,10 @@
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
   \coordinate (P) at (3.68, 4.50); \fill[black] (P) circle (3.5pt);
   \coordinate (Cp) at (6.2832, 3.0); \fill[red!80!black] (Cp) circle (3.5pt);
-  \pause
   
   \coordinate (M) at (6.2832, 0.0);
-  \draw[construction line, dashed] (Cp) -- (M); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
-  \pause
-  \draw[normal line] (7.0, -1.24) node[below] {\small $N$} -- (1.5, 8.28) node[above] {\small $N'$};
+  \draw<1->[construction line, dashed] (Cp) -- (M); \fill<1->[black] (M) circle (3.5pt) node[below] {\small $M$};
+  \draw<2->[normal line] (7.0, -1.24) node[below] {\small $N$} -- (1.5, 8.28) node[above] {\small $N'$};
 \end{tikzpicture}
 \end{frame}
 
@@ -314,11 +303,9 @@
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
   \coordinate (P) at (3.68, 4.50); \coordinate (Cp) at (6.2832, 3.0); \coordinate (M) at (6.2832, 0.0);
   \draw[normal line] (7.0, -1.24) node[below] {\small $N$} -- (1.5, 8.28) node[above] {\small $N'$};
-  \pause
   
-  \draw[tangent line] (-1.0, 1.80) node[left] {\small $T$} -- (8.5, 7.28) node[right] {\small $T'$};
-  \pause
-  \draw[thin, black] (P) ++(-0.43,0.25) -- ++(0.25,0.43) -- ++(0.43,-0.25);
+  \draw<1->[tangent line] (-1.0, 1.80) node[left] {\small $T$} -- (8.5, 7.28) node[right] {\small $T'$};
+  \draw<2->[thin, black] (P) ++(-0.43,0.25) -- ++(0.25,0.43) -- ++(0.43,-0.25);
 \end{tikzpicture}
 \end{frame}
 
@@ -338,12 +325,9 @@
   \draw[normal line] (7.0, -1.24) node[below] {\small $N$} -- (1.5, 8.28) node[above] {\small $N'$};
   \draw[tangent line] (-1.0, 1.80) node[left] {\small $T$} -- (8.5, 7.28) node[right] {\small $T'$};
   \draw[thin, black] (P) ++(-0.43,0.25) -- ++(0.25,0.43) -- ++(0.43,-0.25);
-  \pause
+  \draw[dimension extension] (0,0) -- (0,-2.2); 
+  \draw[dimension extension] (18.85,0) -- (18.85,-2.2);
   \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
-  \pause
-  \draw[thin, red!80!black, dashed] (0,0) -- (0,-2.2); 
-  \pause
-  \draw[thin, red!80!black, dashed] (18.85,0) -- (18.85,-2.2);
 \end{tikzpicture}
 \end{frame}
 
