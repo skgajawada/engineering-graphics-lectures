@@ -1,0 +1,44 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+
+\usetheme{metropolis}
+
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows.meta,shapes.geometric}
+
+\title{Engineering Curves}
+\subtitle{Construction of Cycloid}
+\author{Gajavada Sanjeevkumar}
+\date{}
+
+\begin{document}
+
+% Title Slide
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% Drawing Slide
+\begin{frame}{Generating Circle}
+
+\centering
+
+\begin{tikzpicture}[scale=1]
+
+    % Generating circle
+    \draw[thick] (0,0) circle (2);
+
+    % Centre
+    \fill (0,0) circle (2pt);
+
+    % Radius
+    \draw[<->] (0,0) -- (0,2)
+        node[midway,right] {$R$};
+
+    % Label
+    \node[above] at (0,2) {Generating Circle};
+
+\end{tikzpicture}
+
+\end{frame}
+
+\end{document}
