@@ -4,7 +4,12 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'cycloid/cycloid.tex'
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -12,7 +17,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Compile Cycloid presentation
         uses: xu-cheng/latex-action@v4
@@ -20,13 +25,8 @@ jobs:
           working_directory: cycloid
           root_file: cycloid.tex
 
-      - name: Check generated files
-        run: |
-          echo "Files generated:"
-          find cycloid -maxdepth 2 -type f -print
-
-      - name: Upload PDF
-        uses: actions/upload-artifact@v4
+      - name: Save PDF to repository
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
-          name: cycloid-presentation
-          path: cycloid/cycloid.pdf
+          commit_message: "build: update cycloid PDF"
+          file_pattern: "cycloid/cycloid.pdf"
