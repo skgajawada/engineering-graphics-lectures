@@ -2406,7 +2406,6 @@
   \draw[arc line] (1.5708,3.0) ++(230:3.0) arc (230:250:3.0); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt) node[above right, font=\tiny] {$P_1$};
   \draw[arc line] (3.1416,3.0) ++(200:3.0) arc (200:220:3.0); \fill[blue!80!black] (0.54, 1.500) circle (3.5pt) node[above right, font=\tiny] {$P_2$};
   \draw[arc line] (4.7124,3.0) ++(170:3.0) arc (170:190:3.0); \fill[blue!80!black] (1.71, 3.000) circle (3.5pt) node[above right, font=\tiny] {$P_3$};
-  \draw[arc line] (6.2832,3.0) ++(140:3.0) arc (140:160:3.0I'm having a hard time fulfilling your request. Can I help you with something else instead?
   \draw[arc line] (6.2832,3.0) ++(140:3.0) arc (140:160:3.0); \fill[blue!80!black] (3.68, 4.500) circle (3.5pt) node[above right, font=\tiny] {$P_4$};
   \draw[arc line] (7.8540,3.0) ++(110:3.0) arc (110:130:3.0); \fill[blue!80!black] (6.42, 5.598) circle (3.5pt) node[above right, font=\tiny] {$P_5$};
   \draw[arc line] (9.4248,3.0) ++(80:3.0) arc (80:100:3.0); \fill[blue!80!black] (9.42, 6.000) circle (3.5pt) node[above, font=\tiny] {$P_6$};
@@ -2852,10 +2851,11 @@
   \fill[blue!80!black] (0,0) circle (3.5pt); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt); \fill[blue!80!black] (0.54, 1.500) circle (3.5pt); \fill[blue!80!black] (1.71, 3.000) circle (3.5pt); \fill[blue!80!black] (3.68, 4.500) circle (3.5pt); \fill[blue!80!black] (6.42, 5.598) circle (3.5pt); \fill[blue!80!black] (9.42, 6.000) circle (3.5pt); \fill[blue!80!black] (12.42, 5.598) circle (3.5pt); \fill[blue!80!black] (15.17, 4.500) circle (3.5pt); \fill[blue!80!black] (17.14, 3.000) circle (3.5pt); \fill[blue!80!black] (18.31, 1.500) circle (3.5pt); \fill[blue!80!black] (18.78, 0.402) circle (3.5pt); \fill[blue!80!black] (18.85, 0.000) circle (3.5pt);
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
   
-  % P on the right side and Cp correctly located between C7 and C8 (at x = 11.5)
-  \coordinate (P) at (13.5, 4.2); \fill[black] (P) circle (3.5pt) node[above right] {\small $P$};
-  \coordinate (Cp) at (11.5, 3.0);
-  \draw[arc line] (P) ++(130:3.0) arc (130:170:3.0);
+  % P on the right side (at angle theta = 4.0 rad -> x approx 13.78, y approx 4.79)
+  \coordinate (P) at (13.78, 4.79); \fill[black] (P) circle (3.5pt) node[above right] {\small $P$};
+  % Cp correctly located at x = 12.0 (between C7 at 11.0 and C8 at 12.57) with radius arc hitting P
+  \coordinate (Cp) at (12.0, 3.0);
+  \draw[arc line] (P) ++(140:3.0) arc (140:175:3.0);
   \fill[red!80!black] (Cp) circle (3.5pt) node[above left] {\small $C_p$};
   \draw[construction line] (P) -- (Cp) node[midway, above, font=\tiny] {$R=25\text{mm}$};
 \end{tikzpicture}
@@ -2919,12 +2919,12 @@
   \fill[blue!80!black] (0,0) circle (3.5pt); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt); \fill[blue!80!black] (0.54, 1.500) circle (3.5pt); \fill[blue!80!black] (1.71, 3.000) circle (3.5pt); \fill[blue!80!black] (3.68, 4.500) circle (3.5pt); \fill[blue!80!black] (6.42, 5.598) circle (3.5pt); \fill[blue!80!black] (9.42, 6.000) circle (3.5pt); \fill[blue!80!black] (12.42, 5.598) circle (3.5pt); \fill[blue!80!black] (15.17, 4.500) circle (3.5pt); \fill[blue!80!black] (17.14, 3.000) circle (3.5pt); \fill[blue!80!black] (18.31, 1.500) circle (3.5pt); \fill[blue!80!black] (18.78, 0.402) circle (3.5pt); \fill[blue!80!black] (18.85, 0.000) circle (3.5pt);
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
   
-  \coordinate (P) at (13.5, 4.2); \fill[black] (P) circle (3.5pt) node[above right] {\small $P$};
-  \coordinate (Cp) at (11.5, 3.0); \fill[red!80!black] (Cp) circle (3.5pt) node[above left] {\small $C_p$};
+  \coordinate (P) at (13.78, 4.79); \fill[black] (P) circle (3.5pt) node[above right] {\small $P$};
+  \coordinate (Cp) at (12.0, 3.0); \fill[red!80!black] (Cp) circle (3.5pt) node[above left] {\small $C_p$};
   \draw[arc line] (P) ++(130:3.0) arc (130:170:3.0);
   \draw[construction line] (P) -- (Cp);
   
-  \coordinate (M) at (11.5, 0.0);
+  \coordinate (M) at (12.0, 0.0);
   \draw[construction line, solid] (Cp) -- (M); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
 \end{tikzpicture}
 \end{frame}
@@ -2982,13 +2982,13 @@
   \fill[blue!80!black] (0,0) circle (3.5pt); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt); \fill[blue!80!black] (0.54, 1.500) circle (3.5pt); \fill[blue!80!black] (1.71, 3.000) circle (3.5pt); \fill[blue!80!black] (3.68, 4.500) circle (3.5pt); \fill[blue!80!black] (6.42, 5.598) circle (3.5pt); \fill[blue!80!black] (9.42, 6.000) circle (3.5pt); \fill[blue!80!black] (12.42, 5.598) circle (3.5pt); \fill[blue!80!black] (15.17, 4.500) circle (3.5pt); \fill[blue!80!black] (17.14, 3.000) circle (3.5pt); \fill[blue!80!black] (18.31, 1.500) circle (3.5pt); \fill[blue!80!black] (18.78, 0.402) circle (3.5pt); \fill[blue!80!black] (18.85, 0.000) circle (3.5pt);
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
   
-  \coordinate (P) at (13.5, 4.2); \fill[black] (P) circle (3.5pt) node[above right] {\small $P$};
-  \coordinate (Cp) at (11.5, 3.0); \fill[red!80!black] (Cp) circle (3.5pt) node[above left] {\small $C_p$};
-  \coordinate (M) at (11.5, 0.0); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
+  \coordinate (P) at (13.78, 4.79); \fill[black] (P) circle (3.5pt) node[above right] {\small $P$};
+  \coordinate (Cp) at (12.0, 3.0); \fill[red!80!black] (Cp) circle (3.5pt) node[above left] {\small $C_p$};
+  \coordinate (M) at (12.0, 0.0); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
   \draw[arc line] (P) ++(130:3.0) arc (130:170:3.0);
   \draw[construction line] (P) -- (Cp);
   \draw[construction line, solid] (Cp) -- (M);
-  \draw[normal line] (11.5, -1.0) node[below] {\small $N$} -- (13.5, 4.2) -- (14.5, 6.8) node[above] {\small $N'$};
+  \draw[normal line] (12.0, -1.0) node[below] {\small $N$} -- (12.0, 0.0) -- (13.78, 4.79) -- (14.5, 6.8) node[above] {\small $N'$};
 \end{tikzpicture}
 \end{frame}
 
@@ -3050,18 +3050,17 @@
   \fill[blue!80!black] (0,0) circle (3.5pt); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt); \fill[blue!80!black] (0.54, 1.500) circle (3.5pt); \fill[blue!80!black] (1.71, 3.000) circle (3.5pt); \fill[blue!80!black] (3.68, 4.500) circle (3.5pt); \fill[blue!80!black] (6.42, 5.598) circle (3.5pt); \fill[blue!80!black] (9.42, 6.000) circle (3.5pt); \fill[blue!80!black] (12.42, 5.598) circle (3.5pt); \fill[blue!80!black] (15.17, 4.500) circle (3.5pt); \fill[blue!80!black] (17.14, 3.000) circle (3.5pt); \fill[blue!80!black] (18.31, 1.500) circle (3.5pt); \fill[blue!80!black] (18.78, 0.402) circle (3.5pt); \fill[blue!80!black] (18.85, 0.000) circle (3.5pt);
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
   
-  \coordinate (P) at (13.5, 4.2); \fill[black] (P) circle (3.5pt) node[above right] {\small $P$};
-  \coordinate (Cp) at (11.5, 3.0); \fill[red!80!black] (Cp) circle (3.5pt);
-  \coordinate (M) at (11.5, 0.0); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
+  \coordinate (P) at (13.78, 4.79); \fill[black] (P) circle (3.5pt) node[above right] {\small $P$};
+  \coordinate (Cp) at (12.0, 3.0); \fill[red!80!black] (Cp) circle (3.5pt);
+  \coordinate (M) at (12.0, 0.0); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
   \draw[construction line] (P) -- (Cp);
   \draw[construction line, solid] (Cp) -- (M);
-  \draw[normal line] (11.5, -1.0) node[below] {\small $N$} -- (14.5, 6.8) node[above] {\small $N'$};
-  \draw[tangent line] (8.5, 6.2) node[above] {\small $T$} -- (17.5, 2.2) node[below] {\small $T'$};
+  \draw[normal line] (12.0, -1.0) node[below] {\small $N$} -- (14.5, 6.8) node[above] {\small $N'$};
+  \draw[tangent line] (9.3, 7.3) node[above] {\small $T$} -- (17.5, 2.1) node[below] {\small $T'$};
   
   % Perpendicular symbol at P (tangent is perpendicular to normal M-P-N')
-  \begin{scope}[shift={(13.5, 4.2)}, rotate=-26.5]
+  \begin{scope}[shift={(13.78, 4.79)}, rotate=-32.7]
     \draw[thin, black] (0,0) -- (0.35,0) -- (0.35,0.35) -- (0,0.35);
-  \end{equation*}%
   \end{scope}
 \end{tikzpicture}
 \end{frame}
