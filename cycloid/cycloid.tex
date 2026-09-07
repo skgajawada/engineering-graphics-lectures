@@ -2851,11 +2851,11 @@
   \fill[blue!80!black] (0,0) circle (3.5pt); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt); \fill[blue!80!black] (0.54, 1.500) circle (3.5pt); \fill[blue!80!black] (1.71, 3.000) circle (3.5pt); \fill[blue!80!black] (3.68, 4.500) circle (3.5pt); \fill[blue!80!black] (6.42, 5.598) circle (3.5pt); \fill[blue!80!black] (9.42, 6.000) circle (3.5pt); \fill[blue!80!black] (12.42, 5.598) circle (3.5pt); \fill[blue!80!black] (15.17, 4.500) circle (3.5pt); \fill[blue!80!black] (17.14, 3.000) circle (3.5pt); \fill[blue!80!black] (18.31, 1.500) circle (3.5pt); \fill[blue!80!black] (18.78, 0.402) circle (3.5pt); \fill[blue!80!black] (18.85, 0.000) circle (3.5pt);
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
   
-  % Point P on the right side of the curve
-  \coordinate (P) at (13.24, 5.37); \fill[black] (P) circle (3.5pt) node[above right] {\small $P$};
-  % Corresponding center Cp on the axis line (y = 3.0) found via radius arc R = 3
-  \coordinate (Cp) at (11.40, 3.0);
-  \draw[arc line] (P) ++(190:3.0) arc (190:220:3.0);
+  % Point P precisely on the cycloid curve at theta = 4.0 rad
+  \coordinate (P) at (14.27, 4.96); \fill[black] (P) circle (3.5pt) node[above right] {\small $P$};
+  % Corresponding center Cp precisely on the axis line y = 3.0
+  \coordinate (Cp) at (12.0, 3.0);
+  \draw[arc line] (P) ++(210:3.0) arc (210:240:3.0);
   \fill[red!80!black] (Cp) circle (3.5pt) node[above left] {\small $C_p$};
   \draw[construction line] (P) -- (Cp) node[midway, above, font=\tiny] {$R=25\text{mm}$};
 \end{tikzpicture}
@@ -2919,11 +2919,11 @@
   \fill[blue!80!black] (0,0) circle (3.5pt); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt); \fill[blue!80!black] (0.54, 1.500) circle (3.5pt); \fill[blue!80!black] (1.71, 3.000) circle (3.5pt); \fill[blue!80!black] (3.68, 4.500) circle (3.5pt); \fill[blue!80!black] (6.42, 5.598) circle (3.5pt); \fill[blue!80!black] (9.42, 6.000) circle (3.5pt); \fill[blue!80!black] (12.42, 5.598) circle (3.5pt); \fill[blue!80!black] (15.17, 4.500) circle (3.5pt); \fill[blue!80!black] (17.14, 3.000) circle (3.5pt); \fill[blue!80!black] (18.31, 1.500) circle (3.5pt); \fill[blue!80!black] (18.78, 0.402) circle (3.5pt); \fill[blue!80!black] (18.85, 0.000) circle (3.5pt);
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
   
-  \coordinate (P) at (13.24, 5.37); \fill[black] (P) circle (3.5pt) node[above right] {\small $P$};
-  \coordinate (Cp) at (11.40, 3.0); \fill[red!80!black] (Cp) circle (3.5pt) node[above left] {\small $C_p$};
+  \coordinate (P) at (14.27, 4.96); \fill[black] (P) circle (3.5pt) node[above right] {\small $P$};
+  \coordinate (Cp) at (12.0, 3.0); \fill[red!80!black] (Cp) circle (3.5pt) node[above left] {\small $C_p$};
   \draw[construction line] (P) -- (Cp);
   
-  \coordinate (M) at (11.40, 0.0);
+  \coordinate (M) at (12.0, 0.0);
   \draw[construction line, solid] (Cp) -- (M); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
 \end{tikzpicture}
 \end{frame}
@@ -2981,13 +2981,13 @@
   \fill[blue!80!black] (0,0) circle (3.5pt); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt); \fill[blue!80!black] (0.54, 1.500) circle (3.5pt); \fill[blue!80!black] (1.71, 3.000) circle (3.5pt); \fill[blue!80!black] (3.68, 4.500) circle (3.5pt); \fill[blue!80!black] (6.42, 5.598) circle (3.5pt); \fill[blue!80!black] (9.42, 6.000) circle (3.5pt); \fill[blue!80!black] (12.42, 5.598) circle (3.5pt); \fill[blue!80!black] (15.17, 4.500) circle (3.5pt); \fill[blue!80!black] (17.14, 3.000) circle (3.5pt); \fill[blue!80!black] (18.31, 1.500) circle (3.5pt); \fill[blue!80!black] (18.78, 0.402) circle (3.5pt); \fill[blue!80!black] (18.85, 0.000) circle (3.5pt);
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
   
-  \coordinate (P) at (13.24, 5.37); \fill[black] (P) circle (3.5pt) node[above right] {\small $P$};
-  \coordinate (Cp) at (11.40, 3.0); \fill[red!80!black] (Cp) circle (3.5pt) node[above left] {\small $C_p$};
-  \coordinate (M) at (11.40, 0.0); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
+  \coordinate (P) at (14.27, 4.96); \fill[black] (P) circle (3.5pt) node[above right] {\small $P$};
+  \coordinate (Cp) at (12.0, 3.0); \fill[red!80!black] (Cp) circle (3.5pt) node[above left] {\small $C_p$};
+  \coordinate (M) at (12.0, 0.0); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
   \draw[construction line] (P) -- (Cp);
   \draw[construction line, solid] (Cp) -- (M);
-  % Normal line passing through M and P
-  \draw[normal line] (11.40, -1.0) node[below] {\small $N$} -- (11.40, 0.0) -- (13.24, 5.37) -- (14.0, 7.6) node[above] {\small $N'$};
+  % Single straight normal line passing through M and P
+  \draw[normal line] (12.0, -1.0) node[below] {\small $N$} -- (15.1, 7.7) node[above] {\small $N'$};
 \end{tikzpicture}
 \end{frame}
 
@@ -3049,16 +3049,16 @@
   \fill[blue!80!black] (0,0) circle (3.5pt); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt); \fill[blue!80!black] (0.54, 1.500) circle (3.5pt); \fill[blue!80!black] (1.71, 3.000) circle (3.5pt); \fill[blue!80!black] (3.68, 4.500) circle (3.5pt); \fill[blue!80!black] (6.42, 5.598) circle (3.5pt); \fill[blue!80!black] (9.42, 6.000) circle (3.5pt); \fill[blue!80!black] (12.42, 5.598) circle (3.5pt); \fill[blue!80!black] (15.17, 4.500) circle (3.5pt); \fill[blue!80!black] (17.14, 3.000) circle (3.5pt); \fill[blue!80!black] (18.31, 1.500) circle (3.5pt); \fill[blue!80!black] (18.78, 0.402) circle (3.5pt); \fill[blue!80!black] (18.85, 0.000) circle (3.5pt);
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
   
-  \coordinate (P) at (13.24, 5.37); \fill[black] (P) circle (3.5pt) node[above right] {\small $P$};
-  \coordinate (Cp) at (11.40, 3.0); \fill[red!80!black] (Cp) circle (3.5pt);
-  \coordinate (M) at (11.40, 0.0); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
+  \coordinate (P) at (14.27, 4.96); \fill[black] (P) circle (3.5pt) node[above right] {\small $P$};
+  \coordinate (Cp) at (12.0, 3.0); \fill[red!80!black] (Cp) circle (3.5pt);
+  \coordinate (M) at (12.0, 0.0); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
   \draw[construction line] (P) -- (Cp);
   \draw[construction line, solid] (Cp) -- (M);
-  \draw[normal line] (11.40, -1.0) node[below] {\small $N$} -- (14.0, 7.6) node[above] {\small $N'$};
-  \draw[tangent line] (8.5, 6.7) node[above] {\small $T$} -- (17.2, 3.7) node[below] {\small $T'$};
+  \draw[normal line] (12.0, -1.0) node[below] {\small $N$} -- (15.1, 7.7) node[above] {\small $N'$};
+  \draw[tangent line] (9.8, 6.9) node[above] {\small $T$} -- (17.5, 3.4) node[below] {\small $T'$};
   
   % Perpendicular symbol at P (tangent perpendicular to normal N-N')
-  \begin{scope}[shift={(13.24, 5.37)}, rotate=-70.7]
+  \begin{scope}[shift={(14.27, 4.96)}, rotate=-65.4]
     \draw[thin, black] (0,0) -- (0.35,0) -- (0.35,0.35) -- (0,0.35);
   \end{scope}
 \end{tikzpicture}
