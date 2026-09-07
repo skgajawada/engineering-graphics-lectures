@@ -1594,20 +1594,18 @@
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
     \fill[red!80!black] ({\i*1.5708}, 3.0) circle (2.5pt);
     \node[above=1pt, font=\tiny, red!80!black] at ({\i*1.5708}, 3.0) {$C_{\i}$};
+    \coordinate (C\i) at ({\i*1.5708}, 3.0);
+    \draw[thin, black!40, solid] ({\i*1.5708}, 0) -- (C\i);
   }
   \draw[dimension extension] (0,0) -- (0,-2.2);
   \draw[dimension extension] (18.85,0) -- (18.85,-2.2);
   \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
-  \draw[construction line] (-1.500, 0.402) -- (18.85, 0.402) node[right, font=\tiny] {1, 11};
-  \draw[construction line] (-2.598, 1.500) -- (18.85, 1.500) node[right, font=\tiny] {2, 10};
-  \draw[construction line] (-3.000, 3.000) -- (18.85, 3.000) node[right, font=\tiny] {3, 9};
-  \draw[construction line] (-2.598, 4.500) -- (18.85, 4.500) node[right, font=\tiny] {4, 8};
-  \draw[construction line] (-1.500, 5.598) -- (18.85, 5.598) node[right, font=\tiny] {5, 7};
-  \draw[construction line] (0.000, 6.000) -- (18.85, 6.000) node[right, font=\tiny] {6};
-  \foreach \i in {1,2,...,12} {
-    \coordinate (C\i) at ({\i*1.5708}, 3.0);
-    \draw[thin, black!40, solid] ({\i*1.5708}, 0) -- (C\i);
-  }
+  \draw[construction line] (-1.500, 0.402) -- (18.85, 0.402);
+  \draw[construction line] (-2.598, 1.500) -- (18.85, 1.500);
+  \draw[construction line] (-3.000, 3.000) -- (18.85, 3.000);
+  \draw[construction line] (-2.598, 4.500) -- (18.85, 4.500);
+  \draw[construction line] (-1.500, 5.598) -- (18.85, 5.598);
+  \draw[construction line] (0.000, 6.000) -- (18.85, 6.000);
 \end{tikzpicture}
 \end{frame}
 
@@ -1616,7 +1614,7 @@
 % ============================================================
 \renewcommand{\stepnum}{6}
 
-\begin{frame}{Step 6: Strike Cutting Arcs to Locate Points $P_1 \dots P_{12}$}
+\begin{frame}{Step 6: Strike Cutting Arcs to Locate Points $P_0\dots P_{12}$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
