@@ -2921,7 +2921,8 @@
   
   \coordinate (P) at (14.27, 4.96); \fill[black] (P) circle (3.5pt) node[above right] {\small $P$};
   \coordinate (Cp) at (12.0, 3.0); \fill[red!80!black] (Cp) circle (3.5pt) node[above left] {\small $C_p$};
-  \draw[construction line] (P) -- (Cp);
+  \draw[arc line] (P) ++(210:3.0) arc (210:240:3.0);
+  \draw[construction line] (P) -- (Cp) node[midway, above, font=\tiny] {$R=25\text{mm}$};
   
   \coordinate (M) at (12.0, 0.0);
   \draw[construction line, solid] (Cp) -- (M); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
@@ -2984,10 +2985,11 @@
   \coordinate (P) at (14.27, 4.96); \fill[black] (P) circle (3.5pt) node[above right] {\small $P$};
   \coordinate (Cp) at (12.0, 3.0); \fill[red!80!black] (Cp) circle (3.5pt) node[above left] {\small $C_p$};
   \coordinate (M) at (12.0, 0.0); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
+  \draw[arc line] (P) ++(210:3.0) arc (210:240:3.0);
   \draw[construction line] (P) -- (Cp);
   \draw[construction line, solid] (Cp) -- (M);
-  % Single straight normal line passing through M and P
-  \draw[normal line] (12.0, -1.0) node[below] {\small $N$} -- (15.1, 7.7) node[above] {\small $N'$};
+  % Straight normal line passing exactly through M (12.0, 0.0) and P (14.27, 4.96)
+  \draw[normal line] (11.54, -1.0) node[below] {\small $N$} -- (15.43, 7.5) node[above] {\small $N'$};
 \end{tikzpicture}
 \end{frame}
 
@@ -3052,16 +3054,16 @@
   \coordinate (P) at (14.27, 4.96); \fill[black] (P) circle (3.5pt) node[above right] {\small $P$};
   \coordinate (Cp) at (12.0, 3.0); \fill[red!80!black] (Cp) circle (3.5pt);
   \coordinate (M) at (12.0, 0.0); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
+  \draw[arc line] (P) ++(210:3.0) arc (210:240:3.0);
   \draw[construction line] (P) -- (Cp);
   \draw[construction line, solid] (Cp) -- (M);
-  \draw[normal line] (12.0, -1.0) node[below] {\small $N$} -- (15.1, 7.7) node[above] {\small $N'$};
-  \draw[tangent line] (9.8, 6.9) node[above] {\small $T$} -- (17.5, 3.4) node[below] {\small $T'$};
+  \draw[normal line] (11.54, -1.0) node[below] {\small $N$} -- (15.43, 7.5) node[above] {\small $N'$};
+  \draw[tangent line] (10.0, 6.91) node[above] {\small $T$} -- (18.0, 3.255) node[below] {\small $T'$};
   
   % Perpendicular symbol at P (tangent perpendicular to normal N-N')
-  \begin{scope}[shift={(14.27, 4.96)}, rotate=-65.4]
+  \begin{scope}[shift={(14.27, 4.96)}, rotate=65.4]
     \draw[thin, black] (0,0) -- (0.35,0) -- (0.35,0.35) -- (0,0.35);
   \end{scope}
 \end{tikzpicture}
 \end{frame}
-
 \end{document}
