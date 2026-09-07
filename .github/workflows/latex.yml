@@ -9,7 +9,6 @@ on:
       - 'epicycloid/epicycloid.tex'
       - 'hypocycloid/hypocycloid.tex'
       - '.github/workflows/latex.yml'
-
   workflow_dispatch:
 
 permissions:
@@ -21,36 +20,64 @@ jobs:
 
     steps:
 
-      # Compile Cycloid
       - name: Checkout repository
         uses: actions/checkout@v5
 
+      # ==================================================
+      # CYCLOID
+      # ==================================================
       - name: Compile Cycloid presentation
         uses: xu-cheng/latex-action@v4
         with:
           working_directory: cycloid
           root_file: cycloid.tex
 
-      # Compile Epicycloid
+      # ==================================================
+      # EPICYCLOID
+      # ==================================================
       - name: Compile Epicycloid presentation
         uses: xu-cheng/latex-action@v4
         with:
           working_directory: epicycloid
           root_file: epicycloid.tex
 
-      # Compile Hypocycloid
+      # ==================================================
+      # HYPOCYCLOID
+      # ==================================================
       - name: Compile Hypocycloid presentation
         uses: xu-cheng/latex-action@v4
         with:
           working_directory: hypocycloid
           root_file: hypocycloid.tex
 
-      # Save generated PDFs
-      - name: Save PDFs to repository
-        uses: stefanzweifel/git-auto-commit-action@v7
-        with:
-          commit_message: "build: update engineering curve PDFs"
-          file_pattern: |
-            cycloid/cycloid.pdf
-            epicycloid/epicycloid.pdf
-            hypocycloid/hypocycloid.pdf
+      # ==================================================
+      # CHECK GENERATED FILES
+      # ==================================================
+      - name: Check generated PDFs
+        run: |
+          echo "Generated PDF files:"
+          find . -type f -name "*.pdf" -print
+          echo ""
+          echo "PDF sizes:"
+          ls -lh cycloid/cycloid.pdf
+          ls -lh epicycloid/epicycloid.pdf
+          ls -lh hypocycloid/hypocycloid.pdf
+
+      # ==================================================
+      # FORCE ADD GENERATED PDFs
+      # ==================================================
+      - name: Commit generated PDFs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -f cycloid/cycloid.pdf
+          git add -f epicycloid/epicycloid.pdf
+          git add -f hypocycloid/hypocycloid.pdf
+
+          if git diff --cached --quiet; then
+            echo "No PDF changes detected."
+          else
+            git commit -m "build: update engineering curve PDFs"
+            git push
+          fi
