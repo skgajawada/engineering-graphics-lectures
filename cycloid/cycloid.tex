@@ -17,39 +17,41 @@
 \metroset{numbering=none}
 
 % ============================================================
-% CUSTOM FOOTER — PERSISTENT ON EVERY OVERLAY & PAUSE (<all>)
+% CUSTOM FOOTER — PERSISTENT ON EVERY OVERLAY & PAUSE
 % ============================================================
 \setbeamercolor{custom footer}{
   fg=white,
   bg=black!80
 }
 
-\setbeamertemplate{footline}<all>{%
-  \leavevmode%
-  \hbox{%
-    \begin{beamercolorbox}[
-      wd=\paperwidth,
-      ht=3.2ex,
-      dp=1.4ex,
-      leftskip=1cm,
-      rightskip=1cm
-    ]{custom footer}%
-      \tiny
-      \insertauthor
-      \quad|\quad
-      \inserttitle
-      \hfill
-      \ifnum\value{framenumber}=1
-        \textit{Introduction}%
-      \else
-        \ifnum\value{framenumber}=2
-          \textit{Problem Statement}%
+\AtBeginDocument{
+  \setbeamertemplate{footline}{%
+    \leavevmode%
+    \hbox{%
+      \begin{beamercolorbox}[
+        wd=\paperwidth,
+        ht=3.2ex,
+        dp=1.4ex,
+        leftskip=1cm,
+        rightskip=1cm
+      ]{custom footer}%
+        \tiny
+        \insertauthor
+        \quad|\quad
+        \inserttitle
+        \hfill
+        \ifnum\value{framenumber}=1
+          \textit{Introduction}%
         \else
-          Slide \number\numexpr\value{framenumber}-2\relax
+          \ifnum\value{framenumber}=2
+            \textit{Problem Statement}%
+          \else
+            Slide \number\numexpr\value{framenumber}-2\relax
+          \fi
         \fi
-      \fi
-    \end{beamercolorbox}%
-  }%
+      \end{beamercolorbox}%
+    }%
+  }
 }
 
 \setbeamertemplate{navigation symbols}{}
