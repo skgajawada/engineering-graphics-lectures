@@ -9,6 +9,7 @@ on:
       - 'epicycloid/epicycloid.tex'
       - 'hypocycloid/hypocycloid.tex'
       - '.github/workflows/latex.yml'
+
   workflow_dispatch:
 
 permissions:
@@ -19,39 +20,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      # Compile Cycloid
       - name: Checkout repository
         uses: actions/checkout@v5
 
-      # --------------------------------------------------
-      # Compile Cycloid
-      # --------------------------------------------------
       - name: Compile Cycloid presentation
         uses: xu-cheng/latex-action@v4
         with:
           working_directory: cycloid
           root_file: cycloid.tex
 
-      # --------------------------------------------------
       # Compile Epicycloid
-      # --------------------------------------------------
       - name: Compile Epicycloid presentation
         uses: xu-cheng/latex-action@v4
         with:
           working_directory: epicycloid
           root_file: epicycloid.tex
 
-      # --------------------------------------------------
       # Compile Hypocycloid
-      # --------------------------------------------------
       - name: Compile Hypocycloid presentation
         uses: xu-cheng/latex-action@v4
         with:
           working_directory: hypocycloid
           root_file: hypocycloid.tex
 
-      # --------------------------------------------------
       # Save generated PDFs
-      # --------------------------------------------------
       - name: Save PDFs to repository
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
