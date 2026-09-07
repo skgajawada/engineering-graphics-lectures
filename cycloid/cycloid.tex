@@ -22,7 +22,9 @@
   bg=black!80
 }
 
-% Custom footer with balanced conditional checks
+\newcommand{\stepnum}{0}
+
+% Clean, balanced custom footer template
 \setbeamertemplate{footline}{%
   \ifnum\value{framenumber}>1
     \leavevmode%
@@ -46,17 +48,9 @@
         \quad
         \ifnum\value{framenumber}=2
           Problem Statement%
-        \else\ifnum\value{framenumber}<13 1%
-        \else\ifnum\value{framenumber}<26 2%
-        \else\ifnum\value{framenumber}<41 3%
-        \else\ifnum\value{framenumber}<56 4%
-        \else\ifnum\value{framenumber}<66 5%
-        \else\ifnum\value{framenumber}<81 6%
-        \else\ifnum\value{framenumber}<91 7%
-        \else\ifnum\value{framenumber}<96 8%
-        \else\ifnum\value{framenumber}<101 9%
-        \else 10%
-        \fi\fi\fi\fi\fi\fi\fi\fi\fi\fi
+        \else
+          \stepnum
+        \fi
       \end{beamercolorbox}%
     }%
   \fi%
@@ -112,8 +106,10 @@
 \end{frame}
 
 % ============================================================
-% STEP 1: GENERATING CIRCLE & DIRECTING LINE (Frames 3 to 12)
+% STEP 1: GENERATING CIRCLE & DIRECTING LINE
 % ============================================================
+\renewcommand{\stepnum}{1}
+
 \begin{frame}[fragile]{Step 1: Draw Generating Circle \& Directing Line}{Radius = 25 mm - Initial Center Point $C_0$}
 \centering
 \begin{tikzpicture}[scale=0.45]
@@ -241,8 +237,10 @@
 \end{frame}
 
 % ============================================================
-% STEP 2: DIVIDE CIRCLE INTO 12 PARTS (Frames 13 to 25)
+% STEP 2: DIVIDE CIRCLE INTO 12 PARTS
 % ============================================================
+\renewcommand{\stepnum}{2}
+
 \begin{frame}[fragile]{Step 2: Divide Generating Circle into 12 Equal Parts}{Radius = 25 mm - Base Circle Divisions}
 \centering
 \begin{tikzpicture}[scale=0.45]
@@ -526,8 +524,10 @@
 \end{frame}
 
 % ============================================================
-% STEP 3: DIVIDE DIRECTING LINE (Frames 26 to 40)
+% STEP 3: DIVIDE DIRECTING LINE
 % ============================================================
+\renewcommand{\stepnum}{3}
+
 \begin{frame}[fragile]{Step 3: Divide Directing Line using Line Division Method}{Radius = 25 mm - Base Line Division Setup}
 \centering
 \begin{tikzpicture}[scale=0.45]
@@ -720,6 +720,8 @@
 % ============================================================
 % STEP 4: PROJECT CENTERS C1..C12 (Frames 41 to 55)
 % ============================================================
+\renewcommand{\stepnum}{4}
+
 \begin{frame}[fragile]{Step 4: Project Divisions to Locate Centers $C_1\dots C_{12}$}{Radius = 25 mm - Base Setup}
 \centering
 \begin{tikzpicture}[scale=0.45]
@@ -821,6 +823,8 @@
 % ============================================================
 % STEP 5: DRAW HORIZONTAL REFERENCE LINES (Frames 56 to 65)
 % ============================================================
+\renewcommand{\stepnum}{5}
+
 \begin{frame}[fragile]{Step 5: Draw Horizontal Reference Lines}{Radius = 25 mm - Base Setup}
 \centering
 \begin{tikzpicture}[scale=0.45]
@@ -1917,7 +1921,7 @@
 \end{frame}
 
 % ============================================================
-% STEP 7: JOIN POINTS TO FORM CYCLOID (Frames 81 to 90)
+% STEP 7: JOIN POINTS TO FORM CYCLOID
 % ============================================================
 \renewcommand{\stepnum}{7}
 
@@ -2027,7 +2031,7 @@
 \end{frame}
 
 % ============================================================
-% STEP 8: TANGENT & NORMAL CONSTRUCTION (Frames 91 to 95)
+% STEP 8: TANGENT & NORMAL CONSTRUCTION
 % ============================================================
 \renewcommand{\stepnum}{8}
 
@@ -2121,7 +2125,7 @@
 \end{frame}
 
 % ============================================================
-% STEP 9: SUMMARY & VERIFICATION (Frames 96 to 100)
+% STEP 9: SUMMARY & VERIFICATION
 % ============================================================
 \renewcommand{\stepnum}{9}
 
@@ -2164,7 +2168,7 @@
 \end{frame}
 
 % ============================================================
-% CONCLUSION (Frames 101 to 104)
+% CONCLUSION
 % ============================================================
 \renewcommand{\stepnum}{10}
 
