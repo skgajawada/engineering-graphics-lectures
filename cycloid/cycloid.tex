@@ -12,10 +12,14 @@
 \date{}
 
 % ============================================================
-% METROPOLIS NUMBERING & NAVIGATION SETUP
+% METROPOLIS NUMBERING
 % ============================================================
-\metroset{numbering=counter}
-\setbeamertemplate{navigation symbols}{}
+\metroset{numbering=none}
+
+% ============================================================
+% CUSTOM FOOTER & STEP NUMBERING MACRO
+% ============================================================
+\newcommand{\stepnum}{0}
 
 \setbeamercolor{custom footer}{
   fg=white,
@@ -23,31 +27,34 @@
 }
 
 \setbeamertemplate{footline}{%
-  \ifnum\value{framenumber}>1
-    \leavevmode%
-    \hbox{%
-      \begin{beamercolorbox}[
-        wd=\paperwidth,
-        ht=3.2ex,
-        dp=1.4ex,
-        leftskip=0.5cm,
-        rightskip=0.5cm
-      ]{custom footer}%
-        \tiny
-        \insertauthor
-        \quad|\quad
-        \inserttitle
-        \hfill
-        \hyperlink{slide:title}{\beamerbutton{Top}}%
-        \hyperlink{slide:prev}{\beamerbutton{Prev}}%
-        \hyperlink{slide:next}{\beamerbutton{Next}}%
-        \hyperlink{slide:end}{\beamerbutton{End}}%
-        \quad
-        \arabic{framenumber}%
-      \end{beamercolorbox}%
-    }%
-  \fi%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[
+      wd=\paperwidth,
+      ht=3.2ex,
+      dp=1.4ex,
+      leftskip=1cm,
+      rightskip=1cm
+    ]{custom footer}%
+      \tiny
+      \insertauthor
+      \quad|\quad
+      \inserttitle
+      \hfill
+      \ifnum\value{framenumber}=1
+        \textit{Introduction}%
+      \else
+        \ifnum\value{framenumber}=2
+          \textit{Problem Statement}%
+        \else
+          Slide \stepnum
+        \fi
+      \fi
+    \end{beamercolorbox}%
+  }%
 }
+
+\setbeamertemplate{navigation symbols}{}
 
 % ============================================================
 % CUSTOM TIKZ STYLES & DEFINITIONS
@@ -77,16 +84,13 @@
 \begin{document}
 
 % ============================================================
-% TITLE SLIDE (Frame 1)
+% TITLE & PROBLEM STATEMENT
 % ============================================================
-\begin{frame}[label=slide:title,plain]
+\begin{frame}
   \titlepage
 \end{frame}
 
-% ============================================================
-% PROBLEM STATEMENT (Frame 2)
-% ============================================================
-\begin{frame}[label=slide:prev,fragile]{Problem Statement}
+\begin{frame}{Problem Statement}
   \vfill
   \begin{block}{Question}
     \vspace{0.8em}
@@ -99,9 +103,11 @@
 \end{frame}
 
 % ============================================================
-% STEP 1: GENERATING CIRCLE & DIRECTING LINE (Frames 3 to 12)
+% STEP 1
 % ============================================================
-\begin{frame}[fragile]{Step 1: Draw Generating Circle \& Directing Line}{Radius = 25 mm - Initial Center Point $C_0$}
+\renewcommand{\stepnum}{1}
+
+\begin{frame}{Step 1: Draw Generating Circle \& Directing Line (Base)}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -111,7 +117,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 1: Draw Generating Circle \& Directing Line}{Radius = 25 mm - Circle Outline}
+\begin{frame}{Step 1: Draw Generating Circle \& Directing Line}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -122,7 +128,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 1: Draw Generating Circle \& Directing Line}{Radius = 25 mm - Radius Dimension}
+\begin{frame}{Step 1: Draw Generating Circle \& Directing Line}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -134,7 +140,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 1: Draw Generating Circle \& Directing Line}{Radius = 25 mm - Directing Line $AA'$}
+\begin{frame}{Step 1: Draw Generating Circle \& Directing Line}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -147,7 +153,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 1: Draw Generating Circle \& Directing Line}{Radius = 25 mm - Center Axis Line}
+\begin{frame}{Step 1: Draw Generating Circle \& Directing Line}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -161,7 +167,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 1: Draw Generating Circle \& Directing Line}{Radius = 25 mm - Dimension Extension Left}
+\begin{frame}{Step 1: Draw Generating Circle \& Directing Line}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -176,7 +182,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 1: Draw Generating Circle \& Directing Line}{Radius = 25 mm - Dimension Extension Right}
+\begin{frame}{Step 1: Draw Generating Circle \& Directing Line}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -192,7 +198,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 1: Draw Generating Circle \& Directing Line}{Radius = 25 mm - Rolling Distance $\pi D$}
+\begin{frame}{Step 1: Draw Generating Circle \& Directing Line}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -209,7 +215,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 1: Draw Generating Circle \& Directing Line}{Radius = 25 mm - Completed Setup}
+\begin{frame}{Step 1: Draw Generating Circle \& Directing Line}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -228,9 +234,11 @@
 \end{frame}
 
 % ============================================================
-% STEP 2: DIVIDE CIRCLE INTO 12 PARTS (Frames 13 to 25)
+% STEP 2
 % ============================================================
-\begin{frame}[fragile]{Step 2: Divide Generating Circle into 12 Equal Parts}{Radius = 25 mm - Base Circle Divisions}
+\renewcommand{\stepnum}{2}
+
+\begin{frame}{Step 2: Divide Generating Circle into 12 Equal Parts}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -248,7 +256,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 2: Divide Generating Circle into 12 Equal Parts}{Radius = 25 mm - Division 1}
+\begin{frame}{Step 2: Divide Generating Circle into 12 Equal Parts}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -267,7 +275,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 2: Divide Generating Circle into 12 Equal Parts}{Radius = 25 mm - Division 2}
+\begin{frame}{Step 2: Divide Generating Circle into 12 Equal Parts}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -287,7 +295,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 2: Divide Generating Circle into 12 Equal Parts}{Radius = 25 mm - Division 3}
+\begin{frame}{Step 2: Divide Generating Circle into 12 Equal Parts}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -308,7 +316,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 2: Divide Generating Circle into 12 Equal Parts}{Radius = 25 mm - Division 4}
+\begin{frame}{Step 2: Divide Generating Circle into 12 Equal Parts}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -330,7 +338,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 2: Divide Generating Circle into 12 Equal Parts}{Radius = 25 mm - Division 5}
+\begin{frame}{Step 2: Divide Generating Circle into 12 Equal Parts}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -353,7 +361,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 2: Divide Generating Circle into 12 Equal Parts}{Radius = 25 mm - Division 6}
+\begin{frame}{Step 2: Divide Generating Circle into 12 Equal Parts}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -377,7 +385,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 2: Divide Generating Circle into 12 Equal Parts}{Radius = 25 mm - Division 7}
+\begin{frame}{Step 2: Divide Generating Circle into 12 Equal Parts}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -402,7 +410,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 2: Divide Generating Circle into 12 Equal Parts}{Radius = 25 mm - Division 8}
+\begin{frame}{Step 2: Divide Generating Circle into 12 Equal Parts}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -428,7 +436,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 2: Divide Generating Circle into 12 Equal Parts}{Radius = 25 mm - Division 9}
+\begin{frame}{Step 2: Divide Generating Circle into 12 Equal Parts}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -455,7 +463,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 2: Divide Generating Circle into 12 Equal Parts}{Radius = 25 mm - Division 10}
+\begin{frame}{Step 2: Divide Generating Circle into 12 Equal Parts}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -483,7 +491,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 2: Divide Generating Circle into 12 Equal Parts}{Radius = 25 mm - All 12 Divisions Complete}
+\begin{frame}{Step 2: Divide Generating Circle into 12 Equal Parts}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -513,11 +521,11 @@
 \end{frame}
 
 % ============================================================
-% STEP 3: DIVIDE DIRECTING LINE (Frames 26 to 40)
+% STEP 3 (Slide 3)
 % ============================================================
 \renewcommand{\stepnum}{3}
 
-\begin{frame}[fragile]{Step 3: Divide Directing Line using Line Division Method}{Radius = 25 mm - Base Line Division Setup}
+\begin{frame}{Step 3: Divide Directing Line using Line Division Method (Base)}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -558,7 +566,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 3: Divide Directing Line using Line Division Method}{Radius = 25 mm - Inclined Line AX}
+\begin{frame}{Step 3: Divide Directing Line using Line Division Method}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -601,7 +609,7 @@
 \end{frame}
 
 \foreach \n in {1,2,3,4,5,6,7,8,9,10,11,12} {
-  \begin{frame}[fragile]{Step 3: Divide Directing Line using Line Division Method}{Radius = 25 mm - Division Point \n}
+  \begin{frame}{Step 3: Divide Directing Line using Line Division Method}
   \centering
   \begin{tikzpicture}[scale=0.45]
     \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -649,7 +657,7 @@
   \end{frame}
 }
 
-\begin{frame}[fragile]{Step 3: Divide Directing Line using Line Division Method}{Radius = 25 mm - Completed Divisions $1'\dots12'$}
+\begin{frame}{Step 3: Divide Directing Line using Line Division Method}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -707,11 +715,11 @@
 \end{frame}
 
 % ============================================================
-% STEP 4: PROJECT CENTERS C1..C12 (Frames 41 to 55)
+% STEP 4 (Slide 4)
 % ============================================================
 \renewcommand{\stepnum}{4}
 
-\begin{frame}[fragile]{Step 4: Project Divisions to Locate Centers $C_1\dots C_{12}$}{Radius = 25 mm - Base Setup}
+\begin{frame}{Step 4: Project Divisions to Locate Centers $C_1\dots C_{12}$ (Base)}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -757,7 +765,7 @@
 \end{frame}
 
 \foreach \n in {1,2,3,4,5,6,7,8,9,10,11,12} {
-  \begin{frame}[fragile]{Step 4: Project Divisions to Locate Centers $C_1\dots C_{12}$}{Radius = 25 mm - Center $C_\n$}
+  \begin{frame}{Step 4: Project Divisions to Locate Centers $C_1\dots C_{12}$}
   \centering
   \begin{tikzpicture}[scale=0.45]
     \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -810,11 +818,11 @@
 }
 
 % ============================================================
-% STEP 5: DRAW HORIZONTAL REFERENCE LINES (Frames 56 to 65)
+% STEP 5 (Slide 5)
 % ============================================================
 \renewcommand{\stepnum}{5}
 
-\begin{frame}[fragile]{Step 5: Draw Horizontal Reference Lines}{Radius = 25 mm - Base Setup}
+\begin{frame}{Step 5: Draw Horizontal Reference Lines (Base)}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -859,7 +867,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 5: Draw Horizontal Reference Lines}{Radius = 25 mm - Reference Line 1, 11}
+\begin{frame}{Step 5: Draw Horizontal Reference Lines}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -905,7 +913,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 5: Draw Horizontal Reference Lines}{Radius = 25 mm - Reference Line 2, 10}
+\begin{frame}{Step 5: Draw Horizontal Reference Lines}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -952,7 +960,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 5: Draw Horizontal Reference Lines}{Radius = 25 mm - Reference Line 3, 9}
+\begin{frame}{Step 5: Draw Horizontal Reference Lines}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -1000,7 +1008,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 5: Draw Horizontal Reference Lines}{Radius = 25 mm - Reference Line 4, 8}
+\begin{frame}{Step 5: Draw Horizontal Reference Lines}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -1049,7 +1057,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 5: Draw Horizontal Reference Lines}{Radius = 25 mm - Reference Line 5, 7}
+\begin{frame}{Step 5: Draw Horizontal Reference Lines}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -1099,7 +1107,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 5: Draw Horizontal Reference Lines}{Radius = 25 mm - Reference Line 6 (Apex)}
+\begin{frame}{Step 5: Draw Horizontal Reference Lines}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -1151,11 +1159,11 @@
 \end{frame}
 
 % ============================================================
-% STEP 6: STRIKE CUTTING ARCS P0..P12 (Frames 66 to 80)
+% STEP 6 (Slide 6)
 % ============================================================
 \renewcommand{\stepnum}{6}
 
-\begin{frame}[fragile]{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_0$}
+\begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_0$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -1207,7 +1215,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_1$}
+\begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_1$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -1260,7 +1268,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_2$}
+\begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_2$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -1314,7 +1322,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_3$}
+\begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_3$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -1369,7 +1377,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_4$}
+\begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_4$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -1425,7 +1433,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_5$}
+\begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_5$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -1482,7 +1490,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_6$}
+\begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_6$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -1540,7 +1548,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_7$}
+\begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_7$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -1599,7 +1607,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_8$}
+\begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_8$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -1659,7 +1667,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_9$}
+\begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_9$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -1720,7 +1728,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_{10}$}
+\begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_{10}$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -1782,7 +1790,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_{11}$}
+\begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_{11}$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -1845,7 +1853,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_{12}$}
+\begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_{12}$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -1910,11 +1918,11 @@
 \end{frame}
 
 % ============================================================
-% STEP 7: JOIN POINTS TO FORM CYCLOID (Frames 81 to 90)
+% STEP 7 (Slide 7)
 % ============================================================
 \renewcommand{\stepnum}{7}
 
-\begin{frame}[fragile]{Step 7: Smoothly Join Points to Form Cycloid Curve (Points)}
+\begin{frame}{Step 7: Smoothly Join Points to Form Cycloid Curve (Points)}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -1966,7 +1974,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 7: Smoothly Join Points to Form Cycloid Curve}
+\begin{frame}{Step 7: Smoothly Join Points to Form Cycloid Curve}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -2020,172 +2028,36 @@
 \end{frame}
 
 % ============================================================
-% STEP 8: TANGENT & NORMAL CONSTRUCTION (Frames 91 to 95)
+% STEP 8 (Slide 8) - Tangent and Normal Construction
 % ============================================================
 \renewcommand{\stepnum}{8}
 
-\begin{frame}[fragile]{Step 8: Constructing Tangent and Normal}{Radius = 25 mm - Locate Point $P$}
+\begin{frame}{Step 8: Constructing Tangent and Normal at Point $P$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
-  \drawLegendCard{ \textbf{$P$} & Point on Curve }
+  \drawLegendCard{ \textbf{Tangent} & Green Line \\ \textbf{Normal} & Orange Line \\ \textbf{$P$} & Point on Curve }
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
-  \coordinate (P) at (6.42, 5.598);
-  \fill[blue!80!black] (P) circle (4pt) node[above right] {$P$};
-\end{tikzpicture}
-\end{frame}
-
-\begin{frame}[fragile]{Step 8: Constructing Tangent and Normal}{Radius = 25 mm - Locate Center $C_p$}
-\centering
-\begin{tikzpicture}[scale=0.45]
-  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
-  \drawLegendCard{ \textbf{$P$} & Point on Curve \\ \textbf{$C_p$} & Corresponding Center }
-  \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
-  \draw[axis line] (0,3.0) -- (18.85,3.0);
-  \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
-  \coordinate (P) at (6.42, 5.598);
-  \fill[blue!80!black] (P) circle (4pt) node[above right] {$P$};
-  \coordinate (Cp) at (7.8540, 3.0);
-  \fill[red!80!black] (Cp) circle (3pt) node[above] {$C_p$};
-  \draw[arc line] (P) ++(-20:3.0) arc (-20:5:3.0);
-\end{tikzpicture}
-\end{frame}
-
-\begin{frame}[fragile]{Step 8: Constructing Tangent and Normal}{Radius = 25 mm - Radius Vector $P-C_p$}
-\centering
-\begin{tikzpicture}[scale=0.45]
-  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
-  \drawLegendCard{ \textbf{$P-C_p$} & Radius Vector ($R=25$) }
-  \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
-  \draw[axis line] (0,3.0) -- (18.85,3.0);
-  \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
-  \coordinate (P) at (6.42, 5.598);
-  \coordinate (Cp) at (7.8540, 3.0);
-  \fill[blue!80!black] (P) circle (4pt) node[above right] {$P$};
-  \fill[red!80!black] (Cp) circle (3pt) node[above] {$C_p$};
-  \draw[construction line] (P) -- (Cp) node[midway, above right, font=\tiny] {$R=25\text{ mm}$};
-\end{tikzpicture}
-\end{frame}
-
-\begin{frame}[fragile]{Step 8: Constructing Tangent and Normal}{Radius = 25 mm - Normal Line $N-N'$}
-\centering
-\begin{tikzpicture}[scale=0.45]
-  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
-  \drawLegendCard{ \textbf{$N-N'$} & Normal Line \\ \textbf{$M$} & Base Projection }
-  \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
-  \draw[axis line] (0,3.0) -- (18.85,3.0);
-  \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
-  \coordinate (P) at (6.42, 5.598);
-  \coordinate (Cp) at (7.8540, 3.0);
-  \coordinate (M) at (7.8540, 0);
-  \fill[blue!80!black] (P) circle (4pt) node[above right] {$P$};
-  \fill[red!80!black] (Cp) circle (3pt);
-  \fill[black] (M) circle (3pt) node[below] {$M$};
-  \draw[construction line, solid] (Cp) -- (M);
-  \draw[normal line] (8.5, -1.2) node[below] {$N$} -- (4.2, 7.5) node[above] {$N'$};
-\end{tikzpicture}
-\end{frame}
-
-\begin{frame}[fragile]{Step 8: Constructing Tangent and Normal}{Radius = 25 mm - Tangent Line $T-T'$ \& Final Result}
-\centering
-\begin{tikzpicture}[scale=0.45]
-  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
-  \drawLegendCard{ \textbf{Curve} & Completed Profile \\ \textbf{$N-N'$} & Normal Line \\ \textbf{$T-T'$} & Tangent Line }
-  \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
-  \draw[axis line] (0,3.0) -- (18.85,3.0);
-  \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
-  \coordinate (P) at (6.42, 5.598);
-  \coordinate (Cp) at (7.8540, 3.0);
-  \coordinate (M) at (7.8540, 0);
-  \fill[blue!80!black] (P) circle (4pt) node[above left] {$P$};
-  \fill[red!80!black] (Cp) circle (3pt);
-  \fill[black] (M) circle (3pt) node[below] {$M$};
-  \draw[construction line, solid] (Cp) -- (M);
-  \draw[normal line] (8.5, -1.2) node[below] {$N$} -- (4.2, 7.5) node[above] {$N'$};
-  \draw[tangent line] (0.5, 3.2) node[left] {$T$} -- (12.3, 7.9) node[right] {$T'$};
   
-  \begin{scope}[shift={(6.42, 5.598)}, rotate=25]
-    \draw[thin, black] (0,0) -- (0.35,0) -- (0.35,0.35) -- (0,0.35);
-  \end{scope}
+  % Point P chosen at angle corresponding to 4th division (approx x = 6.42, y = 5.598)
+  \coordinate (P) at (6.42, 5.598);
+  \fill[blue!80!black] (P) circle (4pt) node[above right] {$P$};
+  
+  % Corresponding Center Cp
+  \coordinate (Cp) at (7.8540, 3.0);
+  \fill[red!80!black] (Cp) circle (3pt) node[above] {$C_p$};
+  
+  % Normal line connects Cp and P, extended down to baseline to find Q
+  \coordinate (Q) at (7.8540, 0);
+  \draw[normal line] (Cp) -- (P);
+  \fill[black] (Q) circle (3pt) node[below] {$Q$};
+  \draw[construction line, dashed] (P) -- (Q);
+  
+  % Tangent line perpendicular to normal at P
+  \draw[tangent line] (3.0, 7.5) -- (11.5, 3.5);
 \end{tikzpicture}
 \end{frame}
 
-% ============================================================
-% STEP 9: SUMMARY & VERIFICATION (Frames 96 to 100)
-% ============================================================
-\renewcommand{\stepnum}{9}
-
-\begin{frame}[fragile]{Step 9: Summary \& Verification}{Reviewing Construction Steps}
-\begin{itemize}
-    \item Constructed rolling generating circle of diameter $D = 50\text{ mm}$ ($R = 25\text{ mm}$).
-    \item Calculated and projected baseline length $\pi D = 157\text{ mm}$.
-    \item Divided circle and base line into 12 equal parts using line division method.
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Step 9: Summary \& Verification}{Tracing Locus Points}
-\begin{itemize}
-    \item Projected center points $C_1$ through $C_{12}$ along the horizontal center path line.
-    \item Struck cutting arcs of radius $R = 25\text{ mm}$ from each center to locate points $P_1$ through $P_{12}$.
-    \item Joined all points smoothly to form the complete cycloid curve.
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Step 9: Summary \& Verification}{Tangent \& Normal Principles}
-\begin{itemize}
-    \item Located target point $P$ on the curve and identified its corresponding center $C_p$.
-    \item Dropped perpendicular from $C_p$ to base line $AA'$ to find point of contact $M$.
-    \item Established normal line $P-M$ and constructed perpendicular tangent $T-T'$.
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Step 9: Summary \& Verification}{Engineering Drawing Standards}
-\begin{itemize}
-    \item Ensured clean line weighting distinguishing construction lines from final curves.
-    \item Verified dimensional accuracy and symmetry around the apex $P_6$.
-\end{itemize}
-\end{frame}
-
-\begin{frame}[label=slide:next,fragile]{Step 9: Summary \& Verification}{Final Quality Control Check}
-\begin{itemize}
-    \item All required parameters and labels properly displayed in drawing legend cards.
-    \item Ready for final presentation and sheet layout transfer.
-\end{itemize}
-\end{frame}
-
-% ============================================================
-% CONCLUSION (Frames 101 to 104)
-% ============================================================
-\renewcommand{\stepnum}{10}
-
-\begin{frame}[fragile]{Conclusion}{Key Takeaways}
-\begin{itemize}
-    \item Cycloid curves play a vital role in mechanical engineering and gear design.
-    \item The rolling circle method provides precise geometric locus generation.
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Conclusion}{Applications in Mechanisms}
-\begin{itemize}
-    \item Application in cycloidal tooth profiles ensuring smooth power transmission.
-    \item Understanding instantaneous centers simplifies tangent and normal construction.
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Conclusion}{Q \& A}
-\begin{itemize}
-    \item Open floor for questions and technical clarifications.
-\end{itemize}
-\end{frame}
-
-\begin{frame}[label=slide:end,fragile]{Conclusion}{End of Presentation}
-\centering
-\Large Thank You! \\
-\vspace{1em}
-\normalsize Department of Mechanical Engineering \\
-Gajavada Sanjeevkumar
-\end{frame}
-
-end{document}
+\end{document}
