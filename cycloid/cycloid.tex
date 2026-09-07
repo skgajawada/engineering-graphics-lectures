@@ -24,7 +24,7 @@
 
 \newcommand{\stepnum}{0}
 
-% Clean, balanced custom footer template
+% Clean, error-free custom footer template with zero nested brace risks
 \setbeamertemplate{footline}{%
   \ifnum\value{framenumber}>1
     \leavevmode%
@@ -46,11 +46,7 @@
         \hyperlink{slide:next}{\beamerbutton{Next}}%
         \hyperlink{slide:end}{\beamerbutton{End}}%
         \quad
-        \ifnum\value{framenumber}=2
-          Problem Statement%
-        \else
-          \stepnum
-        \fi
+        \stepnum
       \end{beamercolorbox}%
     }%
   \fi%
