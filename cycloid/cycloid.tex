@@ -521,7 +521,7 @@
 \end{frame}
 
 % ============================================================
-% STEP 3: DIVIDE DIRECTING LINE (Sequential Transfer Animation Slides with Circle Divisions Visible)
+% STEP 3: DIVIDE DIRECTING LINE (Sequential Transfer Animation Slides)
 % ============================================================
 \renewcommand{\stepnum}{3}
 
@@ -536,27 +536,18 @@
   \fill[red!80!black] (C0) circle (3.5pt) node[above right, font=\tiny] {$C_0$};
   \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  % Circle divisions shown for reference
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
   \node[below, font=\tiny] at (0,0) {$0, 12$};
   \draw[thick, orange!80!black] (0,0) -- (17.38,-3.11) node[right, font=\tiny] {$X$};
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Step 3: Divide Directing Line - Transfer 12 to 12'}
+\begin{frame}{Step 3: Divide Directing Line - Division Point 12'}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
   \drawLegendCard{ \textbf{$12'$} & Transfer Point 12 }
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0) node[right] {\small $C_{12}$};
-  \coordinate (C0) at (0,3.0);
-  \draw[thick, blue!80!black] (C0) circle (3.0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
   \draw[thick, orange!80!black] (0,0) -- (17.38,-3.11) node[right, font=\tiny] {$X$};
   \coordinate (a12) at ({12*1.448}, {-12*0.259});
   \fill[orange!90!black] (a12) circle (2.0pt);
@@ -567,23 +558,14 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Step 3: Divide Directing Line - Transfer 11 to 11'}
+\begin{frame}{Step 3: Divide Directing Line - Division Point 11'}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
   \drawLegendCard{ \textbf{$11'$} & Transfer Point 11 }
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0) node[right] {\small $C_{12}$};
-  \coordinate (C0) at (0,3.0);
-  \draw[thick, blue!80!black] (C0) circle (3.0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
   \draw[thick, orange!80!black] (0,0) -- (17.38,-3.11) node[right, font=\tiny] {$X$};
-  \coordinate (a12) at ({12*1.448}, {-12*0.259});
-  \draw[thin, orange!70!black, solid] (a12) -- (18.85, 0);
-  \fill[black] (18.85, 0) circle (1.8pt); \node[below, font=\tiny] at (18.85, 0) {$12'$};
-  
   \coordinate (a11) at ({11*1.448}, {-11*0.259});
   \fill[orange!90!black] (a11) circle (2.0pt);
   \node[below left, font=\tiny] at (a11) {11};
@@ -593,22 +575,14 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Step 3: Divide Directing Line - Transfer 10 to 10'}
+\begin{frame}{Step 3: Divide Directing Line - Division Point 10'}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
   \drawLegendCard{ \textbf{$10'$} & Transfer Point 10 }
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0) node[right] {\small $C_{12}$};
-  \coordinate (C0) at (0,3.0);
-  \draw[thick, blue!80!black] (C0) circle (3.0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
   \draw[thick, orange!80!black] (0,0) -- (17.38,-3.11) node[right, font=\tiny] {$X$};
-  \draw[thin, orange!70!black, solid] ({12*1.448}, {-12*0.259}) -- (18.85, 0);
-  \draw[thin, orange!70!black, solid] ({11*1.448}, {-11*0.259}) -- ({11*1.5708}, 0);
-  
   \coordinate (a10) at ({10*1.448}, {-10*0.259});
   \fill[orange!90!black] (a10) circle (2.0pt);
   \node[below left, font=\tiny] at (a10) {10};
@@ -618,23 +592,14 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Step 3: Divide Directing Line - Transfer 9 to 9'}
+\begin{frame}{Step 3: Divide Directing Line - Division Point 9'}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
   \drawLegendCard{ \textbf{$9'$} & Transfer Point 9 }
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0) node[right] {\small $C_{12}$};
-  \coordinate (C0) at (0,3.0);
-  \draw[thick, blue!80!black] (C0) circle (3.0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
   \draw[thick, orange!80!black] (0,0) -- (17.38,-3.11) node[right, font=\tiny] {$X$};
-  \draw[thin, orange!70!black, solid] ({12*1.448}, {-12*0.259}) -- (18.85, 0);
-  \draw[thin, orange!70!black, solid] ({11*1.448}, {-11*0.259}) -- ({11*1.5708}, 0);
-  \draw[thin, orange!70!black, solid] ({10*1.448}, {-10*0.259}) -- ({10*1.5708}, 0);
-  
   \coordinate (a9) at ({9*1.448}, {-9*0.259});
   \fill[orange!90!black] (a9) circle (2.0pt);
   \node[below left, font=\tiny] at (a9) {9};
@@ -644,23 +609,14 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Step 3: Divide Directing Line - Transfer 8 to 8'}
+\begin{frame}{Step 3: Divide Directing Line - Division Point 8'}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
   \drawLegendCard{ \textbf{$8'$} & Transfer Point 8 }
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0) node[right] {\small $C_{12}$};
-  \coordinate (C0) at (0,3.0);
-  \draw[thick, blue!80!black] (C0) circle (3.0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
   \draw[thick, orange!80!black] (0,0) -- (17.38,-3.11) node[right, font=\tiny] {$X$};
-  \foreach \k in {9,10,11,12} {
-    \draw[thin, orange!70!black, solid] ({\k*1.448}, {-\k*0.259}) -- ({\k*1.5708}, 0);
-  }
-  
   \coordinate (a8) at ({8*1.448}, {-8*0.259});
   \fill[orange!90!black] (a8) circle (2.0pt);
   \node[below left, font=\tiny] at (a8) {8};
@@ -670,23 +626,14 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Step 3: Divide Directing Line - Transfer 7 to 7'}
+\begin{frame}{Step 3: Divide Directing Line - Division Point 7'}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
   \drawLegendCard{ \textbf{$7'$} & Transfer Point 7 }
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0) node[right] {\small $C_{12}$};
-  \coordinate (C0) at (0,3.0);
-  \draw[thick, blue!80!black] (C0) circle (3.0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
   \draw[thick, orange!80!black] (0,0) -- (17.38,-3.11) node[right, font=\tiny] {$X$};
-  \foreach \k in {8,9,10,11,12} {
-    \draw[thin, orange!70!black, solid] ({\k*1.448}, {-\k*0.259}) -- ({\k*1.5708}, 0);
-  }
-  
   \coordinate (a7) at ({7*1.448}, {-7*0.259});
   \fill[orange!90!black] (a7) circle (2.0pt);
   \node[below left, font=\tiny] at (a7) {7};
@@ -696,23 +643,14 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Step 3: Divide Directing Line - Transfer 6 to 6'}
+\begin{frame}{Step 3: Divide Directing Line - Division Point 6'}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
   \drawLegendCard{ \textbf{$6'$} & Transfer Point 6 }
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0) node[right] {\small $C_{12}$};
-  \coordinate (C0) at (0,3.0);
-  \draw[thick, blue!80!black] (C0) circle (3.0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
   \draw[thick, orange!80!black] (0,0) -- (17.38,-3.11) node[right, font=\tiny] {$X$};
-  \foreach \k in {7,8,9,10,11,12} {
-    \draw[thin, orange!70!black, solid] ({\k*1.448}, {-\k*0.259}) -- ({\k*1.5708}, 0);
-  }
-  
   \coordinate (a6) at ({6*1.448}, {-6*0.259});
   \fill[orange!90!black] (a6) circle (2.0pt);
   \node[below left, font=\tiny] at (a6) {6};
@@ -722,23 +660,14 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Step 3: Divide Directing Line - Transfer 5 to 5'}
+\begin{frame}{Step 3: Divide Directing Line - Division Point 5'}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
   \drawLegendCard{ \textbf{$5'$} & Transfer Point 5 }
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0) node[right] {\small $C_{12}$};
-  \coordinate (C0) at (0,3.0);
-  \draw[thick, blue!80!black] (C0) circle (3.0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
   \draw[thick, orange!80!black] (0,0) -- (17.38,-3.11) node[right, font=\tiny] {$X$};
-  \foreach \k in {6,7,8,9,10,11,12} {
-    \draw[thin, orange!70!black, solid] ({\k*1.448}, {-\k*0.259}) -- ({\k*1.5708}, 0);
-  }
-  
   \coordinate (a5) at ({5*1.448}, {-5*0.259});
   \fill[orange!90!black] (a5) circle (2.0pt);
   \node[below left, font=\tiny] at (a5) {5};
@@ -748,23 +677,14 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Step 3: Divide Directing Line - Transfer 4 to 4'}
+\begin{frame}{Step 3: Divide Directing Line - Division Point 4'}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
   \drawLegendCard{ \textbf{$4'$} & Transfer Point 4 }
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0) node[right] {\small $C_{12}$};
-  \coordinate (C0) at (0,3.0);
-  \draw[thick, blue!80!black] (C0) circle (3.0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
   \draw[thick, orange!80!black] (0,0) -- (17.38,-3.11) node[right, font=\tiny] {$X$};
-  \foreach \k in {5,6,7,8,9,10,11,12} {
-    \draw[thin, orange!70!black, solid] ({\k*1.448}, {-\k*0.259}) -- ({\k*1.5708}, 0);
-  }
-  
   \coordinate (a4) at ({4*1.448}, {-4*0.259});
   \fill[orange!90!black] (a4) circle (2.0pt);
   \node[below left, font=\tiny] at (a4) {4};
@@ -774,23 +694,14 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Step 3: Divide Directing Line - Transfer 3 to 3'}
+\begin{frame}{Step 3: Divide Directing Line - Division Point 3'}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
   \drawLegendCard{ \textbf{$3'$} & Transfer Point 3 }
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0) node[right] {\small $C_{12}$};
-  \coordinate (C0) at (0,3.0);
-  \draw[thick, blue!80!black] (C0) circle (3.0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
   \draw[thick, orange!80!black] (0,0) -- (17.38,-3.11) node[right, font=\tiny] {$X$};
-  \foreach \k in {4,5,6,7,8,9,10,11,12} {
-    \draw[thin, orange!70!black, solid] ({\k*1.448}, {-\k*0.259}) -- ({\k*1.5708}, 0);
-  }
-  
   \coordinate (a3) at ({3*1.448}, {-3*0.259});
   \fill[orange!90!black] (a3) circle (2.0pt);
   \node[below left, font=\tiny] at (a3) {3};
@@ -800,23 +711,14 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Step 3: Divide Directing Line - Transfer 2 to 2'}
+\begin{frame}{Step 3: Divide Directing Line - Division Point 2'}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
   \drawLegendCard{ \textbf{$2'$} & Transfer Point 2 }
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0) node[right] {\small $C_{12}$};
-  \coordinate (C0) at (0,3.0);
-  \draw[thick, blue!80!black] (C0) circle (3.0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
   \draw[thick, orange!80!black] (0,0) -- (17.38,-3.11) node[right, font=\tiny] {$X$};
-  \foreach \k in {3,4,5,6,7,8,9,10,11,12} {
-    \draw[thin, orange!70!black, solid] ({\k*1.448}, {-\k*0.259}) -- ({\k*1.5708}, 0);
-  }
-  
   \coordinate (a2) at ({2*1.448}, {-2*0.259});
   \fill[orange!90!black] (a2) circle (2.0pt);
   \node[below left, font=\tiny] at (a2) {2};
@@ -826,26 +728,20 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Step 3: Divide Directing Line - Transfer 1 to 1' (Complete)}
+\begin{frame}{Step 3: Divide Directing Line - Division Point 1'}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
-  \drawLegendCard{ \textbf{$1'\dots12'$} & All Divisions Complete }
+  \drawLegendCard{ \textbf{$1'$} & Transfer Point 1 }
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0) node[right] {\small $C_{12}$};
-  \coordinate (C0) at (0,3.0);
-  \draw[thick, blue!80!black] (C0) circle (3.0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
   \draw[thick, orange!80!black] (0,0) -- (17.38,-3.11) node[right, font=\tiny] {$X$};
-  \foreach \k in {1,2,3,4,5,6,7,8,9,10,11,12} {
-    \coordinate (a\k) at ({\k*1.448}, {-\k*0.259});
-    \fill[orange!90!black] (a\k) circle (2.0pt);
-    \draw[thin, orange!70!black, solid] (a\k) -- ({\k*1.5708}, 0);
-    \fill[black] ({\k*1.5708}, 0) circle (1.8pt);
-    \node[below, font=\tiny] at ({\k*1.5708}, 0) {\k'};
-  }
+  \coordinate (a1) at ({1*1.448}, {-1*0.259});
+  \fill[orange!90!black] (a1) circle (2.0pt);
+  \node[below left, font=\tiny] at (a1) {1};
+  \draw[thin, orange!70!black, solid] (a1) -- ({1*1.5708}, 0);
+  \fill[black] ({1*1.5708}, 0) circle (1.8pt);
+  \node[below, font=\tiny] at ({1*1.5708}, 0) {$1'$};
 \end{tikzpicture}
 \end{frame}
 
@@ -865,10 +761,30 @@
   \fill[red!80!black] (C0) circle (3.5pt);
   \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} {
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -891,10 +807,30 @@
     \fill[red!80!black] (C0) circle (3.5pt);
     \draw[thick, blue!80!black] (C0) circle (3.0);
     \draw[thin, construction line] (0,0) -- (C0);
-    \foreach \d in {1,...,12} {
-      \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-    }
+    \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+    \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+    \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+    \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+    \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+    \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+    \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+    \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+    \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+    \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+    \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+    \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
     \node[below, font=\tiny] at (0,0) {$0, 12$};
+    \node[below right, font=\tiny] at (1.5,0.40) {1};
+    \node[right, font=\tiny] at (2.598,1.5) {2};
+    \node[right, font=\tiny] at (3.0,3.0) {3};
+    \node[right, font=\tiny] at (2.598,4.5) {4};
+    \node[above right, font=\tiny] at (1.5,5.598) {5};
+    \node[above, font=\tiny] at (0,6.0) {6};
+    \node[above left, font=\tiny] at (-1.5,5.598) {7};
+    \node[left, font=\tiny] at (-2.598,4.5) {8};
+    \node[left, font=\tiny] at (-3.0,3.0) {9};
+    \node[left, font=\tiny] at (-2.598,1.5) {10};
+    \node[below left, font=\tiny] at (-1.5,0.40) {11};
     \foreach \i in {1,2,...,12} {
       \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
       \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -926,10 +862,30 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -951,10 +907,30 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -977,10 +953,30 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -1004,10 +1000,30 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -1032,10 +1048,30 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -1061,10 +1097,30 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -1091,10 +1147,30 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -1127,10 +1203,30 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -1159,10 +1255,30 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -1192,10 +1308,30 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -1226,10 +1362,30 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -1261,10 +1417,30 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -1297,10 +1473,30 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -1334,10 +1530,30 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -1372,10 +1588,30 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -1411,10 +1647,30 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -1451,10 +1707,30 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -1492,10 +1768,30 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -1534,10 +1830,30 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -1577,10 +1893,30 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -1626,10 +1962,30 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -1658,10 +2014,30 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -1697,10 +2073,30 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -1729,20 +2125,40 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Step 9: Construct Normal Line $N$-$N'$}
+\begin{frame}{Step 9: Project $C_p$ onto Directing Line and Mark $M$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
-  \drawLegendCard{ \textbf{$N\text{-}N'$} & Normal Line \\ \textbf{$M$} & Base Projection }
+  \drawLegendCard{ \textbf{$C_p$} & Center Point \\ \textbf{$M$} & Base Projection }
   
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
   \foreach \i in {1,2,...,12} { 
     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
@@ -1770,11 +2186,10 @@
   
   \coordinate (M) at (5.4, 0.0);
   \draw[construction line, solid] (Cp) -- (M); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
-  \draw[normal line] (6.2, -1.24) node[below] {\small $N$} -- (1.2, 5.3) node[above] {\small $N'$};
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Step 10: Construct Tangent Line $T$-$T'$ \& Final Result}
+\begin{frame}{Step 10: Join $M-P$ and Extend Normal $N$-$N'$ \& Tangent $T$-$T'$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -1784,9 +2199,18 @@
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
   \draw[thin, construction line] (0,0) -- (C0);
-  \foreach \d in {1,...,12} {
-    \draw[thin, cyan!60!black, solid] (C0) -- (-\d*30+90:3.0);
-  }
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
   \node[below, font=\tiny] at (0,0) {$0, 12$};
   \node[below right, font=\tiny] at (1.5,0.40) {1};
   \node[right, font=\tiny] at (2.598,1.5) {2};
@@ -1823,7 +2247,6 @@
   \coordinate (Cp) at (5.4, 3.0); \fill[red!80!black] (Cp) circle (3.5pt);
   \coordinate (M) at (5.4, 0.0); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
   \draw[construction line, solid] (Cp) -- (M);
-  \draw[construction line] (P) -- (Cp) node[midway, above=-1pt, font=\tiny] {$R=25\text{mm}$};
   \draw[normal line] (6.2, -1.24) node[below] {\small $N$} -- (1.2, 5.3) node[above] {\small $N'$};
   \draw[tangent line] (-0.5, 1.31) node[left] {\small $T$} -- (7.5, 7.67) node[right] {\small $T'$};
   
@@ -1834,4 +2257,4 @@
 \end{tikzpicture}
 \end{frame}
 
-end{document}
+\end{document}
