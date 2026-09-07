@@ -22,7 +22,7 @@
   bg=black!80
 }
 
-% Custom footer with numbers only and interactive navigation links (Hidden on Frame 1)
+% Custom footer with balanced conditional checks
 \setbeamertemplate{footline}{%
   \ifnum\value{framenumber}>1
     \leavevmode%
@@ -46,19 +46,17 @@
         \quad
         \ifnum\value{framenumber}=2
           Problem Statement%
-        \else
-          \ifnum\value{framenumber}<13 1%
-          \else\ifnum\value{framenumber}<26 2%
-          \else\ifnum\value{framenumber}<41 3%
-          \else\ifnum\value{framenumber}<56 4%
-          \else\ifnum\value{framenumber}<66 5%
-          \else\ifnum\value{framenumber}<81 6%
-          \else\ifnum\value{framenumber}<91 7%
-          \else\ifnum\value{framenumber}<96 8%
-          \else\ifnum\value{framenumber}<101 9%
-          \else 10%
-          \fi\fi\fi\fi\fi\fi\fi\fi\fi
-        \fi
+        \else\ifnum\value{framenumber}<13 1%
+        \else\ifnum\value{framenumber}<26 2%
+        \else\ifnum\value{framenumber}<41 3%
+        \else\ifnum\value{framenumber}<56 4%
+        \else\ifnum\value{framenumber}<66 5%
+        \else\ifnum\value{framenumber}<81 6%
+        \else\ifnum\value{framenumber}<91 7%
+        \else\ifnum\value{framenumber}<96 8%
+        \else\ifnum\value{framenumber}<101 9%
+        \else 10%
+        \fi\fi\fi\fi\fi\fi\fi\fi\fi\fi
       \end{beamercolorbox}%
     }%
   \fi%
@@ -1434,7 +1432,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_5$}
+\begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_5$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -1491,7 +1489,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}[fragile]{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_6$}
+\begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_6$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -2097,7 +2095,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Step 8: Constructing Tangent and Normal - Tangent Line $T-T'$ & Final Result}
+\begin{frame}{Step 8: Constructing Tangent and Normal - Tangent Line $T-T'$ \& Final Result}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -2127,7 +2125,7 @@
 % ============================================================
 \renewcommand{\stepnum}{9}
 
-\begin{frame}[fragile]{Step 9: Summary & Verification}{Reviewing Construction Steps}
+\begin{frame}[fragile]{Step 9: Summary \& Verification}{Reviewing Construction Steps}
 \begin{itemize}
     \item Constructed rolling generating circle of diameter $D = 50\text{ mm}$ ($R = 25\text{ mm}$).
     \item Calculated and projected baseline length $\pi D = 157\text{ mm}$.
@@ -2135,7 +2133,7 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Step 9: Summary & Verification}{Tracing Locus Points}
+\begin{frame}[fragile]{Step 9: Summary \& Verification}{Tracing Locus Points}
 \begin{itemize}
     \item Projected center points $C_1$ through $C_{12}$ along the horizontal center path line.
     \item Struck cutting arcs of radius $R = 25\text{ mm}$ from each center to locate points $P_1$ through $P_{12}$.
@@ -2143,7 +2141,7 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Step 9: Summary & Verification}{Tangent & Normal Principles}
+\begin{frame}[fragile]{Step 9: Summary \& Verification}{Tangent \& Normal Principles}
 \begin{itemize}
     \item Located target point $P$ on the curve and identified its corresponding center $C_p$.
     \item Dropped perpendicular from $C_p$ to base line $AA'$ to find point of contact $M$.
@@ -2151,14 +2149,14 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Step 9: Summary & Verification}{Engineering Drawing Standards}
+\begin{frame}[fragile]{Step 9: Summary \& Verification}{Engineering Drawing Standards}
 \begin{itemize}
     \item Ensured clean line weighting distinguishing construction lines from final curves.
     \item Verified dimensional accuracy and symmetry around the apex $P_6$.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label=slide:next,fragile]{Step 9: Summary & Verification}{Final Quality Control Check}
+\begin{frame}[label=slide:next,fragile]{Step 9: Summary \& Verification}{Final Quality Control Check}
 \begin{itemize}
     \item All required parameters and labels properly displayed in drawing legend cards.
     \item Ready for final presentation and sheet layout transfer.
