@@ -1556,6 +1556,53 @@
 % ============================================================
 \renewcommand{\stepnum}{5}
 
+\begin{frame}{Step 5: Draw Horizontal Reference Lines (Base)}
+\centering
+\begin{tikzpicture}[scale=0.45]
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
+  \drawLegendCard{ \textbf{Blue Lines} & Horizontal Reference Lines \\ \textbf{$C_1\dots C_{12}$} & Retained Centers }
+  \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
+  \draw[axis line] (0,3.0) -- (18.85,3.0);
+  \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
+  \draw[thin, construction line] (0,0) -- (C0);
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
+  \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
+  \foreach \i in {1,2,...,12} { 
+    \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
+    \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
+    \fill[red!80!black] ({\i*1.5708}, 3.0) circle (2.5pt);
+    \node[above=1pt, font=\tiny, red!80!black] at ({\i*1.5708}, 3.0) {$C_{\i}$};
+    \coordinate (C\i) at ({\i*1.5708}, 3.0);
+    \draw[thin, black!40, solid] ({\i*1.5708}, 0) -- (C\i);
+  }
+  \draw[dimension extension] (0,0) -- (0,-2.2);
+  \draw[dimension extension] (18.85,0) -- (18.85,-2.2);
+  \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
+\end{tikzpicture}
+\end{frame}
+
 \begin{frame}{Step 5: Draw Horizontal Reference Lines}
 \centering
 \begin{tikzpicture}[scale=0.45]
@@ -1600,12 +1647,262 @@
   \draw[dimension extension] (0,0) -- (0,-2.2);
   \draw[dimension extension] (18.85,0) -- (18.85,-2.2);
   \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
-  \draw[construction line] (-1.500, 0.402) -- (18.85, 0.402);
-  \draw[construction line] (-2.598, 1.500) -- (18.85, 1.500);
-  \draw[construction line] (-3.000, 3.000) -- (18.85, 3.000);
-  \draw[construction line] (-2.598, 4.500) -- (18.85, 4.500);
-  \draw[construction line] (-1.500, 5.598) -- (18.85, 5.598);
-  \draw[construction line] (0.000, 6.000) -- (18.85, 6.000);
+  \draw[construction line] (-1.500, 0.402) -- (18.85, 0.402) node[right, font=\tiny] {1, 11};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Step 5: Draw Horizontal Reference Lines}
+\centering
+\begin{tikzpicture}[scale=0.45]
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
+  \drawLegendCard{ \textbf{Blue Lines} & Horizontal Reference Lines \\ \textbf{$C_1\dots C_{12}$} & Retained Centers }
+  \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
+  \draw[axis line] (0,3.0) -- (18.85,3.0);
+  \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
+  \draw[thin, construction line] (0,0) -- (C0);
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
+  \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
+  \foreach \i in {1,2,...,12} { 
+    \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
+    \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
+    \fill[red!80!black] ({\i*1.5708}, 3.0) circle (2.5pt);
+    \node[above=1pt, font=\tiny, red!80!black] at ({\i*1.5708}, 3.0) {$C_{\i}$};
+    \coordinate (C\i) at ({\i*1.5708}, 3.0);
+    \draw[thin, black!40, solid] ({\i*1.5708}, 0) -- (C\i);
+  }
+  \draw[dimension extension] (0,0) -- (0,-2.2);
+  \draw[dimension extension] (18.85,0) -- (18.85,-2.2);
+  \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
+  \draw[construction line] (-1.500, 0.402) -- (18.85, 0.402) node[right, font=\tiny] {1, 11};
+  \draw[construction line] (-2.598, 1.500) -- (18.85, 1.500) node[right, font=\tiny] {2, 10};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Step 5: Draw Horizontal Reference Lines}
+\centering
+\begin{tikzpicture}[scale=0.45]
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
+  \drawLegendCard{ \textbf{Blue Lines} & Horizontal Reference Lines \\ \textbf{$C_1\dots C_{12}$} & Retained Centers }
+  \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
+  \draw[axis line] (0,3.0) -- (18.85,3.0);
+  \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
+  \draw[thin, construction line] (0,0) -- (C0);
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
+  \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
+  \foreach \i in {1,2,...,12} { 
+    \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
+    \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
+    \fill[red!80!black] ({\i*1.5708}, 3.0) circle (2.5pt);
+    \node[above=1pt, font=\tiny, red!80!black] at ({\i*1.5708}, 3.0) {$C_{\i}$};
+    \coordinate (C\i) at ({\i*1.5708}, 3.0);
+    \draw[thin, black!40, solid] ({\i*1.5708}, 0) -- (C\i);
+  }
+  \draw[dimension extension] (0,0) -- (0,-2.2);
+  \draw[dimension extension] (18.85,0) -- (18.85,-2.2);
+  \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
+  \draw[construction line] (-1.500, 0.402) -- (18.85, 0.402) node[right, font=\tiny] {1, 11};
+  \draw[construction line] (-2.598, 1.500) -- (18.85, 1.500) node[right, font=\tiny] {2, 10};
+  \draw[construction line] (-3.000, 3.000) -- (18.85, 3.000) node[right, font=\tiny] {3, 9};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Step 5: Draw Horizontal Reference Lines}
+\centering
+\begin{tikzpicture}[scale=0.45]
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
+  \drawLegendCard{ \textbf{Blue Lines} & Horizontal Reference Lines \\ \textbf{$C_1\dots C_{12}$} & Retained Centers }
+  \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
+  \draw[axis line] (0,3.0) -- (18.85,3.0);
+  \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
+  \draw[thin, construction line] (0,0) -- (C0);
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
+  \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
+  \foreach \i in {1,2,...,12} { 
+    \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
+    \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
+    \fill[red!80!black] ({\i*1.5708}, 3.0) circle (2.5pt);
+    \node[above=1pt, font=\tiny, red!80!black] at ({\i*1.5708}, 3.0) {$C_{\i}$};
+    \coordinate (C\i) at ({\i*1.5708}, 3.0);
+    \draw[thin, black!40, solid] ({\i*1.5708}, 0) -- (C\i);
+  }
+  \draw[dimension extension] (0,0) -- (0,-2.2);
+  \draw[dimension extension] (18.85,0) -- (18.85,-2.2);
+  \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
+  \draw[construction line] (-1.500, 0.402) -- (18.85, 0.402) node[right, font=\tiny] {1, 11};
+  \draw[construction line] (-2.598, 1.500) -- (18.85, 1.500) node[right, font=\tiny] {2, 10};
+  \draw[construction line] (-3.000, 3.000) -- (18.85, 3.000) node[right, font=\tiny] {3, 9};
+  \draw[construction line] (-2.598, 4.500) -- (18.85, 4.500) node[right, font=\tiny] {4, 8};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Step 5: Draw Horizontal Reference Lines}
+\centering
+\begin{tikzpicture}[scale=0.45]
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
+  \drawLegendCard{ \textbf{Blue Lines} & Horizontal Reference Lines \\ \textbf{$C_1\dots C_{12}$} & Retained Centers }
+  \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
+  \draw[axis line] (0,3.0) -- (18.85,3.0);
+  \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
+  \draw[thin, construction line] (0,0) -- (C0);
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
+  \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
+  \foreach \i in {1,2,...,12} { 
+    \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
+    \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
+    \fill[red!80!black] ({\i*1.5708}, 3.0) circle (2.5pt);
+    \node[above=1pt, font=\tiny, red!80!black] at ({\i*1.5708}, 3.0) {$C_{\i}$};
+    \coordinate (C\i) at ({\i*1.5708}, 3.0);
+    \draw[thin, black!40, solid] ({\i*1.5708}, 0) -- (C\i);
+  }
+  \draw[dimension extension] (0,0) -- (0,-2.2);
+  \draw[dimension extension] (18.85,0) -- (18.85,-2.2);
+  \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
+  \draw[construction line] (-1.500, 0.402) -- (18.85, 0.402) node[right, font=\tiny] {1, 11};
+  \draw[construction line] (-2.598, 1.500) -- (18.85, 1.500) node[right, font=\tiny] {2, 10};
+  \draw[construction line] (-3.000, 3.000) -- (18.85, 3.000) node[right, font=\tiny] {3, 9};
+  \draw[construction line] (-2.598, 4.500) -- (18.85, 4.500) node[right, font=\tiny] {4, 8};
+  \draw[construction line] (-1.500, 5.598) -- (18.85, 5.598) node[right, font=\tiny] {5, 7};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Step 5: Draw Horizontal Reference Lines}
+\centering
+\begin{tikzpicture}[scale=0.45]
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
+  \drawLegendCard{ \textbf{Blue Lines} & Horizontal Reference Lines \\ \textbf{$C_1\dots C_{12}$} & Retained Centers }
+  \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
+  \draw[axis line] (0,3.0) -- (18.85,3.0);
+  \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
+  \draw[thin, construction line] (0,0) -- (C0);
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
+  \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
+  \foreach \i in {1,2,...,12} { 
+    \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
+    \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
+    \fill[red!80!black] ({\i*1.5708}, 3.0) circle (2.5pt);
+    \node[above=1pt, font=\tiny, red!80!black] at ({\i*1.5708}, 3.0) {$C_{\i}$};
+    \coordinate (C\i) at ({\i*1.5708}, 3.0);
+    \draw[thin, black!40, solid] ({\i*1.5708}, 0) -- (C\i);
+  }
+  \draw[dimension extension] (0,0) -- (0,-2.2);
+  \draw[dimension extension] (18.85,0) -- (18.85,-2.2);
+  \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
+  \draw[construction line] (-1.500, 0.402) -- (18.85, 0.402) node[right, font=\tiny] {1, 11};
+  \draw[construction line] (-2.598, 1.500) -- (18.85, 1.500) node[right, font=\tiny] {2, 10};
+  \draw[construction line] (-3.000, 3.000) -- (18.85, 3.000) node[right, font=\tiny] {3, 9};
+  \draw[construction line] (-2.598, 4.500) -- (18.85, 4.500) node[right, font=\tiny] {4, 8};
+  \draw[construction line] (-1.500, 5.598) -- (18.85, 5.598) node[right, font=\tiny] {5, 7};
+  \draw[construction line] (0.000, 6.000) -- (18.85, 6.000) node[right, font=\tiny] {6};
 \end{tikzpicture}
 \end{frame}
 
@@ -1614,11 +1911,11 @@
 % ============================================================
 \renewcommand{\stepnum}{6}
 
-\begin{frame}{Step 6: Strike Cutting Arcs to Locate Points $P_0\dots P_{12}$}
+\begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_0$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
-  \drawLegendCard{ \textbf{$C_1\dots C_{12}$} & Retained Centers \\ \textbf{$P_0\dots P_{12}$} & Cutting Arcs/Points }
+  \drawLegendCard{ \textbf{$C_1\dots C_{12}$} & Retained Centers \\ \textbf{$P_1\dots P_{12}$} & Cutting Arcs/Points }
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
@@ -1664,33 +1961,15 @@
   \draw[construction line] (-2.598, 4.500) -- (18.85, 4.500);
   \draw[construction line] (-1.500, 5.598) -- (18.85, 5.598);
   \draw[construction line] (0.000, 6.000) -- (18.85, 6.000);
-  
   \fill[blue!80!black] (0,0) circle (3.5pt) node[below left, font=\tiny] {$P_0$};
-  \draw[arc line] (1.5708,3.0) ++(230:3.0) arc (230:250:3.0); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt);
-  \draw[arc line] (3.1416,3.0) ++(200:3.0) arc (200:220:3.0); \fill[blue!80!black] (0.54, 1.500) circle (3.5pt);
-  \draw[arc line] (4.7124,3.0) ++(170:3.0) arc (170:190:3.0); \fill[blue!80!black] (1.71, 3.000) circle (3.5pt);
-  \draw[arc line] (6.2832,3.0) ++(140:3.0) arc (140:160:3.0); \fill[blue!80!black] (3.68, 4.500) circle (3.5pt);
-  \draw[arc line] (7.8540,3.0) ++(110:3.0) arc (110:130:3.0); \fill[blue!80!black] (6.42, 5.598) circle (3.5pt);
-  \draw[arc line] (9.4248,3.0) ++(80:3.0) arc (80:100:3.0); \fill[blue!80!black] (9.42, 6.000) circle (3.5pt);
-  \draw[arc line] (10.9956,3.0) ++(50:3.0) arc (50:70:3.0); \fill[blue!80!black] (12.42, 5.598) circle (3.5pt);
-  \draw[arc line] (12.5664,3.0) ++(20:3.0) arc (20:40:3.0); \fill[blue!80!black] (15.17, 4.500) circle (3.5pt);
-  \draw[arc line] (14.1372,3.0) ++(350:3.0) arc (350:10:3.0); \fill[blue!80!black] (17.14, 3.000) circle (3.5pt);
-  \draw[arc line] (15.7080,3.0) ++(320:3.0) arc (320:340:3.0); \fill[blue!80!black] (18.31, 1.500) circle (3.5pt);
-  \draw[arc line] (17.2788,3.0) ++(290:3.0) arc (290:310:3.0); \fill[blue!80!black] (18.78, 0.402) circle (3.5pt);
-  \draw[arc line] (18.8496,3.0) ++(260:3.0) arc (260:280:3.0); \fill[blue!80!black] (18.85, 0.000) circle (3.5pt);
 \end{tikzpicture}
 \end{frame}
 
-% ============================================================
-% STEP 7
-% ============================================================
-\renewcommand{\stepnum}{7}
-
-\begin{frame}{Step 7: Smoothly Join Points to Form Cycloid Curve}
+\begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_1$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
-  \drawLegendCard{ \textbf{Curve} & Completed Profile \\ \textbf{$P_0\dots P_{12}$} & Retained Points }
+  \drawLegendCard{ \textbf{$C_1\dots C_{12}$} & Retained Centers \\ \textbf{$P_1\dots P_{12}$} & Cutting Arcs/Points }
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
@@ -1736,86 +2015,16 @@
   \draw[construction line] (-2.598, 4.500) -- (18.85, 4.500);
   \draw[construction line] (-1.500, 5.598) -- (18.85, 5.598);
   \draw[construction line] (0.000, 6.000) -- (18.85, 6.000);
-  \fill[blue!80!black] (0,0) circle (3.5pt); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt); \fill[blue!80!black] (0.54, 1.500) circle (3.5pt); \fill[blue!80!black] (1.71, 3.000) circle (3.5pt); \fill[blue!80!black] (3.68, 4.500) circle (3.5pt); \fill[blue!80!black] (6.42, 5.598) circle (3.5pt); \fill[blue!80!black] (9.42, 6.000) circle (3.5pt); \fill[blue!80!black] (12.42, 5.598) circle (3.5pt); \fill[blue!80!black] (15.17, 4.500) circle (3.5pt); \fill[blue!80!black] (17.14, 3.000) circle (3.5pt); \fill[blue!80!black] (18.31, 1.500) circle (3.5pt); \fill[blue!80!black] (18.78, 0.402) circle (3.5pt); \fill[blue!80!black] (18.85, 0.000) circle (3.5pt);
-  \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
+  \fill[blue!80!black] (0,0) circle (3.5pt) node[below left, font=\tiny] {$P_0$};
+  \draw[arc line] (1.5708,3.0) ++(230:3.0) arc (230:250:3.0); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt) node[above right, font=\tiny] {$P_1$};
 \end{tikzpicture}
 \end{frame}
 
-% ============================================================
-% STEP 8
-% ============================================================
-\renewcommand{\stepnum}{8}
-
-\begin{frame}{Step 8: Mark Point $P$ \& Locate Center $C_p$}
+\begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_2$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
-  \drawLegendCard{ \textbf{$P$} & Target Point \\ \textbf{$C_p$} & Corresponding Center }
-  \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
-  \draw[axis line] (0,3.0) -- (18.85,3.0);
-  \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
-  \draw[thin, construction line] (0,0) -- (C0);
-  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
-  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
-  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
-  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
-  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
-  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
-  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
-  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
-  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
-  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
-  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
-  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
-  \node[below, font=\tiny] at (0,0) {$0, 12$};
-  \node[below right, font=\tiny] at (1.5,0.40) {1};
-  \node[right, font=\tiny] at (2.598,1.5) {2};
-  \node[right, font=\tiny] at (3.0,3.0) {3};
-  \node[right, font=\tiny] at (2.598,4.5) {4};
-  \node[above right, font=\tiny] at (1.5,5.598) {5};
-  \node[above, font=\tiny] at (0,6.0) {6};
-  \node[above left, font=\tiny] at (-1.5,5.598) {7};
-  \node[left, font=\tiny] at (-2.598,4.5) {8};
-  \node[left, font=\tiny] at (-3.0,3.0) {9};
-  \node[left, font=\tiny] at (-2.598,1.5) {10};
-  \node[below left, font=\tiny] at (-1.5,0.40) {11};
-  \foreach \i in {1,2,...,12} { 
-    \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
-    \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
-    \fill[red!80!black] ({\i*1.5708}, 3.0) circle (2.5pt);
-    \coordinate (C\i) at ({\i*1.5708}, 3.0);
-    \draw[thin, black!40, solid] ({\i*1.5708}, 0) -- (C\i);
-  }
-  \draw[dimension extension] (0,0) -- (0,-2.2);
-  \draw[dimension extension] (18.85,0) -- (18.85,-2.2);
-  \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
-  \draw[construction line] (-1.500, 0.402) -- (18.85, 0.402);
-  \draw[construction line] (-2.598, 1.500) -- (18.85, 1.500);
-  \draw[construction line] (-3.000, 3.000) -- (18.85, 3.000);
-  \draw[construction line] (-2.598, 4.500) -- (18.85, 4.500);
-  \draw[construction line] (-1.500, 5.598) -- (18.85, 5.598);
-  \draw[construction line] (0.000, 6.000) -- (18.85, 6.000);
-  \fill[blue!80!black] (0,0) circle (3.5pt); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt); \fill[blue!80!black] (0.54, 1.500) circle (3.5pt); \fill[blue!80!black] (1.71, 3.000) circle (3.5pt); \fill[blue!80!black] (3.68, 4.500) circle (3.5pt); \fill[blue!80!black] (6.42, 5.598) circle (3.5pt); \fill[blue!80!black] (9.42, 6.000) circle (3.5pt); \fill[blue!80!black] (12.42, 5.598) circle (3.5pt); \fill[blue!80!black] (15.17, 4.500) circle (3.5pt); \fill[blue!80!black] (17.14, 3.000) circle (3.5pt); \fill[blue!80!black] (18.31, 1.500) circle (3.5pt); \fill[blue!80!black] (18.78, 0.402) circle (3.5pt); \fill[blue!80!black] (18.85, 0.000) circle (3.5pt);
-  \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
-  
-  \coordinate (P) at (2.478, 3.682); \fill[black] (P) circle (3.5pt) node[above=3pt] {\small $P$};
-  \coordinate (Cp) at (5.4, 3.0);
-  \draw[arc line] (P) ++(-20:3.0) arc (-20:5:3.0);
-  \fill[red!80!black] (Cp) circle (3.5pt) node[above right] {\small $C_p$};
-  \draw[construction line] (P) -- (Cp) node[midway, above=-1pt, font=\tiny] {$R=25\text{mm}$};
-\end{tikzpicture}
-\end{frame}
-
-% ============================================================
-% STEP 9
-% ============================================================
-\renewcommand{\stepnum}{9}
-
-\begin{frame}{Step 9a: Project $C_p$ onto Directing Line and Mark $M$}
-\centering
-\begin{tikzpicture}[scale=0.45]
-  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
-  \drawLegendCard{ \textbf{$C_p$} & Center Point \\ \textbf{$M$} & Base Projection }
+  \drawLegendCard{ \textbf{$C_1\dots C_{12}$} & Retained Centers \\ \textbf{$P_1\dots P_{12}$} & Cutting Arcs/Points }
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
@@ -1861,24 +2070,17 @@
   \draw[construction line] (-2.598, 4.500) -- (18.85, 4.500);
   \draw[construction line] (-1.500, 5.598) -- (18.85, 5.598);
   \draw[construction line] (0.000, 6.000) -- (18.85, 6.000);
-  \fill[blue!80!black] (0,0) circle (3.5pt); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt); \fill[blue!80!black] (0.54, 1.500) circle (3.5pt); \fill[blue!80!black] (1.71, 3.000) circle (3.5pt); \fill[blue!80!black] (3.68, 4.500) circle (3.5pt); \fill[blue!80!black] (6.42, 5.598) circle (3.5pt); \fill[blue!80!black] (9.42, 6.000) circle (3.5pt); \fill[blue!80!black] (12.42, 5.598) circle (3.5pt); \fill[blue!80!black] (15.17, 4.500) circle (3.5pt); \fill[blue!80!black] (17.14, 3.000) circle (3.5pt); \fill[blue!80!black] (18.31, 1.500) circle (3.5pt); \fill[blue!80!black] (18.78, 0.402) circle (3.5pt); \fill[blue!80!black] (18.85, 0.000) circle (3.5pt);
-  \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
-  
-  \coordinate (P) at (2.478, 3.682); \fill[black] (P) circle (3.5pt) node[above=3pt] {\small $P$};
-  \coordinate (Cp) at (5.4, 3.0); \fill[red!80!black] (Cp) circle (3.5pt) node[above right] {\small $C_p$};
-  \draw[arc line] (P) ++(-20:3.0) arc (-20:5:3.0);
-  \draw[construction line] (P) -- (Cp);
-  
-  \coordinate (M) at (5.4, 0.0);
-  \draw[construction line, solid] (Cp) -- (M); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
+  \fill[blue!80!black] (0,0) circle (3.5pt) node[below left, font=\tiny] {$P_0$};
+  \draw[arc line] (1.5708,3.0) ++(230:3.0) arc (230:250:3.0); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt) node[above right, font=\tiny] {$P_1$};
+  \draw[arc line] (3.1416,3.0) ++(200:3.0) arc (200:220:3.0); \fill[blue!80!black] (0.54, 1.500) circle (3.5pt) node[above right, font=\tiny] {$P_2$};
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Step 9b: Construct Normal Line $N$-$N'$ through $M$ and $P$}
+\begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_3$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
-  \drawLegendCard{ \textbf{$N\text{-}N'$} & Normal Line \\ \textbf{$M$} & Base Projection }
+  \drawLegendCard{ \textbf{$C_1\dots C_{12}$} & Retained Centers \\ \textbf{$P_1\dots P_{12}$} & Cutting Arcs/Points }
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
@@ -1924,29 +2126,18 @@
   \draw[construction line] (-2.598, 4.500) -- (18.85, 4.500);
   \draw[construction line] (-1.500, 5.598) -- (18.85, 5.598);
   \draw[construction line] (0.000, 6.000) -- (18.85, 6.000);
-  \fill[blue!80!black] (0,0) circle (3.5pt); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt); \fill[blue!80!black] (0.54, 1.500) circle (3.5pt); \fill[blue!80!black] (1.71, 3.000) circle (3.5pt); \fill[blue!80!black] (3.68, 4.500) circle (3.5pt); \fill[blue!80!black] (6.42, 5.598) circle (3.5pt); \fill[blue!80!black] (9.42, 6.000) circle (3.5pt); \fill[blue!80!black] (12.42, 5.598) circle (3.5pt); \fill[blue!80!black] (15.17, 4.500) circle (3.5pt); \fill[blue!80!black] (17.14, 3.000) circle (3.5pt); \fill[blue!80!black] (18.31, 1.500) circle (3.5pt); \fill[blue!80!black] (18.78, 0.402) circle (3.5pt); \fill[blue!80!black] (18.85, 0.000) circle (3.5pt);
-  \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
-  
-  \coordinate (P) at (2.478, 3.682); \fill[black] (P) circle (3.5pt) node[above left] {\small $P$};
-  \coordinate (Cp) at (5.4, 3.0); \fill[red!80!black] (Cp) circle (3.5pt) node[above right] {\small $C_p$};
-  \coordinate (M) at (5.4, 0.0); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
-  \draw[arc line] (P) ++(-20:3.0) arc (-20:5:3.0);
-  \draw[construction line] (P) -- (Cp);
-  \draw[construction line, solid] (Cp) -- (M);
-  \draw[normal line] (6.2, -1.24) node[below] {\small $N$} -- (1.2, 5.3) node[above] {\small $N'$};
+  \fill[blue!80!black] (0,0) circle (3.5pt) node[below left, font=\tiny] {$P_0$};
+  \draw[arc line] (1.5708,3.0) ++(230:3.0) arc (230:250:3.0); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt) node[above right, font=\tiny] {$P_1$};
+  \draw[arc line] (3.1416,3.0) ++(200:3.0) arc (200:220:3.0); \fill[blue!80!black] (0.54, 1.500) circle (3.5pt) node[above right, font=\tiny] {$P_2$};
+  \draw[arc line] (4.7124,3.0) ++(170:3.0) arc (170:190:3.0); \fill[blue!80!black] (1.71, 3.000) circle (3.5pt) node[above right, font=\tiny] {$P_3$};
 \end{tikzpicture}
 \end{frame}
 
-% ============================================================
-% STEP 10
-% ============================================================
-\renewcommand{\stepnum}{10}
-
-\begin{frame}{Step 10: Construct Tangent Line $T$-$T'$ \& Final Result}
+\begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_4$}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
-  \drawLegendCard{ \textbf{Curve} & Completed Profile \\ \textbf{$N\text{-}N'$} & Normal Line \\ \textbf{$T\text{-}T'$} & Tangent Line }
+  \drawLegendCard{ \textbf{$C_1\dots C_{12}$} & Retained Centers \\ \textbf{$P_1\dots P_{12}$} & Cutting Arcs/Points }
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
@@ -1992,22 +2183,229 @@
   \draw[construction line] (-2.598, 4.500) -- (18.85, 4.500);
   \draw[construction line] (-1.500, 5.598) -- (18.85, 5.598);
   \draw[construction line] (0.000, 6.000) -- (18.85, 6.000);
-  \fill[blue!80!black] (0,0) circle (3.5pt); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt); \fill[blue!80!black] (0.54, 1.500) circle (3.5pt); \fill[blue!80!black] (1.71, 3.000) circle (3.5pt); \fill[blue!80!black] (3.68, 4.500) circle (3.5pt); \fill[blue!80!black] (6.42, 5.598) circle (3.5pt); \fill[blue!80!black] (9.42, 6.000) circle (3.5pt); \fill[blue!80!black] (12.42, 5.598) circle (3.5pt); \fill[blue!80!black] (15.17, 4.500) circle (3.5pt); \fill[blue!80!black] (17.14, 3.000) circle (3.5pt); \fill[blue!80!black] (18.31, 1.500) circle (3.5pt); \fill[blue!80!black] (18.78, 0.402) circle (3.5pt); \fill[blue!80!black] (18.85, 0.000) circle (3.5pt);
-  \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
-  
-  \coordinate (P) at (2.478, 3.682); \fill[black] (P) circle (3.5pt) node[above left] {\small $P$};
-  \coordinate (Cp) at (5.4, 3.0); \fill[red!80!black] (Cp) circle (3.5pt);
-  \coordinate (M) at (5.4, 0.0); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
-  \draw[construction line] (P) -- (Cp);
-  \draw[construction line, solid] (Cp) -- (M);
-  \draw[normal line] (6.2, -1.24) node[below] {\small $N$} -- (1.2, 5.3) node[above] {\small $N'$};
-  \draw[tangent line] (-0.5, 1.31) node[left] {\small $T$} -- (7.5, 7.67) node[right] {\small $T'$};
-  
-  % Perpendicular symbol at P
-  \begin{scope}[shift={(2.478, 3.682)}, rotate=-51.7]
-    \draw[thin, black] (0,0) -- (0.35,0) -- (0.35,0.35) -- (0,0.35);
-  \end{scope}
+  \fill[blue!80!black] (0,0) circle (3.5pt) node[below left, font=\tiny] {$P_0$};
+  \draw[arc line] (1.5708,3.0) ++(230:3.0) arc (230:250:3.0); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt) node[above right, font=\tiny] {$P_1$};
+  \draw[arc line] (3.1416,3.0) ++(200:3.0) arc (200:220:3.0); \fill[blue!80!black] (0.54, 1.500) circle (3.5pt) node[above right, font=\tiny] {$P_2$};
+  \draw[arc line] (4.7124,3.0) ++(170:3.0) arc (170:190:3.0); \fill[blue!80!black] (1.71, 3.000) circle (3.5pt) node[above right, font=\tiny] {$P_3$};
+  \draw[arc line] (6.2832,3.0) ++(140:3.0) arc (140:160:3.0); \fill[blue!80!black] (3.68, 4.500) circle (3.5pt) node[above right, font=\tiny] {$P_4$};
 \end{tikzpicture}
 \end{frame}
 
-end{document}
+\begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_5$}
+\centering
+\begin{tikzpicture}[scale=0.45]
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
+  \drawLegendCard{ \textbf{$C_1\dots C_{12}$} & Retained Centers \\ \textbf{$P_1\dots P_{12}$} & Cutting Arcs/Points }
+  \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
+  \draw[axis line] (0,3.0) -- (18.85,3.0);
+  \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
+  \draw[thin, construction line] (0,0) -- (C0);
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
+  \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
+  \foreach \i in {1,2,...,12} { 
+    \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
+    \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
+    \fill[red!80!black] ({\i*1.5708}, 3.0) circle (2.5pt);
+    \node[above=1pt, font=\tiny, red!80!black] at ({\i*1.5708}, 3.0) {$C_{\i}$};
+    \coordinate (C\i) at ({\i*1.5708}, 3.0);
+    \draw[thin, black!40, solid] ({\i*1.5708}, 0) -- (C\i);
+  }
+  \draw[dimension extension] (0,0) -- (0,-2.2);
+  \draw[dimension extension] (18.85,0) -- (18.85,-2.2);
+  \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
+  \draw[construction line] (-1.500, 0.402) -- (18.85, 0.402);
+  \draw[construction line] (-2.598, 1.500) -- (18.85, 1.500);
+  \draw[construction line] (-3.000, 3.000) -- (18.85, 3.000);
+  \draw[construction line] (-2.598, 4.500) -- (18.85, 4.500);
+  \draw[construction line] (-1.500, 5.598) -- (18.85, 5.598);
+  \draw[construction line] (0.000, 6.000) -- (18.85, 6.000);
+  \fill[blue!80!black] (0,0) circle (3.5pt) node[below left, font=\tiny] {$P_0$};
+  \draw[arc line] (1.5708,3.0) ++(230:3.0) arc (230:250:3.0); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt) node[above right, font=\tiny] {$P_1$};
+  \draw[arc line] (3.1416,3.0) ++(200:3.0) arc (200:220:3.0); \fill[blue!80!black] (0.54, 1.500) circle (3.5pt) node[above right, font=\tiny] {$P_2$};
+  \draw[arc line] (4.7124,3.0) ++(170:3.0) arc (170:190:3.0); \fill[blue!80!black] (1.71, 3.000) circle (3.5pt) node[above right, font=\tiny] {$P_3$};
+  \draw[arc line] (6.2832,3.0) ++(140:3.0) arc (140:160:3.0); \fill[blue!80!black] (3.68, 4.500) circle (3.5pt) node[above right, font=\tiny] {$P_4$};
+  \draw[arc line] (7.8540,3.0) ++(110:3.0) arc (110:130:3.0); \fill[blue!80!black] (6.42, 5.598) circle (3.5pt) node[above right, font=\tiny] {$P_5$};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_6$}
+\centering
+\begin{tikzpicture}[scale=0.45]
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
+  \drawLegendCard{ \textbf{$C_1\dots C_{12}$} & Retained Centers \\ \textbf{$P_1\dots P_{12}$} & Cutting Arcs/Points }
+  \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
+  \draw[axis line] (0,3.0) -- (18.85,3.0);
+  \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
+  \draw[thin, construction line] (0,0) -- (C0);
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
+  \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
+  \foreach \i in {1,2,...,12} { 
+    \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
+    \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
+    \fill[red!80!black] ({\i*1.5708}, 3.0) circle (2.5pt);
+    \node[above=1pt, font=\tiny, red!80!black] at ({\i*1.5708}, 3.0) {$C_{\i}$};
+    \coordinate (C\i) at ({\i*1.5708}, 3.0);
+    \draw[thin, black!40, solid] ({\i*1.5708}, 0) -- (C\i);
+  }
+  \draw[dimension extension] (0,0) -- (0,-2.2);
+  \draw[dimension extension] (18.85,0) -- (18.85,-2.2);
+  \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
+  \draw[construction line] (-1.500, 0.402) -- (18.85, 0.402);
+  \draw[construction line] (-2.598, 1.500) -- (18.85, 1.500);
+  \draw[construction line] (-3.000, 3.000) -- (18.85, 3.000);
+  \draw[construction line] (-2.598, 4.500) -- (18.85, 4.500);
+  \draw[construction line] (-1.500, 5.598) -- (18.85, 5.598);
+  \draw[construction line] (0.000, 6.000) -- (18.85, 6.000);
+  \fill[blue!80!black] (0,0) circle (3.5pt) node[below left, font=\tiny] {$P_0$};
+  \draw[arc line] (1.5708,3.0) ++(230:3.0) arc (230:250:3.0); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt) node[above right, font=\tiny] {$P_1$};
+  \draw[arc line] (3.1416,3.0) ++(200:3.0) arc (200:220:3.0); \fill[blue!80!black] (0.54, 1.500) circle (3.5pt) node[above right, font=\tiny] {$P_2$};
+  \draw[arc line] (4.7124,3.0) ++(170:3.0) arc (170:190:3.0); \fill[blue!80!black] (1.71, 3.000) circle (3.5pt) node[above right, font=\tiny] {$P_3$};
+  \draw[arc line] (6.2832,3.0) ++(140:3.0) arc (140:160:3.0); \fill[blue!80!black] (3.68, 4.500) circle (3.5pt) node[above right, font=\tiny] {$P_4$};
+  \draw[arc line] (7.8540,3.0) ++(110:3.0) arc (110:130:3.0); \fill[blue!80!black] (6.42, 5.598) circle (3.5pt) node[above right, font=\tiny] {$P_5$};
+  \draw[arc line] (9.4248,3.0) ++(80:3.0) arc (80:100:3.0); \fill[blue!80!black] (9.42, 6.000) circle (3.5pt) node[above, font=\tiny] {$P_6$};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_7$}
+\centering
+\begin{tikzpicture}[scale=0.45]
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
+  \drawLegendCard{ \textbf{$C_1\dots C_{12}$} & Retained Centers \\ \textbf{$P_1\dots P_{12}$} & Cutting Arcs/Points }
+  \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
+  \draw[axis line] (0,3.0) -- (18.85,3.0);
+  \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
+  \draw[thin, construction line] (0,0) -- (C0);
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
+  \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \node[right, font=\tiny] at (2.598,1.5) {2};
+  \node[right, font=\tiny] at (3.0,3.0) {3};
+  \node[right, font=\tiny] at (2.598,4.5) {4};
+  \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \node[above, font=\tiny] at (0,6.0) {6};
+  \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \node[below left, font=\tiny] at (-1.5,0.40) {11};
+  \foreach \i in {1,2,...,12} { 
+    \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
+    \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
+    \fill[red!80!black] ({\i*1.5708}, 3.0) circle (2.5pt);
+    \node[above=1pt, font=\tiny, red!80!black] at ({\i*1.5708}, 3.0) {$C_{\i}$};
+    \coordinate (C\i) at ({\i*1.5708}, 3.0);
+    \draw[thin, black!40, solid] ({\i*1.5708}, 0) -- (C\i);
+  }
+  \draw[dimension extension] (0,0) -- (0,-2.2);
+  \draw[dimension extension] (18.85,0) -- (18.85,-2.2);
+  \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
+  \draw[construction line] (-1.500, 0.402) -- (18.85, 0.402);
+  \draw[construction line] (-2.598, 1.500) -- (18.85, 1.500);
+  \draw[construction line] (-3.000, 3.000) -- (18.85, 3.000);
+  \draw[construction line] (-2.598, 4.500) -- (18.85, 4.500);
+  \draw[construction line] (-1.500, 5.598) -- (18.85, 5.598);
+  \draw[construction line] (0.000, 6.000) -- (18.85, 6.000);
+  \fill[blue!80!black] (0,0) circle (3.5pt) node[below left, font=\tiny] {$P_0$};
+  \draw[arc line] (1.5708,3.0) ++(230:3.0) arc (230:250:3.0); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt) node[above right, font=\tiny] {$P_1$};
+  \draw[arc line] (3.1416,3.0) ++(200:3.0) arc (200:220:3.0); \fill[blue!80!black] (0.54, 1.500) circle (3.5pt) node[above right, font=\tiny] {$P_2$};
+  \draw[arc line] (4.7124,3.0) ++(170:3.0) arc (170:190:3.0); \fill[blue!80!black] (1.71, 3.000) circle (3.5pt) node[above right, font=\tiny] {$P_3$};
+  \draw[arc line] (6.2832,3.0) ++(140:3.0) arc (140:160:3.0); \fill[blue!80!black] (3.68, 4.500) circle (3.5pt) node[above right, font=\tiny] {$P_4$};
+  \draw[arc line] (7.8540,3.0) ++(110:3.0) arc (110:130:3.0); \fill[blue!80!black] (6.42, 5.598) circle (3.5pt) node[above right, font=\tiny] {$P_5$};
+  \draw[arc line] (9.4248,3.0) ++(80:3.0) arc (80:100:3.0); \fill[blue!80!black] (9.42, 6.000) circle (3.5pt) node[above, font=\tiny] {$P_6$};
+  \draw[arc line] (10.9956,3.0) ++(50:3.0) arc (50:70:3.0); \fill[blue!80!black] (12.42, 5.598) circle (3.5pt) node[above left, font=\tiny] {$P_7$};
+\end{tikzpicture}
+\end{frame}
+\end{document}
+
+% \begin{frame}{Step 6: Strike Cutting Arcs (Radius = 25 mm) to Locate $P_8$}
+% \centering
+% \begin{tikzpicture}[scale=0.45]
+%   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
+%   \drawLegendCard{ \textbf{$C_1\dots C_{12}$} & Retained Centers \\ \textbf{$P_1\dots P_{12}$} & Cutting Arcs/Points }
+%   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
+%   \draw[axis line] (0,3.0) -- (18.85,3.0);
+%   \coordinate (C0) at (0,3.0); \draw[thick, blue!80!black] (C0) circle (3.0);
+%   \draw[thin, construction line] (0,0) -- (C0);
+%   \draw[thin, cyan!60!black, solid] (C0) -- (0,0);
+%   \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0);
+%   \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0);
+%   \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0);
+%   \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0);
+%   \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0);
+%   \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0);
+%   \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0);
+%   \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0);
+%   \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0);
+%   \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0);
+%   \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0);
+%   \node[below, font=\tiny] at (0,0) {$0, 12$};
+%   \node[below right, font=\tiny] at (1.5,0.40) {1};
+%   \node[right, font=\tiny] at (2.598,1.5) {2};
+%   \node[right, font=\tiny] at (3.0,3.0) {3};
+%   \node[right, font=\tiny] at (2.598,4.5) {4};
+%   \node[above right, font=\tiny] at (1.5,5.598) {5};
+%   \node[above, font=\tiny] at (0,6.0) {6};
+%   \node[above left, font=\tiny] at (-1.5,5.598) {7};
+%   \node[left, font=\tiny] at (-2.598,4.5) {8};
+%   \node[left, font=\tiny] at (-3.0,3.0) {9};
+%   \node[left, font=\tiny] at (-2.598,1.5) {10};
+%   \node[below left, font=\tiny] at (-1.5,0.40) {11};
+%   \foreach \i in {1,2,...,12} { 
+%     \fill[black] ({\i*1.5708}, 0) circle (1.8pt);
+%     \node[below, font=\tiny] at ({\i*1.5708}, 0) {\i'};
+%     \fill[red!80!black] ({\i*1.5708}, 3.0) circle (2.I encountered an error doing what you asked. Could you try again?
