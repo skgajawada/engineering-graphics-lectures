@@ -90,6 +90,40 @@
 \end{frame}
 
 % ============================================================
+% STEP 2
+% ============================================================
+\renewcommand{\stepnum}{2}
+\begin{frame}{Step 2: Divide Generating Circle into 12 Equal Parts}
+\centering
+\begin{tikzpicture}[scale=0.45]
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
+  \drawLegendCard{ \textbf{$AA'$} & Directing Line \\ \textbf{Axis Line} & Center Line \\ \textbf{$0\dots12$} & Circle Divisions }
+  \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
+  \draw[axis line] (0,3.0) -- (18.85,3.0) node[right] {\small $C_{12}$};
+  \coordinate (C0) at (0,3.0);
+  \fill[red!80!black] (C0) circle (3.5pt) node[above right, font=\tiny] {$C_0$};
+  \draw[thick, blue!80!black] (C0) circle (3.0);
+  \draw[thin, construction line] (0,0) -- (C0);
+  \draw[dimension extension] (0,0) -- (0,-2.2);
+  \draw[dimension extension] (18.85,0) -- (18.85,-2.2);
+  \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
+
+  \draw[thin, cyan!60!black, solid] (C0) -- (0,0); \node[below, font=\tiny] at (0,0) {$0, 12$};
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0); \node[below right, font=\tiny] at (1.5,0.40) {1};
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0); \node[right, font=\tiny] at (2.598,1.5) {2};
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0); \node[right, font=\tiny] at (3.0,3.0) {3};
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0); \node[right, font=\tiny] at (2.598,4.5) {4};
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0); \node[above right, font=\tiny] at (1.5,5.598) {5};
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0); \node[above, font=\tiny] at (0,6.0) {6};
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0); \node[above left, font=\tiny] at (-1.5,5.598) {7};
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0); \node[left, font=\tiny] at (-2.598,4.5) {8};
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0); \node[left, font=\tiny] at (-3.0,3.0) {9};
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0); \node[left, font=\tiny] at (-2.598,1.5) {10};
+  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0); \node[below left, font=\tiny] at (-1.5,0.40) {11};
+\end{tikzpicture}
+\end{frame}
+
+% ============================================================
 % STEP 7
 % ============================================================
 \renewcommand{\stepnum}{7}
