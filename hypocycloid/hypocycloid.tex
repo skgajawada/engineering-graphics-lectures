@@ -4,15 +4,9 @@
 % PACKAGES
 % ============================================================
 \usetheme{metropolis}
-
 \usepackage{tikz}
 \usepackage{amsmath}
-\usetikzlibrary{
-    calc,
-    arrows.meta,
-    angles,
-    quotes
-}
+\usetikzlibrary{calc,arrows.meta,angles,quotes}
 
 \setbeamertemplate{navigation symbols}{}
 
@@ -20,11 +14,7 @@
 % FOOTER
 % ============================================================
 \setbeamertemplate{footline}{%
-\begin{beamercolorbox}[
-    wd=\paperwidth,
-    ht=3.0ex,
-    dp=1.2ex
-]{footline}
+\begin{beamercolorbox}[wd=\paperwidth,ht=3.0ex,dp=1.2ex]{footline}
 \hspace{1.2em}
 \scriptsize Gajavada Sanjeevkumar
 \hfill
@@ -34,30 +24,16 @@
 \hspace{1.2em}
 \end{beamercolorbox}
 }
-
-\setbeamercolor{footline}{
-    fg=black!70,
-    bg=white
-}
+\setbeamercolor{footline}{fg=black!70,bg=white}
 
 % ============================================================
 % TITLE
 % ============================================================
-\title[
-    Engineering Curves: Hypocycloid
-]{
-    Engineering Curves: Construction of Hypocycloid
-}
-
-\subtitle{
-    Rolling Circle Method with Tangent \& Normal
-}
-
-\author{
-    Gajavada Sanjeevkumar
-}
-
-\date{}
+\title[Engineering Curves: Hypocycloid]
+{Engineering Curves: Construction of Hypocycloid}
+\subtitle{Rolling Circle Method with Tangent \& Normal}
+\author{Gajavada Sanjeevkumar}
+\date{\today}
 
 % ============================================================
 % TIKZ STYLES
@@ -66,7 +42,11 @@
     extension line/.style={thin, densely dotted, violet!70},
     directing line/.style={thick, blue!80!black},
     generating line/.style={thick, green!60!black},
-    centre line/.style={thin, dash pattern=on 8pt off 2pt on 1.5pt off 2pt, red!70!black},
+    centre line/.style={
+        thin,
+        dash pattern=on 8pt off 2pt on 1.5pt off 2pt,
+        red!70!black
+    },
     construction line/.style={thin, cyan!80!black},
     division line/.style={thin, orange!90!black},
     arc line/.style={thin, purple!80!black},
@@ -76,6 +56,18 @@
     contact line/.style={thin, brown!70!black},
     dimension line/.style={thin, <->, >=Stealth, black!75}
 }
+
+% ============================================================
+% CONSTANTS
+% ============================================================
+\def\R{85}
+\def\r{25}
+\def\Rc{60}
+\def\Aang{135}
+\def\Bang{29.11764706}
+\def\dang{8.823529412}
+\def\ratio{3.4}
+\def\thetamax{105.88235294}
 
 % ============================================================
 % LEGEND
@@ -94,22 +86,20 @@
 }
 
 % ============================================================
-% BASIC GEOMETRY (R = 85 mm, r = 25 mm, OC0 = 60 mm)
-% Angle AOB = 360 * (25/85) = 105.88235 deg
-% A = 135 deg, B = 135 - 105.88235 = 29.11765 deg
+% BASIC GEOMETRY
 % ============================================================
 \newcommand{\Base}{%
     \coordinate(O) at (0,0);
-    \coordinate(A) at (135:85);
-    \coordinate(B) at (29.11765:85);
-    \coordinate(Czero) at (135:60);
-    
+    \coordinate(A) at (\Aang:\R);
+    \coordinate(B) at (\Bang:\R);
+    \coordinate(Czero) at (\Aang:\Rc);
+
     \draw[thin] (O)--(A);
     \draw[thin] (O)--(B);
-    \draw[extension line] (A)--(135:98);
-    \draw[extension line] (B)--(29.11765:98);
-    \draw[directing line] (A) arc (135:29.11765:85);
-    
+    \draw[extension line] (A)--(\Aang:98);
+    \draw[extension line] (B)--(\Bang:98);
+    \draw[directing line] (A) arc (\Aang:\Bang:\R);
+
     \fill(O) circle (.7pt) node[below] {$O$};
     \fill(A) circle (.6pt) node[above left] {$A$};
     \fill(B) circle (.6pt) node[below right] {$B$};
@@ -119,28 +109,34 @@
 % DIMENSIONING
 % ============================================================
 \newcommand{\OADim}{%
-    \draw[dimension line] ($(O)+(225:9)$) -- ($(A)+(225:9)$)
-    node[midway, sloped, below, fill=white, inner sep=1pt, font=\scriptsize] {$85\ \mathrm{mm}$};
-    \draw[thin, black!55] (O) -- ($(O)+(225:9)$);
-    \draw[thin, black!55] (A) -- ($(A)+(225:9)$);
+    \draw[dimension line]
+        ($(O)+(225:9)$)--($(A)+(225:9)$)
+        node[midway,sloped,below,fill=white,inner sep=1pt,
+        font=\scriptsize] {$85\ \mathrm{mm}$};
+    \draw[thin,black!55] (O)--($(O)+(225:9)$);
+    \draw[thin,black!55] (A)--($(A)+(225:9)$);
 }
 
 \newcommand{\ACDim}{%
-    \draw[dimension line] ($(A)+(225:7)$) -- ($(Czero)+(225:7)$)
-    node[midway, sloped, above, fill=white, inner sep=1pt, font=\scriptsize] {$25\ \mathrm{mm}$};
-    \draw[thin, black!55] (A) -- ($(A)+(225:7)$);
-    \draw[thin, black!55] (Czero) -- ($(Czero)+(225:7)$);
+    \draw[dimension line]
+        ($(A)+(225:7)$)--($(Czero)+(225:7)$)
+        node[midway,sloped,above,fill=white,inner sep=1pt,
+        font=\scriptsize] {$25\ \mathrm{mm}$};
+    \draw[thin,black!55] (A)--($(A)+(225:7)$);
+    \draw[thin,black!55] (Czero)--($(Czero)+(225:7)$);
 }
 
 \newcommand{\OCDim}{%
-    \draw[dimension line] ($(O)+(225:12)$) -- ($(Czero)+(225:12)$)
-    node[midway, sloped, below, fill=white, inner sep=1pt, font=\scriptsize] {$60\ \mathrm{mm}$};
-    \draw[thin, black!55] (O) -- ($(O)+(225:12)$);
-    \draw[thin, black!55] (Czero) -- ($(Czero)+(225:12)$);
+    \draw[dimension line]
+        ($(O)+(225:12)$)--($(Czero)+(225:12)$)
+        node[midway,sloped,below,fill=white,inner sep=1pt,
+        font=\scriptsize] {$60\ \mathrm{mm}$};
+    \draw[thin,black!55] (O)--($(O)+(225:12)$);
+    \draw[thin,black!55] (Czero)--($(Czero)+(225:12)$);
 }
 
 % ============================================================
-% C_0 AND GENERATING CIRCLE (r = 25 mm)
+% INITIAL GENERATING CIRCLE
 % ============================================================
 \newcommand{\DrawCzero}{%
     \draw[centre line] (O)--(Czero);
@@ -148,11 +144,11 @@
 }
 
 \newcommand{\GenCircle}{%
-    \draw[generating line] (Czero) circle (25);
+    \draw[generating line] (Czero) circle (\r);
 }
 
 \newcommand{\GenPt}[1]{%
-    \coordinate(G#1) at ($(Czero)+({135-30*(#1)}:25)$);
+    \coordinate(G#1) at ($(Czero)+({\Aang-30*(#1)}:\r)$);
     \fill[black] (G#1) circle (.45pt);
 }
 
@@ -161,171 +157,318 @@
 }
 
 \newcommand{\GenLab}[1]{%
-    \node[font=\tiny, green!50!black] at ($(Czero)+({135-30*(#1)}:28.5)$) {$#1$};
+    \node[font=\tiny,green!50!black]
+    at ($(Czero)+({\Aang-30*(#1)}:28.5)$) {$#1$};
 }
 
 \newcommand{\AllGen}{%
     \foreach\k in {0,...,12}{\GenPt{\k}}
 }
-
 \newcommand{\AllGenRad}{%
     \foreach\k in {0,...,11}{\GenRad{\k}}
 }
-
 \newcommand{\AllGenLab}{%
-    \node[font=\tiny, green!50!black, below left, inner sep=.5pt] at ($(G0)+(135:5)$) {$0$};
+    \node[font=\tiny,green!50!black,below left,inner sep=.5pt]
+    at ($(G0)+(135:5)$) {$0$};
     \foreach\k in {1,...,11}{\GenLab{\k}}
-    \node[font=\tiny, green!50!black, above right, inner sep=.5pt] at ($(G12)+(135:5)$) {$0,12$};
+    \node[font=\tiny,green!50!black,above right,inner sep=.5pt]
+    at ($(G12)+(135:5)$) {$0,12$};
 }
 
 % ============================================================
-% CONCENTRIC CONSTRUCTION ARCS (Using equal-radius pairing)
+% HYPOCYCLOID COORDINATES
+%
+% C_k = 60 at angle 135 - k*8.823529
+%
+% P_k = C_k + 25 at angle
+%       135 + 3.4*k*8.823529
 % ============================================================
+\newcommand{\AllPCoords}{%
+    \foreach\k in {0,...,12}{%
+        \coordinate(P\k) at (
+            {60*cos(135-\dang*(\k))
+             +25*cos(135+3.4*\dang*(\k))},
+            {60*sin(135-\dang*(\k))
+             +25*sin(135+3.4*\dang*(\k))}
+        );
+    }%
+}
+
+% ============================================================
+% CONCENTRIC CONSTRUCTION ARCS
+%
+% Equal-radius pairs are:
+% (1,11), (2,10), (3,9), (4,8), (5,7), and (6).
+%
+% Only ONE physical arc is drawn for each equal-radius pair.
+% The arc starts from the outer member and terminates on OB.
+% ============================================================
+\newcommand{\ConArcPair}[2]{%
+    \pgfmathsetmacro{\px}{
+        60*cos(135-\dang*(#2))
+        +25*cos(135+3.4*\dang*(#2))
+    }
+    \pgfmathsetmacro{\py}{
+        60*sin(135-\dang*(#2))
+        +25*sin(135+3.4*\dang*(#2))
+    }
+    \pgfmathsetmacro{\rr}{
+        sqrt(\px*\px+\py*\py)
+    }
+    \pgfmathsetmacro{\aa}{
+        atan2(\py,\px)
+    }
+    \draw[arc line]
+        (\aa:\rr) arc[start angle=\aa,
+        end angle=\Bang,radius=\rr];
+}
+
 \newcommand{\ConArcZero}{%
-    \draw[arc line] (135:85) arc (135:29.11765:85);
-}
-
-\newcommand{\ConPair}[2]{%
-    \pgfmathsetmacro{\gxA}{60*cos(135-8.823529*(#1))+25*cos(135+3.4*8.823529*(#1))}
-    \pgfmathsetmacro{\gyA}{60*sin(135-8.823529*(#1))+25*sin(135+3.4*8.823529*(#1))}
-    \pgfmathsetmacro{\rrA}{sqrt(\gxA*\gxA+\gyA*\gyA)}
-    \pgfmathsetmacro{\aaA}{atan2(\gyA,\gxA)}
-    \pgfmathsetmacro{\gxB}{60*cos(135-8.823529*(#2))+25*cos(135+3.4*8.823529*(#2))}
-    \pgfmathsetmacro{\gyB}{60*sin(135-8.823529*(#2))+25*sin(135+3.4*8.823529*(#2))}
-    \pgfmathsetmacro{\aaB}{atan2(\gyB,\gxB)}
-    \pgfmathsetmacro{\aaMin}{min(\aaA,\aaB)}
-    \draw[arc line] (\aaMin:\rrA) arc[start angle=\aaMin, end angle=29.11765, radius=\rrA];
+    \draw[arc line]
+        (\Aang:\R) arc (\Aang:\Bang:\R);
 }
 
 \newcommand{\ConFull}{%
     \ConArcZero
-    \ConPair{1}{11}
-    \ConPair{2}{10}
-    \ConPair{3}{9}
-    \ConPair{4}{8}
-    \ConPair{5}{7}
-    \ConArcCustomSingle{6}
-}
-
-\newcommand{\ConArcCustomSingle}[1]{%
-    \pgfmathsetmacro{\gx}{60*cos(135-8.823529*(#1))+25*cos(135+3.4*8.823529*(#1))}
-    \pgfmathsetmacro{\gy}{60*sin(135-8.823529*(#1))+25*sin(135+3.4*8.823529*(#1))}
-    \pgfmathsetmacro{\rr}{sqrt(\gx*\gx+\gy*\gy)}
-    \pgfmathsetmacro{\aa}{atan2(\gy,\gx)}
-    \draw[arc line] (\aa:\rr) arc[start angle=\aa, end angle=29.11765, radius=\rr];
-}
-
-\newcommand{\CentreArc}{%
-    \draw[centre line] (135:60) arc (135:29.11765:60);
+    \ConArcPair{1}{11}
+    \ConArcPair{2}{10}
+    \ConArcPair{3}{9}
+    \ConArcPair{4}{8}
+    \ConArcPair{5}{7}
+    \ConArcPair{6}{6}
 }
 
 % ============================================================
-% ANGULAR DIVISIONS (8.823529 deg increments, Labels at radius 91 mm)
+% CENTRE LOCUS
+% ============================================================
+\newcommand{\CentreArc}{%
+    \draw[centre line]
+        (\Aang:\Rc) arc (\Aang:\Bang:\Rc);
+}
+
+% ============================================================
+% ANGULAR DIVISIONS
 % ============================================================
 \newcommand{\DivLine}[1]{%
-    \draw[division line] (O)--({135-8.823529*(#1)}:85);
+    \draw[division line]
+        (O)--({135-\dang*(#1)}:\R);
 }
 
 \newcommand{\DivLabel}[1]{%
-    \node[font=\tiny, orange!90!black, inner sep=.5pt] at ({135-8.823529*(#1)}:91) {$#1^\prime$};
+    \node[
+        font=\tiny,
+        orange!90!black,
+        inner sep=.5pt
+    ] at ({135-\dang*(#1)}:91) {$#1^\prime$};
 }
 
 \newcommand{\CenterPt}[1]{%
-    \coordinate(C#1) at ({135-8.823529*(#1)}:60);
+    \coordinate(C#1) at ({135-\dang*(#1)}:\Rc);
     \fill[black] (C#1) circle (.45pt);
-    \node[font=\tiny, above right, inner sep=.5pt] at(C#1) {$C_{#1}$};
+    \node[font=\tiny,above right,inner sep=.5pt]
+        at(C#1) {$C_{#1}$};
 }
 
-\newcommand{\AllDiv}{\foreach\k in {0,...,12}{\DivLine{\k}}}
-\newcommand{\AllLabels}{\foreach\k in {0,...,12}{\DivLabel{\k}}}
-\newcommand{\AllCenters}{\foreach\k in {0,...,12}{\CenterPt{\k}}}
-\newcommand{\DivFull}{\AllDiv\AllLabels\AllCenters}
-
-% ============================================================
-% HYPOCYCLOID POINTS & CURVE (Corrected 8.823529 deg increment & 3.4 ratio)
-% ============================================================
-\newcommand{\AllPCoords}{%
-    \foreach\k in {0,...,12}{
-        \coordinate(P\k) at (
-            {60*cos(135-8.823529*(\k))+25*cos(135+3.4*8.823529*(\k))},
-            {60*sin(135-8.823529*(\k))+25*sin(135+3.4*8.823529*(\k))}
-        );
-    }
+\newcommand{\AllDiv}{%
+    \foreach\k in {0,...,12}{\DivLine{\k}}
+}
+\newcommand{\AllLabels}{%
+    \foreach\k in {0,...,12}{\DivLabel{\k}}
+}
+\newcommand{\AllCenters}{%
+    \foreach\k in {0,...,12}{\CenterPt{\k}}
+}
+\newcommand{\DivFull}{%
+    \AllDiv\AllLabels\AllCenters
 }
 
+% ============================================================
+% CUTTING ARCS
+%
+% At C_k the generating circle has rotated by
+% 3.4*k*dang relative to the initial radial direction.
+% ============================================================
 \newcommand{\CutArc}[1]{%
-    \pgfmathsetmacro{\qa}{135+3.4*8.823529*(#1)}
-    \draw[construction line, very thin] (C#1)+({\qa-12}:25) arc({\qa-12}:{\qa+12}:25);
+    \pgfmathsetmacro{\qa}{135+3.4*\dang*(#1)}
+    \draw[construction line,very thin]
+        (C#1)+({\qa-12}:25)
+        arc({\qa-12}:{\qa+12}:25);
 }
 
 \newcommand{\Pmark}[1]{%
     \fill[black] (P#1) circle (.5pt);
-    \node[font=\tiny, blue!85!black, above right, inner sep=.5pt] at(P#1) {$P_{#1}$};
+    \node[
+        font=\tiny,
+        blue!85!black,
+        above right,
+        inner sep=.5pt
+    ] at(P#1) {$P_{#1}$};
 }
 
 \newcommand{\AllCut}{%
     \AllPCoords
-    \foreach\k in {0,...,12}{\CutArc{\k}\Pmark{\k}}
+    \foreach\k in {0,...,12}{%
+        \CutArc{\k}\Pmark{\k}
+    }%
 }
 
+% ============================================================
+% HYPOCYCLOID
+% ============================================================
 \newcommand{\Curve}{%
-    \draw[main curve] plot[domain=0:105.88235, samples=360, variable=\th, smooth]
-    (
+    \draw[main curve]
+    plot[
+        domain=0:\thetamax,
+        samples=360,
+        variable=\th,
+        smooth
+    ] (
         {60*cos(135-\th)+25*cos(135+3.4*\th)},
         {60*sin(135-\th)+25*sin(135+3.4*\th)}
     );
 }
 
 % ============================================================
-% SELECTED POINT & GEOMETRY (Accurate P and Cp, M)
+% SELECTED POINT: OP = 50 mm
+%
+% First valid intersection of OP=50 with the one-revolution
+% hypocycloid:
+%
+% theta = 28.43173459 deg
+% alpha = 135-theta = 106.56826541 deg
+%
+% P = (-32.614918,37.898115)
+% Cp = (106.568265:60)
+% M  = (106.568265:85)
 % ============================================================
 \newcommand{\SelectedGeometry}{%
-    \coordinate(Psel) at (-32.6149, 37.8981);
-    \coordinate(Cp) at (106.5683:60);
-    \coordinate(M) at (106.5683:85);
+    \coordinate(Psel) at (-32.61491804,37.89811501);
+    \coordinate(Cp) at (106.56826541:60);
+    \coordinate(M)  at (106.56826541:85);
+
+    % Exact normal direction PM.
+    % The line is extended 35 mm on both sides of P.
+    \coordinate(NNleft)  at (-39.22241212,3.52747315);
+    \coordinate(NNright) at (-26.00742396,72.26875687);
+
+    % Tangent is perpendicular to PM at P.
+    \coordinate(T2) at (-66.98555990,44.50560909);
+    \coordinate(T1) at (1.75572382,31.29062093);
 }
 
 \newcommand{\PGeometry}{%
-    \fill[black] (Psel) circle (.6pt);
-    \node[font=\scriptsize, blue!80!black, above right, inner sep=.5pt] at(Psel) {$P$};
-}
-
-\newcommand{\PtoCpArc}{%
-    \draw[construction line, very thin] (Psel)+(-45:25) arc(-45:-15:25);
-    \draw[construction line] (Psel)--(Cp);
-    \fill[black] (Cp) circle (.5pt);
-    \node[font=\scriptsize, above right, inner sep=.5pt] at(Cp) {$C_p$};
-    
-    % Dimension line with extension/limiting lines perpendicular to PCp
-    \draw[dimension line] ($(Psel)!4mm!90:(Cp)$) -- ($(Cp)!4mm!-90:(Psel)$)
-    node[midway, sloped, above, fill=white, inner sep=1pt, font=\scriptsize] {$25\ \mathrm{mm}$};
-    \draw[thin, black!55] (Psel) -- ($(Psel)!4mm!90:(Cp)$);
-    \draw[thin, black!55] (Cp) -- ($(Cp)!4mm!-90:(Psel)$);
+    \fill[black] (Psel) circle (.7pt);
+    \node[
+        font=\scriptsize,
+        blue!80!black,
+        above right,
+        inner sep=1pt
+    ] at(Psel) {$P$};
 }
 
 % ============================================================
-% NORMAL AND TANGENT ( Geometrically derived from PM )
+% PCp CONSTRUCTION AND CORRECT DIMENSION
+%
+% PCp = 25 mm.
+% Direction of PCp = 231.6678976 deg.
+% Dimension line is offset perpendicular to PCp.
+% Extension/limiting lines are perpendicular to PCp.
+% ============================================================
+\newcommand{\PtoCpArc}{%
+    \draw[construction line,very thin]
+        (Psel)+({231.6679-12}:25)
+        arc({231.6679-12}:{231.6679+12}:25);
+
+    \draw[construction line] (Psel)--(Cp);
+
+    \fill[black] (Cp) circle (.55pt);
+    \node[
+        font=\scriptsize,
+        above right,
+        inner sep=.5pt
+    ] at(Cp) {$C_p$};
+
+    % Dimension line parallel to PCp.
+    \draw[dimension line]
+        ($(Psel)+(321.6679:6)$)--($(Cp)+(321.6679:6)$)
+        node[
+            midway,
+            sloped,
+            above,
+            fill=white,
+            inner sep=1pt,
+            font=\scriptsize
+        ] {$25\ \mathrm{mm}$};
+
+    % Limiting lines perpendicular to PCp.
+    \draw[thin,black!55]
+        (Psel)--($(Psel)+(321.6679:6)$);
+    \draw[thin,black!55]
+        (Cp)--($(Cp)+(321.6679:6)$);
+}
+
+% ============================================================
+% NORMAL AND TANGENT
 % ============================================================
 \newcommand{\NormalLine}{%
-    \draw[normal line, line width=1.2pt] ($(Psel)!-0.4!(M)$) -- ($(Psel)!1.4!(M)$);
-    \node[font=\scriptsize, orange!85!black, above right, xshift=2pt] at($(Psel)!1.4!(M)$) {$N'$};
-    \node[font=\scriptsize, orange!85!black, below left, xshift=-2pt] at($(Psel)!-0.4!(M)$) {$N$};
+    \draw[normal line,line width=1.2pt]
+        (NNleft)--(NNright);
+
+    \node[
+        font=\scriptsize,
+        orange!85!black,
+        above right,
+        xshift=2pt
+    ] at(NNright) {$N'$};
+
+    \node[
+        font=\scriptsize,
+        orange!85!black,
+        below left,
+        xshift=-2pt
+    ] at(NNleft) {$N$};
 }
 
 \newcommand{\NormalAndTangent}{%
     \NormalLine
-    \draw[tangent line, line width=1.2pt] ($(Psel)!30mm!90:(M)$) -- ($(Psel)!30mm!-90:(M)$);
-    \node[font=\scriptsize, magenta!80!black, above right, xshift=2pt] at($(Psel)!30mm!90:(M)$) {$T'$};
-    \node[font=\scriptsize, magenta!80!black, below left, xshift=-2pt] at($(Psel)!30mm!-90:(M)$) {$T$};
+
+    \draw[tangent line,line width=1.2pt]
+        (T2)--(T1);
+
+    \node[
+        font=\scriptsize,
+        magenta!80!black,
+        above right,
+        xshift=2pt
+    ] at(T1) {$T'$};
+
+    \node[
+        font=\scriptsize,
+        magenta!80!black,
+        below left,
+        xshift=-2pt
+    ] at(T2) {$T$};
 }
 
 % ============================================================
-% FINAL CONSTRUCTION BUNDLE
+% CONSTRUCTION BUNDLES
 % ============================================================
-\newcommand{\BaseCommon}{\Base\DrawCzero\GenCircle}
-\newcommand{\GenFull}{\AllGen\AllGenRad\AllGenLab}
+\newcommand{\BaseCommon}{%
+    \Base\DrawCzero\GenCircle
+}
+
+\newcommand{\GenFull}{%
+    \AllGen\AllGenRad\AllGenLab
+}
+
 \newcommand{\FinalConstruction}{%
-    \BaseCommon\GenFull\ConFull\CentreArc\DivFull\AllCut\Curve
+    \BaseCommon
+    \GenFull
+    \ConFull
+    \CentreArc
+    \DivFull
+    \AllCut
+    \Curve
 }
 
 % ============================================================
@@ -333,19 +476,34 @@
 % ============================================================
 \begin{document}
 
-\begin{frame}[plain]\titlepage\end{frame}
+% ------------------------------------------------------------
+% TITLE
+% ------------------------------------------------------------
+\begin{frame}[plain]
+    \titlepage
+\end{frame}
 
+% ------------------------------------------------------------
+% PROBLEM
+% ------------------------------------------------------------
 \begin{frame}{Problem Statement}
 \begin{block}{Given}
-A generating circle of diameter $50$ mm rolls internally without slipping inside a directing circular arc of radius $85$ mm for one revolution.
+A generating circle of diameter $50$ mm rolls internally without
+slipping inside a directing circular arc of radius $85$ mm for
+one revolution.
 \end{block}
+
 \begin{itemize}
-    \item Construct the hypocycloid arch.
-    \item Draw a tangent and normal at a point $50$ mm from the centre of the directing circle.
-    \item Retain every construction element in all later views.
+    \item Construct the hypocycloid.
+    \item Draw a tangent and normal at a point $50$ mm from
+          the centre of the directing circle.
+    \item Retain the construction geometry in the final drawing.
 \end{itemize}
 \end{frame}
 
+% ------------------------------------------------------------
+% CALCULATED DATA
+% ------------------------------------------------------------
 \begin{frame}{Calculated Data}
 \begin{align*}
 R &= 85\text{ mm},
@@ -354,56 +512,88 @@ r &= \frac{50}{2}=25\text{ mm},
 \\[0.4em]
 OC_0 &= R-r=85-25=60\text{ mm},
 &
-AC_0 &= 25\text{ mm},
+AC_0 &=25\text{ mm},
 \\[0.4em]
-\angle AOB &= 360^\circ \times \frac{r}{R} = 360^\circ \times \frac{25}{85} \approx 105.88^\circ,
+\angle AOB
+&=360^\circ\frac{r}{R}
+=360^\circ\frac{25}{85}
+=105.882353^\circ,
 \\[0.4em]
-\Delta\theta &= \frac{105.88^\circ}{12} \approx 8.8235^\circ,
+\Delta\theta
+&=\frac{105.882353^\circ}{12}
+=8.823529^\circ,
 &
-\text{Generating-circle division} &= \frac{360^\circ}{12} = 30^\circ.
+\text{Generating-circle division}
+&=30^\circ.
 \end{align*}
 \end{frame}
 
+% ------------------------------------------------------------
+% STEP 1
+% ------------------------------------------------------------
 \begin{frame}{Step 1: Draw $OA$}
 \centering
 \begin{tikzpicture}[scale=.075,>=stealth]
-    \coordinate(O)at(0,0);\coordinate(A)at(135:85);
-    \draw[thin] (O)--(A);
-    \OADim
+    \coordinate(O)at(0,0);
+    \coordinate(A)at(135:85);
+    \draw[thin](O)--(A);
+    \draw[dimension line]
+        ($(O)+(225:9)$)--($(A)+(225:9)$)
+        node[midway,sloped,below,fill=white,inner sep=1pt,
+        font=\scriptsize]{$85\ \mathrm{mm}$};
+    \draw[thin,black!55](O)--($(O)+(225:9)$);
+    \draw[thin,black!55](A)--($(A)+(225:9)$);
     \fill(O)circle(.7pt)node[below]{$O$};
     \fill(A)circle(.6pt)node[above left]{$A$};
     \Legend{$OA=85$ mm.}
 \end{tikzpicture}
 \end{frame}
 
+% ------------------------------------------------------------
+% STEP 2
+% ------------------------------------------------------------
 \begin{frame}{Step 2: Extend $OA$}
 \centering
 \begin{tikzpicture}[scale=.075,>=stealth]
-    \coordinate(O)at(0,0);\coordinate(A)at(135:85);
-    \draw[thin] (O)--(A);
-    \draw[extension line] (A)--(135:98);
+    \coordinate(O)at(0,0);
+    \coordinate(A)at(135:85);
+    \draw[thin](O)--(A);
+    \draw[extension line](A)--(135:98);
     \fill(O)circle(.7pt)node[below]{$O$};
     \fill(A)circle(.6pt)node[above left]{$A$};
     \Legend{Extend $OA$.}
 \end{tikzpicture}
 \end{frame}
 
+% ------------------------------------------------------------
+% STEP 3
+% ------------------------------------------------------------
 \begin{frame}{Step 3: Draw $OB$ at $105.88^\circ$}
 \centering
 \begin{tikzpicture}[scale=.075,>=stealth]
-    \coordinate(O)at(0,0);\coordinate(A)at(135:85);\coordinate(B)at(29.11765:85);
-    \draw[thin] (O)--(A);
-    \draw[extension line] (A)--(135:98);
-    \draw[thin] (O)--(B);
-    \draw[thin, black!70] (135:18) arc(135:29.11765:18);
-    \node[font=\scriptsize] at(82:23) {$105.88^\circ$};
+    \coordinate(O)at(0,0);
+    \coordinate(A)at(135:85);
+    \coordinate(B)at(29.11764706:85);
+
+    \draw[thin](O)--(A);
+    \draw[extension line](A)--(135:98);
+    \draw[thin](O)--(B);
+
+    \draw[thin,black!70]
+        (135:18) arc(135:29.11764706:18);
+    \node[font=\scriptsize]at(82:23){$105.88^\circ$};
+
     \fill(O)circle(.7pt)node[below]{$O$};
     \fill(A)circle(.6pt)node[above left]{$A$};
     \fill(B)circle(.6pt)node[below right]{$B$};
+
     \Legend{$\angle AOB=105.88^\circ$.}
 \end{tikzpicture}
 \end{frame}
 
+% ------------------------------------------------------------
+% STEP 4
+% ------------------------------------------------------------
 \begin{frame}{Step 4: Extend $OB$}
 \centering
 \begin{tikzpicture}[scale=.075,>=stealth]
@@ -412,6 +602,9 @@ AC_0 &= 25\text{ mm},
 \end{tikzpicture}
 \end{frame}
 
+% ------------------------------------------------------------
+% STEP 5
+% ------------------------------------------------------------
 \begin{frame}{Step 5: Draw the directing arc $AB$}
 \centering
 \begin{tikzpicture}[scale=.075,>=stealth]
@@ -420,115 +613,231 @@ AC_0 &= 25\text{ mm},
 \end{tikzpicture}
 \end{frame}
 
+% ------------------------------------------------------------
+% STEP 6
+% ------------------------------------------------------------
 \begin{frame}{Step 6: Locate $C_0$ and the generating circle}
 \centering
 \begin{tikzpicture}[scale=.075,>=stealth]
-    \Base\DrawCzero
-    \ACDim\OCDim
+    \Base
+    \DrawCzero
+    \ACDim
+    \OCDim
     \GenCircle
     \Legend{$OC_0=60$ mm.\\$AC_0=25$ mm.\\Green: generating circle.}
 \end{tikzpicture}
 \end{frame}
 
+% ------------------------------------------------------------
+% STEP 7: GENERATING CIRCLE DIVISIONS
+% ------------------------------------------------------------
 \newcommand{\GenDivisionFrame}[1]{%
 \begin{frame}{Step 7: Divide the generating circle into 12 equal parts}
 \centering
 \begin{tikzpicture}[scale=.075,>=stealth]
-    \Base\DrawCzero\GenCircle
-    \foreach\j in {0,...,#1}{
-        \GenPt{\j}
-        \ifnum\j>0\GenRad{\j}\fi
+    \Base
+    \DrawCzero
+    \GenCircle
+
+    \foreach\j in {0,...,#1}{%
+        \GenPt{\j}%
+        \ifnum\j>0
+            \GenRad{\j}%
+        \fi
     }
-    \node[font=\tiny, green!50!black, below left, inner sep=.5pt] at($(G0)+(135:5)$) {$0$};
+
+    \node[
+        font=\tiny,
+        green!50!black,
+        below left,
+        inner sep=.5pt
+    ] at($(G0)+(135:5)$){$0$};
+
     \ifnum#1>0
         \foreach\j in {1,...,#1}{\GenLab{\j}}
     \fi
+
     \ifnum#1=12
-        \node[font=\tiny, green!50!black, above right, inner sep=.5pt] at($(G12)+(135:5)$) {$0,12$};
+        \node[
+            font=\tiny,
+            green!50!black,
+            above right,
+            inner sep=.5pt
+        ] at($(G12)+(135:5)$){$0,12$};
     \fi
+
     \Legend{Green: generating circle.\\Clockwise $30^\circ$ divisions.}
 \end{tikzpicture}
 \end{frame}
 }
 
-\GenDivisionFrame{1}\GenDivisionFrame{2}\GenDivisionFrame{3}\GenDivisionFrame{4}\GenDivisionFrame{5}\GenDivisionFrame{6}\GenDivisionFrame{7}\GenDivisionFrame{8}\GenDivisionFrame{9}\GenDivisionFrame{10}\GenDivisionFrame{11}\GenDivisionFrame{12}
+\GenDivisionFrame{1}
+\GenDivisionFrame{2}
+\GenDivisionFrame{3}
+\GenDivisionFrame{4}
+\GenDivisionFrame{5}
+\GenDivisionFrame{6}
+\GenDivisionFrame{7}
+\GenDivisionFrame{8}
+\GenDivisionFrame{9}
+\GenDivisionFrame{10}
+\GenDivisionFrame{11}
+\GenDivisionFrame{12}
 
+% ------------------------------------------------------------
+% STEP 8
+% ------------------------------------------------------------
 \begin{frame}{Step 8: Complete the generating-circle divisions}
 \centering
 \begin{tikzpicture}[scale=.075,>=stealth]
-    \Base\DrawCzero\GenCircle\GenFull
+    \Base
+    \DrawCzero
+    \GenCircle
+    \GenFull
     \Legend{Complete generating-circle divisions.}
 \end{tikzpicture}
 \end{frame}
 
-% ============================================================
-% STEP 9: CONCENTRIC ARCS DRAWN IN PAIRS (0,12 -> 1,11 -> 2,10 -> 3,9 -> 4,8 -> 5,7 -> 6)
-% ============================================================
-\newcommand{\ConFramePair}[2]{%
+% ------------------------------------------------------------
+% STEP 9: CONCENTRIC ARCS
+% ------------------------------------------------------------
+\newcommand{\ConFrame}[1]{%
 \begin{frame}{Step 9: Draw concentric construction arcs}
 \centering
 \begin{tikzpicture}[scale=.075,>=stealth]
-    \Base\DrawCzero\GenCircle\GenFull
-    #2
-    \Legend{Construction arcs centered at $O$.\\Drawn pairwise outwards.}
+    \Base
+    \DrawCzero
+    \GenCircle
+    \GenFull
+    #1
+    \Legend{Construction arcs centered at $O$.\\Equal-radius pairs are used.}
 \end{tikzpicture}
 \end{frame}
 }
 
-\ConFramePair{0}{\ConArcZero\ConArcCustom{12}}
-\ConFramePair{1}{\ConArcZero\ConArcCustom{12}\ConPair{1}{11}}
-\ConFramePair{2}{\ConArcZero\ConArcCustom{12}\ConPair{1}{11}\ConPair{2}{10}}
-\ConFramePair{3}{\ConArcZero\ConArcCustom{12}\ConPair{1}{11}\ConPair{2}{10}\ConPair{3}{9}}
-\ConFramePair{4}{\ConArcZero\ConArcCustom{12}\ConPair{1}{11}\ConPair{2}{10}\ConPair{3}{9}\ConPair{4}{8}}
-\ConFramePair{5}{\ConArcZero\ConArcCustom{12}\ConPair{1}{11}\ConPair{2}{10}\ConPair{3}{9}\ConPair{4}{8}\ConPair{5}{7}}
-\ConFramePair{6}{\ConFull}
+\ConFrame{\ConArcZero}
+\ConFrame{\ConArcZero\ConArcPair{1}{11}}
+\ConFrame{\ConArcZero\ConArcPair{1}{11}\ConArcPair{2}{10}}
+\ConFrame{\ConArcZero\ConArcPair{1}{11}\ConArcPair{2}{10}\ConArcPair{3}{9}}
+\ConFrame{\ConArcZero\ConArcPair{1}{11}\ConArcPair{2}{10}\ConArcPair{3}{9}\ConArcPair{4}{8}}
+\ConFrame{\ConArcZero\ConArcPair{1}{11}\ConArcPair{2}{10}\ConArcPair{3}{9}\ConArcPair{4}{8}\ConArcPair{5}{7}}
+\ConFrame{\ConFull}
 
+% ------------------------------------------------------------
+% STEP 10
+% ------------------------------------------------------------
 \begin{frame}{Step 10: Draw the centre arc through $C_0$}
 \centering
 \begin{tikzpicture}[scale=.075,>=stealth]
-    \Base\DrawCzero\GenCircle\GenFull\ConFull\CentreArc
-    \Legend{Centre locus: ISO-style thin dash-dot line.}
+    \Base
+    \DrawCzero
+    \GenCircle
+    \GenFull
+    \ConFull
+    \CentreArc
+    \Legend{Centre locus: thin ISO-style dash-dot line.}
 \end{tikzpicture}
 \end{frame}
 
+% ------------------------------------------------------------
+% STEP 11: ANGULAR DIVISIONS
+% ------------------------------------------------------------
 \newcommand{\AngleFrame}[1]{%
 \begin{frame}{Step 11: Divide $\angle AOB$ into 12 equal parts}
 \centering
 \begin{tikzpicture}[scale=.075,>=stealth]
-    \Base\DrawCzero\GenCircle\GenFull\ConFull\CentreArc
-    \foreach\j in {0,...,#1}{
-        \DivLine{\j}\DivLabel{\j}\CenterPt{\j}
+    \Base
+    \DrawCzero
+    \GenCircle
+    \GenFull
+    \ConFull
+    \CentreArc
+
+    \foreach\j in {0,...,#1}{%
+        \DivLine{\j}
+        \DivLabel{\j}
+        \CenterPt{\j}
     }
-    \Legend{$8.82^\circ$ divisions.}
+
+    \Legend{$8.823529^\circ$ divisions.}
 \end{tikzpicture}
 \end{frame}
 }
 
-\AngleFrame{0}\AngleFrame{1}\AngleFrame{2}\AngleFrame{3}\AngleFrame{4}\AngleFrame{5}\AngleFrame{6}\AngleFrame{7}\AngleFrame{8}\AngleFrame{9}\AngleFrame{10}\AngleFrame{11}\AngleFrame{12}
+\AngleFrame{0}
+\AngleFrame{1}
+\AngleFrame{2}
+\AngleFrame{3}
+\AngleFrame{4}
+\AngleFrame{5}
+\AngleFrame{6}
+\AngleFrame{7}
+\AngleFrame{8}
+\AngleFrame{9}
+\AngleFrame{10}
+\AngleFrame{11}
+\AngleFrame{12}
 
+% ------------------------------------------------------------
+% STEP 12
+% ------------------------------------------------------------
 \begin{frame}{Step 12: Complete the angular divisions and centre points}
 \centering
 \begin{tikzpicture}[scale=.075,>=stealth]
-    \Base\DrawCzero\GenCircle\GenFull\ConFull\CentreArc\DivFull
+    \Base
+    \DrawCzero
+    \GenCircle
+    \GenFull
+    \ConFull
+    \CentreArc
+    \DivFull
     \Legend{Complete division lines and centre points.}
 \end{tikzpicture}
 \end{frame}
 
+% ------------------------------------------------------------
+% STEP 13: CUTTING ARCS AND POINTS
+% ------------------------------------------------------------
 \newcommand{\CutFrame}[1]{%
 \begin{frame}{Step 13: Draw the cutting arc and locate $P_i$}
 \centering
 \begin{tikzpicture}[scale=.075,>=stealth]
-    \Base\DrawCzero\GenCircle\GenFull\ConFull\CentreArc\DivFull\AllPCoords
-    \foreach\j in {0,...,#1}{
-        \CutArc{\j}\Pmark{\j}
+    \Base
+    \DrawCzero
+    \GenCircle
+    \GenFull
+    \ConFull
+    \CentreArc
+    \DivFull
+    \AllPCoords
+
+    \foreach\j in {0,...,#1}{%
+        \CutArc{\j}
+        \Pmark{\j}
     }
+
     \Legend{Cyan cutting arc: radius $25$ mm.}
 \end{tikzpicture}
 \end{frame}
 }
 
-\CutFrame{0}\CutFrame{1}\CutFrame{2}\CutFrame{3}\CutFrame{4}\CutFrame{5}\CutFrame{6}\CutFrame{7}\CutFrame{8}\CutFrame{9}\CutFrame{10}\CutFrame{11}\CutFrame{12}
+\CutFrame{0}
+\CutFrame{1}
+\CutFrame{2}
+\CutFrame{3}
+\CutFrame{4}
+\CutFrame{5}
+\CutFrame{6}
+\CutFrame{7}
+\CutFrame{8}
+\CutFrame{9}
+\CutFrame{10}
+\CutFrame{11}
+\CutFrame{12}
 
+% ------------------------------------------------------------
+% STEP 14
+% ------------------------------------------------------------
 \begin{frame}{Step 14: Draw the hypocycloid}
 \centering
 \begin{tikzpicture}[scale=.075,>=stealth]
@@ -537,104 +846,166 @@ AC_0 &= 25\text{ mm},
 \end{tikzpicture}
 \end{frame}
 
+% ------------------------------------------------------------
+% STEP 15
+% ------------------------------------------------------------
 \begin{frame}{Step 15: Select a point $P$ at distance $50$ mm from centre}
 \centering
 \begin{tikzpicture}[scale=.075,>=stealth]
-    \FinalConstruction\SelectedGeometry\PGeometry
-    \Legend{Selected point $P$ ($50$ mm from $O$).}
+    \FinalConstruction
+    \SelectedGeometry
+    \PGeometry
+
+    % OP = 50 mm construction line
+    \draw[contact line] (O)--(Psel);
+    \draw[dimension line]
+        ($(O)+(0:5)$)--($(Psel)+(0:5)$)
+        node[midway,below,fill=white,inner sep=1pt,font=\scriptsize]
+        {$50\ \mathrm{mm}$};
+
+    \Legend{Selected point $P$ with $OP=50$ mm.}
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Step 16: Draw the $25$ mm arc from $P$ to the centre locus}
+% ------------------------------------------------------------
+% STEP 16
+% ------------------------------------------------------------
+\begin{frame}{Step 16: Draw the $25$ mm radius to $C_p$}
 \centering
 \begin{tikzpicture}[scale=.075,>=stealth]
-    \FinalConstruction\SelectedGeometry\PGeometry\PtoCpArc
+    \FinalConstruction
+    \SelectedGeometry
+    \PGeometry
+    \PtoCpArc
     \Legend{$PC_p=25$ mm.}
 \end{tikzpicture}
 \end{frame}
 
+% ------------------------------------------------------------
+% STEP 17
+% ------------------------------------------------------------
 \begin{frame}{Step 17: Join $C_p$ to $O$}
 \centering
 \begin{tikzpicture}[scale=.075,>=stealth]
-    \FinalConstruction\SelectedGeometry\PGeometry\PtoCpArc
+    \FinalConstruction
+    \SelectedGeometry
+    \PGeometry
+    \PtoCpArc
     \draw[contact line] (O)--(Cp);
     \Legend{Join $C_p$ to $O$.}
 \end{tikzpicture}
 \end{frame}
 
+% ------------------------------------------------------------
+% STEP 18
+% ------------------------------------------------------------
 \begin{frame}{Step 18: Mark $M$ on the directing circle}
 \centering
 \begin{tikzpicture}[scale=.075,>=stealth]
-    \FinalConstruction\SelectedGeometry\PGeometry\PtoCpArc
+    \FinalConstruction
+    \SelectedGeometry
+    \PGeometry
+    \PtoCpArc
     \draw[contact line] (O)--(Cp);
-    \fill[black] (M) circle(.5pt);
-    \node[font=\scriptsize, above right] at(M) {$M$};
-    \Legend{$M=OC_p\cap AB$.}
+
+    \fill[black] (M) circle(.55pt);
+    \node[font=\scriptsize,above right] at(M) {$M$};
+
+    \Legend{$M$ is the contact point on the directing circle.}
 \end{tikzpicture}
 \end{frame}
 
+% ------------------------------------------------------------
+% STEP 19
+% ------------------------------------------------------------
 \begin{frame}{Step 19: Draw the normal $NN'$ through $P$}
 \centering
 \begin{tikzpicture}[scale=.075,>=stealth]
-    \FinalConstruction\SelectedGeometry\PtoCpArc
+    \FinalConstruction
+    \SelectedGeometry
+    \PtoCpArc
     \draw[contact line] (O)--(Cp);
     \NormalLine
     \PGeometry
-    \fill[black] (M) circle(.5pt);
-    \node[font=\scriptsize, above right] at(M) {$M$};
-    \Legend{$NN'$: normal through $P$ and $M$.}
+
+    \fill[black] (M) circle(.55pt);
+    \node[font=\scriptsize,above right] at(M) {$M$};
+
+    \Legend{Normal $NN'$ passes through $P$ and the contact point $M$.}
 \end{tikzpicture}
 \end{frame}
 
+% ------------------------------------------------------------
+% STEP 20
+% ------------------------------------------------------------
 \begin{frame}{Step 20: Draw the tangent $TT'$ perpendicular to $NN'$}
 \centering
 \begin{tikzpicture}[scale=.075,>=stealth]
-    \FinalConstruction\SelectedGeometry\PtoCpArc
+    \FinalConstruction
+    \SelectedGeometry
+    \PtoCpArc
     \draw[contact line] (O)--(Cp);
     \NormalAndTangent
     \PGeometry
-    \fill[black] (M) circle(.5pt);
-    \node[font=\scriptsize, above right] at(M) {$M$};
-    \Legend{$TT'\perp NN'$.\vphantom{}}
+
+    \fill[black] (M) circle(.55pt);
+    \node[font=\scriptsize,above right] at(M) {$M$};
+
+    \Legend{$TT'\perp NN'$ at $P$.}
 \end{tikzpicture}
 \end{frame}
 
+% ------------------------------------------------------------
+% STEP 21
+% ------------------------------------------------------------
 \begin{frame}{Step 21: Show the right angle at $P$}
 \centering
 \begin{tikzpicture}[scale=.075,>=stealth]
-    \FinalConstruction\SelectedGeometry\PtoCpArc
+    \FinalConstruction
+    \SelectedGeometry
+    \PtoCpArc
     \draw[contact line] (O)--(Cp);
     \NormalAndTangent
     \PGeometry
-    \fill[black] (M) circle(.5pt);
-    \node[font=\scriptsize, above right] at(M) {$M$};
+
+    \fill[black] (M) circle(.55pt);
+    \node[font=\scriptsize,above right] at(M) {$M$};
+
     \pic[
         draw=black,
         line width=.8pt,
         angle radius=7pt,
         angle eccentricity=1.35
     ] at(Psel) {right angle=T2--Psel--NNright};
+
     \Legend{Right angle at $P$.}
 \end{tikzpicture}
 \end{frame}
 
+% ------------------------------------------------------------
+% STEP 22
+% ------------------------------------------------------------
 \begin{frame}{Step 22: Final completed hypocycloid construction}
 \centering
 \begin{tikzpicture}[scale=.075,>=stealth]
-    \FinalConstruction\SelectedGeometry\PtoCpArc
+    \FinalConstruction
+    \SelectedGeometry
+    \PtoCpArc
     \draw[contact line] (O)--(Cp);
     \NormalAndTangent
     \PGeometry
-    \fill[black] (M) circle(.5pt);
-    \node[font=\scriptsize, above right] at(M) {$M$};
+
+    \fill[black] (M) circle(.55pt);
+    \node[font=\scriptsize,above right] at(M) {$M$};
+
     \pic[
         draw=black,
         line width=.8pt,
         angle radius=7pt,
         angle eccentricity=1.35
     ] at(Psel) {right angle=T2--Psel--NNright};
-    \Legend{Completed hypocycloid with normal and tangent.}
-\end{savebox}
+
+    \Legend{Completed hypocycloid with tangent and normal.}
 \end{tikzpicture}
 \end{frame}
 
