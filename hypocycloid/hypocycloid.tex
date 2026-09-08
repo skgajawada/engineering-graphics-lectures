@@ -8,12 +8,7 @@
 \usepackage{tikz}
 \usepackage{amsmath}
 
-\usetikzlibrary{
-    calc,
-    arrows.meta,
-    angles,
-    quotes
-}
+\usetikzlibrary{calc,arrows.meta,angles,quotes}
 
 \setbeamertemplate{navigation symbols}{}
 
@@ -21,8 +16,13 @@
 % FOOTER
 % ============================================================
 \setbeamercolor{footline}{fg=white,bg=mDarkTeal}
+
 \setbeamertemplate{footline}{%
-\begin{beamercolorbox}[wd=\paperwidth,ht=3.2ex,dp=1.2ex]{footline}
+\begin{beamercolorbox}[
+    wd=\paperwidth,
+    ht=3.2ex,
+    dp=1.2ex
+]{footline}
 \hspace{1.2em}\scriptsize Gajavada Sanjeevkumar\hfill
 \scriptsize Engineering Curves: Epicycloid\hfill
 \scriptsize
@@ -33,7 +33,6 @@
 \insertframenumber\hspace{1.2em}
 \end{beamercolorbox}%
 }
-
 
 % ============================================================
 % TITLE
@@ -52,75 +51,99 @@
 % ============================================================
 \tikzset{
 
+    % --------------------------------------------------------
     % Thin auxiliary / extension geometry
+    % --------------------------------------------------------
     extension line/.style={
         thin,
         densely dotted,
         violet!70
     },
 
+    % --------------------------------------------------------
     % Thick directing circle / arc
+    % --------------------------------------------------------
     directing line/.style={
         thick,
         blue!80!black
     },
 
+    % --------------------------------------------------------
     % Thick generating circle
+    % --------------------------------------------------------
     generating line/.style={
         thick,
         green!60!black
     },
 
+    % --------------------------------------------------------
     % ISO-style centre locus
+    % --------------------------------------------------------
     centre line/.style={
         thin,
         dash pattern=on 8pt off 2pt on 1.5pt off 2pt,
         red!70!black
     },
 
+    % --------------------------------------------------------
     % Thin construction geometry
+    % --------------------------------------------------------
     construction line/.style={
         thin,
         cyan!80!black
     },
 
-    % Thin division lines
+    % --------------------------------------------------------
+    % Thin angular division lines
+    % --------------------------------------------------------
     division line/.style={
         thin,
         orange!90!black
     },
 
+    % --------------------------------------------------------
     % Thin concentric construction arcs
+    % --------------------------------------------------------
     arc line/.style={
         thin,
         purple!80!black
     },
 
+    % --------------------------------------------------------
     % Thick final hypocycloid
+    % --------------------------------------------------------
     main curve/.style={
         thick,
         blue!90!black
     },
 
+    % --------------------------------------------------------
     % Thick normal
+    % --------------------------------------------------------
     normal line/.style={
         thick,
         orange!90!black
     },
 
+    % --------------------------------------------------------
     % Thick tangent
+    % --------------------------------------------------------
     tangent line/.style={
         thick,
         magenta!90!black
     },
 
+    % --------------------------------------------------------
     % Thin contact/radius lines
+    % --------------------------------------------------------
     contact line/.style={
         thin,
         brown!70!black
     },
 
+    % --------------------------------------------------------
     % Engineering dimension line
+    % --------------------------------------------------------
     dimension line/.style={
         thin,
         <->,
@@ -162,16 +185,16 @@
 % LEGEND
 % ============================================================
 \newcommand{\Legend}[1]{%
-\node[
-    draw=gray!35,
-    fill=white,
-    rounded corners=2pt,
-    inner sep=3pt,
-    anchor=north east,
-    align=left,
-    font=\scriptsize,
-    text width=31mm
-] at (84,84){#1};
+    \node[
+        draw=gray!35,
+        fill=white,
+        rounded corners=2pt,
+        inner sep=3pt,
+        anchor=north east,
+        align=left,
+        font=\scriptsize,
+        text width=31mm
+    ] at (84,84) {#1};
 }
 
 % ============================================================
@@ -185,31 +208,30 @@
 
     \coordinate(B) at (\Bang:\R);
 
-    % Centre of generating circle at initial position
+    % Initial centre of generating circle
     \coordinate(Czero) at (\Aang:\Rc);
 
     % OA and OB
     \draw[thin] (O)--(A);
     \draw[thin] (O)--(B);
 
-    % Extension lines beyond A and B
-    \draw[extension line]
-        (A)--(\Aang:98);
-
-    \draw[extension line]
-        (B)--(\Bang:98);
+    % Extensions beyond A and B
+    \draw[extension line] (A)--(\Aang:98);
+    \draw[extension line] (B)--(\Bang:98);
 
     % Directing arc AB
     \draw[directing line]
         (A) arc (\Aang:\Bang:\R);
 
-    % Point markers
+    % Point O
     \fill(O) circle (.7pt)
         node[below] {$O$};
 
+    % Point A
     \fill(A) circle (.6pt)
         node[above left] {$A$};
 
+    % Point B
     \fill(B) circle (.6pt)
         node[below right] {$B$};
 }
@@ -218,10 +240,11 @@
 % DIMENSIONING
 % ============================================================
 
+% ------------------------------------------------------------
 % OA = 85 mm
+% ------------------------------------------------------------
 \newcommand{\OADim}{%
 
-    % Dimension line parallel to OA
     \draw[dimension line]
         ($(O)+(225:9)$)
         --
@@ -235,7 +258,6 @@
             font=\scriptsize
         ] {$85\ \mathrm{mm}$};
 
-    % Limiting / extension lines
     \draw[thin,black!55]
         (O)--($(O)+(225:9)$);
 
@@ -243,7 +265,9 @@
         (A)--($(A)+(225:9)$);
 }
 
+% ------------------------------------------------------------
 % AC0 = 25 mm
+% ------------------------------------------------------------
 \newcommand{\ACDim}{%
 
     \draw[dimension line]
@@ -266,7 +290,9 @@
         (Czero)--($(Czero)+(225:7)$);
 }
 
+% ------------------------------------------------------------
 % OC0 = 60 mm
+% ------------------------------------------------------------
 \newcommand{\OCDim}{%
 
     \draw[dimension line]
@@ -304,7 +330,9 @@
         node[above left] {$C_0$};
 }
 
+% ------------------------------------------------------------
 % Thick generating circle
+% ------------------------------------------------------------
 \newcommand{\GenCircle}{%
     \draw[generating line]
         (Czero) circle (\r);
@@ -314,22 +342,30 @@
 % GENERATING-CIRCLE DIVISIONS
 % ============================================================
 
+% ------------------------------------------------------------
+% Division point G_k
+% ------------------------------------------------------------
 \newcommand{\GenPt}[1]{%
 
     \coordinate(G#1) at
-    ($(Czero)+({\Aang-30*(#1)}:\r)$);
+        ($(Czero)+({\Aang-30*(#1)}:\r)$);
 
     \fill[black]
         (G#1) circle (.45pt);
 }
 
+% ------------------------------------------------------------
+% Radius to division point
+% ------------------------------------------------------------
 \newcommand{\GenRad}[1]{%
 
     \draw[construction line]
         (Czero)--(G#1);
 }
 
-% Number labels 1 ... 11
+% ------------------------------------------------------------
+% Labels 1 ... 11
+% ------------------------------------------------------------
 \newcommand{\GenLab}[1]{%
 
     \node[
@@ -341,21 +377,27 @@
     {$#1$};
 }
 
+% ------------------------------------------------------------
+% All generating-circle points
+% ------------------------------------------------------------
 \newcommand{\AllGen}{%
     \foreach\k in {0,...,12}{
         \GenPt{\k}
     }
 }
 
+% ------------------------------------------------------------
+% All generating-circle radii
+% ------------------------------------------------------------
 \newcommand{\AllGenRad}{%
     \foreach\k in {0,...,11}{
         \GenRad{\k}
     }
 }
 
-% IMPORTANT:
-% Show 0 only during progressive construction.
-% Show 0,12 only on the completed division.
+% ------------------------------------------------------------
+% All generating-circle labels
+% ------------------------------------------------------------
 \newcommand{\AllGenLab}{%
 
     \node[
@@ -384,16 +426,12 @@
             {
                 60*cos(135-\dang*(\k))
                 +
-                25*cos(
-                    135+\rollratio*\dang*(\k)
-                )
+                25*cos(135+\rollratio*\dang*(\k))
             },
             {
                 60*sin(135-\dang*(\k))
                 +
-                25*sin(
-                    135+\rollratio*\dang*(\k)
-                )
+                25*sin(135+\rollratio*\dang*(\k))
             }
         );
     }
@@ -403,7 +441,7 @@
 % CONCENTRIC CONSTRUCTION ARCS
 % ============================================================
 %
-% Physical arc sequence:
+% Physical sequence:
 %
 %   0,12
 %   11
@@ -414,6 +452,7 @@
 %   6
 %
 % Equal-radius pairs:
+%
 %   1 & 11
 %   2 & 10
 %   3 & 9
@@ -428,18 +467,14 @@
 
     % Coordinates of generating-circle division #1
     \pgfmathsetmacro{\gx}{
-        60*cos(135)
-        +
-        25*cos(135-30*(#1))
+        60*cos(135)+25*cos(135-30*(#1))
     }
 
     \pgfmathsetmacro{\gy}{
-        60*sin(135)
-        +
-        25*sin(135-30*(#1))
+        60*sin(135)+25*sin(135-30*(#1))
     }
 
-    % Radius from O to that generating-circle point
+    % Radius from O to generating-circle point
     \pgfmathsetmacro{\rr}{
         sqrt(\gx*\gx+\gy*\gy)
     }
@@ -452,27 +487,24 @@
     % Single physical concentric arc
     \draw[arc line]
         (\aa:\rr)
-        arc[
-            start angle=\aa,
-            end angle=\Bang,
-            radius=\rr
-        ];
+        arc (\aa:\Bang:\rr);
 }
 
-% Directing arc itself
+% ============================================================
+% DIRECTING ARC FOR 0,12
+% ============================================================
+
 \newcommand{\ConArcZero}{%
 
     \draw[arc line]
         (\Aang:\R)
-        arc (
-            \Aang:
-            \Bang:
-            \R
-        );
+        arc (\Aang:\Bang:\R);
 }
 
-% Required order:
-% 0,12 -> 11 -> 10 -> 9 -> 8 -> 7 -> 6
+% ============================================================
+% COMPLETE CONCENTRIC ARC CONSTRUCTION
+% ============================================================
+
 \newcommand{\ConFull}{%
 
     \ConArcZero
@@ -498,25 +530,25 @@
 
     \draw[centre line]
         (\Aang:\Rc)
-        arc (
-            \Aang:
-            \Bang:
-            \Rc
-        );
+        arc (\Aang:\Bang:\Rc);
 }
 
 % ============================================================
 % ANGULAR DIVISIONS OF AOB
 % ============================================================
 
+% ------------------------------------------------------------
+% Division line
+% ------------------------------------------------------------
 \newcommand{\DivLine}[1]{%
 
     \draw[division line]
-        (O)--(
-            {135-\dang*(#1)}:\R
-        );
+        (O)--({135-\dang*(#1)}:\R);
 }
 
+% ------------------------------------------------------------
+% Division label
+% ------------------------------------------------------------
 \newcommand{\DivLabel}[1]{%
 
     \node[
@@ -524,18 +556,18 @@
         orange!90!black,
         inner sep=.5pt
     ]
-    at (
-        {135-\dang*(#1)}:91
-    )
+    at
+    ({135-\dang*(#1)}:91)
     {$#1^\prime$};
 }
 
-% Centre points C0 ... C12
+% ------------------------------------------------------------
+% Centre point C0 ... C12
+% ------------------------------------------------------------
 \newcommand{\CenterPt}[1]{%
 
-    \coordinate(C#1) at (
-        {135-\dang*(#1)}:\Rc
-    );
+    \coordinate(C#1) at
+        ({135-\dang*(#1)}:\Rc);
 
     \fill[black]
         (C#1) circle (.45pt);
@@ -549,6 +581,9 @@
     {$C_{#1}$};
 }
 
+% ------------------------------------------------------------
+% All division lines
+% ------------------------------------------------------------
 \newcommand{\AllDiv}{%
 
     \foreach\k in {0,...,12}{
@@ -556,6 +591,9 @@
     }
 }
 
+% ------------------------------------------------------------
+% All division labels
+% ------------------------------------------------------------
 \newcommand{\AllLabels}{%
 
     \foreach\k in {0,...,12}{
@@ -563,6 +601,9 @@
     }
 }
 
+% ------------------------------------------------------------
+% All centre points
+% ------------------------------------------------------------
 \newcommand{\AllCenters}{%
 
     \foreach\k in {0,...,12}{
@@ -570,6 +611,9 @@
     }
 }
 
+% ------------------------------------------------------------
+% Complete angular construction
+% ------------------------------------------------------------
 \newcommand{\DivFull}{%
     \AllDiv
     \AllLabels
@@ -582,23 +626,21 @@
 
 \newcommand{\CutArc}[1]{%
 
-    % Angular position of the tracing point on the
-    % generating circle
+    % Angular position of tracing point
     \pgfmathsetmacro{\qa}{
         135+\rollratio*\dang*(#1)
     }
 
-    % Small radius-25 cutting arc centred at C_i
+    % Radius-25 cutting arc centred at C_i
     \draw[construction line,very thin]
         (C#1)+({\qa-12}:25)
-        arc(
-            {\qa-12}:
-            {\qa+12}:
-            25
-        );
+        arc ({\qa-12}:{\qa+12}:25);
 }
 
-% P1 ... P12 only
+% ============================================================
+% P1 ... P12 MARKERS
+% ============================================================
+
 \newcommand{\Pmark}[1]{%
 
     \fill[black]
@@ -614,8 +656,10 @@
     {$P_{#1}$};
 }
 
-% IMPORTANT:
-% P0 is intentionally suppressed.
+% ------------------------------------------------------------
+% All cutting arcs
+% P0 intentionally suppressed
+% ------------------------------------------------------------
 \newcommand{\AllCut}{%
 
     \AllPCoords
@@ -638,20 +682,17 @@
         samples=360,
         variable=\th,
         smooth
-    ] (
+    ]
+    (
         {
             60*cos(135-\th)
             +
-            25*cos(
-                135+\rollratio*\th
-            )
+            25*cos(135+\rollratio*\th)
         },
         {
             60*sin(135-\th)
             +
-            25*sin(
-                135+\rollratio*\th
-            )
+            25*sin(135+\rollratio*\th)
         }
     );
 }
@@ -675,7 +716,7 @@
         at (65.91165653:60);
 
     % --------------------------------------------------------
-    % M = intersection of OCp with directing arc AB
+    % M = intersection of OCp with directing arc
     % --------------------------------------------------------
     \coordinate(M)
         at (65.91165653:85);
@@ -685,7 +726,7 @@
     % --------------------------------------------------------
     \def\NormAng{93.36184043}
 
-    % Normal extended on both sides
+    % Normal endpoints
     \coordinate(NNright)
         at ($(Psel)+(\NormAng:35)$);
 
@@ -728,15 +769,11 @@
 \newcommand{\PtoCpArc}{%
 
     % --------------------------------------------------------
-    % Small construction arc from P towards Cp
+    % Small construction arc
     % --------------------------------------------------------
     \draw[construction line,very thin]
         (Psel)+(108.81202433:25)
-        arc(
-            108.81202433:
-            132.81202433:
-            25
-        );
+        arc (108.81202433:132.81202433:25);
 
     % --------------------------------------------------------
     % PCp = 25 mm
@@ -744,7 +781,9 @@
     \draw[construction line]
         (Psel)--(Cp);
 
+    % --------------------------------------------------------
     % Cp marker
+    % --------------------------------------------------------
     \fill[black]
         (Cp) circle (.55pt);
 
@@ -773,16 +812,14 @@
         ]
         {$25\ \mathrm{mm}$};
 
-    % Limiting lines perpendicular to dimension line
+    % --------------------------------------------------------
+    % Limiting lines
+    % --------------------------------------------------------
     \draw[thin,black!55]
-        (Psel)
-        --
-        ($(Psel)+(30.81202433:6)$);
+        (Psel)--($(Psel)+(30.81202433:6)$);
 
     \draw[thin,black!55]
-        (Cp)
-        --
-        ($(Cp)+(30.81202433:6)$);
+        (Cp)--($(Cp)+(30.81202433:6)$);
 }
 
 % ============================================================
@@ -791,7 +828,9 @@
 
 \newcommand{\NormalLine}{%
 
-    % Extend MP through P on both sides
+    % --------------------------------------------------------
+    % Normal through P
+    % --------------------------------------------------------
     \draw[
         normal line,
         line width=1.2pt
@@ -827,7 +866,9 @@
 
     \NormalLine
 
+    % --------------------------------------------------------
     % Tangent through P
+    % --------------------------------------------------------
     \draw[
         tangent line,
         line width=1.2pt
@@ -1052,11 +1093,7 @@ AC_0
 
     \draw[thin,black!70]
         (135:18)
-        arc(
-            135:
-            29.11764706:
-            18
-        );
+        arc (135:29.11764706:18);
 
     \node[
         font=\scriptsize
@@ -1155,7 +1192,6 @@ AC_0
     \DrawCzero
     \GenCircle
 
-    % Progressive generating-circle divisions
     \foreach\j in {0,...,#1}{%
 
         \GenPt{\j}
@@ -1165,7 +1201,7 @@ AC_0
         \fi
     }
 
-    % Initial point label
+    % Initial label
     \node[
         font=\tiny,
         green!50!black,
@@ -1282,7 +1318,9 @@ AC_0
 }
 
 % 0,12
-\ConFrame{\ConArcZero}
+\ConFrame{
+    \ConArcZero
+}
 
 % 0,12 -> 11
 \ConFrame{
@@ -1469,7 +1507,6 @@ AC_0
     \DivFull
     \AllPCoords
 
-    % P1 ... P12 only
     \foreach\j in {1,...,#1}{%
 
         \CutArc{\j}
@@ -1543,32 +1580,20 @@ AC_0
 
     \SelectedGeometry
 
-    % --------------------------------------------------------
     % 50-mm construction arc
-    %
-    % It is intentionally NOT a complete circle.
-    % It extends beyond both OP=50 intersections.
-    % --------------------------------------------------------
+    % centred at O, extended beyond both intersections
     \draw[
         construction line,
         very thin
     ]
         (35:50)
-        arc(
-            35:
-            130:
-            50
-        );
+        arc (35:130:50);
 
-    % --------------------------------------------------------
-    % Radius OP to selected point
-    % --------------------------------------------------------
+    % OP radius
     \draw[contact line]
         (O)--(Psel);
 
-    % --------------------------------------------------------
     % Dimension line parallel to OP
-    % --------------------------------------------------------
     \draw[dimension line]
         ($(O)+(131.76480853:7)$)
         --
@@ -1585,14 +1610,10 @@ AC_0
 
     % Limiting lines
     \draw[thin,black!55]
-        (O)
-        --
-        ($(O)+(131.76480853:7)$);
+        (O)--($(O)+(131.76480853:7)$);
 
     \draw[thin,black!55]
-        (Psel)
-        --
-        ($(Psel)+(131.76480853:7)$);
+        (Psel)--($(Psel)+(131.76480853:7)$);
 
     \PGeometry
 
@@ -1658,8 +1679,7 @@ AC_0
 
     \PtoCpArc
 
-    % IMPORTANT:
-    % Extend OCp beyond Cp until it reaches M.
+    % Extend OCp to directing arc
     \draw[contact line]
         (O)--(M);
 
@@ -1743,7 +1763,7 @@ AC_0
     \draw[contact line]
         (O)--(M);
 
-    % Normal through P, extended both sides
+    % Normal
     \NormalLine
 
     % M marker
@@ -1854,7 +1874,7 @@ AC_0
     at(M)
     {$M$};
 
-    % Right-angle marker at P
+    % Right-angle marker
     \pic[
         draw=black,
         line width=.8pt,
@@ -1901,7 +1921,7 @@ AC_0
     \draw[contact line]
         (O)--(M);
 
-    % Normal + tangent
+    % Normal and tangent
     \NormalAndTangent
 
     % Selected P
