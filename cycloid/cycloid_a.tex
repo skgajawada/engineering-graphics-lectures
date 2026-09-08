@@ -108,34 +108,31 @@
 \end{frame}
 
 % ============================================================
-% STEP 8
+% STEP 10
 % ============================================================
-\renewcommand{\stepnum}{8}
-\begin{frame}{Step 8: Locate Center $C_p$ \& Construct Normal \& Tangent}
+\renewcommand{\stepnum}{10}
+\begin{frame}{Step 10: Construct Tangent Line $T$-$T'$ \& Final Result}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
-  \drawLegendCard{ \textbf{$P$} & Target Point \\ \textbf{$N\text{-}N'$} & Normal Line \\ \textbf{$T\text{--}T'$} & Tangent Line }
+  \drawLegendCard{ \textbf{Curve} & Completed Profile \\ \textbf{$N\text{-}N'$} & Normal Line \\ \textbf{$T\text{--}T'$} & Tangent Line }
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
-
+  
   \coordinate (P) at (14.27, 4.96); \fill[black] (P) circle (3.5pt) node[above right] {\small $P$};
-  \coordinate (Cp) at (12.0, 3.0); \fill[red!80!black] (Cp) circle (3.5pt) node[above left] {\small $C_p$};
+  \coordinate (Cp) at (12.0, 3.0); \fill[red!80!black] (Cp) circle (3.5pt);
   \coordinate (M) at (12.0, 0.0); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
   
-  \draw[arc line] (P) ++(210:3.0) arc (210:240:3.0);
   \draw[construction line] (P) -- (Cp);
   \draw[construction line, solid] (Cp) -- (M);
+  \draw[normal line] (11.54, -1.0) node[below] {\small $N$} -- (15.43, 7.5) node[above] {\small $N'$};
+  \draw[tangent line] (10.0, 6.91) node[above] {\small $T$} -- (18.0, 3.255) node[below] {\small $T'$};
   
-  \uncover<2->{\draw[normal line] (11.54, -1.0) node[below] {\small $N$} -- (15.43, 7.5) node[above] {\small $N'$};}
-  \uncover<3->{
-    \draw[tangent line] (10.0, 6.91) node[above] {\small $T$} -- (18.0, 3.255) node[below] {\small $T'$};
-    \begin{scope}[shift={(14.27, 4.96)}, rotate=65.4]
-      \draw[thin, black] (0,0) -- (0.35,0) -- (0.35,0.35) -- (0,0.35);
-    \end{scope}
-  }
+  \begin{scope}[shift={(14.27, 4.96)}, rotate=65.4]
+    \draw[thin, black] (0,0) -- (0.35,0) -- (0.35,0.35) -- (0,0.35);
+  \end{scope}
 \end{tikzpicture}
 \end{frame}
 
-end.document}
+end{document}
