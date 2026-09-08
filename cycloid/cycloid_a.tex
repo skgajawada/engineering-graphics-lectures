@@ -4,7 +4,7 @@
 \usetikzlibrary{calc, arrows.meta, shapes.geometric}
 
 \title{Engineering Curves: Construction of Cycloid}
-\subtitle{Animated Rolling Circle Method with Tangent \& Normal}
+\subtitle{Step-by-Step Rolling Circle Method with Tangent \& Normal}
 \author{Gajavada Sanjeevkumar}
 \date{}
 
@@ -63,7 +63,17 @@
 \end{frame}
 
 \renewcommand{\stepnum}{1}
-\begin{frame}{Step 1: Draw Generating Circle \& Directing Line}
+\begin{frame}{Step 1: Initial Center Point}
+\centering
+\begin{tikzpicture}[scale=0.45]
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
+  \drawLegendCard{ \textbf{$C_0$} & Initial Center Point \\ \textbf{$AA'$} & Directing Line \\ \textbf{Axis} & Center Line }
+  \coordinate (C0) at (0,3.0);
+  \fill[red!80!black] (C0) circle (3.5pt) node[above right, font=\tiny] {$C_0$};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Step 1: Draw Generating Circle}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
@@ -71,12 +81,48 @@
   \coordinate (C0) at (0,3.0);
   \fill[red!80!black] (C0) circle (3.5pt) node[above right, font=\tiny] {$C_0$};
   \draw[thick, blue!80!black] (C0) circle (3.0);
-  \draw[<->, thin, cyan!80!black] (0,3.0) -- (0,0) node[midway, right] {\tiny $R=25\text{ mm}$};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Step 1: Add Radius Dimension}
+\centering
+\begin{tikzpicture}[scale=0.45]
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
+  \drawLegendCard{ \textbf{$C_0$} & Initial Center Point \\ \textbf{$AA'$} & Directing Line \\ \textbf{Axis} & Center Line }
+  \coordinate (C0) at (0,3.0);
+  \fill[red!80!black] (C0) circle (3.5pt) node[above right, font=\tiny] {$C_0$};
+  \draw[thick, blue!80!black] (C0) circle (3.0);
+  \draw[thin, cyan!80!black] (0,3.0) -- (0,0) node[midway, right] {\tiny $R=25\text{ mm}$};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Step 1: Draw Directing Line}
+\centering
+\begin{tikzpicture}[scale=0.45]
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
+  \drawLegendCard{ \textbf{$C_0$} & Initial Center Point \\ \textbf{$AA'$} & Directing Line \\ \textbf{Axis} & Center Line }
+  \coordinate (C0) at (0,3.0);
+  \fill[red!80!black] (C0) circle (3.5pt) node[above right, font=\tiny] {$C_0$};
+  \draw[thick, blue!80!black] (C0) circle (3.0);
+  \draw[thin, cyan!80!black] (0,3.0) -- (0,0) node[midway, right] {\tiny $R=25\text{ mm}$};
+  \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Step 1: Complete Initial Configuration}
+\centering
+\begin{tikzpicture}[scale=0.45]
+  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
+  \drawLegendCard{ \textbf{$C_0$} & Initial Center Point \\ \textbf{$AA'$} & Directing Line \\ \textbf{Axis} & Center Line }
+  \coordinate (C0) at (0,3.0);
+  \fill[red!80!black] (C0) circle (3.5pt) node[above right, font=\tiny] {$C_0$};
+  \draw[thick, blue!80!black] (C0) circle (3.0);
+  \draw[thin, cyan!80!black] (0,3.0) -- (0,0) node[midway, right] {\tiny $R=25\text{ mm}$};
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0) node[right] {\small $C_{12}$};
   \draw[dimension extension] (0,0) -- (0,-2.2);
   \draw[dimension extension] (18.85,0) -- (18.85,-2.2);
-  \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
+  \draw[thin, red!80!black] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
   \draw[thin, construction line] (0,0) -- (C0);
 \end{tikzpicture}
 \end{frame}
