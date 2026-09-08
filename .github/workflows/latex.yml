@@ -1,4 +1,4 @@
-name: Build Engineering Curves & Animations
+name: Build Engineering Curves
 
 on:
   push:
@@ -8,7 +8,6 @@ on:
       - 'cycloid/**'
       - 'epicycloid/**'
       - 'hypocycloid/**'
-      - 'animation/**'
       - '.github/workflows/latex.yml'
   workflow_dispatch:
 
@@ -21,61 +20,27 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
-      # --------------------------------------------------
-      # Setup Python and Run Animation Generator
-      # --------------------------------------------------
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
-      - name: Install Python Dependencies
-        run: |
-          pip install numpy matplotlib pillow
-
-      - name: Generate Looping Cycloid Animation GIF
-        run: |
-          python animation/generate_cycloid.py
-
-      # --------------------------------------------------
-      # Compile LaTeX Presentations (PDFs)
-      # --------------------------------------------------
-      - name: Compile Cycloid Standard PDF
+      - name: Compile Cycloid PDF
         uses: xu-cheng/latex-action@v4
         with:
-          working_directory: cycloid
-          root_file: cycloid.tex
-
-      - name: Compile Cycloid Animated PDF
-        uses: xu-cheng/latex-action@v4
-        with:
-          working_directory: cycloid
-          root_file: cycloid_a.tex
+          root_file: cycloid/cycloid.tex
 
       - name: Compile Epicycloid PDF
         uses: xu-cheng/latex-action@v4
         with:
-          working_directory: epicycloid
-          root_file: epicycloid.tex
+          root_file: epicycloid/epicycloid.tex
 
       - name: Compile Hypocycloid PDF
         uses: xu-cheng/latex-action@v4
         with:
-          working_directory: hypocycloid
-          root_file: hypocycloid.tex
+          root_file: hypocycloid/hypocycloid.tex
 
-      # --------------------------------------------------
-      # Save Generated Assets Back to Repository
-      # --------------------------------------------------
-      - name: Commit generated PDFs and GIFs
-        uses: stefanzweifel/git-auto-commit-action@v7
-        with:
-          commit_message: "build: update curve PDFs and looping cycloid animation gif"
-          file_pattern: |
-            cycloid/cycloid.pdf
-            cycloid/cycloid_a.pdf
-            cycloid_animation.gif
-            epicycloid/epicycloid.pdf
-            hypocycloid/hypocycloid.pdf
+      - name: Commit and push generated PDFs
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add cycloid/*.pdf epicycloid/*.pdf hypocycloid/*.pdf
+          git commit -m "Auto-compile presentation PDFs [skip ci]" || exit 0
+          git push
