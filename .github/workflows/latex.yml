@@ -26,22 +26,49 @@ jobs:
         uses: xu-cheng/latex-action@v4
         with:
           root_file: cycloid/cycloid.tex
+          work_in_root_file_dir: true
+          args: "-pdf -g -file-line-error -halt-on-error -interaction=nonstopmode"
 
       - name: Compile Epicycloid PDF
         uses: xu-cheng/latex-action@v4
         with:
           root_file: epicycloid/epicycloid.tex
+          work_in_root_file_dir: true
+          args: "-pdf -g -file-line-error -halt-on-error -interaction=nonstopmode"
 
       - name: Compile Hypocycloid PDF
         uses: xu-cheng/latex-action@v4
         with:
           root_file: hypocycloid/hypocycloid.tex
+          work_in_root_file_dir: true
+          args: "-pdf -g -file-line-error -halt-on-error -interaction=nonstopmode"
+
+      - name: Check generated PDFs
+        run: |
+          echo "===== Generated PDFs ====="
+          ls -lh cycloid/*.pdf
+          ls -lh epicycloid/*.pdf
+          ls -lh hypocycloid/*.pdf
+
+          echo "===== Git status ====="
+          git status --short
 
       - name: Commit and push generated PDFs
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add cycloid/*.pdf epicycloid/*.pdf hypocycloid/*.pdf
-          git diff --cached --quiet && echo "No PDF changes to commit." && exit 0
+
+          git add -f cycloid/*.pdf
+          git add -f epicycloid/*.pdf
+          git add -f hypocycloid/*.pdf
+
+          echo "===== Staged changes ====="
+          git status --short
+
+          if git diff --cached --quiet; then
+            echo "No PDF changes to commit."
+            exit 0
+          fi
+
           git commit -m "Auto-compile presentation PDFs [skip ci]"
           git push
