@@ -45,22 +45,26 @@ jobs:
       - name: Compile Cycloid Standard PDF
         uses: xu-cheng/latex-action@v4
         with:
-          root_file: cycloid/cycloid.tex
+          working_directory: cycloid
+          root_file: cycloid.tex
 
       - name: Compile Cycloid Animated PDF
         uses: xu-cheng/latex-action@v4
         with:
-          root_file: cycloid/cycloid_a.tex
+          working_directory: cycloid
+          root_file: cycloid_a.tex
 
       - name: Compile Epicycloid PDF
         uses: xu-cheng/latex-action@v4
         with:
-          root_file: epicycloid/epicycloid.tex
+          working_directory: epicycloid
+          root_file: epicycloid.tex
 
       - name: Compile Hypocycloid PDF
         uses: xu-cheng/latex-action@v4
         with:
-          root_file: hypocycloid/hypocycloid.tex
+          working_directory: hypocycloid
+          root_file: hypocycloid.tex
 
       # --------------------------------------------------
       # Commit and Push All Generated Assets Back to Repo
