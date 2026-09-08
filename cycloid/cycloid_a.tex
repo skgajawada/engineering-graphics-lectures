@@ -34,7 +34,6 @@
   main curve/.style={ultra thick, magenta!90!black},
   tangent line/.style={thick, green!50!black},
   normal line/.style={thick, orange!80!black},
-  label line/.style={stealth-, thin, black!70},
   dimension extension/.style={thin, solid, black!60},
   >=Stealth,
 }
@@ -63,69 +62,25 @@
   \vfill
 \end{frame}
 
-% ============================================================
-% STEP 1
-% ============================================================
 \renewcommand{\stepnum}{1}
 \begin{frame}{Step 1: Draw Generating Circle \& Directing Line}
 \centering
 \begin{tikzpicture}[scale=0.45]
   \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
   \drawLegendCard{ \textbf{$C_0$} & Initial Center Point \\ \textbf{$AA'$} & Directing Line \\ \textbf{Axis} & Center Line }
-  
-  \coordinate (C0) at (0,3.0);
-  \fill[red!80!black] (C0) circle (3.5pt) node[above right, font=\tiny] {$C_0$};
-  
-  \uncover<2->{\draw[thick, blue!80!black] (C0) circle (3.0);}
-  \uncover<3->{\draw[<->, thin, cyan!80!black] (0,3.0) -- (0,0) node[midway, right] {\tiny $R=25\text{ mm}$};}
-  \uncover<4->{\draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};}
-  \uncover<5->{\draw[axis line] (0,3.0) -- (18.85,3.0) node[right] {\small $C_{12}$};}
-  \uncover<6->{
-    \draw[dimension extension] (0,0) -- (0,-2.2);
-    \draw[dimension extension] (18.85,0) -- (18.85,-2.2);
-    \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
-    \draw[thin, construction line] (0,0) -- (C0);
-  }
-\end{tikzpicture}
-\end{frame}
-
-% ============================================================
-% STEP 2
-% ============================================================
-\renewcommand{\stepnum}{2}
-\begin{frame}{Step 2: Divide Generating Circle into 12 Equal Parts}
-\centering
-\begin{tikzpicture}[scale=0.45]
-  \useasboundingbox (-4.5,-3.5) rectangle (22.5,8.0);
-  \drawLegendCard{ \textbf{$AA'$} & Directing Line \\ \textbf{Axis Line} & Center Line \\ \textbf{$0\dots12$} & Circle Divisions }
-  \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
-  \draw[axis line] (0,3.0) -- (18.85,3.0) node[right] {\small $C_{12}$};
   \coordinate (C0) at (0,3.0);
   \fill[red!80!black] (C0) circle (3.5pt) node[above right, font=\tiny] {$C_0$};
   \draw[thick, blue!80!black] (C0) circle (3.0);
-  \draw[thin, construction line] (0,0) -- (C0);
+  \draw[<->, thin, cyan!80!black] (0,3.0) -- (0,0) node[midway, right] {\tiny $R=25\text{ mm}$};
+  \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
+  \draw[axis line] (0,3.0) -- (18.85,3.0) node[right] {\small $C_{12}$};
   \draw[dimension extension] (0,0) -- (0,-2.2);
   \draw[dimension extension] (18.85,0) -- (18.85,-2.2);
   \draw[<->, red!80!black, thin] (0,-1.8) -- (18.85,-1.8) node[midway, fill=white] {\tiny $\pi D = 157\text{ mm}$};
-
-  \draw[thin, cyan!60!black, solid] (C0) -- (0,0); \node[below, font=\tiny] at (0,0) {$0, 12$};
-  \draw[thin, cyan!60!black, solid] (C0) -- ++(300:3.0); \node[below right, font=\tiny] at (1.5,0.40) {1};
-  \draw[thin, cyan!60!black, solid] (C0) -- ++(330:3.0); \node[right, font=\tiny] at (2.598,1.5) {2};
-  \draw[thin, cyan!60!black, solid] (C0) -- ++(0:3.0); \node[right, font=\tiny] at (3.0,3.0) {3};
-  \draw[thin, cyan!60!black, solid] (C0) -- ++(30:3.0); \node[right, font=\tiny] at (2.598,4.5) {4};
-  \draw[thin, cyan!60!black, solid] (C0) -- ++(60:3.0); \node[above right, font=\tiny] at (1.5,5.598) {5};
-  \draw[thin, cyan!60!black, solid] (C0) -- ++(90:3.0); \node[above, font=\tiny] at (0,6.0) {6};
-  \draw[thin, cyan!60!black, solid] (C0) -- ++(120:3.0); \node[above left, font=\tiny] at (-1.5,5.598) {7};
-  \draw[thin, cyan!60!black, solid] (C0) -- ++(150:3.0); \node[left, font=\tiny] at (-2.598,4.5) {8};
-  \draw[thin, cyan!60!black, solid] (C0) -- ++(180:3.0); \node[left, font=\tiny] at (-3.0,3.0) {9};
-  \draw[thin, cyan!60!black, solid] (C0) -- ++(210:3.0); \node[left, font=\tiny] at (-2.598,1.5) {10};
-  \draw[thin, cyan!60!black, solid] (C0) -- ++(240:3.0); \node[below left, font=\tiny] at (-1.5,0.40) {11};
+  \draw[thin, construction line] (0,0) -- (C0);
 \end{tikzpicture}
 \end{frame}
 
-% ============================================================
-% STEP 7
-% ============================================================
 \renewcommand{\stepnum}{7}
 \begin{frame}{Step 7: Smoothly Join Points to Form Cycloid Curve}
 \centering
@@ -134,16 +89,11 @@
   \drawLegendCard{ \textbf{Curve} & Completed Profile \\ \textbf{$P_0\dots P_{12}$} & Retained Points }
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0);
-  
   \fill[blue!80!black] (0,0) circle (3.5pt); \fill[blue!80!black] (0.07, 0.402) circle (3.5pt); \fill[blue!80!black] (0.54, 1.500) circle (3.5pt); \fill[blue!80!black] (1.71, 3.000) circle (3.5pt); \fill[blue!80!black] (3.68, 4.500) circle (3.5pt); \fill[blue!80!black] (6.42, 5.598) circle (3.5pt); \fill[blue!80!black] (9.42, 6.000) circle (3.5pt); \fill[blue!80!black] (12.42, 5.598) circle (3.5pt); \fill[blue!80!black] (15.17, 4.500) circle (3.5pt); \fill[blue!80!black] (17.14, 3.000) circle (3.5pt); \fill[blue!80!black] (18.31, 1.500) circle (3.5pt); \fill[blue!80!black] (18.78, 0.402) circle (3.5pt); \fill[blue!80!black] (18.85, 0.000) circle (3.5pt);
-  
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
 \end{tikzpicture}
 \end{frame}
 
-% ============================================================
-% STEP 10
-% ============================================================
 \renewcommand{\stepnum}{10}
 \begin{frame}{Step 10: Construct Tangent Line $T$-$T'$ \& Final Result}
 \centering
@@ -153,16 +103,13 @@
   \draw[directrix line] (0,0) node[below left] {\small $A$} -- (18.85,0) node[below right] {\small $A'$};
   \draw[axis line] (0,3.0) -- (18.85,3.0);
   \draw[main curve, samples=50, domain=0:6.28318] plot ({3*(\x - sin(\x r))}, {3*(1 - cos(\x r))});
-  
   \coordinate (P) at (14.27, 4.96); \fill[black] (P) circle (3.5pt) node[above right] {\small $P$};
   \coordinate (Cp) at (12.0, 3.0); \fill[red!80!black] (Cp) circle (3.5pt);
   \coordinate (M) at (12.0, 0.0); \fill[black] (M) circle (3.5pt) node[below] {\small $M$};
-  
   \draw[construction line] (P) -- (Cp);
   \draw[construction line, solid] (Cp) -- (M);
   \draw[normal line] (11.54, -1.0) node[below] {\small $N$} -- (15.43, 7.5) node[above] {\small $N'$};
   \draw[tangent line] (10.0, 6.91) node[above] {\small $T$} -- (18.0, 3.255) node[below] {\small $T'$};
-  
   \begin{scope}[shift={(14.27, 4.96)}, rotate=65.4]
     \draw[thin, black] (0,0) -- (0.35,0) -- (0.35,0.35) -- (0,0.35);
   \end{scope}
