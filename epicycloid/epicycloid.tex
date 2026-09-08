@@ -8,12 +8,14 @@
 \begin{beamercolorbox}[wd=\paperwidth,ht=3.2ex,dp=1.2ex]{footline}
 \hspace{1.2em}\scriptsize Gajavada Sanjeevkumar\hfill
 \scriptsize Engineering Curves: Epicycloid\hfill
-\scriptsize \insertframenumber\hspace{1.2em}
+\scriptsize
+\Acrobatmenu{FirstPage}{\fbox{\(\blacktriangleleft\!\blacktriangleleft\)}}\,\Acrobatmenu{PrevPage}{\fbox{\(\blacktriangleleft\)}}\,\Acrobatmenu{NextPage}{\fbox{\(\blacktriangleright\)}}\,\Acrobatmenu{LastPage}{\fbox{\(\blacktriangleright\!\blacktriangleright\)}}\quad
+\insertframenumber\hspace{1.2em}
 \end{beamercolorbox}}
 \title[Engineering Curves: Epicycloid]{Engineering Curves: Construction of Epicycloid}
 \subtitle{Rolling Circle Method with Tangent \& Normal}
 \author{Gajavada Sanjeevkumar}
-\date{}
+\date{September 8, 2026}
 \tikzset{extension line/.style={thin,densely dotted,black!60},directing line/.style={thick,blue!80!black},generating line/.style={thick,green!55!black},centre line/.style={thin,dash pattern=on 8pt off 2pt on 1.5pt off 2pt,black!65},construction line/.style={thin,cyan!75!black},division line/.style={thin,brown!80!black},arc line/.style={thin,purple!70!black},main curve/.style={thick,blue!85!black},normal line/.style={thick,orange!85!black},tangent line/.style={thick,magenta!80!black},contact line/.style={thin,black!65},dimension line/.style={thin,<->,>=Stealth,black!75}}
 \newcommand{\Legend}[1]{\node[draw=gray!35,fill=white,rounded corners=2pt,inner sep=3pt,anchor=north east,align=left,font=\scriptsize,text width=31mm] at (84,84){#1};}
 \newcommand{\Base}{\coordinate(O)at(0,0);\coordinate(A)at(150:45);\coordinate(B)at(30:45);\coordinate(Czero)at(150:60);\draw[thin](O)--(A);\draw[thin](O)--(B);\draw[extension line](A)--(150:82);\draw[extension line](B)--(30:82);\draw[directing line](A)arc(150:30:45);\fill(O)circle(.7pt)node[below]{$O$};\fill(A)circle(.55pt)node[above left]{$A$};\fill(B)circle(.55pt)node[above right]{$B$};}
@@ -21,7 +23,7 @@
 \newcommand{\ACDim}{\draw[dimension line]($(A)+(60:4)$)--($(Czero)+(60:4)$)node[midway,sloped,above,fill=white,inner sep=1pt,font=\scriptsize]{$15\ \mathrm{mm}$};\draw[thin,black!55]($(A)+(60:1)$)--($(A)+(60:6)$);\draw[thin,black!55]($(Czero)+(60:1)$)--($(Czero)+(60:6)$);}
 \newcommand{\DrawCzero}{\draw[centre line](O)--(Czero);\fill[black](Czero)circle(.55pt)node[above left]{$C_0$};}
 \newcommand{\GenCircle}{\draw[generating line](Czero)circle(15);}
-\newcommand{\GenPt}[1]{\coordinate(G#1)at($(Czero)+({330+30*(#1)}:15)$);\fill[black](G#1)circle(2.4pt);}
+\newcommand{\GenPt}[1]{\coordinate(G#1)at($(Czero)+({330+30*(#1)}:15)$);}
 \newcommand{\GenRad}[1]{\draw[construction line](Czero)--(G#1);}
 \newcommand{\GenLab}[1]{\node[font=\tiny,green!45!black]at($(Czero)+({330+30*(#1)}:18.5)$){$#1$};}
 \newcommand{\AllGen}{\foreach\k in{0,...,12}{\GenPt{\k}}}
@@ -39,45 +41,63 @@
 \newcommand{\CentreArc}{\draw[centre line](150:60)arc(150:30:60);}
 \newcommand{\DivLine}[1]{\draw[division line](O)--({150-10*(#1)}:75);}
 \newcommand{\DivLabel}[1]{\node[font=\tiny,orange!90!black,inner sep=0.5pt]at({150-10*(#1)}:43.2){$#1^\prime$};}
-\newcommand{\CenterPt}[1]{\coordinate(C#1)at({150-10*(#1)}:60);\fill[black](C#1)circle(2.4pt);\node[font=\tiny,above right,inner sep=.5pt]at(C#1){$C_{#1}$};}
+\newcommand{\CenterPt}[1]{\coordinate(C#1)at({150-10*(#1)}:60);\node[fill=black,circle,minimum size=2.6pt,inner sep=0pt,outer sep=0pt,transform shape=false]at(C#1){};\node[font=\tiny,above right,inner sep=.5pt]at(C#1){$C_{#1}$};}
 \newcommand{\AllDiv}{\foreach\k in{0,...,12}{\DivLine{\k}}}
 \newcommand{\AllLabels}{\foreach\k in{0,...,12}{\DivLabel{\k}}}
 \newcommand{\AllCenters}{\foreach\k in{0,...,12}{\CenterPt{\k}}}
 \newcommand{\AllPCoords}{\foreach\k in{0,...,12}{\coordinate(P\k)at({60*cos(150-10*(\k))+15*cos(330-40*(\k))},{60*sin(150-10*(\k))+15*sin(330-40*(\k))});}}
 \newcommand{\CutArc}[1]{\pgfmathsetmacro{\qa}{330-40*(#1)}\draw[construction line,very thin](C#1)+({\qa-12}:15)arc({\qa-12}:{\qa+12}:15);}
-\newcommand{\Pmark}[1]{\fill[black](P#1)circle(2.4pt);\node[font=\tiny,blue!85!black,above right,inner sep=.5pt]at(P#1){$P_{#1}$};}
+\newcommand{\Pmark}[1]{\node[fill=black,circle,minimum size=2.6pt,inner sep=0pt,outer sep=0pt,transform shape=false]at(P#1){};\node[font=\tiny,blue!85!black,above right,inner sep=.5pt]at(P#1){$P_{#1}$};}
 \newcommand{\AllCut}{\AllPCoords\foreach\k in{0,...,12}{\CutArc{\k}\Pmark{\k}}}
 \newcommand{\Curve}{\AllPCoords\draw[main curve]plot[smooth]coordinates{(P0)(P1)(P2)(P3)(P4)(P5)(P6)(P7)(P8)(P9)(P10)(P11)(P12)};}
 \newcommand{\SelectedGeometry}{\coordinate(Psel)at(-10.3596467,73.8670712);\coordinate(Cp)at(95:60);\coordinate(M)at(95:45);\coordinate(T1)at(14.0477535,79.2780615);\coordinate(T2)at(-34.7670469,68.4560808);\coordinate(NNleft)at(-0.7031893,30.3096065);\coordinate(NNright)at(-13.5784658,88.3862261);}
-\newcommand{\PGeometry}{\fill[black](Psel)circle(2.4pt);\node[font=\scriptsize,blue!80!black,above right,inner sep=.5pt]at(Psel){$P$};}
-\newcommand{\PtoCpArc}{\draw[construction line,very thin](Psel)+(-82:15)arc(-82:-58:15);\draw[construction line](Psel)--(Cp);\fill[black](Cp)circle(2.4pt);\node[font=\scriptsize,above right,inner sep=.5pt]at(Cp){$C_p$};\draw[dimension line]($(Psel)+(20:5)$)--($(Cp)+(20:5)$)node[midway,fill=white,inner sep=1pt,font=\scriptsize]{$15\ \mathrm{mm}$};}
+\newcommand{\PGeometry}{\node[fill=black,circle,minimum size=3.0pt,inner sep=0pt,outer sep=0pt,transform shape=false]at(Psel){};\node[font=\scriptsize,blue!80!black,above right,inner sep=.5pt]at(Psel){$P$};}
+\newcommand{\PtoCpArc}{\draw[construction line,very thin](Psel)+(-82:15)arc(-82:-58:15);\draw[construction line](Psel)--(Cp);\node[fill=black,circle,minimum size=3.0pt,inner sep=0pt,outer sep=0pt,transform shape=false]at(Cp){};\node[font=\scriptsize,above right,inner sep=.5pt]at(Cp){$C_p$};\draw[dimension line]($(Psel)+(20:5)$)--($(Cp)+(20:5)$)node[midway,fill=white,inner sep=1pt,font=\scriptsize]{$15\ \mathrm{mm}$};}
 \newcommand{\NormalAndTangent}{\draw[normal line,line width=1.2pt](NNleft)--(NNright);\node[font=\scriptsize,orange!85!black,above right,xshift=2pt]at(NNright){$N\prime$};\node[font=\scriptsize,orange!85!black,below left,xshift=-2pt]at(NNleft){$N$};\draw[tangent line,line width=1.2pt](T2)--(T1);\node[font=\scriptsize,magenta!80!black,below left,xshift=-2pt]at(T2){$T$};\node[font=\scriptsize,magenta!80!black,above right,xshift=2pt]at(T1){$T\prime$};}
 \newcommand{\BaseCommon}{\Base\DrawCzero\GenCircle}
 \newcommand{\GenFull}{\AllGen\AllGenRad\node[font=\tiny,green!45!black,below right,inner sep=.5pt]at($(G0)+(330:2)$){$0,12$};\foreach\j in{1,...,11}{\GenLab{\j}}}
 \newcommand{\ConFull}{\ConArcZero\ConArcOne\ConArcTwo\ConArcThree\ConArcFour\ConArcFive\ConArcSix}
 \newcommand{\DivFull}{\AllDiv\AllLabels\AllCenters}
-\newcommand{\FinalConstruction}{\BaseCommon\GenFull\ConFull\CentreArc\DivFull\AllCut\Curve}
+\newcommand{\FinalConstruction}{\BaseCommon\GenFull\ConFull\CentreArc\DivFull\AllCut\Curve\foreach\k in{0,...,12}{\Pmark{\k}}}
 \begin{document}
 \begin{frame}[plain]\titlepage\end{frame}
 \begin{frame}{Problem Statement}
 \begin{block}{Problem}
+\vspace{0.35em}
 A generating circle of diameter $30$ mm rolls externally without slipping on a directing circle of diameter $90$ mm. Construct one complete epicycloid arch corresponding to $\angle AOB=120^\circ$, divide the arch into 12 equal angular parts, and retain every construction element in all subsequent views.
+\vspace{0.35em}
 \end{block}
 \end{frame}
-\begin{frame}{Given Data}
+\begin{frame}{Given Data and Calculations}
+\begin{columns}[T,onlytextwidth]
+\column{0.49\textwidth}
+\textbf{Given data}
 \begin{align*}
-\text{Diameter of directing circle} &= 90\text{ mm},\qquad R=45\text{ mm},\\
-\text{Diameter of generating circle} &= 30\text{ mm},\qquad r=15\text{ mm},\\
-\angle AOB &=120^\circ,\qquad \text{Number of divisions}=12.
+\text{Diameter of directing circle} &=90\text{ mm},\\
+R&=45\text{ mm},\\
+\text{Diameter of generating circle} &=30\text{ mm},\\
+r&=15\text{ mm},\\
+\angle AOB&=120^\circ,\\
+\text{Let number of divisions}&=12.
 \end{align*}
-\end{frame}
-\begin{frame}{Calculations}
+\vspace{-0.4em}
+\textbf{Calculations}
 \begin{align*}
-OC_0 &= R+r =45+15=60\text{ mm},\\
-AC_0 &=r=15\text{ mm},\\
-\Delta\theta &=\frac{120^\circ}{12}=10^\circ,\\
-\text{Generating-circle division angle} &=\frac{360^\circ}{12}=30^\circ.
+OC_0&=R+r=45+15=60\text{ mm},\\
+AC_0&=r=15\text{ mm},\\
+\Delta\theta&=\frac{120^\circ}{12}=10^\circ.
 \end{align*}
+\column{0.49\textwidth}
+\textbf{Generating-circle division}
+\begin{align*}
+\text{Division angle}&=\frac{360^\circ}{12}=30^\circ.
+\end{align*}
+\vspace{0.3em}
+\textbf{Rolling relation}
+\begin{align*}
+\text{Each }10^\circ\text{ centre step}&\leftrightarrow 30^\circ\text{ generating-circle step}.
+\end{align*}
+\end{columns}
 \end{frame}
 \begin{frame}{Step 1: Draw $OA$}\centering\begin{tikzpicture}[scale=.075,>=stealth]\coordinate(O)at(0,0);\coordinate(A)at(150:45);\draw[thin](O)--(A);\OADim\fill(O)circle(.7pt)node[below]{$O$};\fill(A)circle(.55pt)node[above left]{$A$};\Legend{$OA=45$ mm.}\end{tikzpicture}\end{frame}
 \begin{frame}{Step 2: Extend $OA$}\centering\begin{tikzpicture}[scale=.075,>=stealth]\coordinate(O)at(0,0);\coordinate(A)at(150:45);\draw[thin](O)--(A);\draw[extension line](A)--(150:82);\fill(O)circle(.7pt)node[below]{$O$};\fill(A)circle(.55pt)node[above left]{$A$};\Legend{Extend $OA$.}\end{tikzpicture}\end{frame}
@@ -106,9 +126,9 @@ AC_0 &=r=15\text{ mm},\\
 \begin{frame}{Step 15: Select a point $P$ on the epicycloid}\centering\begin{tikzpicture}[scale=.075,>=stealth]\FinalConstruction\SelectedGeometry\PGeometry\Legend{Selected point $P$.}\end{tikzpicture}\end{frame}
 \begin{frame}{Step 16: Draw the $15$ mm arc from $P$ to the centre curve}\centering\begin{tikzpicture}[scale=.075,>=stealth]\FinalConstruction\SelectedGeometry\PGeometry\PtoCpArc\Legend{$PC_p=15\ mathrm{mm}$.}\end{tikzpicture}\end{frame}
 \begin{frame}{Step 17: Join $C_p$ to $O$}\centering\begin{tikzpicture}[scale=.075,>=stealth]\FinalConstruction\SelectedGeometry\PGeometry\PtoCpArc\draw[contact line](O)--(Cp);\Legend{Join $C_p$ to $O$.}\end{tikzpicture}\end{frame}
-\begin{frame}{Step 18: Mark $M$ on the directing circle}\centering\begin{tikzpicture}[scale=.075,>=stealth]\FinalConstruction\SelectedGeometry\PGeometry\PtoCpArc\draw[contact line](O)--(Cp);\fill[black](M)circle(2.4pt);\node[font=\scriptsize,above right]at(M){$M$};\Legend{$M=OC_p\cap AB$.}\end{tikzpicture}\end{frame}
-\begin{frame}{Step 19: Draw the normal $NN'$ through $P$}\centering\begin{tikzpicture}[scale=.075,>=stealth]\FinalConstruction\SelectedGeometry\PtoCpArc\draw[contact line](O)--(Cp);\NormalAndTangent\PGeometry\fill[black](M)circle(1.8pt)node[above right]{$M$};\fill[black](Cp)circle(1.8pt)node[above right]{$C_p$};\Legend{$NN'$: normal.}\end{tikzpicture}\end{frame}
-\begin{frame}{Step 20: Draw the tangent perpendicular to $NN'$}\centering\begin{tikzpicture}[scale=.075,>=stealth]\FinalConstruction\SelectedGeometry\PtoCpArc\draw[contact line](O)--(Cp);\NormalAndTangent\PGeometry\fill[black](M)circle(1.8pt)node[above right]{$M$};\fill[black](Cp)circle(1.8pt)node[above right]{$C_p$};\Legend{$TT'\perp NN'$.}\end{tikzpicture}\end{frame}
-\begin{frame}{Step 20: Show the right-angle at $P$}\centering\begin{tikzpicture}[scale=.075,>=stealth]\FinalConstruction\SelectedGeometry\PtoCpArc\draw[contact line](O)--(Cp);\NormalAndTangent\PGeometry\fill[black](M)circle(1.8pt)node[above right]{$M$};\fill[black](Cp)circle(1.8pt)node[above right]{$C_p$};\pic[draw=black,line width=1pt,angle radius=7pt,angle eccentricity=1.35]at(Psel){right angle=T2--Psel--NNright};\Legend{Right angle at $P$.}\end{tikzpicture}\end{frame}
-\begin{frame}{Step 20: Final completed epicycloid construction}\centering\begin{tikzpicture}[scale=.075,>=stealth]\FinalConstruction\SelectedGeometry\PtoCpArc\draw[contact line](O)--(Cp);\NormalAndTangent\PGeometry\fill[black](M)circle(1.8pt)node[above right]{$M$};\fill[black](Cp)circle(1.8pt)node[above right]{$C_p$};\pic[draw=black,line width=1pt,angle radius=7pt,angle eccentricity=1.35]at(Psel){right angle=T2--Psel--NNright};\Legend{Completed epicycloid with tangent and normal.}\end{tikzpicture}\end{frame}
+\begin{frame}{Step 18: Mark $M$ on the directing circle}\centering\begin{tikzpicture}[scale=.075,>=stealth]\FinalConstruction\SelectedGeometry\PGeometry\PtoCpArc\draw[contact line](O)--(Cp);\node[fill=black,circle,minimum size=3.0pt,inner sep=0pt,outer sep=0pt,transform shape=false]at(M){};\node[font=\scriptsize,above right]at(M){$M$};\Legend{$M=OC_p\cap AB$.}\end{tikzpicture}\end{frame}
+\begin{frame}{Step 19: Draw the normal $NN'$ through $P$}\centering\begin{tikzpicture}[scale=.075,>=stealth]\FinalConstruction\SelectedGeometry\PtoCpArc\draw[contact line](O)--(Cp);\NormalAndTangent\PGeometry\node[fill=black,circle,minimum size=3.0pt,inner sep=0pt,outer sep=0pt,transform shape=false]at(M){};\node[font=\scriptsize,above right]at(M){$M$};\node[fill=black,circle,minimum size=3.0pt,inner sep=0pt,outer sep=0pt,transform shape=false]at(Cp){};\node[font=\scriptsize,above right]at(Cp){$C_p$};\Legend{$NN'$: normal.}\end{tikzpicture}\end{frame}
+\begin{frame}{Step 20: Draw the tangent perpendicular to $NN'$}\centering\begin{tikzpicture}[scale=.075,>=stealth]\FinalConstruction\SelectedGeometry\PtoCpArc\draw[contact line](O)--(Cp);\NormalAndTangent\PGeometry\node[fill=black,circle,minimum size=3.0pt,inner sep=0pt,outer sep=0pt,transform shape=false]at(M){};\node[font=\scriptsize,above right]at(M){$M$};\node[fill=black,circle,minimum size=3.0pt,inner sep=0pt,outer sep=0pt,transform shape=false]at(Cp){};\node[font=\scriptsize,above right]at(Cp){$C_p$};\Legend{$TT'\perp NN'$.}\end{tikzpicture}\end{frame}
+\begin{frame}{Step 20: Show the right-angle at $P$}\centering\begin{tikzpicture}[scale=.075,>=stealth]\FinalConstruction\SelectedGeometry\PtoCpArc\draw[contact line](O)--(Cp);\NormalAndTangent\PGeometry\node[fill=black,circle,minimum size=3.0pt,inner sep=0pt,outer sep=0pt,transform shape=false]at(M){};\node[font=\scriptsize,above right]at(M){$M$};\node[fill=black,circle,minimum size=3.0pt,inner sep=0pt,outer sep=0pt,transform shape=false]at(Cp){};\node[font=\scriptsize,above right]at(Cp){$C_p$};\pic[draw=black,line width=1pt,angle radius=7pt,angle eccentricity=1.35]at(Psel){right angle=T2--Psel--NNright};\Legend{Right angle at $P$.}\end{tikzpicture}\end{frame}
+\begin{frame}{Step 20: Final completed epicycloid construction}\centering\begin{tikzpicture}[scale=.075,>=stealth]\FinalConstruction\SelectedGeometry\PtoCpArc\draw[contact line](O)--(Cp);\NormalAndTangent\PGeometry\node[fill=black,circle,minimum size=3.0pt,inner sep=0pt,outer sep=0pt,transform shape=false]at(M){};\node[font=\scriptsize,above right]at(M){$M$};\node[fill=black,circle,minimum size=3.0pt,inner sep=0pt,outer sep=0pt,transform shape=false]at(Cp){};\node[font=\scriptsize,above right]at(Cp){$C_p$};\pic[draw=black,line width=1pt,angle radius=7pt,angle eccentricity=1.35]at(Psel){right angle=T2--Psel--NNright};\Legend{Completed epicycloid with tangent and normal.}\end{tikzpicture}\end{frame}
 \end{document}
