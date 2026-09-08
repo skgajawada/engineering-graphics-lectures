@@ -1,14 +1,14 @@
-name: Build LaTeX PDFs
+name: Build Engineering Curves & Animations
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'cycloid/cycloid.tex'
-      - 'cycloid/cycloid_a.tex'
-      - 'epicycloid/epicycloid.tex'
-      - 'hypocycloid/hypocycloid.tex'
+      - 'cycloid/**'
+      - 'epicycloid/**'
+      - 'hypocycloid/**'
+      - 'animation/**'
       - '.github/workflows/latex.yml'
   workflow_dispatch:
 
@@ -24,53 +24,61 @@ jobs:
         uses: actions/checkout@v5
 
       # --------------------------------------------------
-      # Compile Cycloid (Standard)
+      # Set up Python for Animation Generation
+      # --------------------------------------------------
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Python Dependencies
+        run: |
+          pip install numpy matplotlib pillow
+
+      - name: Generate Cycloid Animation GIF
+        run: |
+          python animation/generate_cycloid.py
+
+      # --------------------------------------------------
+      # Compile LaTeX Presentations (PDFs)
       # --------------------------------------------------
       - name: Compile Cycloid presentation
         uses: xu-cheng/latex-action@v4
         with:
           root_file: cycloid/cycloid.tex
 
-      # --------------------------------------------------
-      # Compile Cycloid (Animated)
-      # --------------------------------------------------
-      - name: Compile Animated Cycloid presentation
+      - name: Compile Animated Beamer Cycloid
         uses: xu-cheng/latex-action@v4
         with:
           root_file: cycloid/cycloid_a.tex
 
-      # --------------------------------------------------
-      # Compile Epicycloid
-      # --------------------------------------------------
       - name: Compile Epicycloid presentation
         uses: xu-cheng/latex-action@v4
         with:
           root_file: epicycloid/epicycloid.tex
 
-      # --------------------------------------------------
-      # Compile Hypocycloid
-      # --------------------------------------------------
       - name: Compile Hypocycloid presentation
         uses: xu-cheng/latex-action@v4
         with:
           root_file: hypocycloid/hypocycloid.tex
 
       # --------------------------------------------------
-      # Save generated PDFs
+      # Save Generated Files Back to Repository
       # --------------------------------------------------
-      - name: Commit generated PDFs
+      - name: Commit generated assets (PDFs and GIFs)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add -f cycloid/cycloid.pdf
           git add -f cycloid/cycloid_a.pdf
+          git add -f cycloid_animation.gif
           git add -f epicycloid/epicycloid.pdf
           git add -f hypocycloid/hypocycloid.pdf
 
           if git diff --cached --quiet; then
-            echo "No PDF changes detected."
+            echo "No changes detected."
           else
-            git commit -m "build: update all engineering curve PDFs including cycloid animation"
+            git commit -m "build: update engineering curve PDFs and Python looping animation"
             git push
           fi
