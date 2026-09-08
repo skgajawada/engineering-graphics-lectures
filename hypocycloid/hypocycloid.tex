@@ -1,28 +1,22 @@
 \documentclass[aspectratio=169,10pt]{beamer}
 
-% ============================================================
-% PACKAGES
-% ============================================================
 \usetheme{metropolis}
 
 \usepackage{tikz}
-\usetikzlibrary{
-    calc,
-    arrows.meta,
-    angles,
-    quotes
-}
+\usepackage{amsmath}
+\usetikzlibrary{calc,arrows.meta,angles,quotes}
 
 \setbeamertemplate{navigation symbols}{}
 
 % ============================================================
 % FOOTER
 % ============================================================
+
 \setbeamertemplate{footline}{%
 \begin{beamercolorbox}[
-    wd=\paperwidth,
-    ht=3.0ex,
-    dp=1.2ex
+  wd=\paperwidth,
+  ht=3.0ex,
+  dp=1.2ex
 ]{footline}
 \hspace{1.2em}
 \scriptsize Gajavada Sanjeevkumar
@@ -35,57 +29,117 @@
 }
 
 \setbeamercolor{footline}{
-    fg=black!70,
-    bg=white
+  fg=black!70,
+  bg=white
 }
 
 % ============================================================
 % TITLE
 % ============================================================
+
 \title[
-    Engineering Curves: Hypocycloid
+Engineering Curves: Hypocycloid
 ]{
-    Engineering Curves: Construction of Hypocycloid
+Engineering Curves: Construction of Hypocycloid
 }
 
 \subtitle{
-    Rolling Circle Method with Tangent \& Normal
+Rolling Circle Method with Tangent \& Normal
 }
 
-\author{Gajavada Sanjeevkumar}
+\author{
+Gajavada Sanjeevkumar
+}
+
 \date{}
 
 % ============================================================
 % TIKZ STYLES
 % ============================================================
+
 \tikzset{
-    extension line/.style={thin, densely dotted, violet!70},
-    directing line/.style={thick, blue!80!black},
-    generating line/.style={thick, green!60!black},
-    centre line/.style={thin, dash pattern=on 8pt off 2pt on 1.5pt off 2pt, red!70!black},
-    construction line/.style={thin, cyan!80!black},
-    division line/.style={thin, orange!90!black},
-    arc line/.style={thin, purple!80!black},
-    main curve/.style={thick, blue!90!black},
-    normal line/.style={thick, orange!90!black},
-    tangent line/.style={thick, magenta!90!black},
-    contact line/.style={thin, brown!70!black},
-    dimension line/.style={thin, <->, >=Stealth, black!75}
+
+  extension line/.style={
+    thin,
+    densely dotted,
+    violet!70
+  },
+
+  directing line/.style={
+    thick,
+    blue!80!black
+  },
+
+  generating line/.style={
+    thick,
+    green!60!black
+  },
+
+  centre line/.style={
+    thin,
+    dash pattern={
+      on 8pt off 2pt on 1.5pt off 2pt
+    },
+    red!70!black
+  },
+
+  construction line/.style={
+    thin,
+    cyan!80!black
+  },
+
+  division line/.style={
+    thin,
+    orange!90!black
+  },
+
+  arc line/.style={
+    thin,
+    purple!80!black
+  },
+
+  main curve/.style={
+    thick,
+    blue!90!black
+  },
+
+  normal line/.style={
+    thick,
+    orange!90!black
+  },
+
+  tangent line/.style={
+    thick,
+    magenta!90!black
+  },
+
+  contact line/.style={
+    thin,
+    brown!70!black
+  },
+
+  dimension line/.style={
+    thin,
+    <->,
+    >=Stealth,
+    black!75
+  }
 }
 
 % ============================================================
 % LEGEND
 % ============================================================
+
 \newcommand{\Legend}[1]{%
 \node[
-    draw=gray!35,
-    fill=white,
-    rounded corners=2pt,
-    inner sep=3pt,
-    anchor=north east,
-    align=left,
-    font=\scriptsize,
-    text width=31mm
+  draw=gray!35,
+  fill=white,
+  rounded corners=2pt,
+  inner sep=3pt,
+  anchor=north east,
+  align=left,
+  font=\scriptsize,
+  text width=31mm
 ] at (84,84){#1};
 }
 
@@ -93,120 +147,103 @@
 % BASIC GEOMETRY
 %
 % Directing circle:
-%       R = 75 mm
+% Diameter = 150 mm
+% R = 75 mm
 %
 % Generating circle:
-%       r = 15 mm
+% Diameter = 30 mm
+% r = 15 mm
 %
-% Hypocycloid:
-%       OC = R-r = 60 mm
+% Centre locus:
+% R-r = 60 mm
 %
-% One complete cusp-to-cusp arch:
+% Hypocycloid cusp-to-cusp angle:
 %
-%       angle AOB = 360 r/R
-%                  = 360(15)/75
-%                  = 72 degrees
+%       360 r
+% θ = -------- = 72°
+%         R
 %
-% The drawing is rotated 45 degrees counter-clockwise:
-%
-%       A = 135 degrees
-%       B = 63 degrees
-%
+% A = 135°
+% B = 63°
 % ============================================================
 
 \newcommand{\Base}{%
 
-    \coordinate(O) at (0,0);
+  \coordinate(O)at(0,0);
 
-    \coordinate(A) at (135:75);
+  \coordinate(A)at(135:75);
 
-    \coordinate(B) at (63:75);
+  \coordinate(B)at(63:75);
 
-    \coordinate(Czero) at (135:60);
+  \coordinate(Czero)at(135:60);
 
-    % OA
-    \draw[thin]
-        (O)--(A);
+  % OA
+  \draw[thin]
+    (O)--(A);
 
-    % OB
-    \draw[thin]
-        (O)--(B);
+  % OB
+  \draw[thin]
+    (O)--(B);
 
-    % Extension of OA
-    \draw[extension line]
-        (A)--(135:88);
+  % Extensions
+  \draw[extension line]
+    (A)--(135:88);
 
-    % Extension of OB
-    \draw[extension line]
-        (B)--(63:88);
+  \draw[extension line]
+    (B)--(63:88);
 
-    % Directing-circle arc
-    \draw[directing line]
-        (A) arc (135:63:75);
+  % Directing arc AB
+  \draw[directing line]
+    (A)arc(135:63:75);
 
-    % Points
-    \fill(O) circle (.7pt)
-        node[below] {$O$};
+  % Points
+  \fill(O)circle(.7pt)
+    node[below]{$O$};
 
-    \fill(A) circle (.6pt)
-        node[above left] {$A$};
+  \fill(A)circle(.6pt)
+    node[above left]{$A$};
 
-    \fill(B) circle (.6pt)
-        node[above right] {$B$};
+  \fill(B)circle(.6pt)
+    node[above right]{$B$};
 }
 
 % ============================================================
 % DIMENSIONING
 %
-% IMPORTANT RULE:
+% Rule:
 %
-% Dimension line is parallel to the measured line.
-% Limiting lines are perpendicular to the measured line.
-%
+% 1. Dimension line is parallel to measured line.
+% 2. Limiting lines are perpendicular to measured line.
+% 3. Limiting lines start at actual endpoints.
 % ============================================================
 
 % ------------------------------------------------------------
 % OA = 75 mm
-%
-% OA direction = 135 degrees
-%
-% Perpendicular direction = 45 degrees
-% or equivalently 225 degrees.
+% OA direction = 135°
+% Perpendicular direction = 225°
 % ------------------------------------------------------------
 
 \newcommand{\OADim}{%
 
-    % Dimension line parallel to OA
-    \draw[
-        dimension line
-    ]
+  \draw[dimension line]
     ($(O)+(225:9)$)
     --
     ($(A)+(225:9)$)
     node[
-        midway,
-        sloped,
-        below,
-        fill=white,
-        inner sep=1pt,
-        font=\scriptsize
-    ]
-    {$75\ \mathrm{mm}$};
+      midway,
+      sloped,
+      below,
+      fill=white,
+      inner sep=1pt,
+      font=\scriptsize
+    ]{$75\ \mathrm{mm}$};
 
-    % Limiting line at O
-    \draw[
-        thin,
-        black!55
-    ]
+  \draw[thin,black!55]
     (O)
     --
     ($(O)+(225:9)$);
 
-    % Limiting line at A
-    \draw[
-        thin,
-        black!55
-    ]
+  \draw[thin,black!55]
     (A)
     --
     ($(A)+(225:9)$);
@@ -214,43 +251,29 @@
 
 % ------------------------------------------------------------
 % AC_0 = 15 mm
-%
-% AC_0 is collinear with OA.
 % ------------------------------------------------------------
 
 \newcommand{\ACDim}{%
 
-    % Dimension line parallel to AC_0
-    \draw[
-        dimension line
-    ]
+  \draw[dimension line]
     ($(A)+(225:7)$)
     --
     ($(Czero)+(225:7)$)
     node[
-        midway,
-        sloped,
-        above,
-        fill=white,
-        inner sep=1pt,
-        font=\scriptsize
-    ]
-    {$15\ \mathrm{mm}$};
+      midway,
+      sloped,
+      above,
+      fill=white,
+      inner sep=1pt,
+      font=\scriptsize
+    ]{$15\ \mathrm{mm}$};
 
-    % Limiting line at A
-    \draw[
-        thin,
-        black!55
-    ]
+  \draw[thin,black!55]
     (A)
     --
     ($(A)+(225:7)$);
 
-    % Limiting line at C_0
-    \draw[
-        thin,
-        black!55
-    ]
+  \draw[thin,black!55]
     (Czero)
     --
     ($(Czero)+(225:7)$);
@@ -262,37 +285,25 @@
 
 \newcommand{\OCDim}{%
 
-    % Dimension line parallel to OC_0
-    \draw[
-        dimension line
-    ]
+  \draw[dimension line]
     ($(O)+(225:12)$)
     --
     ($(Czero)+(225:12)$)
     node[
-        midway,
-        sloped,
-        below,
-        fill=white,
-        inner sep=1pt,
-        font=\scriptsize
-    ]
-    {$60\ \mathrm{mm}$};
+      midway,
+      sloped,
+      below,
+      fill=white,
+      inner sep=1pt,
+      font=\scriptsize
+    ]{$60\ \mathrm{mm}$};
 
-    % Limiting line at O
-    \draw[
-        thin,
-        black!55
-    ]
+  \draw[thin,black!55]
     (O)
     --
     ($(O)+(225:12)$);
 
-    % Limiting line at C_0
-    \draw[
-        thin,
-        black!55
-    ]
+  \draw[thin,black!55]
     (Czero)
     --
     ($(Czero)+(225:12)$);
@@ -304,171 +315,178 @@
 
 \newcommand{\DrawCzero}{%
 
-    \draw[
-        centre line
-    ]
+  \draw[centre line]
     (O)--(Czero);
 
-    \fill[black]
-    (Czero) circle (.6pt)
-    node[above left] {$C_0$};
+  \fill[black](Czero)circle(.6pt)
+    node[above left]{$C_0$};
 }
+
+% ------------------------------------------------------------
+% Generating circle radius = 15 mm
+% ------------------------------------------------------------
 
 \newcommand{\GenCircle}{%
 
-    \draw[
-        generating line
-    ]
-    (Czero) circle (15);
+  \draw[generating line]
+    (Czero)circle(15);
 }
 
 % ============================================================
-% GENERATING-CIRCLE DIVISIONS
+% GENERATING CIRCLE DIVISION POINTS
 %
-% Initial contact point A is numbered 0.
+% 12 equal divisions
 %
-% The generating circle is divided clockwise:
+% Clockwise:
 %
-%       360/12 = 30 degrees
-%
+% 360° / 12 = 30°
 % ============================================================
 
 \newcommand{\GenPt}[1]{%
 
-    \coordinate(G#1)
-    at (
-        $(Czero)+({135-30*(#1)}:15)$
-    );
+  \coordinate(G#1)at(
+    $(Czero)+({135-30*(#1)}:15)$
+  );
 
-    \fill[black]
-    (G#1) circle (.55pt);
+  \fill[black]
+    (G#1)circle(.55pt);
 }
+
+% ------------------------------------------------------------
+% Radius lines
+% ------------------------------------------------------------
 
 \newcommand{\GenRad}[1]{%
 
-    \draw[
-        construction line
-    ]
+  \draw[construction line]
     (Czero)--(G#1);
 }
 
+% ------------------------------------------------------------
+% Labels
+% ------------------------------------------------------------
+
 \newcommand{\GenLab}[1]{%
 
-    \node[
-        font=\tiny,
-        green!50!black
-    ]
-    at (
-        $(Czero)+({135-30*(#1)}:18.5)$
-    )
-    {$#1$};
+  \node[
+    font=\tiny,
+    green!50!black
+  ]
+  at(
+    $(Czero)+({135-30*(#1)}:18.5)$
+  ){$#1$};
 }
+
+% ------------------------------------------------------------
+% All generating points
+% ------------------------------------------------------------
 
 \newcommand{\AllGen}{%
-    \foreach\k in {0,...,12}{
-        \GenPt{\k}
-    }
+  \foreach\k in{0,...,12}{
+    \GenPt{\k}
+  }
 }
 
+% ------------------------------------------------------------
+% All radius lines
+% ------------------------------------------------------------
+
 \newcommand{\AllGenRad}{%
-    \foreach\k in {0,...,11}{
-        \GenRad{\k}
-    }
+  \foreach\k in{0,...,11}{
+    \GenRad{\k}
+  }
 }
+
+% ------------------------------------------------------------
+% All labels
+% ------------------------------------------------------------
 
 \newcommand{\AllGenLab}{%
 
-    % Initial point
-    \node[
-        font=\tiny,
-        green!50!black,
-        below left,
-        inner sep=.5pt
-    ]
-    at ($(G0)+(135:5)$)
-    {$0$};
+  \node[
+    font=\tiny,
+    green!50!black,
+    below left,
+    inner sep=.5pt
+  ]
+  at(
+    $(G0)+(135:5)$
+  ){$0$};
 
-    % Intermediate points
-    \foreach\k in {1,...,11}{
-        \GenLab{\k}
-    }
+  \foreach\k in{1,...,11}{
+    \GenLab{\k}
+  }
 
-    % Final point coincides with initial point
-    \node[
-        font=\tiny,
-        green!50!black,
-        above right,
-        inner sep=.5pt
-    ]
-    at ($(G12)+(135:5)$)
-    {$0,12$};
+  \node[
+    font=\tiny,
+    green!50!black,
+    above right,
+    inner sep=.5pt
+  ]
+  at(
+    $(G12)+(135:5)$
+  ){$0,12$};
 }
 
 % ============================================================
 % CONCENTRIC CONSTRUCTION ARCS
 %
-% Each construction arc is centered at O.
+% Every construction arc:
 %
-% It passes through G_i.
-%
-% It terminates on the extended OB line at 63 degrees.
+% - is centered at O
+% - passes through a generating-circle division point
+% - terminates on the extended OB direction
 % ============================================================
 
 \newcommand{\ConArcZero}{%
 
-    \draw[
-        arc line
-    ]
+  \draw[arc line]
     (135:75)
-    arc (135:63:75);
+    arc(135:63:75);
 }
+
+% ------------------------------------------------------------
+% Generic construction arc
+% ------------------------------------------------------------
 
 \newcommand{\ConArcCustom}[1]{%
 
-    % Coordinates of G_i
-    \pgfmathsetmacro{\gx}{
-        60*cos(135)
-        +
-        15*cos(135-30*(#1))
-    }
+  \pgfmathsetmacro{\gx}{
+    60*cos(135)+15*cos(135-30*(#1))
+  }
 
-    \pgfmathsetmacro{\gy}{
-        60*sin(135)
-        +
-        15*sin(135-30*(#1))
-    }
+  \pgfmathsetmacro{\gy}{
+    60*sin(135)+15*sin(135-30*(#1))
+  }
 
-    % Radius OG_i
-    \pgfmathsetmacro{\rr}{
-        sqrt(
-            \gx*\gx+\gy*\gy
-        )
-    }
+  \pgfmathsetmacro{\rr}{
+    sqrt(\gx*\gx+\gy*\gy)
+  }
 
-    % Angular position of G_i from O
-    \pgfmathsetmacro{\aa}{
-        atan2(\gy,\gx)
-    }
+  \pgfmathsetmacro{\aa}{
+    atan2(\gy,\gx)
+  }
 
-    % Concentric arc
-    \draw[
-        arc line
-    ]
+  \draw[arc line]
     (\aa:\rr)
     arc[
-        start angle=\aa,
-        end angle=63,
-        radius=\rr
+      start angle=\aa,
+      end angle=63,
+      radius=\rr
     ];
 }
 
+% ------------------------------------------------------------
+% Complete concentric construction
+% ------------------------------------------------------------
+
 \newcommand{\ConFull}{%
 
-    \ConArcZero
+  \ConArcZero
 
-    \foreach\k in {1,...,12}{
-        \ConArcCustom{\k}
-    }
+  \foreach\k in{1,...,12}{
+    \ConArcCustom{\k}
+  }
 }
 
 % ============================================================
@@ -477,351 +495,348 @@
 
 \newcommand{\CentreArc}{%
 
-    \draw[
-        centre line
-    ]
+  \draw[centre line]
     (135:60)
-    arc (135:63:60);
+    arc(135:63:60);
 }
 
 % ============================================================
-% ANGULAR DIVISIONS
+% ANGULAR DIVISIONS OF AOB
 %
-% AOB = 72 degrees
+% Total angle = 72°
 %
-% 72/12 = 6 degrees
+% 72° / 12 = 6°
 %
-% Centres:
+% Centre locations:
 %
-% C_i = 60 at angle (135 - 6i)
+% C_i = 60 at angle:
+%
+% 135° - 6° i
 % ============================================================
 
 \newcommand{\DivLine}[1]{%
 
-    \draw[
-        division line
-    ]
-    (O)--({135-6*(#1)}:75);
+  \draw[division line]
+    (O)
+    --
+    ({135-6*(#1)}:75);
 }
+
+% ------------------------------------------------------------
+% Division labels
+% ------------------------------------------------------------
 
 \newcommand{\DivLabel}[1]{%
 
-    \node[
-        font=\tiny,
-        orange!90!black,
-        inner sep=.5pt
-    ]
-    at ({135-6*(#1)}:42.5)
-    {$#1^\prime$};
+  \node[
+    font=\tiny,
+    orange!90!black,
+    inner sep=.5pt
+  ]
+  at(
+    {135-6*(#1)}:42.5
+  ){$#1^\prime$};
 }
+
+% ------------------------------------------------------------
+% Centre points
+% ------------------------------------------------------------
 
 \newcommand{\CenterPt}[1]{%
 
-    \coordinate(C#1)
-    at ({135-6*(#1)}:60);
+  \coordinate(C#1)at(
+    {135-6*(#1)}:60
+  );
 
-    \fill[black]
-    (C#1) circle (.55pt);
+  \fill[black]
+    (C#1)circle(.55pt);
 
-    \node[
-        font=\tiny,
-        above right,
-        inner sep=.5pt
-    ]
-    at(C#1)
-    {$C_{#1}$};
+  \node[
+    font=\tiny,
+    above right,
+    inner sep=.5pt
+  ]
+  at(C#1){$C_{#1}$};
 }
 
-\newcommand{\AllDiv}{%
+% ------------------------------------------------------------
+% Complete divisions
+% ------------------------------------------------------------
 
-    \foreach\k in {0,...,12}{
-        \DivLine{\k}
-    }
+\newcommand{\AllDiv}{%
+  \foreach\k in{0,...,12}{
+    \DivLine{\k}
+  }
 }
 
 \newcommand{\AllLabels}{%
-
-    \foreach\k in {0,...,12}{
-        \DivLabel{\k}
-    }
+  \foreach\k in{0,...,12}{
+    \DivLabel{\k}
+  }
 }
 
 \newcommand{\AllCenters}{%
-
-    \foreach\k in {0,...,12}{
-        \CenterPt{\k}
-    }
+  \foreach\k in{0,...,12}{
+    \CenterPt{\k}
+  }
 }
 
 \newcommand{\DivFull}{%
-    \AllDiv
-    \AllLabels
-    \AllCenters
+  \AllDiv
+  \AllLabels
+  \AllCenters
 }
 
 % ============================================================
 % HYPOCYCLOID POINTS
 %
-% Centre angle:
+% Centre:
 %
-%       alpha = 135 - 6 theta
+% C_i = 60 at:
+% 135° - 6°i
 %
-% Radius-vector angle:
+% Tracing radius:
 %
-%       beta = 135 + 24 theta
+% beta_i = 135° + 24°i
 %
-% because
+% because:
 %
-%       (R-r)/r = 60/15 = 4
-%
-% and the centre moves clockwise.
-%
-% With i = 0,...,12:
-%
-%       alpha_i = 135 - 6i
-%       beta_i  = 135 + 24i
-%
+% (R-r)/r = 60/15 = 4
 % ============================================================
 
 \newcommand{\AllPCoords}{%
 
-    \foreach\k in {0,...,12}{
+  \foreach\k in{0,...,12}{%
 
-        \coordinate(P\k)
-        at (
-            {
-                60*cos(135-6*(\k))
-                +
-                15*cos(135+24*(\k))
-            },
-            {
-                60*sin(135-6*(\k))
-                +
-                15*sin(135+24*(\k))
-            }
-        );
-    }
+    \coordinate(P\k)at(
+      {
+        60*cos(135-6*(\k))
+        +
+        15*cos(135+24*(\k))
+      },
+      {
+        60*sin(135-6*(\k))
+        +
+        15*sin(135+24*(\k))
+      }
+    );
+  }
 }
 
 % ============================================================
-% CUTTING ARC
+% SMALL CUTTING ARC
+%
+% Radius = 15 mm
 % ============================================================
 
 \newcommand{\CutArc}[1]{%
 
-    \pgfmathsetmacro{\qa}{
-        135+24*(#1)
-    }
+  \pgfmathsetmacro{\qa}{
+    135+24*(#1)
+  }
 
-    \draw[
-        construction line,
-        very thin
-    ]
-    (C#1)+({\qa-12}:15)
-    arc(
-        {\qa-12}:{\qa+12}:15
-    );
+  \draw[
+    construction line,
+    very thin
+  ]
+  (C#1)+({\qa-12}:15)
+  arc(
+    {\qa-12}:{\qa+12}:15
+  );
 }
 
-% ============================================================
-% CURVE POINT MARKERS
-% ============================================================
+% ------------------------------------------------------------
+% Mark P_i
+% ------------------------------------------------------------
 
 \newcommand{\Pmark}[1]{%
 
-    \fill[black]
-    (P#1) circle (.6pt);
+  \fill[black]
+    (P#1)circle(.6pt);
 
-    \node[
-        font=\tiny,
-        blue!85!black,
-        above right,
-        inner sep=.5pt
-    ]
-    at(P#1)
-    {$P_{#1}$};
+  \node[
+    font=\tiny,
+    blue!85!black,
+    above right,
+    inner sep=.5pt
+  ]
+  at(P#1){$P_{#1}$};
 }
+
+% ------------------------------------------------------------
+% Complete cutting arcs
+% ------------------------------------------------------------
 
 \newcommand{\AllCut}{%
 
-    \AllPCoords
+  \AllPCoords
 
-    \foreach\k in {0,...,12}{
-        \CutArc{\k}
-        \Pmark{\k}
-    }
+  \foreach\k in{0,...,12}{
+    \CutArc{\k}
+    \Pmark{\k}
+  }
 }
 
 % ============================================================
-% CONTINUOUS HYPOCYCLOID
+% CONTINUOUS HYPOCYCLOID CURVE
 % ============================================================
 
 \newcommand{\Curve}{%
 
-    \draw[
-        main curve
-    ]
-    plot[
-        domain=0:72,
-        samples=360,
-        variable=\th,
-        smooth
-    ]
-    (
-        {
-            60*cos(135-\th)
-            +
-            15*cos(135+4*\th)
-        },
-        {
-            60*sin(135-\th)
-            +
-            15*sin(135+4*\th)
-        }
-    );
+  \draw[main curve]
+  plot[
+    domain=0:72,
+    samples=360,
+    variable=\th,
+    smooth
+  ]
+  (
+    {
+      60*cos(135-\th)
+      +
+      15*cos(135+4*\th)
+    },
+    {
+      60*sin(135-\th)
+      +
+      15*sin(135+4*\th)
+    }
+  );
 }
 
 % ============================================================
 % SELECTED POINT
 %
-% Choose theta = 60 degrees.
+% theta = 60°
 %
-% Centre:
+% C_p = 75° on centre locus
 %
-%       alpha = 135 - 60 = 75 degrees
+% P = C_p + 15 mm at 15°
 %
-% Therefore:
-%
-%       C_p = (75 degrees,60 mm)
-%
-% Generating-circle point:
-%
-%       beta = 135 + 4(60)
-%            = 375
-%            = 15 degrees
-%
+% M = 75 mm at 75°
 % ============================================================
 
 \newcommand{\SelectedGeometry}{%
 
-    \coordinate(Psel)
-    at (30.0180301,61.8378353);
+  \coordinate(Psel)at(
+    30.0180301,
+    61.8378353
+  );
 
-    \coordinate(Cp)
-    at (75:60);
+  \coordinate(Cp)at(
+    75:60
+  );
 
-    \coordinate(M)
-    at (75:75);
+  \coordinate(M)at(
+    75:75
+  );
 
-    % Normal endpoints
-    \coordinate(NNleft)
-    at (47.6956996,44.1601657);
+  % ----------------------------------------------------------
+  % Normal
+  % ----------------------------------------------------------
 
-    \coordinate(NNright)
-    at (12.3403606,79.5155048);
+  \coordinate(NNleft)at(
+    47.6956996,
+    44.1601657
+  );
 
-    % Tangent endpoints
-    \coordinate(T2)
-    at (47.6956996,79.5155048);
+  \coordinate(NNright)at(
+    12.3403606,
+    79.5155048
+  );
 
-    \coordinate(T1)
-    at (12.3403606,44.1601657);
+  % ----------------------------------------------------------
+  % Tangent
+  % ----------------------------------------------------------
+
+  \coordinate(T2)at(
+    47.6956996,
+    79.5155048
+  );
+
+  \coordinate(T1)at(
+    12.3403606,
+    44.1601657
+  );
 }
 
 % ============================================================
-% SELECTED P
+% SELECTED POINT MARKER
 % ============================================================
 
 \newcommand{\PGeometry}{%
 
-    \fill[black]
-    (Psel) circle (.7pt);
+  \fill[black]
+    (Psel)circle(.7pt);
 
-    \node[
-        font=\scriptsize,
-        blue!80!black,
-        above right,
-        inner sep=.5pt
-    ]
-    at(Psel)
-    {$P$};
+  \node[
+    font=\scriptsize,
+    blue!80!black,
+    above right,
+    inner sep=.5pt
+  ]
+  at(Psel){$P$};
 }
 
 % ============================================================
-% P-C_p CONSTRUCTION AND DIMENSION
+% P-Cp = 15 mm
 %
-% P-C_p = 15 mm.
+% P-Cp direction = 15°
 %
-% The dimension line is parallel to P-C_p.
-%
-% Limiting lines are perpendicular to P-C_p.
+% Perpendicular direction = 105°
 % ============================================================
 
 \newcommand{\PtoCpArc}{%
 
-    % Small construction arc
-    \draw[
-        construction line,
-        very thin
-    ]
-    (Psel)+(-75:15)
-    arc(-75:-50:15);
+  % Small cyan cutting arc
+  \draw[
+    construction line,
+    very thin
+  ]
+  (Psel)+(-75:15)
+  arc(-75:-50:15);
 
-    % Join P to C_p
-    \draw[
-        construction line
-    ]
-    (Psel)--(Cp);
+  % PCp
+  \draw[
+    construction line
+  ]
+  (Psel)--(Cp);
 
-    % C_p point
-    \fill[black]
-    (Cp) circle (.6pt);
+  % Cp
+  \fill[black]
+    (Cp)circle(.6pt);
 
-    \node[
-        font=\scriptsize,
-        above right,
-        inner sep=.5pt
-    ]
-    at(Cp)
-    {$C_p$};
+  \node[
+    font=\scriptsize,
+    above right,
+    inner sep=.5pt
+  ]
+  at(Cp){$C_p$};
 
-    % --------------------------------------------------------
-    % Dimension P-C_p
-    %
-    % P-C_p direction = 15 degrees.
-    % Perpendicular = 105 degrees.
-    % --------------------------------------------------------
+  % ----------------------------------------------------------
+  % Dimension
+  % ----------------------------------------------------------
 
-    \draw[
-        dimension line
-    ]
+  \draw[dimension line]
     ($(Psel)+(105:6)$)
     --
     ($(Cp)+(105:6)$)
     node[
-        midway,
-        sloped,
-        above,
-        fill=white,
-        inner sep=1pt,
-        font=\scriptsize
-    ]
-    {$15\ \mathrm{mm}$};
+      midway,
+      sloped,
+      above,
+      fill=white,
+      inner sep=1pt,
+      font=\scriptsize
+    ]{$15\ \mathrm{mm}$};
 
-    % Limiting line at P
-    \draw[
-        thin,
-        black!55
-    ]
+  % Limiting lines
+  \draw[thin,black!55]
     (Psel)
     --
     ($(Psel)+(105:6)$);
 
-    % Limiting line at C_p
-    \draw[
-        thin,
-        black!55
-    ]
+  \draw[thin,black!55]
     (Cp)
     --
     ($(Cp)+(105:6)$);
@@ -833,29 +848,27 @@
 
 \newcommand{\NormalLine}{%
 
-    \draw[
-        normal line,
-        line width=1.2pt
-    ]
-    (NNleft)--(NNright);
+  \draw[
+    normal line,
+    line width=1.2pt
+  ]
+  (NNleft)--(NNright);
 
-    \node[
-        font=\scriptsize,
-        orange!85!black,
-        above right,
-        xshift=2pt
-    ]
-    at(NNright)
-    {$N'$};
+  \node[
+    font=\scriptsize,
+    orange!85!black,
+    above right,
+    xshift=2pt
+  ]
+  at(NNright){$N'$};
 
-    \node[
-        font=\scriptsize,
-        orange!85!black,
-        below left,
-        xshift=-2pt
-    ]
-    at(NNleft)
-    {$N$};
+  \node[
+    font=\scriptsize,
+    orange!85!black,
+    below left,
+    xshift=-2pt
+  ]
+  at(NNleft){$N$};
 }
 
 % ============================================================
@@ -864,57 +877,64 @@
 
 \newcommand{\NormalAndTangent}{%
 
-    \NormalLine
+  \NormalLine
 
-    \draw[
-        tangent line,
-        line width=1.2pt
-    ]
-    (T2)--(T1);
+  \draw[
+    tangent line,
+    line width=1.2pt
+  ]
+  (T2)--(T1);
 
-    \node[
-        font=\scriptsize,
-        magenta!80!black,
-        above right,
-        xshift=2pt
-    ]
-    at(T1)
-    {$T'$};
+  \node[
+    font=\scriptsize,
+    magenta!80!black,
+    above right,
+    xshift=2pt
+  ]
+  at(T1){$T'$};
 
-    \node[
-        font=\scriptsize,
-        magenta!80!black,
-        below left,
-        xshift=-2pt
-    ]
-    at(T2)
-    {$T$};
+  \node[
+    font=\scriptsize,
+    magenta!80!black,
+    below left,
+    xshift=-2pt
+  ]
+  at(T2){$T$};
+}
+
+% ============================================================
+% BASE COMMON CONSTRUCTION
+% ============================================================
+
+\newcommand{\BaseCommon}{%
+  \Base
+  \DrawCzero
+  \GenCircle
+}
+
+% ============================================================
+% GENERATING CIRCLE COMPLETE
+% ============================================================
+
+\newcommand{\GenFull}{%
+  \AllGen
+  \AllGenRad
+  \AllGenLab
 }
 
 % ============================================================
 % FINAL CONSTRUCTION
 % ============================================================
 
-\newcommand{\BaseCommon}{%
-    \Base
-    \DrawCzero
-    \GenCircle
-}
-
-\newcommand{\GenFull}{%
-    \AllGen
-    \AllGenRad
-    \AllGenLab
-}
-
 \newcommand{\FinalConstruction}{%
-    \BaseCommon
-    \GenFull
-    \ConFull
-    \CentreArc
-    \DivFull
-    \AllCut
-    \Curve
+
+  \BaseCommon
+  \GenFull
+  \ConFull
+  \CentreArc
+  \DivFull
+  \AllCut
+  \Curve
 }
 
 % ============================================================
@@ -924,15 +944,17 @@
 \begin{document}
 
 % ============================================================
-% TITLE
+% TITLE PAGE
 % ============================================================
 
 \begin{frame}[plain]
-    \titlepage
+
+  \titlepage
+
 \end{frame}
 
 % ============================================================
-% PROBLEM STATEMENT
+% PROBLEM
 % ============================================================
 
 \begin{frame}{Problem Statement}
@@ -947,11 +969,11 @@ $150$ mm.
 
 \begin{itemize}
 
-    \item Construct one complete hypocycloid arch.
+  \item Construct one complete hypocycloid arch.
 
-    \item Divide the arch into 12 equal angular parts.
+  \item Divide the arch into 12 equal angular parts.
 
-    \item Retain every construction element in all later views.
+  \item Retain every construction element in all later views.
 
 \end{itemize}
 
@@ -964,7 +986,6 @@ $150$ mm.
 \begin{frame}{Calculated Data}
 
 \begin{align*}
-
 R
 &=
 \frac{150}{2}
@@ -976,8 +997,7 @@ r
 \frac{30}{2}
 =
 15\text{ mm},
-\\[0.4em]
-
+\\[0.3em]
 OC_0
 &=
 R-r
@@ -989,8 +1009,7 @@ R-r
 AC_0
 &=
 15\text{ mm},
-\\[0.4em]
-
+\\[0.3em]
 \angle AOB
 &=
 \frac{360^\circ r}{R}
@@ -998,15 +1017,14 @@ AC_0
 \frac{360^\circ(15)}{75}
 =
 72^\circ,
-\\[0.4em]
-
+\\[0.3em]
 \Delta\theta
 &=
 \frac{72^\circ}{12}
 =
 6^\circ,
 &
-\text{Generating-circle division}
+\text{generating-circle division}
 &=
 \frac{360^\circ}{12}
 =
@@ -1023,23 +1041,27 @@ AC_0
 
 \centering
 
-\begin{tikzpicture}[scale=.075,>=stealth]
+\begin{tikzpicture}[
+  scale=.075,
+  >=stealth
+]
 
-    \coordinate(O)at(0,0);
-    \coordinate(A)at(135:75);
+  \coordinate(O)at(0,0);
 
-    \draw[thin]
+  \coordinate(A)at(135:75);
+
+  \draw[thin]
     (O)--(A);
 
-    \OADim
+  \OADim
 
-    \fill(O)circle(.7pt)
+  \fill(O)circle(.7pt)
     node[below]{$O$};
 
-    \fill(A)circle(.6pt)
+  \fill(A)circle(.6pt)
     node[above left]{$A$};
 
-    \Legend{$OA=75$ mm.}
+  \Legend{$OA=75$ mm.}
 
 \end{tikzpicture}
 
@@ -1053,24 +1075,28 @@ AC_0
 
 \centering
 
-\begin{tikzpicture}[scale=.075,>=stealth]
+\begin{tikzpicture}[
+  scale=.075,
+  >=stealth
+]
 
-    \coordinate(O)at(0,0);
-    \coordinate(A)at(135:75);
+  \coordinate(O)at(0,0);
 
-    \draw[thin]
+  \coordinate(A)at(135:75);
+
+  \draw[thin]
     (O)--(A);
 
-    \draw[extension line]
+  \draw[extension line]
     (A)--(135:88);
 
-    \fill(O)circle(.7pt)
+  \fill(O)circle(.7pt)
     node[below]{$O$};
 
-    \fill(A)circle(.6pt)
+  \fill(A)circle(.6pt)
     node[above left]{$A$};
 
-    \Legend{Extend $OA$.}
+  \Legend{Extend $OA$.}
 
 \end{tikzpicture}
 
@@ -1084,45 +1110,48 @@ AC_0
 
 \centering
 
-\begin{tikzpicture}[scale=.075,>=stealth]
+\begin{tikzpicture}[
+  scale=.075,
+  >=stealth
+]
 
-    \coordinate(O)at(0,0);
-    \coordinate(A)at(135:75);
-    \coordinate(B)at(63:75);
+  \coordinate(O)at(0,0);
 
-    \draw[thin]
+  \coordinate(A)at(135:75);
+
+  \coordinate(B)at(63:75);
+
+  \draw[thin]
     (O)--(A);
 
-    \draw[extension line]
+  \draw[extension line]
     (A)--(135:88);
 
-    \draw[thin]
+  \draw[thin]
     (O)--(B);
 
-    % Angle construction arc
-    \draw[
-        thin,
-        black!70
-    ]
-    (135:18)
-    arc(135:63:18);
+  \draw[
+    thin,
+    black!70
+  ]
+  (135:18)
+  arc(135:63:18);
 
-    \node[
-        font=\scriptsize
-    ]
-    at(99:23)
-    {$72^\circ$};
+  \node[
+    font=\scriptsize
+  ]
+  at(99:23){$72^\circ$};
 
-    \fill(O)circle(.7pt)
+  \fill(O)circle(.7pt)
     node[below]{$O$};
 
-    \fill(A)circle(.6pt)
+  \fill(A)circle(.6pt)
     node[above left]{$A$};
 
-    \fill(B)circle(.6pt)
+  \fill(B)circle(.6pt)
     node[above right]{$B$};
 
-    \Legend{$\angle AOB=72^\circ$.}
+  \Legend{$\angle AOB=72^\circ$.}
 
 \end{tikzpicture}
 
@@ -1136,11 +1165,14 @@ AC_0
 
 \centering
 
-\begin{tikzpicture}[scale=.075,>=stealth]
+\begin{tikzpicture}[
+  scale=.075,
+  >=stealth
+]
 
-    \Base
+  \Base
 
-    \Legend{Extend $OB$.}
+  \Legend{Extend $OB$.}
 
 \end{tikzpicture}
 
@@ -1154,13 +1186,16 @@ AC_0
 
 \centering
 
-\begin{tikzpicture}[scale=.075,>=stealth]
+\begin{tikzpicture}[
+  scale=.075,
+  >=stealth
+]
 
-    \Base
+  \Base
 
-    \Legend{
-        Blue arc $AB$: directing circle.
-    }
+  \Legend{
+    Blue arc $AB$: directing circle.
+  }
 
 \end{tikzpicture}
 
@@ -1174,21 +1209,26 @@ AC_0
 
 \centering
 
-\begin{tikzpicture}[scale=.075,>=stealth]
+\begin{tikzpicture}[
+  scale=.075,
+  >=stealth
+]
 
-    \Base
-    \DrawCzero
+  \Base
 
-    \ACDim
-    \OCDim
+  \DrawCzero
 
-    \GenCircle
+  \ACDim
 
-    \Legend{
-        $OC_0=60$ mm.\\
-        $AC_0=15$ mm.\\
-        Green: generating circle.
-    }
+  \OCDim
+
+  \GenCircle
+
+  \Legend{
+    $OC_0=60$ mm.\\
+    $AC_0=15$ mm.\\
+    Green: generating circle.
+  }
 
 \end{tikzpicture}
 
@@ -1196,69 +1236,84 @@ AC_0
 
 % ============================================================
 % STEP 7
+% GENERATING CIRCLE DIVISIONS
 % ============================================================
 
 \newcommand{\GenDivisionFrame}[1]{%
 
-\begin{frame}{Step 7: Divide the generating circle into 12 equal parts}
+\begin{frame}{
+  Step 7: Divide the generating circle into 12 equal parts
+}
 
 \centering
 
-\begin{tikzpicture}[scale=.075,>=stealth]
+\begin{tikzpicture}[
+  scale=.075,
+  >=stealth
+]
 
-    \Base
-    \DrawCzero
-    \GenCircle
+  \Base
 
-    \foreach\j in {0,...,#1}{
+  \DrawCzero
 
-        \GenPt{\j}
+  \GenCircle
 
-        \ifnum\j>0
-            \GenRad{\j}
-        \fi
+  \foreach\j in{0,...,#1}{%
+
+    \GenPt{\j}
+
+    \ifnum\j>0
+      \GenRad{\j}
+    \fi
+
+  }
+
+  % Initial label
+  \node[
+    font=\tiny,
+    green!50!black,
+    below left,
+    inner sep=.5pt
+  ]
+  at(
+    $(G0)+(135:5)$
+  ){$0$};
+
+  \ifnum#1>0
+
+    \foreach\j in{1,...,#1}{
+      \GenLab{\j}
     }
 
-    % Initial 0
+  \fi
+
+  \ifnum#1=12
+
     \node[
-        font=\tiny,
-        green!50!black,
-        below left,
-        inner sep=.5pt
+      font=\tiny,
+      green!50!black,
+      above right,
+      inner sep=.5pt
     ]
-    at($(G0)+(135:5)$)
-    {$0$};
+    at(
+      $(G12)+(135:5)$
+    ){$0,12$};
 
-    \ifnum#1>0
+  \fi
 
-        \foreach\j in {1,...,#1}{
-            \GenLab{\j}
-        }
-
-    \fi
-
-    \ifnum#1=12
-
-        \node[
-            font=\tiny,
-            green!50!black,
-            above right,
-            inner sep=.5pt
-        ]
-        at($(G12)+(135:5)$)
-        {$0,12$};
-
-    \fi
-
-    \Legend{
-        Green: generating circle.\\
-        Clockwise $30^\circ$ divisions.
-    }
+  \Legend{
+    Green: generating circle.\\
+    Clockwise $30^\circ$ divisions.
+  }
 
 \end{tikzpicture}
 
 \end{frame}
 }
+
+% ============================================================
+% GENERATING CIRCLE PROGRESSIVE FRAMES
+% ============================================================
 
 \GenDivisionFrame{1}
 \GenDivisionFrame{2}
@@ -1277,20 +1332,25 @@ AC_0
 % STEP 8
 % ============================================================
 
-\begin{frame}{Step 8: Complete the generating-circle divisions}
+\begin{frame}{
+  Step 8: Complete the generating-circle divisions
+}
 
 \centering
 
-\begin{tikzpicture}[scale=.075,>=stealth]
+\begin{tikzpicture}[
+  scale=.075,
+  >=stealth
+]
 
-    \Base
-    \DrawCzero
-    \GenCircle
-    \GenFull
+  \Base
+  \DrawCzero
+  \GenCircle
+  \GenFull
 
-    \Legend{
-        Complete generating-circle divisions.
-    }
+  \Legend{
+    Complete generating-circle divisions.
+  }
 
 \end{tikzpicture}
 
@@ -1298,171 +1358,186 @@ AC_0
 
 % ============================================================
 % STEP 9
+% CONCENTRIC ARCS
 % ============================================================
 
 \newcommand{\ConFrame}[2]{%
 
-\begin{frame}{Step 9: Draw concentric construction arcs}
+\begin{frame}{
+  Step 9: Draw concentric construction arcs
+}
 
 \centering
 
-\begin{tikzpicture}[scale=.075,>=stealth]
+\begin{tikzpicture}[
+  scale=.075,
+  >=stealth
+]
 
-    \Base
-    \DrawCzero
-    \GenCircle
-    \GenFull
+  \Base
+  \DrawCzero
+  \GenCircle
+  \GenFull
 
-    #2
+  #2
 
-    \Legend{
-        Construction arcs centered at $O$.\\
-        Each arc terminates on extended $OB$.
-    }
+  \Legend{
+    Construction arcs centered at $O$.\\
+    Each arc ends on extended $OB$.
+  }
 
 \end{tikzpicture}
 
 \end{frame}
 }
 
+% ============================================================
+% CONCENTRIC ARC PROGRESSION
+% ============================================================
+
 \ConFrame{0}{
-    \ConArcZero
+  \ConArcZero
 }
 
 \ConFrame{1}{
-    \ConArcZero
-    \ConArcCustom{1}
+  \ConArcZero
+  \ConArcCustom{1}
 }
 
 \ConFrame{2}{
-    \ConArcZero
-    \ConArcCustom{1}
-    \ConArcCustom{2}
+  \ConArcZero
+  \ConArcCustom{1}
+  \ConArcCustom{2}
 }
 
 \ConFrame{3}{
-    \ConArcZero
-    \ConArcCustom{1}
-    \ConArcCustom{2}
-    \ConArcCustom{3}
+  \ConArcZero
+  \ConArcCustom{1}
+  \ConArcCustom{2}
+  \ConArcCustom{3}
 }
 
 \ConFrame{4}{
-    \ConArcZero
-    \ConArcCustom{1}
-    \ConArcCustom{2}
-    \ConArcCustom{3}
-    \ConArcCustom{4}
+  \ConArcZero
+  \ConArcCustom{1}
+  \ConArcCustom{2}
+  \ConArcCustom{3}
+  \ConArcCustom{4}
 }
 
 \ConFrame{5}{
-    \ConArcZero
-    \ConArcCustom{1}
-    \ConArcCustom{2}
-    \ConArcCustom{3}
-    \ConArcCustom{4}
-    \ConArcCustom{5}
+  \ConArcZero
+  \ConArcCustom{1}
+  \ConArcCustom{2}
+  \ConArcCustom{3}
+  \ConArcCustom{4}
+  \ConArcCustom{5}
 }
 
 \ConFrame{6}{
-    \ConArcZero
-    \ConArcCustom{1}
-    \ConArcCustom{2}
-    \ConArcCustom{3}
-    \ConArcCustom{4}
-    \ConArcCustom{5}
-    \ConArcCustom{6}
+  \ConArcZero
+  \ConArcCustom{1}
+  \ConArcCustom{2}
+  \ConArcCustom{3}
+  \ConArcCustom{4}
+  \ConArcCustom{5}
+  \ConArcCustom{6}
 }
 
 \ConFrame{7}{
-    \ConArcZero
-    \ConArcCustom{1}
-    \ConArcCustom{2}
-    \ConArcCustom{3}
-    \ConArcCustom{4}
-    \ConArcCustom{5}
-    \ConArcCustom{6}
-    \ConArcCustom{7}
+  \ConArcZero
+  \ConArcCustom{1}
+  \ConArcCustom{2}
+  \ConArcCustom{3}
+  \ConArcCustom{4}
+  \ConArcCustom{5}
+  \ConArcCustom{6}
+  \ConArcCustom{7}
 }
 
 \ConFrame{8}{
-    \ConArcZero
-    \ConArcCustom{1}
-    \ConArcCustom{2}
-    \ConArcCustom{3}
-    \ConArcCustom{4}
-    \ConArcCustom{5}
-    \ConArcCustom{6}
-    \ConArcCustom{7}
-    \ConArcCustom{8}
+  \ConArcZero
+  \ConArcCustom{1}
+  \ConArcCustom{2}
+  \ConArcCustom{3}
+  \ConArcCustom{4}
+  \ConArcCustom{5}
+  \ConArcCustom{6}
+  \ConArcCustom{7}
+  \ConArcCustom{8}
 }
 
 \ConFrame{9}{
-    \ConArcZero
-    \ConArcCustom{1}
-    \ConArcCustom{2}
-    \ConArcCustom{3}
-    \ConArcCustom{4}
-    \ConArcCustom{5}
-    \ConArcCustom{6}
-    \ConArcCustom{7}
-    \ConArcCustom{8}
-    \ConArcCustom{9}
+  \ConArcZero
+  \ConArcCustom{1}
+  \ConArcCustom{2}
+  \ConArcCustom{3}
+  \ConArcCustom{4}
+  \ConArcCustom{5}
+  \ConArcCustom{6}
+  \ConArcCustom{7}
+  \ConArcCustom{8}
+  \ConArcCustom{9}
 }
 
 \ConFrame{10}{
-    \ConArcZero
-    \ConArcCustom{1}
-    \ConArcCustom{2}
-    \ConArcCustom{3}
-    \ConArcCustom{4}
-    \ConArcCustom{5}
-    \ConArcCustom{6}
-    \ConArcCustom{7}
-    \ConArcCustom{8}
-    \ConArcCustom{9}
-    \ConArcCustom{10}
+  \ConArcZero
+  \ConArcCustom{1}
+  \ConArcCustom{2}
+  \ConArcCustom{3}
+  \ConArcCustom{4}
+  \ConArcCustom{5}
+  \ConArcCustom{6}
+  \ConArcCustom{7}
+  \ConArcCustom{8}
+  \ConArcCustom{9}
+  \ConArcCustom{10}
 }
 
 \ConFrame{11}{
-    \ConArcZero
-    \ConArcCustom{1}
-    \ConArcCustom{2}
-    \ConArcCustom{3}
-    \ConArcCustom{4}
-    \ConArcCustom{5}
-    \ConArcCustom{6}
-    \ConArcCustom{7}
-    \ConArcCustom{8}
-    \ConArcCustom{9}
-    \ConArcCustom{10}
-    \ConArcCustom{11}
+  \ConArcZero
+  \ConArcCustom{1}
+  \ConArcCustom{2}
+  \ConArcCustom{3}
+  \ConArcCustom{4}
+  \ConArcCustom{5}
+  \ConArcCustom{6}
+  \ConArcCustom{7}
+  \ConArcCustom{8}
+  \ConArcCustom{9}
+  \ConArcCustom{10}
+  \ConArcCustom{11}
 }
 
 \ConFrame{12}{
-    \ConFull
+  \ConFull
 }
 
 % ============================================================
 % STEP 10
 % ============================================================
 
-\begin{frame}{Step 10: Draw the centre arc through $C_0$}
+\begin{frame}{
+  Step 10: Draw the centre arc through $C_0$
+}
 
 \centering
 
-\begin{tikzpicture}[scale=.075,>=stealth]
+\begin{tikzpicture}[
+  scale=.075,
+  >=stealth
+]
 
-    \Base
-    \DrawCzero
-    \GenCircle
-    \GenFull
-    \ConFull
-    \CentreArc
+  \Base
+  \DrawCzero
+  \GenCircle
+  \GenFull
+  \ConFull
+  \CentreArc
 
-    \Legend{
-        Centre locus: ISO-style thin dash-dot line.
-    }
+  \Legend{
+    Centre locus: ISO-style thin dash-dot line.
+  }
 
 \end{tikzpicture}
 
@@ -1470,39 +1545,52 @@ AC_0
 
 % ============================================================
 % STEP 11
+% ANGULAR DIVISIONS
 % ============================================================
 
 \newcommand{\AngleFrame}[1]{%
 
-\begin{frame}{Step 11: Divide $\angle AOB$ into 12 equal parts}
+\begin{frame}{
+  Step 11: Divide $\angle AOB$ into 12 equal parts
+}
 
 \centering
 
-\begin{tikzpicture}[scale=.075,>=stealth]
+\begin{tikzpicture}[
+  scale=.075,
+  >=stealth
+]
 
-    \Base
-    \DrawCzero
-    \GenCircle
-    \GenFull
-    \ConFull
-    \CentreArc
+  \Base
+  \DrawCzero
+  \GenCircle
+  \GenFull
+  \ConFull
+  \CentreArc
 
-    \foreach\j in {0,...,#1}{
+  \foreach\j in{0,...,#1}{%
 
-        \DivLine{\j}
-        \DivLabel{\j}
-        \CenterPt{\j}
+    \DivLine{\j}
 
-    }
+    \DivLabel{\j}
 
-    \Legend{
-        $6^\circ$ divisions.
-    }
+    \CenterPt{\j}
+
+  }
+
+  \Legend{
+    $6^\circ$ divisions.\\
+    $135^\circ-6^\circ i$.
+  }
 
 \end{tikzpicture}
 
 \end{frame}
 }
+
+% ============================================================
+% ANGULAR DIVISION PROGRESSION
+% ============================================================
 
 \AngleFrame{0}
 \AngleFrame{1}
@@ -1522,23 +1610,28 @@ AC_0
 % STEP 12
 % ============================================================
 
-\begin{frame}{Step 12: Complete the angular divisions and centre points}
+\begin{frame}{
+  Step 12: Complete the angular divisions and centre points
+}
 
 \centering
 
-\begin{tikzpicture}[scale=.075,>=stealth]
+\begin{tikzpicture}[
+  scale=.075,
+  >=stealth
+]
 
-    \Base
-    \DrawCzero
-    \GenCircle
-    \GenFull
-    \ConFull
-    \CentreArc
-    \DivFull
+  \Base
+  \DrawCzero
+  \GenCircle
+  \GenFull
+  \ConFull
+  \CentreArc
+  \DivFull
 
-    \Legend{
-        Complete division lines and centre points.
-    }
+  \Legend{
+    Complete division lines and centre points.
+  }
 
 \end{tikzpicture}
 
@@ -1546,38 +1639,51 @@ AC_0
 
 % ============================================================
 % STEP 13
+% CUTTING ARCS AND P_i
 % ============================================================
 
 \newcommand{\CutFrame}[1]{%
 
-\begin{frame}{Step 13: Draw the cutting arc and locate $P_i$}
+\begin{frame}{
+  Step 13: Draw the cutting arc and locate $P_i$
+}
 
 \centering
 
-\begin{tikzpicture}[scale=.075,>=stealth]
+\begin{tikzpicture}[
+  scale=.075,
+  >=stealth
+]
 
-    \Base
-    \DrawCzero
-    \GenCircle
-    \GenFull
-    \ConFull
-    \CentreArc
-    \DivFull
-    \AllPCoords
+  \Base
+  \DrawCzero
+  \GenCircle
+  \GenFull
+  \ConFull
+  \CentreArc
+  \DivFull
+  \AllPCoords
 
-    \foreach\j in {0,...,#1}{
-        \CutArc{\j}
-        \Pmark{\j}
-    }
+  \foreach\j in{0,...,#1}{%
 
-    \Legend{
-        Cyan cutting arc: radius $15$ mm.
-    }
+    \CutArc{\j}
+
+    \Pmark{\j}
+
+  }
+
+  \Legend{
+    Cyan cutting arc: radius $15$ mm.
+  }
 
 \end{tikzpicture}
 
 \end{frame}
 }
+
+% ============================================================
+% CUTTING ARC PROGRESSION
+% ============================================================
 
 \CutFrame{0}
 \CutFrame{1}
@@ -1595,19 +1701,25 @@ AC_0
 
 % ============================================================
 % STEP 14
+% HYPOCYCLOID
 % ============================================================
 
-\begin{frame}{Step 14: Draw the hypocycloid}
+\begin{frame}{
+  Step 14: Draw the hypocycloid
+}
 
 \centering
 
-\begin{tikzpicture}[scale=.075,>=stealth]
+\begin{tikzpicture}[
+  scale=.075,
+  >=stealth
+]
 
-    \FinalConstruction
+  \FinalConstruction
 
-    \Legend{
-        Blue curve: hypocycloid.
-    }
+  \Legend{
+    Blue curve: hypocycloid.
+  }
 
 \end{tikzpicture}
 
@@ -1615,21 +1727,29 @@ AC_0
 
 % ============================================================
 % STEP 15
+% SELECT POINT P
 % ============================================================
 
-\begin{frame}{Step 15: Select a point $P$ on the hypocycloid}
+\begin{frame}{
+  Step 15: Select a point $P$ on the hypocycloid
+}
 
 \centering
 
-\begin{tikzpicture}[scale=.075,>=stealth]
+\begin{tikzpicture}[
+  scale=.075,
+  >=stealth
+]
 
-    \FinalConstruction
-    \SelectedGeometry
-    \PGeometry
+  \FinalConstruction
 
-    \Legend{
-        Selected point $P$.
-    }
+  \SelectedGeometry
+
+  \PGeometry
+
+  \Legend{
+    Selected point $P$.
+  }
 
 \end{tikzpicture}
 
@@ -1637,22 +1757,31 @@ AC_0
 
 % ============================================================
 % STEP 16
+% P-Cp
 % ============================================================
 
-\begin{frame}{Step 16: Draw the $15$ mm arc from $P$ to the centre locus}
+\begin{frame}{
+  Step 16: Draw the $15$ mm arc from $P$ to the centre locus
+}
 
 \centering
 
-\begin{tikzpicture}[scale=.075,>=stealth]
+\begin{tikzpicture}[
+  scale=.075,
+  >=stealth
+]
 
-    \FinalConstruction
-    \SelectedGeometry
-    \PGeometry
-    \PtoCpArc
+  \FinalConstruction
 
-    \Legend{
-        $PC_p=15$ mm.
-    }
+  \SelectedGeometry
+
+  \PGeometry
+
+  \PtoCpArc
+
+  \Legend{
+    $PC_p=15$ mm.
+  }
 
 \end{tikzpicture}
 
@@ -1660,27 +1789,34 @@ AC_0
 
 % ============================================================
 % STEP 17
+% JOIN O-Cp
 % ============================================================
 
-\begin{frame}{Step 17: Join $C_p$ to $O$}
+\begin{frame}{
+  Step 17: Join $C_p$ to $O$
+}
 
 \centering
 
-\begin{tikzpicture}[scale=.075,>=stealth]
+\begin{tikzpicture}[
+  scale=.075,
+  >=stealth
+]
 
-    \FinalConstruction
-    \SelectedGeometry
-    \PGeometry
-    \PtoCpArc
+  \FinalConstruction
 
-    \draw[
-        contact line
-    ]
+  \SelectedGeometry
+
+  \PGeometry
+
+  \PtoCpArc
+
+  \draw[contact line]
     (O)--(Cp);
 
-    \Legend{
-        Join $C_p$ to $O$.
-    }
+  \Legend{
+    Join $C_p$ to $O$.
+  }
 
 \end{tikzpicture}
 
@@ -1688,37 +1824,43 @@ AC_0
 
 % ============================================================
 % STEP 18
+% MARK M
 % ============================================================
 
-\begin{frame}{Step 18: Mark $M$ on the directing circle}
+\begin{frame}{
+  Step 18: Mark $M$ on the directing circle
+}
 
 \centering
 
-\begin{tikzpicture}[scale=.075,>=stealth]
+\begin{tikzpicture}[
+  scale=.075,
+  >=stealth
+]
 
-    \FinalConstruction
-    \SelectedGeometry
-    \PGeometry
-    \PtoCpArc
+  \FinalConstruction
 
-    \draw[
-        contact line
-    ]
+  \SelectedGeometry
+
+  \PGeometry
+
+  \PtoCpArc
+
+  \draw[contact line]
     (O)--(Cp);
 
-    \fill[black]
+  \fill[black]
     (M)circle(.65pt);
 
-    \node[
-        font=\scriptsize,
-        above right
-    ]
-    at(M)
-    {$M$};
+  \node[
+    font=\scriptsize,
+    above right
+  ]
+  at(M){$M$};
 
-    \Legend{
-        $M=OC_p\cap AB$.
-    }
+  \Legend{
+    $M=OC_p\cap AB$.
+  }
 
 \end{tikzpicture}
 
@@ -1726,40 +1868,45 @@ AC_0
 
 % ============================================================
 % STEP 19
+% NORMAL
 % ============================================================
 
-\begin{frame}{Step 19: Draw the normal $NN'$ through $P$}
+\begin{frame}{
+  Step 19: Draw the normal $NN'$ through $P$
+}
 
 \centering
 
-\begin{tikzpicture}[scale=.075,>=stealth]
+\begin{tikzpicture}[
+  scale=.075,
+  >=stealth
+]
 
-    \FinalConstruction
-    \SelectedGeometry
-    \PtoCpArc
+  \FinalConstruction
 
-    \draw[
-        contact line
-    ]
+  \SelectedGeometry
+
+  \PtoCpArc
+
+  \draw[contact line]
     (O)--(Cp);
 
-    \NormalLine
+  \NormalLine
 
-    \PGeometry
+  \PGeometry
 
-    \fill[black]
+  \fill[black]
     (M)circle(.65pt);
 
-    \node[
-        font=\scriptsize,
-        above right
-    ]
-    at(M)
-    {$M$};
+  \node[
+    font=\scriptsize,
+    above right
+  ]
+  at(M){$M$};
 
-    \Legend{
-        $NN'$: normal through $P$ and $M$.
-    }
+  \Legend{
+    $NN'$: normal through $P$ and $M$.
+  }
 
 \end{tikzpicture}
 
@@ -1767,40 +1914,45 @@ AC_0
 
 % ============================================================
 % STEP 20
+% TANGENT
 % ============================================================
 
-\begin{frame}{Step 20: Draw the tangent $TT'$ perpendicular to $NN'$}
+\begin{frame}{
+  Step 20: Draw the tangent $TT'$ perpendicular to $NN'$
+}
 
 \centering
 
-\begin{tikzpicture}[scale=.075,>=stealth]
+\begin{tikzpicture}[
+  scale=.075,
+  >=stealth
+]
 
-    \FinalConstruction
-    \SelectedGeometry
-    \PtoCpArc
+  \FinalConstruction
 
-    \draw[
-        contact line
-    ]
+  \SelectedGeometry
+
+  \PtoCpArc
+
+  \draw[contact line]
     (O)--(Cp);
 
-    \NormalAndTangent
+  \NormalAndTangent
 
-    \PGeometry
+  \PGeometry
 
-    \fill[black]
+  \fill[black]
     (M)circle(.65pt);
 
-    \node[
-        font=\scriptsize,
-        above right
-    ]
-    at(M)
-    {$M$};
+  \node[
+    font=\scriptsize,
+    above right
+  ]
+  at(M){$M$};
 
-    \Legend{
-        $TT'\perp NN'$.
-    }
+  \Legend{
+    $TT'\perp NN'$.
+  }
 
 \end{tikzpicture}
 
@@ -1808,49 +1960,55 @@ AC_0
 
 % ============================================================
 % STEP 21
+% RIGHT ANGLE
 % ============================================================
 
-\begin{frame}{Step 21: Show the right angle at $P$}
+\begin{frame}{
+  Step 21: Show the right angle at $P$
+}
 
 \centering
 
-\begin{tikzpicture}[scale=.075,>=stealth]
+\begin{tikzpicture}[
+  scale=.075,
+  >=stealth
+]
 
-    \FinalConstruction
-    \SelectedGeometry
-    \PtoCpArc
+  \FinalConstruction
 
-    \draw[
-        contact line
-    ]
+  \SelectedGeometry
+
+  \PtoCpArc
+
+  \draw[contact line]
     (O)--(Cp);
 
-    \NormalAndTangent
+  \NormalAndTangent
 
-    \PGeometry
+  \PGeometry
 
-    \fill[black]
+  \fill[black]
     (M)circle(.65pt);
 
-    \node[
-        font=\scriptsize,
-        above right
-    ]
-    at(M)
-    {$M$};
+  \node[
+    font=\scriptsize,
+    above right
+  ]
+  at(M){$M$};
 
-    \pic[
-        draw=black,
-        line width=.8pt,
-        angle radius=7pt,
-        angle eccentricity=1.35
-    ]
-    at(Psel)
-    {right angle=T2--Psel--NNright};
+  \pic[
+    draw=black,
+    line width=.8pt,
+    angle radius=7pt,
+    angle eccentricity=1.35
+  ]
+  at(Psel){
+    right angle=T2--Psel--NNright
+  };
 
-    \Legend{
-        Right angle at $P$.
-    }
+  \Legend{
+    Right angle at $P$.
+  }
 
 \end{tikzpicture}
 
@@ -1858,52 +2016,62 @@ AC_0
 
 % ============================================================
 % STEP 22
+% FINAL CONSTRUCTION
 % ============================================================
 
-\begin{frame}{Step 22: Final completed hypocycloid construction}
+\begin{frame}{
+  Step 22: Final completed hypocycloid construction
+}
 
 \centering
 
-\begin{tikzpicture}[scale=.075,>=stealth]
+\begin{tikzpicture}[
+  scale=.075,
+  >=stealth
+]
 
-    \FinalConstruction
-    \SelectedGeometry
-    \PtoCpArc
+  \FinalConstruction
 
-    \draw[
-        contact line
-    ]
+  \SelectedGeometry
+
+  \PtoCpArc
+
+  \draw[contact line]
     (O)--(Cp);
 
-    \NormalAndTangent
+  \NormalAndTangent
 
-    \PGeometry
+  \PGeometry
 
-    \fill[black]
+  \fill[black]
     (M)circle(.65pt);
 
-    \node[
-        font=\scriptsize,
-        above right
-    ]
-    at(M)
-    {$M$};
+  \node[
+    font=\scriptsize,
+    above right
+  ]
+  at(M){$M$};
 
-    \pic[
-        draw=black,
-        line width=.8pt,
-        angle radius=7pt,
-        angle eccentricity=1.35
-    ]
-    at(Psel)
-    {right angle=T2--Psel--NNright};
+  \pic[
+    draw=black,
+    line width=.8pt,
+    angle radius=7pt,
+    angle eccentricity=1.35
+  ]
+  at(Psel){
+    right angle=T2--Psel--NNright
+  };
 
-    \Legend{
-        Completed hypocycloid with normal and tangent.
-    }
+  \Legend{
+    Completed hypocycloid with normal and tangent.
+  }
 
 \end{tikzpicture}
 
 \end{frame}
+
+% ============================================================
+% END
+% ============================================================
 
 \end{document}
