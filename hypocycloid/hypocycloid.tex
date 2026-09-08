@@ -140,7 +140,7 @@
 % ============================================================
 \newcommand{\DrawCzero}{%
     \draw[centre line] (O)--(Czero);
-    \fill[black] (Czero) circle (1.0pt) node[above left,font=\scriptsize] {$C_0$};
+    \fill[black] (Czero) circle (1.6pt) node[above left,font=\scriptsize,black,xshift=-2pt,yshift=2pt] {$C_0$};
 }
 
 \newcommand{\GenCircle}{%
@@ -250,8 +250,8 @@
 
 \newcommand{\CenterPt}[1]{%
     \coordinate(C#1) at ({135-\dang*(#1)}:\Rc);
-    \fill[black] (C#1) circle (1.0pt);
-    \node[font=\scriptsize,above right,inner sep=.8pt]
+    \fill[black] (C#1) circle (1.6pt);
+    \node[font=\scriptsize,above right,inner sep=1.2pt,text=black]
         at(C#1) {$C_{#1}$};
 }
 
@@ -279,13 +279,15 @@
 }
 
 \newcommand{\Pmark}[1]{%
-    \fill[black] (P#1) circle (1.0pt);
+    \fill[black] (P#1) circle (1.6pt);
     \ifnum#1>0
         \node[
-            font=\tiny,
-            blue!85!black,
+            font=\scriptsize,
+            black,
             above right,
-            inner sep=.5pt
+            xshift=2pt,
+            yshift=2pt,
+            inner sep=1pt
         ] at(P#1) {$P_{#1}$};
     \fi
 }
@@ -339,11 +341,13 @@
 }
 
 \newcommand{\PGeometry}{%
-    \fill[black] (Psel) circle (1.1pt);
+    \fill[black] (Psel) circle (1.8pt);
     \node[
         font=\scriptsize,
-        blue!80!black,
+        black,
         above right,
+        xshift=3pt,
+        yshift=3pt,
         inner sep=1pt
     ] at(Psel) {$P$};
 }
@@ -357,11 +361,14 @@
 
     \draw[construction line] (Psel)--(Cp);
 
-    \fill[black] (Cp) circle (1.0pt);
+    \fill[black] (Cp) circle (1.6pt);
     \node[
         font=\scriptsize,
+        black,
         above right,
-        inner sep=.5pt
+        xshift=3pt,
+        yshift=3pt,
+        inner sep=1pt
     ] at(Cp) {$C_p$};
 
     % Dimension line parallel to PC_p.
@@ -490,7 +497,7 @@ AC_0 &=25\text{ mm},
 
 \begin{frame}{Step 1: Draw $OA$}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=90]
     \coordinate(O)at(0,0);
     \coordinate(A)at(135:85);
     \draw[thin](O)--(A);
@@ -509,7 +516,7 @@ AC_0 &=25\text{ mm},
 
 \begin{frame}{Step 2: Draw $OB$ at $105.88^\circ$}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=90]
     \coordinate(O)at(0,0);
     \coordinate(A)at(135:85);
     \coordinate(B)at(29.11764706:85);
@@ -533,7 +540,7 @@ AC_0 &=25\text{ mm},
 
 \begin{frame}{Step 3: Draw the directing arc $AB$}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=90]
     \Base
     \Legend{Blue arc $AB$: directing circle.}
 \end{tikzpicture}
@@ -541,7 +548,7 @@ AC_0 &=25\text{ mm},
 
 \begin{frame}{Step 4: Locate $C_0$ and the generating circle}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=90]
     \Base
     \DrawCzero
     \ACDim
@@ -554,7 +561,7 @@ AC_0 &=25\text{ mm},
 \newcommand{\GenDivisionFrame}[1]{%
 \begin{frame}{Step 5: Divide the generating circle into 12 equal parts}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=90]
     \Base
     \DrawCzero
     \GenCircle
@@ -607,7 +614,7 @@ AC_0 &=25\text{ mm},
 
 \begin{frame}{Step 6: Complete the generating-circle divisions}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=90]
     \Base
     \DrawCzero
     \GenCircle
@@ -619,7 +626,7 @@ AC_0 &=25\text{ mm},
 \newcommand{\ConFrame}[1]{%
 \begin{frame}{Step 7: Draw concentric construction arcs}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=90]
     \Base
     \DrawCzero
     \GenCircle
@@ -640,7 +647,7 @@ AC_0 &=25\text{ mm},
 
 \begin{frame}{Step 8: Draw the centre arc through $C_0$}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=90]
     \Base
     \DrawCzero
     \GenCircle
@@ -654,7 +661,7 @@ AC_0 &=25\text{ mm},
 \newcommand{\AngleFrame}[1]{%
 \begin{frame}{Step 9: Divide $\angle AOB$ into 12 equal parts}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=90]
     \Base
     \DrawCzero
     \GenCircle
@@ -689,7 +696,7 @@ AC_0 &=25\text{ mm},
 
 \begin{frame}{Step 10: Complete the angular divisions and centre points}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=90]
     \Base
     \DrawCzero
     \GenCircle
@@ -704,7 +711,7 @@ AC_0 &=25\text{ mm},
 \newcommand{\CutFrame}[1]{%
 \begin{frame}{Step 11: Draw the cutting arc and locate $P_i$}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=90]
     \Base
     \DrawCzero
     \GenCircle
@@ -742,7 +749,7 @@ AC_0 &=25\text{ mm},
 
 \begin{frame}{Step 12: Draw the hypocycloid}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=90]
     \FinalConstruction
     \Legend{Blue curve: hypocycloid.}
 \end{tikzpicture}
@@ -750,7 +757,7 @@ AC_0 &=25\text{ mm},
 
 \begin{frame}{Step 13: Locate $P$ at $50$ mm from $O$}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=90]
     \FinalConstruction
     \SelectedGeometry
 
@@ -787,7 +794,7 @@ AC_0 &=25\text{ mm},
 
 \begin{frame}{Step 14: Draw the $25$ mm radius to $C_p$}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=90]
     \FinalConstruction
     \SelectedGeometry
     \PGeometry
@@ -798,29 +805,29 @@ AC_0 &=25\text{ mm},
 
 \begin{frame}{Step 15: Extend $OC_p$ to the directing arc $AB$ and mark the intersection $M$}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=90]
     \FinalConstruction
     \SelectedGeometry
     \PGeometry
     \PtoCpArc
     \draw[contact line] (O)--(M);
-    \fill[black] (M) circle(1.0pt);
-    \node[font=\scriptsize,above right,xshift=4pt,yshift=4pt] at(M) {$M$};
+    \fill[black] (M) circle(1.6pt);
+    \node[font=\scriptsize,black,above right,xshift=7pt,yshift=7pt] at(M) {$M$};
     \Legend{Extend $OC_p$ to the directing arc $AB$ and mark the intersection $M$.}
 \end{tikzpicture}
 \end{frame}
 
 \begin{frame}{Step 16: Mark $M$ on the directing circle}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=90]
     \FinalConstruction
     \SelectedGeometry
     \PGeometry
     \PtoCpArc
     \draw[contact line] (O)--(M);
 
-    \fill[black] (M) circle(1.0pt);
-    \node[font=\scriptsize,above right,xshift=4pt,yshift=4pt] at(M) {$M$};
+    \fill[black] (M) circle(1.6pt);
+    \node[font=\scriptsize,black,above right,xshift=7pt,yshift=7pt] at(M) {$M$};
 
     \Legend{$OC_p$ is extended to the directing arc $AB$; the intersection is $M$.}
 \end{tikzpicture}
@@ -828,7 +835,7 @@ AC_0 &=25\text{ mm},
 
 \begin{frame}{Step 17: Draw the normal $NN'$ through $P$}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=90]
     \FinalConstruction
     \SelectedGeometry
     \PtoCpArc
@@ -836,8 +843,8 @@ AC_0 &=25\text{ mm},
     \NormalLine
     \PGeometry
 
-    \fill[black] (M) circle(1.0pt);
-    \node[font=\scriptsize,above right,xshift=4pt,yshift=4pt] at(M) {$M$};
+    \fill[black] (M) circle(1.6pt);
+    \node[font=\scriptsize,black,above right,xshift=7pt,yshift=7pt] at(M) {$M$};
 
     \Legend{Join $MP$ and extend it on both sides to obtain $N$ and $N'$.}
 \end{tikzpicture}
@@ -845,7 +852,7 @@ AC_0 &=25\text{ mm},
 
 \begin{frame}{Step 18: Draw the tangent $TT'$ perpendicular to $NN'$}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=90]
     \FinalConstruction
     \SelectedGeometry
     \PtoCpArc
@@ -853,8 +860,8 @@ AC_0 &=25\text{ mm},
     \NormalAndTangent
     \PGeometry
 
-    \fill[black] (M) circle(1.0pt);
-    \node[font=\scriptsize,above right,xshift=4pt,yshift=4pt] at(M) {$M$};
+    \fill[black] (M) circle(1.6pt);
+    \node[font=\scriptsize,black,above right,xshift=7pt,yshift=7pt] at(M) {$M$};
 
     \Legend{$TT'\perp NN'$ at $P$.}
 \end{tikzpicture}
@@ -862,7 +869,7 @@ AC_0 &=25\text{ mm},
 
 \begin{frame}{Step 19: Show the right angle at $P$}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=90]
     \FinalConstruction
     \SelectedGeometry
     \PtoCpArc
@@ -870,8 +877,8 @@ AC_0 &=25\text{ mm},
     \NormalAndTangent
     \PGeometry
 
-    \fill[black] (M) circle(1.0pt);
-    \node[font=\scriptsize,above right,xshift=4pt,yshift=4pt] at(M) {$M$};
+    \fill[black] (M) circle(1.6pt);
+    \node[font=\scriptsize,black,above right,xshift=7pt,yshift=7pt] at(M) {$M$};
 
     \pic[
         draw=black,
@@ -886,7 +893,7 @@ AC_0 &=25\text{ mm},
 
 \begin{frame}{Step 20: Final completed hypocycloid construction}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=90]
     \FinalConstruction
     \SelectedGeometry
     \PtoCpArc
@@ -894,8 +901,8 @@ AC_0 &=25\text{ mm},
     \NormalAndTangent
     \PGeometry
 
-    \fill[black] (M) circle(1.0pt);
-    \node[font=\scriptsize,above right,xshift=4pt,yshift=4pt] at(M) {$M$};
+    \fill[black] (M) circle(1.6pt);
+    \node[font=\scriptsize,black,above right,xshift=7pt,yshift=7pt] at(M) {$M$};
 
     \pic[
         draw=black,
