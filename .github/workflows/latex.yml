@@ -67,22 +67,15 @@ jobs:
           root_file: hypocycloid.tex
 
       # --------------------------------------------------
-      # Commit and Push All Generated Assets Back to Repo
+      # Save Generated Assets Back to Repository
       # --------------------------------------------------
-      - name: Save Generated Assets (PDFs and GIFs)
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add -f cycloid/cycloid.pdf
-          git add -f cycloid/cycloid_a.pdf
-          git add -f cycloid_animation.gif
-          git add -f epicycloid/epicycloid.pdf
-          git add -f hypocycloid/hypocycloid.pdf
-
-          if git diff --cached --quiet; then
-            echo "No changes detected."
-          else
-            git commit -m "build: update curve PDFs and generate looping cycloid animation gif"
-            git push
-          fi
+      - name: Commit generated PDFs and GIFs
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "build: update curve PDFs and looping cycloid animation gif"
+          file_pattern: |
+            cycloid/cycloid.pdf
+            cycloid/cycloid_a.pdf
+            cycloid_animation.gif
+            epicycloid/epicycloid.pdf
+            hypocycloid/hypocycloid.pdf
