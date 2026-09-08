@@ -13,19 +13,18 @@
 % ============================================================
 % FOOTER
 % ============================================================
+\setbeamercolor{footline}{fg=white,bg=mDarkTeal}
 \setbeamertemplate{footline}{%
 \begin{beamercolorbox}[wd=\paperwidth,ht=3.2ex,dp=1.2ex]{footline}
 \hspace{1.2em}\scriptsize Gajavada Sanjeevkumar\hfill
 \scriptsize Engineering Curves: Epicycloid\hfill
 \scriptsize
-\Acrobatmenu{FirstPage}{\fbox{\(\blacktriangleleft\!\blacktriangleleft\)}}\,
-\Acrobatmenu{PrevPage}{\fbox{\(\blacktriangleleft\)}}\,
-\Acrobatmenu{NextPage}{\fbox{\(\blacktriangleright\)}}\,
+\Acrobatmenu{FirstPage}{\fbox{\(\blacktriangleleft\!\blacktriangleleft\)}}\,%
+\Acrobatmenu{PrevPage}{\fbox{\(\blacktriangleleft\)}}\,%
+\Acrobatmenu{NextPage}{\fbox{\(\blacktriangleright\)}}\,%
 \Acrobatmenu{LastPage}{\fbox{\(\blacktriangleright\!\blacktriangleright\)}}\quad
 \insertframenumber\hspace{1.2em}
 \end{beamercolorbox}}
-}
-\setbeamercolor{footline}{fg=white,bg=mDarkTeal}
 
 % ============================================================
 % TITLE
@@ -285,12 +284,14 @@
 
 \newcommand{\Pmark}[1]{%
     \fill[black] (P#1) circle (.5pt);
-    \node[
-        font=\tiny,
-        blue!85!black,
-        above right,
-        inner sep=.5pt
-    ] at(P#1) {$P_{#1}$};
+    \ifnum#1>0
+        \node[
+            font=\tiny,
+            blue!85!black,
+            above right,
+            inner sep=.5pt
+        ] at(P#1) {$P_{#1}$};
+    \fi
 }
 
 \newcommand{\AllCut}{%
@@ -460,17 +461,9 @@
 \end{frame}
 
 \begin{frame}{Problem Statement}
-\begin{block}{Given}
-A circle of diameter $50$ mm rolls inside a circular arc
-of radius $85$ mm for one revolution.
+\begin{block}{Question}
+Draw a hypocycloid of a circle of diameter 50 mm, which rolls inside a circular arc of radius 85 mm for one revolution. Also, draw a tangent and a normal to the epicycloid at a point 50 mm from the centre of the directing circle.
 \end{block}
-
-\begin{itemize}
-    \item Construct the hypocycloid.
-    \item Draw a tangent and normal at a point $50$ mm from
-          the centre of the directing circle.
-    \item Retain the construction geometry in the final drawing.
-\end{itemize}
 \end{frame}
 
 \begin{frame}{Calculated Data}
@@ -497,30 +490,11 @@ AC_0 &=25\text{ mm},
 \end{align*}
 \end{frame}
 
-\begin{frame}{Construction Principle}
-\begin{align*}
-C(\theta)
-&=60\bigl(\cos(135^\circ-\theta),\,
-          \sin(135^\circ-\theta)\bigr),\\[0.3em]
-P(\theta)
-&=C(\theta)+25\bigl(
-\cos(135^\circ+2.4\theta),\,
-\sin(135^\circ+2.4\theta)
-\bigr).
-\end{align*}
 
-\begin{itemize}
-    \item $2.4=(R-r)/r=60/25$ is the rolling-circle rotation factor.
-    \item The initial generating-circle divisions are numbered clockwise.
-    \item Concentric arcs are drawn with $O$ as centre through those divisions.
-    \item Each $C_i$, with radius $25$ mm, cuts the corresponding concentric
-          arc at $P_i$.
-\end{itemize}
-\end{frame}
 
 \begin{frame}{Step 1: Draw $OA$}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=100]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
     \coordinate(O)at(0,0);
     \coordinate(A)at(135:85);
     \draw[thin](O)--(A);
@@ -539,7 +513,7 @@ P(\theta)
 
 \begin{frame}{Step 2: Draw $OB$ at $105.88^\circ$}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=100]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
     \coordinate(O)at(0,0);
     \coordinate(A)at(135:85);
     \coordinate(B)at(29.11764706:85);
@@ -563,7 +537,7 @@ P(\theta)
 
 \begin{frame}{Step 3: Draw the directing arc $AB$}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=100]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
     \Base
     \Legend{Blue arc $AB$: directing circle.}
 \end{tikzpicture}
@@ -571,7 +545,7 @@ P(\theta)
 
 \begin{frame}{Step 4: Locate $C_0$ and the generating circle}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=100]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
     \Base
     \DrawCzero
     \ACDim
@@ -584,7 +558,7 @@ P(\theta)
 \newcommand{\GenDivisionFrame}[1]{%
 \begin{frame}{Step 5: Divide the generating circle into 12 equal parts}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=100]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
     \Base
     \DrawCzero
     \GenCircle
@@ -636,7 +610,7 @@ P(\theta)
 
 \begin{frame}{Step 6: Complete the generating-circle divisions}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=100]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
     \Base
     \DrawCzero
     \GenCircle
@@ -648,7 +622,7 @@ P(\theta)
 \newcommand{\ConFrame}[1]{%
 \begin{frame}{Step 7: Draw concentric construction arcs}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=100]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
     \Base
     \DrawCzero
     \GenCircle
@@ -669,7 +643,7 @@ P(\theta)
 
 \begin{frame}{Step 8: Draw the centre arc through $C_0$}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=100]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
     \Base
     \DrawCzero
     \GenCircle
@@ -683,7 +657,7 @@ P(\theta)
 \newcommand{\AngleFrame}[1]{%
 \begin{frame}{Step 9: Divide $\angle AOB$ into 12 equal parts}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=100]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
     \Base
     \DrawCzero
     \GenCircle
@@ -718,7 +692,7 @@ P(\theta)
 
 \begin{frame}{Step 10: Complete the angular divisions and centre points}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=100]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
     \Base
     \DrawCzero
     \GenCircle
@@ -733,7 +707,7 @@ P(\theta)
 \newcommand{\CutFrame}[1]{%
 \begin{frame}{Step 11: Draw the cutting arc and locate $P_i$}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=100]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
     \Base
     \DrawCzero
     \GenCircle
@@ -769,7 +743,7 @@ P(\theta)
 
 \begin{frame}{Step 12: Draw the hypocycloid}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=100]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
     \FinalConstruction
     \Legend{Blue curve: hypocycloid.}
 \end{tikzpicture}
@@ -777,12 +751,11 @@ P(\theta)
 
 \begin{frame}{Step 13: Locate $P$ at $50$ mm from $O$}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=100]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
     \FinalConstruction
     \SelectedGeometry
 
-    % Required 50-mm construction arc only.
-    % It meets the hypocycloid at both OP=50 intersections.
+    % 50-mm construction arc from O, extended to meet the hypocycloid on both sides.
     \draw[construction line,very thin]
         (41.76480853:50)
         arc(41.76480853:122.35283853:50);
@@ -808,14 +781,14 @@ P(\theta)
         (Psel)--($(Psel)+(131.76480853:7)$);
 
     \PGeometry
-    \Legend{The $50$ mm arc touches both branches of the hypocycloid.\\
+    \Legend{The $50$ mm construction arc from $O$ meets the hypocycloid on both sides.\\
     $P$ is selected on the right-hand branch.}
 \end{tikzpicture}
 \end{frame}
 
 \begin{frame}{Step 14: Draw the $25$ mm radius to $C_p$}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=100]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
     \FinalConstruction
     \SelectedGeometry
     \PGeometry
@@ -826,7 +799,7 @@ P(\theta)
 
 \begin{frame}{Step 15: Join $C_p$ to $O$}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=100]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
     \FinalConstruction
     \SelectedGeometry
     \PGeometry
@@ -838,7 +811,7 @@ P(\theta)
 
 \begin{frame}{Step 16: Mark $M$ on the directing circle}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=100]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
     \FinalConstruction
     \SelectedGeometry
     \PGeometry
@@ -854,7 +827,7 @@ P(\theta)
 
 \begin{frame}{Step 17: Draw the normal $NN'$ through $P$}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=100]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
     \FinalConstruction
     \SelectedGeometry
     \PtoCpArc
@@ -865,13 +838,13 @@ P(\theta)
     \fill[black] (M) circle(.55pt);
     \node[font=\scriptsize,above right] at(M) {$M$};
 
-    \Legend{Extend $MP$ on both sides to obtain the normal $NN'$.}
+    \Legend{Join $MP$ and extend it on both sides to obtain $N$ and $N'$.}
 \end{tikzpicture}
 \end{frame}
 
 \begin{frame}{Step 18: Draw the tangent $TT'$ perpendicular to $NN'$}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=100]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
     \FinalConstruction
     \SelectedGeometry
     \PtoCpArc
@@ -888,7 +861,7 @@ P(\theta)
 
 \begin{frame}{Step 19: Show the right angle at $P$}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=100]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
     \FinalConstruction
     \SelectedGeometry
     \PtoCpArc
@@ -912,7 +885,7 @@ P(\theta)
 
 \begin{frame}{Step 20: Final completed hypocycloid construction}
 \centering
-\begin{tikzpicture}[scale=.075,>=stealth,rotate=100]
+\begin{tikzpicture}[scale=.075,>=stealth,rotate=-90]
     \FinalConstruction
     \SelectedGeometry
     \PtoCpArc
