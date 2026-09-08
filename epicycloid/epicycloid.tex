@@ -32,7 +32,6 @@
 }
 \newcommand{\Legend}[1]{\node[draw=gray!35,fill=white,rounded corners=2pt,inner sep=3pt,anchor=north east,align=left,font=\scriptsize,text width=31mm] at (84,84){#1};}
 
-% 45mm dimension line placed between dimension line and main line (closer to center, or offset properly inside)
 \newcommand{\Base}{\coordinate(O)at(0,0);\coordinate(A)at(150:45);\coordinate(B)at(30:45);\coordinate(Czero)at(150:60);\draw[thin](O)--(A);\draw[thin](O)--(B);\draw[extension line](A)--(150:82);\draw[extension line](B)--(30:82);\draw[directing line](A)arc(150:30:45);\fill[black](O)circle(.7pt)node[below]{$O$};\fill[black](A)circle(.55pt)node[above left]{$A$};\fill[black](B)circle(.55pt)node[above right]{$B$};}
 
 \newcommand{\OADim}{\draw[dimension line]($(O)+(240:3)$)--($(A)+(240:3)$)node[midway,sloped,below,fill=white,inner sep=1pt,font=\scriptsize]{$45\ \mathrm{mm}$};\draw[thin,black!55]($(O)+(240:1)$)--($(O)+(240:4)$);\draw[thin,black!55]($(A)+(240:1)$)--($(A)+(240:4)$);}
@@ -143,19 +142,57 @@ OC_0&=R+r=60\text{ mm},&AC_0&=15\text{ mm},\\
 \centering\begin{tikzpicture}[scale=.075,>=stealth]\Base\DrawCzero\ACDim\GenCircle\Legend{$AC_0=15$ mm.\\Green: generating circle.}\end{tikzpicture}
 \end{frame}
 
-\newcommand{\GenDivisionFrame}[1]{%
-\begin{frame}{Step 7: Divide the generating circle into 12 equal parts}
-\centering\begin{tikzpicture}[scale=.075,>=stealth]\Base\DrawCzero\GenCircle\foreach\j in{0,...,#1}{\GenPt{\j}\ifnum\j>0\GenRad{\j}\fi}%
-\ifnum#1=0
-  \node[font=\tiny,green!45!black,below right,inner sep=.5pt]at($(G0)+(330:4)$){$0$};
-\else
-  \node[font=\tiny,green!45!black,below right,inner sep=.5pt]at($(G0)+(330:4)$){$0,12$};
-\end{ifnum}%
-\foreach\j in{1,...,#1}{\GenLab{\j}}%
-\Legend{Green: generating circle.\\$30^\circ$ divisions.}\end{tikzpicture}
-\end{frame}%
-}
-\GenDivisionFrame{0}\GenDivisionFrame{1}\GenDivisionFrame{2}\GenDivisionFrame{3}\GenDivisionFrame{4}\GenDivisionFrame{5}\GenDivisionFrame{6}\GenDivisionFrame{7}\GenDivisionFrame{8}\GenDivisionFrame{9}\GenDivisionFrame{10}\GenDivisionFrame{11}\GenDivisionFrame{12}
+\begin{frame}{Step 7: Divide the generating circle into 12 equal parts (0)}
+\centering\begin{tikzpicture}[scale=.075,>=stealth]\Base\DrawCzero\GenCircle\GenPt{0}\node[font=\tiny,green!45!black,below right,inner sep=.5pt]at($(G0)+(330:4)$){$0$};\Legend{Green: generating circle.\\$30^\circ$ divisions.}\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Step 7: Divide the generating circle into 12 equal parts (1)}
+\centering\begin{tikzpicture}[scale=.075,>=stealth]\Base\DrawCzero\GenCircle\GenPt{0}\GenPt{1}\GenRad{1}\node[font=\tiny,green!45!black,below right,inner sep=.5pt]at($(G0)+(330:4)$){$0$};\GenLab{1}\Legend{Green: generating circle.\\$30^\circ$ divisions.}\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Step 7: Divide the generating circle into 12 equal parts (2)}
+\centering\begin{tikzpicture}[scale=.075,>=stealth]\Base\DrawCzero\GenCircle\GenPt{0}\GenPt{1}\GenRad{1}\GenPt{2}\GenRad{2}\node[font=\tiny,green!45!black,below right,inner sep=.5pt]at($(G0)+(330:4)$){$0$};\GenLab{1}\GenLab{2}\Legend{Green: generating circle.\\$30^\circ$ divisions.}\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Step 7: Divide the generating circle into 12 equal parts (3)}
+\centering\begin{tikzpicture}[scale=.075,>=stealth]\Base\DrawCzero\GenCircle\GenPt{0}\GenPt{1}\GenRad{1}\GenPt{2}\GenRad{2}\GenPt{3}\GenRad{3}\node[font=\tiny,green!45!black,below right,inner sep=.5pt]at($(G0)+(330:4)$){$0$};\GenLab{1}\GenLab{2}\GenLab{3}\Legend{Green: generating circle.\\$30^\circ$ divisions.}\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Step 7: Divide the generating circle into 12 equal parts (4)}
+\centering\begin{tikzpicture}[scale=.075,>=stealth]\Base\DrawCzero\GenCircle\GenPt{0}\GenPt{1}\GenRad{1}\GenPt{2}\GenRad{2}\GenPt{3}\GenRad{3}\GenPt{4}\GenRad{4}\node[font=\tiny,green!45!black,below right,inner sep=.5pt]at($(G0)+(330:4)$){$0$};\GenLab{1}\GenLab{2}\GenLab{3}\GenLab{4}\Legend{Green: generating circle.\\$30^\circ$ divisions.}\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Step 7: Divide the generating circle into 12 equal parts (5)}
+\centering\begin{tikzpicture}[scale=.075,>=stealth]\Base\DrawCzero\GenCircle\GenPt{0}\GenPt{1}\GenRad{1}\GenPt{2}\GenRad{2}\GenPt{3}\GenRad{3}\GenPt{4}\GenRad{4}\GenPt{5}\GenRad{5}\node[font=\tiny,green!45!black,below right,inner sep=.5pt]at($(G0)+(330:4)$){$0$};\GenLab{1}\GenLab{2}\GenLab{3}\GenLab{4}\GenLab{5}\Legend{Green: generating circle.\\$30^\circ$ divisions.}\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Step 7: Divide the generating circle into 12 equal parts (6)}
+\centering\begin{tikzpicture}[scale=.075,>=stealth]\Base\DrawCzero\GenCircle\GenPt{0}\GenPt{1}\GenRad{1}\GenPt{2}\GenRad{2}\GenPt{3}\GenRad{3}\GenPt{4}\GenRad{4}\GenPt{5}\GenRad{5}\GenPt{6}\GenRad{6}\node[font=\tiny,green!45!black,below right,inner sep=.5pt]at($(G0)+(330:4)$){$0$};\GenLab{1}\GenLab{2}\GenLab{3}\GenLab{4}\GenLab{5}\GenLab{6}\Legend{Green: generating circle.\\$30^\circ$ divisions.}\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Step 7: Divide the generating circle into 12 equal parts (7)}
+\centering\begin{tikzpicture}[scale=.075,>=stealth]\Base\DrawCzero\GenCircle\GenPt{0}\GenPt{1}\GenRad{1}\GenPt{2}\GenRad{2}\GenPt{3}\GenRad{3}\GenPt{4}\GenRad{4}\GenPt{5}\GenRad{5}\GenPt{6}\GenRad{6}\GenPt{7}\GenRad{7}\node[font=\tiny,green!45!black,below right,inner sep=.5pt]at($(G0)+(330:4)$){$0$};\GenLab{1}\GenLab{2}\GenLab{3}\GenLab{4}\GenLab{5}\GenLab{6}\GenLab{7}\Legend{Green: generating circle.\\$30^\circ$ divisions.}\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Step 7: Divide the generating circle into 12 equal parts (8)}
+\centering\begin{tikzpicture}[scale=.075,>=stealth]\Base\DrawCzero\GenCircle\GenPt{0}\GenPt{1}\GenRad{1}\GenPt{2}\GenRad{2}\GenPt{3}\GenRad{3}\GenPt{4}\GenRad{4}\GenPt{5}\GenRad{5}\GenPt{6}\GenRad{6}\GenPt{7}\GenRad{7}\GenPt{8}\GenRad{8}\node[font=\tiny,green!45!black,below right,inner sep=.5pt]at($(G0)+(330:4)$){$0$};\GenLab{1}\GenLab{2}\GenLab{3}\GenLab{4}\GenLab{5}\GenLab{6}\GenLab{7}\GenLab{8}\Legend{Green: generating circle.\\$30^\circ$ divisions.}\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Step 7: Divide the generating circle into 12 equal parts (9)}
+\centering\begin{tikzpicture}[scale=.075,>=stealth]\Base\DrawCzero\GenCircle\GenPt{0}\GenPt{1}\GenRad{1}\GenPt{2}\GenRad{2}\GenPt{3}\GenRad{3}\GenPt{4}\GenRad{4}\GenPt{5}\GenRad{5}\GenPt{6}\GenRad{6}\GenPt{7}\GenRad{7}\GenPt{8}\GenRad{8}\GenPt{9}\GenRad{9}\node[font=\tiny,green!45!black,below right,inner sep=.5pt]at($(G0)+(330:4)$){$0$};\GenLab{1}\GenLab{2}\GenLab{3}\GenLab{4}\GenLab{5}\GenLab{6}\GenLab{7}\GenLab{8}\GenLab{9}\Legend{Green: generating circle.\\$30^\circ$ divisions.}\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Step 7: Divide the generating circle into 12 equal parts (10)}
+\centering\begin{tikzpicture}[scale=.075,>=stealth]\Base\DrawCzero\GenCircle\GenPt{0}\GenPt{1}\GenRad{1}\GenPt{2}\GenRad{2}\GenPt{3}\GenRad{3}\GenPt{4}\GenRad{4}\GenPt{5}\GenRad{5}\GenPt{6}\GenRad{6}\GenPt{7}\GenRad{7}\GenPt{8}\GenRad{8}\GenPt{9}\GenRad{9}\GenPt{10}\GenRad{10}\node[font=\tiny,green!45!black,below right,inner sep=.5pt]at($(G0)+(330:4)$){$0$};\GenLab{1}\GenLab{2}\GenLab{3}\GenLab{4}\GenLab{5}\GenLab{6}\GenLab{7}\GenLab{8}\GenLab{9}\GenLab{10}\Legend{Green: generating circle.\\$30^\circ$ divisions.}\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Step 7: Divide the generating circle into 12 equal parts (11)}
+\centering\begin{tikzpicture}[scale=.075,>=stealth]\Base\DrawCzero\GenCircle\GenPt{0}\GenPt{1}\GenRad{1}\GenPt{2}\GenRad{2}\GenPt{3}\GenRad{3}\GenPt{4}\GenRad{4}\GenPt{5}\GenRad{5}\GenPt{6}\GenRad{6}\GenPt{7}\GenRad{7}\GenPt{8}\GenRad{8}\GenPt{9}\GenRad{9}\GenPt{10}\GenRad{10}\GenPt{11}\GenRad{11}\node[font=\tiny,green!45!black,below right,inner sep=.5pt]at($(G0)+(330:4)$){$0$};\GenLab{1}\GenLab{2}\GenLab{3}\GenLab{4}\GenLab{5}\GenLab{6}\GenLab{7}\GenLab{8}\GenLab{9}\GenLab{10}\GenLab{11}\Legend{Green: generating circle.\\$30^\circ$ divisions.}\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Step 7: Divide the generating circle into 12 equal parts (12)}
+\centering\begin{tikzpicture}[scale=.075,>=stealth]\Base\DrawCzero\GenCircle\GenPt{0}\GenPt{1}\GenRad{1}\GenPt{2}\GenRad{2}\GenPt{3}\GenRad{3}\GenPt{4}\GenRad{4}\GenPt{5}\GenRad{5}\GenPt{6}\GenRad{6}\GenPt{7}\GenRad{7}\GenPt{8}\GenRad{8}\GenPt{9}\GenRad{9}\GenPt{10}\GenRad{10}\GenPt{11}\GenRad{11}\GenPt{12}\GenRad{12}\node[font=\tiny,green!45!black,below right,inner sep=.5pt]at($(G0)+(330:4)$){$0$};\GenLab{1}\GenLab{2}\GenLab{3}\GenLab{4}\GenLab{5}\GenLab{6}\GenLab{7}\GenLab{8}\GenLab{9}\GenLab{10}\GenLab{11}\node[font=\tiny,green!45!black]at($(Czero)+(330:18.5)$){$0,12$};\Legend{Green: generating circle.\\$30^\circ$ divisions.}\end{tikzpicture}
+\end{frame}
 
 \begin{frame}{Step 8: Complete the generating-circle divisions}
 \centering\begin{tikzpicture}[scale=.075,>=stealth]\Base\DrawCzero\GenCircle\GenFull\Legend{Generating-circle divisions.}\end{tikzpicture}
@@ -194,7 +231,8 @@ OC_0&=R+r=60\text{ mm},&AC_0&=15\text{ mm},\\
 \centering\begin{tikzpicture}[scale=.075,>=stealth]\Base\DrawCzero\GenCircle\GenFull\ConFull\CentreArc\DivFull\AllPCoords\foreach\j in{0,...,#1}{\CutArc{\j}\Pmark{\j}}\Legend{Cyan arc: radius $15$ mm.}\end{tikzpicture}
 \end{frame}%
 }
-\CutFrame{0}\CutFrame{1}\CutFrame{2}\CutFrame{3}\CutFrame{4}\CutFrame{5}\CutFrame{6}\CutFrame{7}\CutFrame{8}\CutFrame{9}\CutFrame{10}\CutFrame{11}\CutFrame{12}
+\CutFrame{0}\CutFrame{1}\CutFrame{2}\CutFrame{3}\CutFrame{4}\CutFrame{5}\CutFrame{6}\CutFrame{7}\CutFrame{8}\CutFrame{9}\CutFrame{10}\CutFrame{11}\CutGroupA{12} % Note: handling standard loop up to 12 below manually if needed, or standard loop:
+\foreach \k in {0,...,12}{\expandafter\ifnum\k>0 \CutFrame{\k}\fi}
 
 \begin{frame}{Step 14: Draw the epicycloid}
 \centering\begin{tikzpicture}[scale=.075,>=stealth]\FinalConstruction\Legend{Blue curve: epicycloid.}\end{tikzpicture}
@@ -205,7 +243,7 @@ OC_0&=R+r=60\text{ mm},&AC_0&=15\text{ mm},\\
 \end{frame}
 
 \begin{frame}{Step 16: Draw the $15$ mm arc from $P$ to the centre curve}
-\centering\begin{tikzpicture}[scale=.075,>=stealth]\FinalConstruction\SelectedGeometry\PGeometry\PtoCpArc\Legend{$PC_p=15\ mathrm{mm}$.}\end{tikzpicture}
+\centering\begin{tikzpicture}[scale=.075,>=stealth]\FinalConstruction\SelectedGeometry\PGeometry\PtoCpArc\Legend{$PC_p=15\ \mathrm{mm}$.}\end{tikzpicture}
 \end{frame}
 
 \begin{frame}{Step 17: Join $C_p$ to $O$}
@@ -220,13 +258,12 @@ OC_0&=R+r=60\text{ mm},&AC_0&=15\text{ mm},\\
 \centering\begin{tikzpicture}[scale=.075,>=stealth]\FinalConstruction\SelectedGeometry\PGeometry\PtoCpArc\draw[contact line](O)--(Cp);\fill[black](M)circle(.55pt)node[above right]{$M$};\draw[normal line](NNleft)--(NNright);\node[font=\scriptsize,orange!85!black,above right,xshift=2pt]at(NNright){$N'$};\node[font=\scriptsize,orange!85!black,below left,xshift=-2pt]at(NNleft){$N$};\Legend{$NN'$: normal.}\end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Step 20: Draw the tangent perpendicular to $NN'$ CARRY FORWARD}
+\begin{frame}{Step 20: Draw the tangent perpendicular to $NN'$}
 \centering\begin{tikzpicture}[scale=.075,>=stealth]\FinalConstruction\SelectedGeometry\PGeometry\PtoCpArc\draw[contact line](O)--(Cp);\fill[black](M)circle(.55pt)node[above right]{$M$};\draw[normal line](NNleft)--(NNright);\draw[tangent line](T2)--(T1);\node[font=\scriptsize,magenta!80!black,below left,xshift=-2pt]at(T2){$T$};\node[font=\scriptsize,magenta!80!black,above right,xshift=2pt]at(T1){$T'$};\Legend{$TT'\perp NN'$.}\end{tikzpicture}
 \end{frame}
 
 \begin{frame}{Step 20: Show the right-angle at $P$}
-\centering\begin{tikzpicture}[scale=.075,>=stealth]\FinalConstruction\SelectedGeometry\PGeometry\PtoCpArc\draw[contact line](O)--(Cp);\fill[black](M)circle(.55pt)node[above right]{$M$};\draw[normal line](NNleft)--(NNright);\draw[tangent line](T2)--(T1);\pic[draw=black,line width=.8pt,angle radius=7pt,angle eccentricity=1.35]at(Psel){right angle=T2--Psel--NNright};\Legend{Right angle at $P$.}\end{tikzpicture}
-\end{frame}
+\centering\begin{tikzpicture}[scale=.075,>=stealth]\FinalConstruction\SelectedGeometry\PGeometry\PtoCpArc\draw[contact line](O)--(Cp);\fill[black](M)circle(.55pt)node[above right]{$M$};\draw[normal line](NNleft)--(NNright);\draw[tangent line](T2)--(T1);\pic[draw=black,line width=.8pt,angle radius=7pt,angle eccentricity=1.35]at(Psel){right angle=T2--Psel--NNright};\Legend{Right angle at $P$.}\end{frame}
 
 \begin{frame}{Step 20: Final completed epicycloid construction}
 \centering\begin{tikzpicture}[scale=.075,>=stealth]\FinalConstruction\SelectedGeometry\PGeometry\PtoCpArc\draw[contact line](O)--(Cp);\fill[black](M)circle(.55pt)node[above right]{$M$};\draw[normal line](NNleft)--(NNright);\draw[tangent line](T2)--(T1);\pic[draw=black,line width=.8pt,angle radius=7pt,angle eccentricity=1.35]at(Psel){right angle=T2--Psel--NNright};\Legend{Completed epicycloid with tangent and normal.}\end{tikzpicture}
