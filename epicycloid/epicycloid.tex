@@ -84,11 +84,30 @@
 \begin{frame}{Step 5: Draw the directing arc $AB$}\centering\begin{tikzpicture}[scale=.075,>=stealth]\Base\Legend{Blue arc $AB$: directing circle.}\end{tikzpicture}\end{frame}
 \begin{frame}{Step 6: Locate $C_0$ and the generating circle}\centering\begin{tikzpicture}[scale=.075,>=stealth]\Base\DrawCzero\ACDim\GenCircle\Legend{$AC_0=15$ mm.\\Green: generating circle.}\end{tikzpicture}\end{frame}
 
-\newcommand{\GenDivisionFrame}[1]{\begin{frame}{Step 7: Divide the generating circle into 12 equal parts}\centering\begin{tikzpicture}[scale=.075,>=stealth]\Base\DrawCzero\GenCircle\foreach\j in{0,...,#1}{\GenPt{\j}\ifnum\j>0\GenRad{\j}\fi}%
-\node[font=\tiny,green!50!black,below right,inner sep=.5pt]at($(G0)+(330:5)$){$0$};%
-\ifnum#1>0\foreach\j in{1,...,#1}{\GenLab{\j}}\fi%
-\ifnum#1=12\node[font=\tiny,green!50!black,above right,inner sep=.5pt]at($(G12)+(330:5)$){$0,12$};\fi%
-\Legend{Green: generating circle.\\$30^\circ$ divisions.}\end{tikzpicture}\end{frame}}
+\newcommand{\GenDivisionFrame}[1]{%
+  \begin{frame}{Step 7: Divide the generating circle into 12 equal parts}%
+  \centering%
+  \begin{tikzpicture}[scale=.075,>=stealth]%
+    \Base\DrawCzero\GenCircle%
+    \foreach\j in{0,...,#1}{%
+      \GenPt{\j}%
+      \ifnum\j>0\GenRad{\j}\fi%
+    }%
+    \node[font=\tiny,green!50!black,below right,inner sep=.5pt]at($(G0)+(330:5)$){$0$};%
+    \ifnum#1>0%
+      \pgfmathparse{#1>11 ? 11 : #1}%
+      \edigits{\pgfmathresult}%
+      \foreach\j in {1,...,#1}{%
+        \ifnum\j<12 \GenLab{\j}\fi%
+      }%
+    \fi%
+    \ifnum#1=12%
+      \node[font=\tiny,green!50!black,above right,inner sep=.5pt]at($(G12)+(330:5)$){$0,12$};%
+    \fi%
+    \Legend{Green: generating circle.\\$30^\circ$ divisions.}%
+  \end{tikzpicture}%
+  \end{frame}%
+}
 \GenDivisionFrame{1}\GenDivisionFrame{2}\GenDivisionFrame{3}\GenDivisionFrame{4}\GenDivisionFrame{5}\GenDivisionFrame{6}\GenDivisionFrame{7}\GenDivisionFrame{8}\GenDivisionFrame{9}\GenDivisionFrame{10}\GenDivisionFrame{11}\GenDivisionFrame{12}
 
 \begin{frame}{Step 8: Complete the generating-circle divisions}\centering\begin{tikzpicture}[scale=.075,>=stealth]\Base\DrawCzero\GenCircle\GenFull\Legend{Generating-circle divisions.}\end{tikzpicture}\end{frame}
